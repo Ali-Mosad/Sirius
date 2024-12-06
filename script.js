@@ -1,99 +1,68 @@
-// List of words for pronunciation practice
+// List of words and sounds to practice
 const words = [
-    { word: 'thorough', audio: 'https://www.merriam-webster.com/audio/prons/en/us/mp3/t/thoroug01.mp3' },
-    { word: 'squirrel', audio: 'https://www.merriam-webster.com/audio/prons/en/us/mp3/s/squirre01.mp3' },
-    { word: 'anemone', audio: 'https://www.merriam-webster.com/audio/prons/en/us/mp3/a/anemone01.mp3' },
-    { word: 'mischievous', audio: 'https://www.merriam-webster.com/audio/prons/en/us/mp3/m/mischie01.mp3' },
-    { word: 'entrepreneur', audio: 'https://www.merriam-webster.com/audio/prons/en/us/mp3/e/entrepr01.mp3' }
+    { word: 'through', audio: 'audio/through.mp3' },
+    { word: 'though', audio: 'audio/though.mp3' },
+    { word: 'thought', audio: 'audio/thought.mp3' },
+    { word: 'knight', audio: 'audio/knight.mp3' },
+    { word: 'recipe', audio: 'audio/recipe.mp3' }
 ];
 
-// Select the elements from the HTML
-const wordDisplay = document.getElementById('word');
-const feedback = document.getElementById('feedback');
-const startButton = document.getElementById('start-button');
-const countdownDisplay = document.getElementById('countdown');
-const scoreValue = document.getElementById('score-value');
-const audioElement = document.getElementById('word-audio');
+let currentWordIndex = 0;
 
-let currentScore = 0;
+// DOM Elements
+const wordElement = document.getElementById('word');
+const startBtn = document.getElementById('startBtn');
+const playWordBtn = document.getElementById('playWordBtn');
+const recordBtn = document.getElementById('recordBtn');
+const feedbackElement = document.getElementById('result');
 
-// Display a random word when the game loads
-function getRandomWord() {
-    const randomIndex = Math.floor(Math.random() * words.length);
-    return words[randomIndex];
+// Initialize game
+function startGame() {
+    currentWordIndex = 0;
+    feedbackElement.innerText = "Your pronunciation: ";
+    updateWordDisplay();
+    playWordBtn.disabled = false;
+    recordBtn.disabled = false;
 }
 
-function displayWord() {
-    const wordObject = getRandomWord();
-    wordDisplay.textContent = wordObject.word;
-    audioElement.src = wordObject.audio;
+// Update the word on the screen
+function updateWordDisplay() {
+    wordElement.innerText = words[currentWordIndex].word;
 }
 
-// Countdown timer before the game starts
-function startCountdown() {
-    let countdown = 3;
-    countdownDisplay.textContent = countdown;
-    const interval = setInterval(() => {
-        countdown--;
-        countdownDisplay.textContent = countdown;
-        if (countdown <= 0) {
-            clearInterval(interval);
-            countdownDisplay.style.display = 'none';
-            startRecognition();
-        }
-    }, 1000);
+// Play the word audio
+function playWordAudio() {
+    const audio = new Audio(words[currentWordIndex].audio);
+    audio.play();
 }
 
-// Function to start speech recognition
-function startRecognition() {
-    if (!('webkitSpeechRecognition' in window)) {
-        alert('Sorry, your browser does not support speech recognition.');
-        return;
-    }
-
-    const recognition = new webkitSpeechRecognition();
-    recognition.continuous = false;
-    recognition.interimResults = false;
+// Record pronunciation (using Web Speech API)
+async function recordPronunciation() {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
     recognition.lang = 'en-US';
-
     recognition.start();
 
     recognition.onresult = (event) => {
-        const spokenWord = event.results[0][0].transcript.toLowerCase();
-        const correctWord = wordDisplay.textContent.toLowerCase();
+        const transcript = event.results[0][0].transcript.toLowerCase();
+        const correctWord = words[currentWordIndex].word.toLowerCase();
 
-        if (spokenWord === correctWord) {
-            feedback.textContent = 'Correct! Great job!';
-            feedback.style.color = 'green';
-            currentScore++;
-            scoreValue.textContent = currentScore;
-            setTimeout(() => {
-                displayWord();
-                feedback.textContent = '';
-            }, 2000);
+        if (transcript === correctWord) {
+            feedbackElement.innerText = "Your pronunciation is correct! 🎉";
         } else {
-            feedback.textContent = `Try again! You said: "${spokenWord}".`;
-            feedback.style.color = 'red';
+            feedbackElement.innerText = "Try again! 😬";
         }
     };
 
-    recognition.onerror = (event) => {
-        console.error('Error occurred in recognition:', event.error);
-        feedback.textContent = 'Error occurred. Please try again.';
-        feedback.style.color = 'red';
+    recognition.onerror = () => {
+        feedbackElement.innerText = "Sorry, I didn't catch that. Please try again.";
     };
 }
 
-// Play the word audio when the game starts
-function playWordAudio() {
-    audioElement.play();
-}
+// Event Listeners
+startBtn.addEventListener('click', startGame);
+playWordBtn.addEventListener('click', playWordAudio);
+recordBtn.addEventListener('click', recordPronunciation);
 
-// Attach event listener to the button
-startButton.addEventListener('click', () => {
-    countdownDisplay.style.display = 'block';
-    startButton.disabled = true;
-    displayWord();
-    playWordAudio();
-    startCountdown();
-});
+startBtn.disabled = false;
+playWordBtn.disabled = true;
+recordBtn.disabled = true;
