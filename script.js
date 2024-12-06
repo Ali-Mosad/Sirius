@@ -31,7 +31,7 @@ function displayWord() {
 
 // Countdown timer before the game starts
 function startCountdown() {
-    let countdown = timer 3;
+    let countdown = 3;
     countdownDisplay.textContent = countdown;
     const interval = setInterval(() => {
         countdown--;
