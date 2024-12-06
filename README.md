@@ -1,1 +1,1 @@
-# Pronunciation Game by Ali Mosad
+# Pronunciation
