@@ -1,33 +1,24 @@
 .menu-container {
-    position: relative;
-    display: inline-block;
-  }
-
-  .menu-toggle {
-    background-color: #293123; /* Button color */
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
+    position: absolute; /* Allows precise positioning */
+    top: 10px; /* Adjust distance from the top */
+    right: 10px; /* Adjust distance from the right */
+    z-index: 1000; /* Ensure it appears on top of other elements */
   }
 
   .menu {
     display: none;
     position: absolute;
-    top: 100%;
-    left: 0;
+    top: 40px; /* Position dropdown below the button */
+    right: 0; /* Align with the button's right edge */
     background-color: #1e1e1e;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
-    z-index: 1000;
     padding: 10px 0;
+    z-index: 1000;
   }
-
   .menu-item {
     background: none;
-    color: #fff;
+    color: #ffffff;
     border: none;
     padding: 10px 20px;
     text-align: left;
