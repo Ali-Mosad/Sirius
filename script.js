@@ -6,17 +6,23 @@ const data = {
 
 // Navigate to a specific city's page
 function navigate(city) {
-    window.location.href = `city.html?city=${city}`;
+    if (city) {
+        window.location.href = `city.html?city=${encodeURIComponent(city)}`;
+    } else {
+        console.error("City parameter is missing.");
+    }
 }
 
 // Display the city name dynamically on the city page
 function displayCityName() {
     const urlParams = new URLSearchParams(window.location.search);
     const city = urlParams.get('city');
-    if (city) {
-        document.getElementById('city-name').textContent = city;
+    const cityNameElement = document.getElementById('city-name');
+
+    if (cityNameElement) {
+        cityNameElement.textContent = city ? city : "مدينة غير معروفة";
     } else {
-        document.getElementById('city-name').textContent = "مدينة غير معروفة";
+        console.error("City name element not found in the DOM.");
     }
 }
 
@@ -25,6 +31,11 @@ function searchPerson() {
     const query = document.getElementById('search').value.trim();
     const resultDiv = document.getElementById('result');
 
+    if (!resultDiv) {
+        console.error("Result container not found in the DOM.");
+        return;
+    }
+
     if (data[query]) {
         const details = data[query];
         resultDiv.innerHTML = `
@@ -32,7 +43,7 @@ function searchPerson() {
             <p><strong>الرتبة:</strong> ${details.rank}</p>
             <p><strong>الرصيد:</strong> ${details.balance}</p>
             <p><strong>السلعة:</strong> ${details.item}</p>
-            <button onclick="viewDetails('${query}')">عرض التفاصيل</button>
+            <button onclick="viewDetails('${encodeURIComponent(query)}')">عرض التفاصيل</button>
         `;
     } else {
         resultDiv.innerHTML = "<p>لا توجد بيانات لهذا اللقب.</p>";
@@ -41,7 +52,11 @@ function searchPerson() {
 
 // Navigate to the details page for a specific person
 function viewDetails(name) {
-    window.location.href = `details.html?name=${name}`;
+    if (name) {
+        window.location.href = `details.html?name=${encodeURIComponent(name)}`;
+    } else {
+        console.error("Name parameter is missing.");
+    }
 }
 
 // Display person details dynamically on the details page
@@ -49,6 +64,11 @@ function displayPersonDetails() {
     const urlParams = new URLSearchParams(window.location.search);
     const name = urlParams.get('name');
     const personDetailsDiv = document.getElementById('person-details');
+
+    if (!personDetailsDiv) {
+        console.error("Person details container not found in the DOM.");
+        return;
+    }
 
     if (data[name]) {
         const details = data[name];
