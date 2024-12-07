@@ -5,13 +5,12 @@ const data = {
 
 function navigate(city) {
     if (city) {
-        // Ensure the correct file name and path
-        window.location.href = `${kyoto}.html`; 
+        // Navigate to the corresponding city's page with the city parameter
+        window.location.href = `${city}.html?city=${encodeURIComponent(city)}`;
     } else {
         console.error("City parameter is missing.");
     }
 }
-
 
 function displayCityName() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -55,6 +54,7 @@ function viewDetails(name) {
         console.error("Name parameter is missing.");
     }
 }
+
 function displayPersonDetails() {
     const urlParams = new URLSearchParams(window.location.search);
     const name = urlParams.get('name');

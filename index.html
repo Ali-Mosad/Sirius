@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>البنك</title>
+    <title>البنك - المدن</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,21 +11,16 @@
         <h1>البنك</h1>
         <h2>مرحباً بك، اختر مدينتك:</h2>
         <div class="options">
-            <div onclick="navigate('Kyoto')">
+            <div class="city-card" onclick="navigate('kyoto')">
                 <img src="kyoto.jpg" alt="Kyoto">
                 <button>Kyoto</button>
             </div>
-            <div onclick="navigate('Osaka')">
+            <div class="city-card" onclick="navigate('osaka')">
                 <img src="osaka.jpg" alt="Osaka">
                 <button>Osaka</button>
             </div>
         </div>
     </div>
-    <script>
-        function navigate(city) {
-            window.location.href = `city.html?city=${city}`;
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
-<script src="script.js"></script>

@@ -11,30 +11,9 @@
         <h1>تفاصيل الشخص</h1>
         <div id="person-details"></div>
     </div>
+    <script src="script.js"></script>
     <script>
-        const data = {
-            "إيرين": { "rank": "عضو", "balance": 100, "item": "لا يوجد" },
-            "كين": { "rank": "مدير", "balance": 500, "item": "كتاب" },
-        };
-
-        const urlParams = new URLSearchParams(window.location.search);
-        const name = urlParams.get('name');
-
-        if (data[name]) {
-            const details = data[name];
-            document.getElementById('person-details').innerHTML = `
-                <p><strong>اللقب:</strong> ${name}</p>
-                <p><strong>الرتبة:</strong> ${details.rank}</p>
-                <p><strong>الرصيد:</strong> ${details.balance}</p>
-                <p><strong>السلعة:</strong> ${details.item}</p>
-            `;
-        } else {
-            document.getElementById('person-details').innerHTML = "<p>اللقب غير موجود.</p>";
-        }
+        displayPersonDetails();
     </script>
 </body>
 </html>
-<script src="script.js"></script>
-<script>
-    displayPersonDetails();
-</script>

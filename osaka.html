@@ -13,41 +13,9 @@
         <button onclick="searchPerson()">بحث</button>
         <div id="result"></div>
     </div>
+    <script src="script.js"></script>
     <script>
-        const data = {
-            "إيرين": { "rank": "عضو", "balance": 100, "item": "لا يوجد" },
-            "كين": { "rank": "مدير", "balance": 500, "item": "كتاب" },
-        };
-
-        const urlParams = new URLSearchParams(window.location.search);
-        const city = urlParams.get('city');
-        document.getElementById('city-name').textContent = city;
-
-        function searchPerson() {
-            const query = document.getElementById('search').value.trim();
-            const resultDiv = document.getElementById('result');
-
-            if (data[query]) {
-                const details = data[query];
-                resultDiv.innerHTML = `
-                    <p><strong>اللقب:</strong> ${query}</p>
-                    <p><strong>الرتبة:</strong> ${details.rank}</p>
-                    <p><strong>الرصيد:</strong> ${details.balance}</p>
-                    <p><strong>السلعة:</strong> ${details.item}</p>
-                    <button onclick="viewDetails('${query}')">عرض التفاصيل</button>
-                `;
-            } else {
-                resultDiv.innerHTML = "<p>لا توجد بيانات لهذا اللقب.</p>";
-            }
-        }
-
-        function viewDetails(name) {
-            window.location.href = `details.html?name=${name}`;
-        }
+        displayCityName();
     </script>
 </body>
 </html>
-<script src="script.js"></script>
-<script>
-    displayCityName(Osaka); // Dynamically set the city name
-</script>
