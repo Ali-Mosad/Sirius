@@ -1,3 +1,4 @@
 function navigate(city) {
-    window.location.href = city + ".html"; // التنقل إلى صفحة المدينة
+    // ينقلك إلى الصفحة المختارة
+    window.location.href = city + ".html";
 }
