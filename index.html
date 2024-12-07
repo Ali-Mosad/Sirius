@@ -1,33 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pronunciation Practice Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>البنك</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>English Pronunciation Practice Game</h1>
-    </header>
-    <main>
-        <section id="game">
-            <div id="word-container">
-                <h2 id="word">Click 'Start' to begin</h2>
+    <div class="container">
+        <h1>البنك</h1>
+        <h2>مرحباً بك، اختر مدينتك:</h2>
+        <div class="options">
+            <div onclick="navigate('kyoto')">
+                <img src="kyoto.jpg" alt="Kyoto">
+                <button>Kyoto</button>
             </div>
-            <div id="buttons">
-                <button id="startBtn">Start Game</button>
-                <button id="playWordBtn">Play Word</button>
-                <button id="recordBtn">Record Pronunciation</button>
+            <div onclick="navigate('osaka')">
+                <img src="osaka.jpg" alt="Osaka">
+                <button>Osaka</button>
             </div>
-            <div id="feedback">
-                <h3 id="result">Your pronunciation: </h3>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>Created by Ali Mosad</p>
-    </footer>
-    <script src="scripts.js"></script>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
