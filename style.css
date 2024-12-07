@@ -2,13 +2,12 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Noto Sans JP', sans-serif; /* Japanese-style font */
-    background-color: #1c1c1c; /* Dark background color */
-    color: #fff; /* Light text color */
+    background-color: #f0f0f0; /* Light background color */
+    overflow: hidden; /* Prevent scroll if the background is large */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow: hidden; /* Optional */
 }
 
 .container {
@@ -24,22 +23,22 @@ body {
     transform: translate(-50%, -50%);
     font-size: 10rem; /* Adjust size as needed */
     color: rgba(255, 255, 255, 0.1); /* Light color with transparency */
-    z-index: -1; /* Behind other content */
+    z-index: -1; /* Place it behind other content */
     font-weight: bold;
-    opacity: 0.5; /* Semi-transparent */
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Optional shadow */
+    opacity: 0.5; /* Make it semi-transparent */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Optional shadow for text */
 }
 
 h1, h2 {
     margin: 0 0 20px;
-    color: #fff; /* Light color for headings */
+    color: #333; /* Dark color for text */
 }
 
 .options {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    z-index: 1; /* Above the background text */
+    z-index: 1; /* Make sure it's above the background text */
 }
 
 .city-card {
@@ -55,21 +54,10 @@ h1, h2 {
     max-width: 400px; /* Set max-width */
     height: auto;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    object-fit: cover; /* Maintain aspect ratio */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
 }
 
 button {
     margin-top: 10px;
-    background-color: #333; /* Dark button background */
-    color: #fff; /* Light text for buttons */
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #555; /* Darker shade for hover */
 }
