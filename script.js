@@ -1,19 +1,18 @@
-// Centralized data object
 const data = {
     "إيرين": { "rank": "عضو", "balance": 100, "item": "لا يوجد" },
     "كين": { "rank": "مدير", "balance": 500, "item": "كتاب" },
 };
 
-// Navigate to a specific city's page
 function navigate(city) {
     if (city) {
-        window.location.href = `city.html?city=${encodeURIComponent(city)}`;
+        // Ensure the correct file name and path
+        window.location.href = `${kyoto}.html`; 
     } else {
         console.error("City parameter is missing.");
     }
 }
 
-// Display the city name dynamically on the city page
+
 function displayCityName() {
     const urlParams = new URLSearchParams(window.location.search);
     const city = urlParams.get('city');
@@ -26,7 +25,6 @@ function displayCityName() {
     }
 }
 
-// Search for a person's details
 function searchPerson() {
     const query = document.getElementById('search').value.trim();
     const resultDiv = document.getElementById('result');
@@ -50,7 +48,6 @@ function searchPerson() {
     }
 }
 
-// Navigate to the details page for a specific person
 function viewDetails(name) {
     if (name) {
         window.location.href = `details.html?name=${encodeURIComponent(name)}`;
@@ -58,8 +55,6 @@ function viewDetails(name) {
         console.error("Name parameter is missing.");
     }
 }
-
-// Display person details dynamically on the details page
 function displayPersonDetails() {
     const urlParams = new URLSearchParams(window.location.search);
     const name = urlParams.get('name');
