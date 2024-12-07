@@ -77,3 +77,20 @@ function displayPersonDetails() {
         personDetailsDiv.innerHTML = "<p>اللقب غير موجود.</p>";
     }
 }
+document.addEventListener("DOMContentLoaded", () => {
+    const lazyImages = document.querySelectorAll(".lazy-load");
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const image = entry.target;
+                image.src = image.dataset.src;
+                observer.unobserve(image);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    lazyImages.forEach(image => {
+        observer.observe(image);
+    });
+});
+

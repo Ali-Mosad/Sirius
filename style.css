@@ -50,12 +50,12 @@ h1, h2 {
 }
 
 .city-card img {
-    width: 400px; /* Increase the image width */
+    width: 100%; /* Ensure images are responsive */
+    max-width: 400px; /* Set max-width */
     height: auto;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    object-fit: cover; /* Ensure images fill the space while maintaining aspect ratio */
-    max-width: 100%; /* Prevent images from overflowing */
+    object-fit: cover;
 }
 
 button {
