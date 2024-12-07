@@ -7,96 +7,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="header">
+    <div class="container">
         <h1>البنك</h1>
-    </div>
-    <h2>مرحباً بك، اختر كوكبك:</h2>
-    <div class="planet-container">
-        <a href="kyoto.html">
-            <div class="planet-card">
+        <h2>مرحباً بك، اختر مدينتك:</h2>
+        <div class="options">
+            <div onclick="navigate('Kyoto')">
                 <img src="kyoto.jpg" alt="Kyoto">
                 <button>Kyoto</button>
             </div>
-        </a>
-        <a href="osaka.html">
-            <div class="planet-card">
+            <div onclick="navigate('Osaka')">
                 <img src="osaka.jpg" alt="Osaka">
                 <button>Osaka</button>
             </div>
-        </a>
+        </div>
     </div>
+    <script>
+        function navigate(city) {
+            window.location.href = `city.html?city=${city}`;
+        }
+    </script>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyoto</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="header">
-        <h1>البنك</h1>
-    </div>
-    <h2>مرحباً بك في Kyoto</h2>
-    <a href="search.html">اذهب إلى صفحة البحث</a>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Osaka</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="header">
-        <h1>البنك</h1>
-    </div>
-    <h2>مرحباً بك في اوساكا</h2>
-    <a href="search.html">اذهب إلى صفحة البحث</a>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>البحث</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="header">
-        <h1>البنك</h1>
-    </div>
-    <h2>ابحث عن اللقب:</h2>
-    <form action="details.html" method="get">
-        <input type="text" name="nickname" placeholder="اكتب اللقب" required>
-        <button type="submit">بحث</button>
-    </form>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>التفاصيل</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="header">
-        <h1>البنك</h1>
-    </div>
-    <h2>تفاصيل الحساب:</h2>
-    <div class="details-box">
-        <p>اللقب: Irene</p>
-        <p>الرتبة: عضو</p>
-        <p>الرصيد: 100</p>
-        <p>السلعة: لا يوجد</p>
-        <button onclick="location.href='store.html'">المتجر</button>
-    </div>
-</body>
-</html>
+<script src="script.js"></script>
