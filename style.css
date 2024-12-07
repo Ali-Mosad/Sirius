@@ -1,67 +1,47 @@
 body {
-    font-family: Arial, sans-serif;
-    direction: rtl;
     margin: 0;
     padding: 0;
-    background-color: #f7f7f7;
-    color: #333;
+    font-family: 'Noto Sans JP', sans-serif; /* Japanese-style font */
+    background-color: #f0f0f0; /* Light background color */
+    overflow: hidden; /* Prevent scroll if the background is large */
 }
 
 .container {
-    max-width: 800px;
-    margin: 50px auto;
-    text-align: center;
+    position: relative;
     padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2 {
-    margin: 10px 0;
-}
-
-input {
-    padding: 10px;
-    width: 80%;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #0056b3;
+.background-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10rem; /* Adjust size as needed */
+    color: rgba(255, 255, 255, 0.1); /* Light color with transparency */
+    text-align: center;
+    z-index: -1; /* Place it behind other content */
+    font-weight: bold;
+    opacity: 0.5; /* Make it semi-transparent */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Optional shadow for text */
 }
 
 .options {
     display: flex;
     justify-content: space-around;
-    margin-top: 20px;
-}
-
-.city-card {
-    text-align: center;
-    cursor: pointer;
+    flex-wrap: wrap;
+    z-index: 1; /* Make sure it's above the background text */
 }
 
 .city-card img {
-    max-width: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
+    width: 300px; /* Set image size */
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#result, #person-details {
-    margin-top: 20px;
-    text-align: left;
+.city-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
 }
