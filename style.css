@@ -1,10 +1,12 @@
 .menu-container {
-    position: relative;
-    display: inline-block;
+    position: absolute; /* Allows precise positioning */
+    top: 10px; /* Adjust distance from the top */
+    right: 10px; /* Adjust distance from the right */
+    z-index: 1000; /* Ensure it appears on top of other elements */
   }
 
   .menu-toggle {
-    background-color: #ff5722; /* Button color */
+    background-color: #2b2929; /* Button color */
     color: #fff;
     border: none;
     padding: 10px 15px;
