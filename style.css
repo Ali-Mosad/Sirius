@@ -31,10 +31,6 @@
     background-color: #ff5722;
   }
 
-  .menu.show {
-    display: block;
-  }
-  
 body {
     margin: 0;
     padding: 0;
