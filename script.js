@@ -94,15 +94,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// Get the menu elements
 const menuButton = document.getElementById("menuButton");
 const menu = document.getElementById("menu");
 
+// Add event listener to toggle the menu
 menuButton.addEventListener("click", () => {
-    menu.classList.toggle("show");
-  });
+  menu.classList.toggle("show");
+});
 
-  document.addEventListener("click", (e) => {
-    if (!menu.contains(e.target) && e.target !== menuButton) {
-      menu.classList.remove("show");
-    }
-  });
+// Optional: Close menu when clicking outside
+document.addEventListener("click", (e) => {
+  if (!menu.contains(e.target) && e.target !== menuButton) {
+    menu.classList.remove("show");
+  }
+});
+
