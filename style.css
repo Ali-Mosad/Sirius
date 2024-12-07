@@ -1,9 +1,9 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Noto Sans JP', sans-serif; /* Japanese-style font */
-    background-color: #f0f0f0; /* Light background color */
-    overflow: hidden; /* Prevent scroll if the background is large */
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: #191919; /* Dark background for contrast */
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,7 +13,7 @@ body {
 .container {
     position: relative;
     text-align: center;
-    z-index: 1; /* Ensure content is above background */
+    z-index: 1;
 }
 
 .background-text {
@@ -21,24 +21,24 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 10rem; /* Adjust size as needed */
-    color: rgba(255, 255, 255, 0.1); /* Light color with transparency */
-    z-index: -1; /* Place it behind other content */
+    font-size: 10rem;
+    color: rgba(255, 255, 255, 0.1);
+    z-index: -1;
     font-weight: bold;
-    opacity: 0.5; /* Make it semi-transparent */
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Optional shadow for text */
+    opacity: 0.5;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 h1, h2 {
     margin: 0 0 20px;
-    color: #333; /* Dark color for text */
+    color: #fff; /* White text for better visibility */
 }
 
 .options {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    z-index: 1; /* Make sure it's above the background text */
+    z-index: 1;
 }
 
 .city-card {
@@ -50,8 +50,8 @@ h1, h2 {
 }
 
 .city-card img {
-    width: 100%; /* Ensure images are responsive */
-    max-width: 400px; /* Set max-width */
+    width: 100%;
+    max-width: 400px;
     height: auto;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -60,4 +60,37 @@ h1, h2 {
 
 button {
     margin-top: 10px;
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Additional CSS for the specific elements in the image */
+.header {
+    background-color: #2980b9; /* Blue header */
+    color: #fff;
+    padding: 20px;
+}
+
+.hero-section {
+    background-color: #3498db; /* Light blue hero section */
+    color: #fff;
+    padding: 80px 0;
+}
+
+.product-section {
+    background-color: #f0f0f0; /* Light gray product section */
+    padding: 40px;
+}
+
+.footer {
+    background-color: #2c3e50; /* Dark gray footer */
+    color: #fff;
+    padding: 20px;
 }
