@@ -94,3 +94,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+const menuButton = document.getElementById("menuButton");
+const menu = document.getElementById("menu");
+
+menuButton.addEventListener("click", () => {
+    menu.classList.toggle("show");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!menu.contains(e.target) && e.target !== menuButton) {
+      menu.classList.remove("show");
+    }
+  });
