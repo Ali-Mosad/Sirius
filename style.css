@@ -1,11 +1,12 @@
-.menu-container {
+/* Menu Styles */
+.menu-container { 
     position: absolute; /* Allows precise positioning */
     top: 10px; /* Adjust distance from the top */
     right: 10px; /* Adjust distance from the right */
     z-index: 1000; /* Ensure it appears on top of other elements */
-  }
+}
 
-  .menu-toggle {
+.menu-toggle {
     background-color: #2b2929; /* Button color */
     color: #fff;
     border: none;
@@ -13,9 +14,9 @@
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-  }
+}
 
-  .menu {
+.menu {
     display: none;
     position: absolute;
     top: 100%;
@@ -25,9 +26,9 @@
     border-radius: 5px;
     z-index: 1000;
     padding: 10px 0;
-  }
+}
 
-  .menu-item {
+.menu-item {
     background: none;
     color: #fff;
     border: none;
@@ -36,21 +37,26 @@
     width: 100%;
     font-size: 16px;
     cursor: pointer;
-  }
+}
 
-  .menu-item:hover {
-    background-color: #ff5722;
-  }
+.menu-item:hover {
+    background-color: #c92f00;
+}
 
-  .menu.show {
+.menu.show {
     display: block;
-  }
-  
+}
+
+/* Body and Background */
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Noto Sans JP', sans-serif;
-    background-color: #191919; /* Dark background for contrast */
+    font-family: 'Noto Serif JP', serif; /* Japanese-themed font */
+    background-color: #f8f4ec; /* Light parchment-like background */
+    background-image: url('japanese-pattern.png'); /* Add cherry blossom pattern */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -58,10 +64,11 @@ body {
     height: 100vh;
 }
 
-.container {
-    position: relative;
-    text-align: center;
-    z-index: 1;
+/* Text and Headers */
+h1, h2 {
+    margin: 0 0 20px;
+    color: #8b0000; /* Deep red for text */
+    font-family: 'Noto Serif JP', serif;
 }
 
 .background-text {
@@ -70,16 +77,18 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 10rem;
-    color: rgba(255, 255, 255, 0.1);
+    color: rgba(0, 0, 0, 0.05);
     z-index: -1;
     font-weight: bold;
-    opacity: 0.5;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    opacity: 0.7;
+    text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
-h1, h2 {
-    margin: 0 0 20px;
-    color: #fff; /* White text for better visibility */
+/* Container and Options */
+.container {
+    position: relative;
+    text-align: center;
+    z-index: 1;
 }
 
 .options {
@@ -89,6 +98,7 @@ h1, h2 {
     z-index: 1;
 }
 
+/* City Cards with Frames */
 .city-card {
     display: flex;
     flex-direction: column;
@@ -97,18 +107,25 @@ h1, h2 {
     cursor: pointer;
 }
 
+.city-card .image-frame {
+    padding: 10px;
+    background-color: #fff; /* White frame */
+    border: 5px solid #d4a373; /* Gold accent border */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
 .city-card img {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px; /* Resize image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Slight rounding for image corners */
     object-fit: cover;
 }
 
+/* Buttons */
 button {
     margin-top: 10px;
-    background-color: #4CAF50; /* Green background */
+    background-color: #d3412e; /* Green background */
     border: none;
     color: white;
     padding: 15px 32px;
@@ -119,26 +136,50 @@ button {
     cursor: pointer;
 }
 
-/* Additional CSS for the specific elements in the image */
-.header {
-    background-color: #2980b9; /* Blue header */
-    color: #fff;
-    padding: 20px;
-}
-
-.hero-section {
-    background-color: #3498db; /* Light blue hero section */
-    color: #fff;
-    padding: 80px 0;
-}
-
-.product-section {
-    background-color: #f0f0f0; /* Light gray product section */
-    padding: 40px;
-}
-
+/* Footer and Other Sections */
 .footer {
     background-color: #2c3e50; /* Dark gray footer */
     color: #fff;
     padding: 20px;
 }
+/* City Cards with Japanese-Style Frames */
+.city-card .image-frame {
+    padding: 10px;
+    background-color: #f8f4ec; /* Light parchment-like color for a Shoji screen effect */
+    border: 5px solid #d52d2d; /* Deep red lacquer border */
+    border-radius: 10px; /* Slight rounding for modern touch */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    position: relative; /* For decorative accents */
+}
+
+/* Decorative corners for the frame (to mimic traditional Shoji corners) */
+.image-frame::before, .image-frame::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #d52d2d; /* Deep red */
+    border-radius: 50%; /* Circular accents */
+}
+
+/* Top-left corner */
+.image-frame::before {
+    top: -10px;
+    left: -10px;
+}
+
+/* Bottom-right corner */
+.image-frame::after {
+    bottom: -10px;
+    right: -10px;
+}
+
+/* Images within the Japanese frame */
+.city-card img {
+    width: 200px; /* Resize image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Slight rounding for image corners */
+    object-fit: cover;
+    border: 2px solid #fff; /* Thin white border inside the frame */
+}
+

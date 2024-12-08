@@ -1,36 +1,49 @@
 <!DOCTYPE html>
 <html lang="ar">
-    <div class="menu-container">
-        <button id="menuButton" class="menu-toggle">☰ Menu</button>
-        <div id="menu" class="menu hidden">
-          <button id="shopButton" class="menu-item">المتجر</button>
-        </div>
-      </div>
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>البنك</title>
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="background-text">Shirai Kingdom</div>
-    <div class="container">
-        <h1>البنك</h1>
-        <h2>مرحباً بك، اختر مدينتك:</h2>
-        <div class="options">
-            <div class="city-card" onclick="navigate('kyoto')">
-                <img src="kyoto.png" alt="Description" loading="lazy">
-
-                <button>Kyoto</button>
-            </div>
-            <div class="city-card" onclick="navigate('osaka')">
-                <img src="osaka.png" alt="Description" loading="lazy">
-
-                <button>Osaka</button>
-            </div>
-        </div>
-        
+    <!-- Add Japanese font -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Menu Button -->
+    <div class="menu-container">
+      <button id="menuButton" class="menu-toggle">☰ Menu</button>
+      <div id="menu" class="menu hidden">
+        <button id="shopButton" class="menu-item">المتجر</button>
+      </div>
     </div>
+
+    <!-- Background text -->
+    <div class="background-text">Shirai Kingdom</div>
+
+    <!-- Main container -->
+    <div class="container">
+      <h1>البنك</h1>
+      <h2>مرحباً بك، اختر مدينتك:</h2>
+      <div class="options">
+        <!-- Kyoto Card -->
+        <div class="city-card" onclick="navigate('kyoto')">
+          <div class="image-frame">
+            <img src="kyoto-small.png" data-src="kyoto.png" alt="Kyoto" class="lazy-load">
+          </div>
+          <button>Kyoto</button>
+        </div>
+
+        <!-- Osaka Card -->
+        <div class="city-card" onclick="navigate('osaka')">
+          <div class="image-frame">
+            <img src="osaka-small.jpg" data-src="osaka.png" alt="Osaka" class="lazy-load">
+          </div>
+          <button>Osaka</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script -->
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
