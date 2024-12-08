@@ -1,6 +1,12 @@
-const data = {
+// City-specific data
+const kyotoData = {
     "إيرين": { "rank": "عضو", "balance": 100, "item": "لا يوجد" },
+    "ماساكو": { "rank": "مدير", "balance": 200, "item": "سيف" },
+};
+
+const osakaData = {
     "كين": { "rank": "مدير", "balance": 500, "item": "كتاب" },
+    "هانا": { "rank": "عضو", "balance": 150, "item": "قوس" },
 };
 
 function navigate(city) {
@@ -24,9 +30,10 @@ function displayCityName() {
     }
 }
 
-function searchPerson() {
+function searchPerson(city) {
     const query = document.getElementById('search').value.trim();
     const resultDiv = document.getElementById('result');
+    const data = city === 'kyoto' ? kyotoData : osakaData;
 
     if (!resultDiv) {
         console.error("Result container not found in the DOM.");
@@ -40,25 +47,27 @@ function searchPerson() {
             <p><strong>الرتبة:</strong> ${details.rank}</p>
             <p><strong>الرصيد:</strong> ${details.balance}</p>
             <p><strong>السلعة:</strong> ${details.item}</p>
-            <button onclick="viewDetails('${encodeURIComponent(query)}')">عرض التفاصيل</button>
+            <button onclick="viewDetails('${encodeURIComponent(query)}', '${city}')">عرض التفاصيل</button>
         `;
     } else {
         resultDiv.innerHTML = "<p>لا توجد بيانات لهذا اللقب.</p>";
     }
 }
 
-function viewDetails(name) {
-    if (name) {
-        window.location.href = `details.html?name=${encodeURIComponent(name)}`;
+function viewDetails(name, city) {
+    if (name && city) {
+        window.location.href = `details.html?name=${encodeURIComponent(name)}&city=${encodeURIComponent(city)}`;
     } else {
-        console.error("Name parameter is missing.");
+        console.error("Name or city parameter is missing.");
     }
 }
 
 function displayPersonDetails() {
     const urlParams = new URLSearchParams(window.location.search);
     const name = urlParams.get('name');
+    const city = urlParams.get('city');
     const personDetailsDiv = document.getElementById('person-details');
+    const data = city === 'kyoto' ? kyotoData : osakaData;
 
     if (!personDetailsDiv) {
         console.error("Person details container not found in the DOM.");
@@ -77,6 +86,7 @@ function displayPersonDetails() {
         personDetailsDiv.innerHTML = "<p>اللقب غير موجود.</p>";
     }
 }
+
 document.addEventListener("DOMContentLoaded", () => {
     const lazyImages = document.querySelectorAll(".lazy-load");
     const observer = new IntersectionObserver((entries, observer) => {
@@ -93,16 +103,3 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(image);
     });
 });
-
-const menuButton = document.getElementById("menuButton");
-const menu = document.getElementById("menu");
-
-menuButton.addEventListener("click", () => {
-    menu.classList.toggle("show");
-  });
-
-  document.addEventListener("click", (e) => {
-    if (!menu.contains(e.target) && e.target !== menuButton) {
-      menu.classList.remove("show");
-    }
-  });
