@@ -6,12 +6,12 @@
 }
 
 html, body {
-    height: 100%; /* Ensure the page takes up full height */
+    height: 100%; /* Full height */
 }
 
 body {
     display: flex;
-    flex-direction: column; /* Arrange content vertically */
+    flex-direction: column; /* Vertical layout */
     font-family: Arial, sans-serif;
     background-color: #111827; /* Dark background */
     color: #f3f4f6; /* Light text */
@@ -27,14 +27,12 @@ body {
     color: #f3f4f6;
 }
 
-/* Logo */
 .logo a {
     text-decoration: none;
     color: #f3f4f6;
     font-size: 1.5rem;
 }
 
-/* Navigation Menu */
 .menu {
     display: flex;
     gap: 15px;
@@ -60,37 +58,37 @@ body {
     color: #f3f4f6;
 }
 
-/* Main Content */
+/* City Cards - Vertical Layout */
 .container {
-    flex: 1; /* Allow this section to grow and fill space */
+    flex: 1;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
+    flex-direction: column;
+    gap: 20px; /* Spacing between cards */
+    align-items: center; /* Center-align the cards */
     padding: 20px;
 }
 
-/* City Cards */
 .city-card {
-    width: 150px;
-    text-align: center;
+    width: 90%; /* Full width */
+    max-width: 400px; /* Maximum card width */
     background-color: #374151;
     border: 1px solid #9ca3af;
-    padding: 15px;
     border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
     cursor: pointer;
 }
 
 .city-card img {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    width: 100%;
+    height: auto;
 }
 
 .city-card-title {
+    padding: 10px;
     color: #f3f4f6;
     font-weight: bold;
+    background-color: #4b5563;
 }
 
 /* Footer */
@@ -99,5 +97,5 @@ body {
     color: #f3f4f6;
     text-align: center;
     padding: 15px;
-    margin-top: auto; /* Pushes the footer to the bottom */
+    margin-top: auto; /* Pushes footer to the bottom */
 }
