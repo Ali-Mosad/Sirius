@@ -6,7 +6,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f0f0f0; /* Optional for a clean look */
+    background-color: #f8f9fa; /* Soft off-white background */
+    color: #333; /* Dark gray for text */
 }
 
 /* Top Navigation Bar */
@@ -14,20 +15,21 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #222; /* Dark background */
+    background-color: #1D2D50; /* Deep royal blue */
     padding: 10px 20px;
-    color: #fff;
+    color: #FFD700; /* Gold text */
 }
 
 .logo a {
     font-size: 1.8rem;
     text-decoration: none;
-    color: #fff;
+    color: #FFD700; /* Gold */
 }
 
 .menu-button {
     font-size: 2rem;
     cursor: pointer;
+    color: #FFD700; /* Gold */
 }
 
 /* Menu */
@@ -38,19 +40,15 @@ body {
     position: absolute;
     top: 50px;
     right: 20px;
-    background-color: #333;
+    background-color: #2A6F62; /* Muted emerald green */
     padding: 10px;
     border-radius: 8px;
 }
 
 .menu a {
-    color: #fff;
+    color: #fff; /* White for contrast */
     text-decoration: none;
     font-size: 1rem;
-}
-
-.menu-button.active + .menu {
-    display: flex;
 }
 
 /* Styling for the welcome message */
@@ -58,12 +56,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px; /* Adjust spacing as needed */
+    margin-top: 50px;
 }
 
 /* Styling for the text */
 .welcome-text {
-    background: linear-gradient(45deg, #ff7eb3, #ff758c); /* Gradient background */
+    background: linear-gradient(45deg, #1D2D50, #2A6F62); /* Gradient from deep blue to emerald green */
     color: #fff;
     font-size: 3rem;
     padding: 20px 40px;
@@ -85,10 +83,10 @@ body {
     }
 }
 
-
+/* Japanese Frame Styling */
 .japanese-frame {
     display: inline-block;
-    border: 5px solid #333;
+    border: 5px solid #2A6F62; /* Emerald green border */
     padding: 20px;
     border-radius: 10px;
     background-color: #fff;
@@ -96,7 +94,7 @@ body {
 
 .japanese-text {
     font-size: 2rem;
-    color: #333;
+    color: #1D2D50; /* Deep royal blue */
 }
 
 /* City Card Styling */
@@ -134,7 +132,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.6);
-    color: #fff;
+    color: #FFD700; /* Gold */
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 1.2rem;
@@ -143,8 +141,8 @@ body {
 /* Footer Styling */
 .footer {
     margin-top: auto;
-    background-color: #222;
-    color: #fff;
+    background-color: #1D2D50; /* Deep royal blue */
+    color: #FFD700; /* Gold */
     text-align: center;
     padding: 15px 20px;
 }
@@ -197,14 +195,14 @@ body {
 .search-container input[type="text"] {
     width: 250px;
     padding: 8px;
-    border: 2px solid #333;
+    border: 2px solid #1D2D50; /* Deep blue */
     border-radius: 5px;
     font-size: 1rem;
     margin-right: 5px;
 }
 
 .search-container button {
-    background-color: #333;
+    background-color: #2A6F62; /* Muted emerald green */
     color: #fff;
     border: none;
     padding: 8px 16px;
@@ -215,34 +213,34 @@ body {
 }
 
 .search-container button:hover {
-    background-color: #555;
+    background-color: #1D2D50; /* Deep blue */
 }
 
 /* Ensure the search results appear below the search bar */
 #result {
     text-align: center;
- 
-/* Style for the menu button */
+    color: #333;
+}
+
+/* Menu Button and Menu */
 .menu-button {
     font-size: 2rem;
     cursor: pointer;
-    display: none; /* Hidden by default */
+    display: none;
 }
 
-/* Style for the menu */
 .menu {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #333;
+    background-color: #2A6F62; /* Muted emerald green */
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    display: none; /* Hidden by default */
+    display: none;
 }
 
-/* Menu items styling */
 .menu a {
     color: #fff;
     padding: 15px;
@@ -251,7 +249,6 @@ body {
     text-align: center;
 }
 
-/* Show menu when active */
 .menu.show {
     display: flex;
 }
