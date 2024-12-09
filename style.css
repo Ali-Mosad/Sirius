@@ -282,3 +282,27 @@ button:hover, .city-card:hover {
         opacity: 1;
     }
 }
+
+/* Add animation to the Kyoto city card */
+.city-card img {
+    opacity: 0;
+    transform: scale(0.9);
+    animation: popInIcon 0.6s ease-in-out forwards;
+}
+
+@keyframes popInIcon {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Hover effect for the Kyoto icon */
+.city-card:hover img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}
