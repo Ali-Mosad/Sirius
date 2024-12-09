@@ -102,7 +102,7 @@ body::before {
 .welcome-message {
     display: flex;
     justify-content: center;
-    margin: 20px;
+    margin: 16px;
 }
 
 /* Japanese-styled frame */
