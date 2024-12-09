@@ -157,3 +157,41 @@ body {
         justify-content: space-around;
     }
 }
+
+/* Search Bar Styling */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px;
+}
+
+.search-container input[type="text"] {
+    width: 250px;
+    padding: 8px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-right: 5px;
+}
+
+.search-container button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.search-container button:hover {
+    background-color: #555;
+}
+
+/* Ensure the search results appear below the search bar */
+#result {
+    text-align: center;
+ 
