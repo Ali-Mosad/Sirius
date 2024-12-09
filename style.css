@@ -6,95 +6,109 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f8f9fa; /* Soft off-white background */
-    color: #333; /* Dark gray for text */
+    background-color: #f5f5f5; /* Light grey background */
+    color: #333;
 }
 
-/* Top Navigation Bar */
+/* Header */
 .top-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1D2D50; /* Deep royal blue */
-    padding: 10px 20px;
-    color: #FFD700; /* Gold text */
+    background-color: #222; /* Dark background */
+    padding: 15px 20px;
+    color: #fff;
 }
 
 .logo a {
     font-size: 1.8rem;
+    color: #FFD700; /* Gold color */
     text-decoration: none;
-    color: #FFD700; /* Gold */
 }
 
 .menu-button {
     font-size: 2rem;
     cursor: pointer;
-    color: #FFD700; /* Gold */
+    background: none;
+    border: none;
+    color: #FFD700;
+    display: none; /* Hidden by default */
 }
 
-/* Menu */
+/* Navigation Menu */
 .menu {
-    display: none;
-    flex-direction: column;
-    gap: 15px;
-    position: absolute;
-    top: 50px;
-    right: 20px;
-    background-color: #2A6F62; /* Muted emerald green */
-    padding: 10px;
-    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
 }
 
 .menu a {
-    color: #fff; /* White for contrast */
+    color: #fff;
     text-decoration: none;
-    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-/* Styling for the welcome message */
-.welcome-message {
+.menu a:hover {
+    background-color: #444; /* Dark grey */
+}
+
+/* Responsive Menu */
+.menu.show {
+    display: flex;
+    flex-direction: column;
+    background-color: #333;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+/* Welcome Section */
+.welcome-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.welcome-text {
+    font-size: 3rem;
+    background: linear-gradient(90deg, #FFB400, #FF5722); /* Gradient */
+    color: transparent;
+    -webkit-background-clip: text;
+    margin-bottom: 20px;
+}
+
+.search-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 50px;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-/* Styling for the text */
-.welcome-text {
-    background: linear-gradient(45deg, #1D2D50, #2A6F62); /* Gradient from deep blue to emerald green */
+.search-container input[type="text"] {
+    padding: 8px;
+    border: 2px solid #222;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 250px;
+}
+
+.search-container button {
+    padding: 8px 15px;
+    background-color: #222;
     color: #fff;
-    font-size: 3rem;
-    padding: 20px 40px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    animation: fadeIn 2s ease-out;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
 }
 
-/* Animation for the welcome text */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Japanese Frame Styling */
-.japanese-frame {
-    display: inline-block;
-    border: 5px solid #2A6F62; /* Emerald green border */
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #fff;
-}
-
-.japanese-text {
-    font-size: 2rem;
-    color: #1D2D50; /* Deep royal blue */
+.search-container button:hover {
+    background-color: #444;
 }
 
 /* City Card Styling */
@@ -111,152 +125,56 @@ body {
     width: 250px;
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #fff;
+    text-align: center;
 }
 
 .city-card img {
     width: 100%;
     display: block;
-    transition: transform 0.3s;
+    border-bottom: 2px solid #222;
+}
+
+.city-card h2 {
+    padding: 10px;
+    font-size: 1.5rem;
+    color: #222;
 }
 
 .city-card:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.city-card-title {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.6);
-    color: #FFD700; /* Gold */
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 1.2rem;
-}
-
-/* Footer Styling */
+/* Footer */
 .footer {
     margin-top: auto;
-    background-color: #1D2D50; /* Deep royal blue */
-    color: #FFD700; /* Gold */
+    background-color: #222;
+    color: #fff;
     text-align: center;
     padding: 15px 20px;
 }
 
-/* Animation */
-.city-card.clicked img {
-    animation: clickAnimation 0.6s ease-in-out;
-}
-
-@keyframes clickAnimation {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.1);
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
+    .menu-button {
+        display: block;
+    }
+    
+    .menu {
+        display: none;
+    }
+    
+    .menu.show {
+        display: flex;
+        flex-direction: column;
+    }
+    
     .container {
         flex-direction: column;
         align-items: center;
     }
-
-    .menu {
-        position: static;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-    }
-}
-
-/* Search Bar Styling */
-.search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-    padding: 10px;
-}
-
-.search-container input[type="text"] {
-    width: 250px;
-    padding: 8px;
-    border: 2px solid #1D2D50; /* Deep blue */
-    border-radius: 5px;
-    font-size: 1rem;
-    margin-right: 5px;
-}
-
-.search-container button {
-    background-color: #2A6F62; /* Muted emerald green */
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-}
-
-.search-container button:hover {
-    background-color: #1D2D50; /* Deep blue */
-}
-
-/* Ensure the search results appear below the search bar */
-#result {
-    text-align: center;
-    color: #333;
-}
-
-/* Menu Button */
-.menu-button {
-    font-size: 2rem;
-    cursor: pointer;
-    color: #FFD700; /* Gold color for visibility */
-    display: block; /* Make sure it is visible */
-    z-index: 1000; /* Ensure it appears above other content */
-}
-
-/* Menu Styling */
-.menu {
-    display: none; /* Hidden by default */
-    flex-direction: column;
-    align-items: center;
-    background-color: #2A6F62; /* Muted emerald green */
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    z-index: 999; /* Ensure it overlays properly */
-}
-
-/* Show menu when active */
-.menu.show {
-    display: flex;
-}
-
-/* Menu items styling */
-.menu a {
-    color: #fff; /* White text */
-    padding: 15px;
-    text-decoration: none;
-    display: block;
-    text-align: center;
-    width: 100%;
 }
