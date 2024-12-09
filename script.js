@@ -146,43 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-// script.js
-document.addEventListener("DOMContentLoaded", () => {
-    const menuButton = document.getElementById("menuButton");
-    const menu = document.getElementById("menu");
-
-    menuButton.addEventListener("click", () => {
-        menu.classList.toggle("menu-open");
-    });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const menuButton = document.getElementById("menuButton");
-    const menu = document.getElementById("menu");
-
-    menuButton.addEventListener("click", () => {
-        menu.classList.toggle("menu-visible");
-    });
-});
-
-// JavaScript function to add the clicked class to the city card
-document.querySelectorAll('.city-card').forEach(card => {
-    card.addEventListener('click', function() {
-        // Remove the class from all city cards to ensure only one is animated at a time
-        document.querySelectorAll('.city-card').forEach(el => el.classList.remove('clicked'));
-        
-        // Add the class to the clicked card
-        this.classList.add('clicked');
-        
-        // Optionally, trigger navigation or other actions here
-        navigate('kyoto');
-    });
-});
-
-document.getElementById('menuButton').addEventListener('click', function() {
-    this.classList.toggle('active');
-    document.getElementById('menu').classList.toggle('active');
-});
 
 document.getElementById('menuButton').addEventListener('click', function() {
     const menu = document.getElementById('menu');
