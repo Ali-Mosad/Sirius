@@ -7,9 +7,10 @@ body, html {
     flex-direction: column; /* Stack children vertically */
     font-family: 'Noto Serif JP', serif; /* Consistent font */
     background-image: url('japanese-pattern.png'); /* Your image path */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    background-size: cover; /* Ensures the background image covers the entire screen */
+    background-repeat: no-repeat; /* Prevents repeating the background image */
+    background-position: center; /* Centers the background image */
+    background-attachment: scroll; /* Scrolls the background with the content (use 'fixed' for parallax effect) */
     position: relative; /* To place the overlay correctly */
 }
 
@@ -95,6 +96,12 @@ body::before {
 
     .menu.show {
         display: flex; /* Show menu when toggled */
+    }
+
+    /* Adjustments for background image on smaller screens */
+    body {
+        background-size: cover; /* Ensures the image fits the viewport */
+        background-position: center; /* Keeps the image centered */
     }
 }
 
