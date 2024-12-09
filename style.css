@@ -133,7 +133,16 @@ body {
     color: var(--accent-color);
 }
 
-/* Footer */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the body spans the full height of the viewport */
+}
+
+.container {
+    flex: 1; /* Pushes the footer to the bottom */
+}
+
 .footer {
     background-color: var(--secondary-color);
     text-align: center;
@@ -141,7 +150,9 @@ body {
     font-size: 1rem;
     color: var(--accent-color);
     border-top: 2px solid var(--border-color);
+    margin-top: auto; /* Ensures the footer stays at the bottom */
 }
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
