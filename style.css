@@ -174,7 +174,7 @@ button {
     margin-top: auto; /* Pushes the footer to the bottom */
 }
 
-/* City Card Image Frame */
+/* Styling for city card image frame */
 .city-card .image-frame {
     padding: 10px;
     background-color: #fff; /* White frame */
@@ -184,6 +184,8 @@ button {
     display: flex;
     justify-content: center; /* Center the image */
     align-items: center; /* Center the image */
+    max-width: 200px; /* Limit the size of the frame */
+    margin: auto; /* Center the frame */
 }
 
 /* Styling for images inside the city card */
