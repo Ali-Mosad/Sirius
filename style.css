@@ -174,24 +174,23 @@ button {
     margin-top: auto; /* Pushes the footer to the bottom */
 }
 
-/* Styling for city card image frame */
-.city-card .image-frame {
-    padding: 10px;
-    background-color: #fff; /* White frame */
-    border: 5px solid #d4a373; /* Gold accent border */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+/* Styling for the city card title */
+.city-card-title {
     display: flex;
-    justify-content: center; /* Center the image */
-    align-items: center; /* Center the image */
-    max-width: 200px; /* Limit the size of the frame */
-    margin: auto; /* Center the frame */
+    justify-content: center; /* Center the button */
+    width: 100%; /* Full width of the card */
+    margin-top: 10px; /* Space between the image and the button */
 }
 
-/* Styling for images inside the city card */
-.city-card img {
-    width: 150px; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 5px; /* Slight rounding for image corners */
-    object-fit: cover; /* Ensure the image fits within its container */
+.city-card button {
+    background-color: #d3412e; /* Button background */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+    text-align: center;
+    display: inline-block;
 }
+
