@@ -1,170 +1,160 @@
-/* Base Styles */
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 :root {
-    --primary-color: #f36f20; /* VidBinge's main accent color */
-    --secondary-color: #222; /* Dark background color */
-    --accent-color: #fff;    /* Light text color */
-    --hover-color: #ff9246; /* Lighter shade for hover effects */
-    --font-family: 'Poppins', sans-serif; /* Replace with VidBinge's font if different */
+    --primary-color: #f36f20;
+    --secondary-color: #222;
+    --accent-color: #fff;
+    --hover-color: #ff9246;
+    --font-family: 'Poppins', sans-serif;
+    --background-light: #1a1a1a;
+    --border-color: #333;
 }
 
 body {
     font-family: var(--font-family);
-    font-size: 16px;
-    line-height: 1.6;
+    background-color: var(--background-light);
     color: var(--accent-color);
-    background-color: var(--secondary-color);
-    margin: 0;
-    padding: 0;
+    line-height: 1.6;
     overflow-x: hidden;
 }
 
-a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: var(--hover-color);
-}
-
-h1, h2, h3, h4, h5, h6 {
-    color: var(--accent-color);
-    margin: 0.5em 0;
-}
-
-/* Header */
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: var(--secondary-color);
-    padding: 1rem 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-header nav {
+/* Top Bar */
+.top-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: var(--secondary-color);
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-    margin: 0;
-    padding: 0;
+.top-bar .logo a {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
 }
 
-nav ul li {
-    font-size: 1rem;
-}
-
-nav ul li a {
+.top-bar .menu-button {
+    display: none;
+    font-size: 1.5rem;
     color: var(--accent-color);
-    text-transform: uppercase;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
+    cursor: pointer;
 }
 
-nav ul li a:hover {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-}
-
-/* Hero Section */
-.hero {
+.top-bar .menu {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 70vh;
-    background: url('your-hero-image.jpg') no-repeat center center/cover;
+    gap: 20px;
+}
+
+.top-bar .menu a {
     color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.top-bar .menu a:hover {
+    color: var(--primary-color);
+}
+
+/* Welcome Message */
+.welcome-message {
     text-align: center;
-    padding: 2rem;
+    margin: 30px 0;
 }
 
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+.welcome-message .japanese-frame {
+    border: 4px solid var(--border-color);
+    padding: 20px;
+    display: inline-block;
+    background-color: var(--secondary-color);
 }
 
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
+.welcome-message .japanese-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
 }
 
-/* Cards */
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-    margin: 0 auto;
-    max-width: 1200px;
+/* Container for Cities */
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
 }
 
-.card {
-    background: #333;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.city-card {
+    background-color: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 250px;
+    text-align: center;
+    cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
+.city-card:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-.card img {
+.city-card .image-frame {
+    height: 150px;
+    background-color: var(--background-light);
+    overflow: hidden;
+}
+
+.city-card img {
     width: 100%;
-    border-radius: 8px;
-    margin-bottom: 1rem;
+    height: auto;
+    transition: transform 0.3s ease;
 }
 
-.card h3 {
-    margin: 0.5rem 0;
-    font-size: 1.5rem;
+.city-card:hover img {
+    transform: scale(1.1);
+}
+
+.city-card-title {
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
     color: var(--accent-color);
-}
-
-.card p {
-    font-size: 0.9rem;
-    color: #bbb;
 }
 
 /* Footer */
-footer {
-    background: #111;
-    color: var(--accent-color);
-    padding: 2rem 1rem;
+.footer {
+    background-color: var(--secondary-color);
     text-align: center;
+    padding: 20px;
+    font-size: 1rem;
+    color: var(--accent-color);
+    border-top: 2px solid var(--border-color);
 }
 
-footer p {
-    margin: 0;
-    font-size: 0.9rem;
-}
-
-/* Media Queries */
+/* Responsive Design */
 @media (max-width: 768px) {
-    nav ul {
+    .top-bar .menu {
+        display: none;
+    }
+
+    .top-bar .menu-button {
+        display: block;
+    }
+
+    .container {
         flex-direction: column;
-        gap: 1rem;
-    }
-
-    .hero {
-        height: auto;
-        padding: 4rem 2rem;
-    }
-
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
+        align-items: center;
     }
 }
