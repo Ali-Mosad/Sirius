@@ -53,11 +53,38 @@ body {
     display: flex;
 }
 
-/* Welcome Message */
+/* Styling for the welcome message */
 .welcome-message {
-    text-align: center;
-    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px; /* Adjust spacing as needed */
 }
+
+/* Styling for the text */
+.welcome-text {
+    background: linear-gradient(45deg, #ff7eb3, #ff758c); /* Gradient background */
+    color: #fff;
+    font-size: 3rem;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 2s ease-out;
+}
+
+/* Animation for the welcome text */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 .japanese-frame {
     display: inline-block;
