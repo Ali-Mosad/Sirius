@@ -214,3 +214,21 @@ button {
     color: #d3412e; /* Customize the color */
     margin: 0; /* Remove default margin */
 }
+
+.city-card-title {
+    display: flex;
+    justify-content: center; /* Center the text horizontally */
+    align-items: center; /* Center the text vertically */
+    margin-top: 10px; /* Space between the image and the title */
+    padding: 5px 10px; /* Padding for the frame */
+    border: 2px solid #d52d2d; /* Red border color */
+    border-radius: 5px; /* Rounded corners for the frame */
+    background-color: #f8f4ec; /* Light background color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for a lifted effect */
+}
+
+.city-card-title p {
+    font-size: 20px; /* Adjust font size as needed */
+    color: #d3412e; /* Customize the color */
+    margin: 0; /* Remove default margin */
+}
