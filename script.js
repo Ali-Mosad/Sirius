@@ -41,9 +41,10 @@ function displayCityName() {
  * Searches for a person in the city's data and displays their details.
  * @param {string} city - The city whose data is being searched.
  */
-function searchPerson(city) {
+function searchPerson() {
     const query = document.getElementById("search").value.trim();
     const resultDiv = document.getElementById("result");
+    const city = getCityFromURL(); // Function to get city from URL query
     const data = cityData[city];
 
     if (!resultDiv) {
@@ -58,7 +59,6 @@ function searchPerson(city) {
             <p><strong>الرتبة:</strong> ${details.rank}</p>
             <p><strong>الرصيد:</strong> ${details.balance}</p>
             <p><strong>السلعة:</strong> ${details.item}</p>
-            <button onclick="viewDetails('${encodeURIComponent(query)}', '${city}')">عرض التفاصيل</button>
         `;
     } else {
         resultDiv.innerHTML = "<p>لا توجد بيانات لهذا اللقب.</p>";
@@ -66,66 +66,16 @@ function searchPerson(city) {
 }
 
 /**
- * Navigates to the person's details page.
- * @param {string} name - The name of the person.
- * @param {string} city - The city the person belongs to.
+ * Gets the current city from the URL query parameter.
  */
-function viewDetails(name, city) {
-    if (name && city) {
-        window.location.href = `details.html?name=${encodeURIComponent(name)}&city=${encodeURIComponent(city)}`;
-    } else {
-        console.error("Name or city parameter is missing.");
-    }
+function getCityFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get("city");
 }
 
 /**
- * Displays the details of a person on their details page.
+ * Handles the menu toggle functionality for mobile view.
  */
-function displayPersonDetails() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const name = urlParams.get("name");
-    const city = urlParams.get("city");
-    const personDetailsDiv = document.getElementById("person-details");
-    const data = cityData[city];
-
-    if (!personDetailsDiv) {
-        console.error("Person details container not found in the DOM.");
-        return;
-    }
-
-    if (data && data[name]) {
-        const details = data[name];
-        personDetailsDiv.innerHTML = `
-            <p><strong>اللقب:</strong> ${name}</p>
-            <p><strong>الرتبة:</strong> ${details.rank}</p>
-            <p><strong>الرصيد:</strong> ${details.balance}</p>
-            <p><strong>السلعة:</strong> ${details.item}</p>
-        `;
-    } else {
-        personDetailsDiv.innerHTML = "<p>اللقب غير موجود.</p>";
-    }
-}
-
-// Event listener for lazy-loading images
-document.addEventListener("DOMContentLoaded", () => {
-    const lazyImages = document.querySelectorAll(".lazy-load");
-    const observer = new IntersectionObserver(
-        (entries, observer) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const image = entry.target;
-                    image.src = image.dataset.src;
-                    observer.unobserve(image);
-                }
-            });
-        },
-        { threshold: 0.1 }
-    );
-
-    lazyImages.forEach((image) => observer.observe(image));
-});
-
-// Event listener for menu button toggle
 document.addEventListener("DOMContentLoaded", () => {
     const menuButton = document.getElementById("menuButton");
     const menu = document.getElementById("menu");
@@ -135,7 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
             menu.classList.toggle("show");
         });
 
-        // Close menu when clicking outside of it
         document.addEventListener("click", (e) => {
             if (!menu.contains(e.target) && e.target !== menuButton) {
                 menu.classList.remove("show");
