@@ -6,6 +6,23 @@ body, html {
     display: flex;
     flex-direction: column; /* Stack children vertically */
     font-family: 'Noto Serif JP', serif; /* Consistent font */
+    background-image: url('japanese-pattern.png'); /* Your image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative; /* To place the overlay correctly */
+}
+
+/* Overlay */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+    z-index: -1; /* Places the overlay behind the content */
 }
 
 /* Container for the main content */
@@ -134,33 +151,6 @@ body, html {
     margin: 0;
 }
 
-/* Search input and button styling */
-.search-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px; /* Space between the frame and the search bar */
-}
-
-#search {
-    padding: 10px;
-    width: 300px; /* Adjust width as needed */
-    font-size: 16px;
-    border: 2px solid #d52d2d;
-    border-radius: 5px;
-}
-
-button {
-    margin-top: 10px;
-    background-color: #d3412e; /* Button background */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px; /* Rounded corners */
-}
-
 /* Footer Styling */
 .footer {
     background-color: #000; /* Black background */
@@ -174,6 +164,7 @@ button {
     margin-top: auto; /* Pushes the footer to the bottom */
 }
 
+/* City Card Styles */
 .city-card {
     display: flex;
     flex-direction: column;
@@ -207,19 +198,6 @@ button {
     justify-content: center; /* Center the text horizontally */
     align-items: center; /* Center the text vertically */
     margin-top: 10px; /* Space between the image and the title */
-}
-
-.city-card-title p {
-    font-size: 20px; /* Adjust font size as needed */
-    color: #d3412e; /* Customize the color */
-    margin: 0; /* Remove default margin */
-}
-
-.city-card-title {
-    display: flex;
-    justify-content: center; /* Center the text horizontally */
-    align-items: center; /* Center the text vertically */
-    margin-top: 10px; /* Space between the image and the title */
     padding: 5px 10px; /* Padding for the frame */
     border: 2px solid #d52d2d; /* Red border color */
     border-radius: 5px; /* Rounded corners for the frame */
@@ -231,38 +209,4 @@ button {
     font-size: 20px; /* Adjust font size as needed */
     color: #d3412e; /* Customize the color */
     margin: 0; /* Remove default margin */
-}
-
-.city-card-title {
-    display: flex;
-    justify-content: center; /* Center the text horizontally */
-    align-items: center; /* Center the text vertically */
-    margin-top: 10px; /* Space between the image and the title */
-    padding: 5px 10px; /* Padding inside the frame */
-    border: 2px solid #d52d2d; /* Red border color */
-    border-radius: 5px; /* Rounded corners for the frame */
-    background-color: #f8f4ec; /* Light background color */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    background-image: url('japanese-pattern.png'); /* Your image path */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    position: relative; /* To place the overlay correctly */
-}
-
-/* Overlay */
-body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
-    z-index: -1; /* Places the overlay behind the content */
 }
