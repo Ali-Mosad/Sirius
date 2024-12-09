@@ -173,3 +173,23 @@ button {
     width: 100%; /* Full width */
     margin-top: auto; /* Pushes the footer to the bottom */
 }
+
+/* City Card Image Frame */
+.city-card .image-frame {
+    padding: 10px;
+    background-color: #fff; /* White frame */
+    border: 5px solid #d4a373; /* Gold accent border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    display: flex;
+    justify-content: center; /* Center the image */
+    align-items: center; /* Center the image */
+}
+
+/* Styling for images inside the city card */
+.city-card img {
+    width: 150px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Slight rounding for image corners */
+    object-fit: cover; /* Ensure the image fits within its container */
+}
