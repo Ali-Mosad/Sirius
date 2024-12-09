@@ -106,9 +106,7 @@ function displayPersonDetails() {
     }
 }
 
-/**
- * Lazy loads images when they are about to appear in the viewport.
- */
+// Event listener for lazy-loading images
 document.addEventListener("DOMContentLoaded", () => {
     const lazyImages = document.querySelectorAll(".lazy-load");
     const observer = new IntersectionObserver(
@@ -127,9 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
     lazyImages.forEach((image) => observer.observe(image));
 });
 
-/**
- * Handles the menu toggle functionality for mobile view.
- */
+// Event listener for menu button toggle
 document.addEventListener("DOMContentLoaded", () => {
     const menuButton = document.getElementById("menuButton");
     const menu = document.getElementById("menu");
@@ -139,6 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
             menu.classList.toggle("show");
         });
 
+        // Close menu when clicking outside of it
         document.addEventListener("click", (e) => {
             if (!menu.contains(e.target) && e.target !== menuButton) {
                 menu.classList.remove("show");
