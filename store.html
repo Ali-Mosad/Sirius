@@ -3,37 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyoto</title>
+    <title>المتجر</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Japanese-styled top bar -->
     <div class="top-bar">
-        <div class="logo">
-            <a href="index.html">𝑺𝒉𝒊𝒓𝒂𝒊┊⚕┊𝑲𝒊𝒏𝒅𝒐𝒎</a>
-        </div>
-        <div class="menu-button" id="menuButton">☰</div>
-        <nav class="menu" id="menu">
+        <button id="menuButton" class="menu-toggle">☰</button>
+        <div id="menu" class="menu hidden">
             <a href="kyoto.html">كيوتو</a>
             <a href="osaka.html">أوساكا</a>
             <a href="store.html">المتجر</a>
-        </nav>
+        </div>
+        <div class="logo">
+            <a href="index.html">𝑺𝒉𝒊𝒓𝒂𝒊┊⚕┊𝑲𝒊𝒏𝒅𝒐𝒎</a>
+        </div>
     </div>
+    <!-- End of top bar -->
 
     <div class="container">
-        <div class="japanese-frame">
-            <h1 class="japanese-text">كيوتو</h1>
-        </div>
-        <div class="search-container">
-            <input type="text" id="search" placeholder="ابحث عن لقب">
-            <button onclick="searchPerson('kyoto')">بحث</button>
-        </div>
-        <div id="result"></div>
+        <h1>مرحباً بك في المتجر</h1>
+        <p>المتجر قيد التطوير. تابعنا لمزيد من التحديثات!</p>
     </div>
 
     <footer class="footer">
         <p>جوا الرواية رواية مكتوبة بين السطور.. عن بطل كان مغمور.. ومحدش فيه سائل.. حلمه ماشفش النور.. لكنه مات بيحاول." - مغمور وكفى"</p>
     </footer>
-    
+
     <script src="script.js"></script>
 </body>
 </html>

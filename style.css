@@ -1,104 +1,130 @@
-/* Menu Styles */
-.menu-container { 
-    position: absolute; /* Allows precise positioning */
-    top: 10px; /* Adjust distance from the top */
-    right: 10px; /* Adjust distance from the right */
-    z-index: 1000; /* Ensure it appears on top of other elements */
-}
-
-.menu-toggle {
-    background-color: #2b2929; /* Button color */
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #1e1e1e;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+/* Top Navigation Bar */
+.top-bar {
+    position: sticky;
+    top: 0;
     z-index: 1000;
-    padding: 10px 0;
+    background-color: #2b2929; /* Dark background for contrast */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for elevation */
 }
 
-.menu-item {
-    background: none;
+.top-bar .logo a {
+    font-family: 'Noto Serif JP', serif; /* Japanese-inspired font */
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff; /* White text */
+}
+
+.top-bar .menu-button {
+    font-size: 24px;
     color: #fff;
-    border: none;
-    padding: 10px 20px;
-    text-align: left;
-    width: 100%;
-    font-size: 16px;
     cursor: pointer;
 }
 
-.menu-item:hover {
-    background-color: #c92f00;
+/* Main Menu */
+.menu {
+    display: flex;
+    gap: 20px; /* Space between menu items */
 }
 
-.menu.show {
-    display: block;
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    transition: color 0.3s ease;
 }
 
-/* Body and Background */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Noto Serif JP', serif; /* Japanese-themed font */
-    background-color: #f8f4ec; /* Light parchment-like background */
-    background-image: url('japanese-pattern.png'); /* Add cherry blossom pattern */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    overflow: hidden;
+.menu a:hover {
+    color: #c92f00; /* Deep red for hover effect */
+}
+
+/* Responsive Menu for Mobile */
+@media (max-width: 768px) {
+    .menu {
+        display: none; /* Hidden by default for mobile */
+        flex-direction: column;
+        background-color: #1e1e1e; /* Dark dropdown background */
+        position: absolute;
+        top: 60px; /* Adjust to appear below the top bar */
+        right: 10px; /* Align with menu button */
+        width: 200px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Dropdown shadow */
+        padding: 10px 0;
+        border-radius: 5px; /* Rounded corners for modern touch */
+    }
+
+    .menu.show {
+        display: flex; /* Show menu when toggled */
+    }
+}
+
+/* Welcome Message */
+.welcome-message {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    margin: 20px;
 }
 
-/* Text and Headers */
-h1, h2 {
-    margin: 0 0 20px;
-    color: #8b0000; /* Deep red for text */
-    font-family: 'Noto Serif JP', serif;
+/* Japanese-styled frame */
+.japanese-frame {
+    position: relative;
+    display: inline-block;
+    padding: 30px; /* Adjusted for more space */
+    background-color: #f8f4ec; /* Light parchment-like color */
+    border: 8px solid #d52d2d; /* Deep red lacquered frame */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    margin-bottom: 20px; /* Space below the frame */
 }
 
-.background-text {
+/* Decorative corners for the frame */
+.japanese-frame::before,
+.japanese-frame::after {
+    content: "";
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 10rem;
-    color: rgba(0, 0, 0, 0.05);
-    z-index: -1;
-    font-weight: bold;
-    opacity: 0.7;
-    text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
+    width: 20px;
+    height: 20px;
+    background-color: #d52d2d; /* Deep red accents */
+    border-radius: 50%; /* Rounded decorative dots */
 }
 
-/* Container and Options */
+/* Top-left corner */
+.japanese-frame::before {
+    top: -10px;
+    left: -10px;
+}
+
+/* Bottom-right corner */
+.japanese-frame::after {
+    bottom: -10px;
+    right: -10px;
+}
+
+/* Text inside the frame */
+.japanese-text {
+    font-family: 'Noto Serif JP', serif; /* Japanese-inspired font */
+    font-size: 48px; /* Larger font size for emphasis */
+    color: #8b0000; /* Deep red color */
+    text-align: center;
+    margin: 0;
+}
+
+/* City Cards */
 .container {
     position: relative;
     text-align: center;
-    z-index: 1;
 }
 
 .options {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    z-index: 1;
 }
 
-/* City Cards with Frames */
 .city-card {
     display: flex;
     flex-direction: column;
@@ -112,7 +138,7 @@ h1, h2 {
     background-color: #fff; /* White frame */
     border: 5px solid #d4a373; /* Gold accent border */
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
 .city-card img {
@@ -125,7 +151,7 @@ h1, h2 {
 /* Buttons */
 button {
     margin-top: 10px;
-    background-color: #d3412e; /* Green background */
+    background-color: #d3412e; /* Button background */
     border: none;
     color: white;
     padding: 15px 32px;
@@ -136,50 +162,105 @@ button {
     cursor: pointer;
 }
 
-/* Footer and Other Sections */
-.footer {
-    background-color: #2c3e50; /* Dark gray footer */
-    color: #fff;
-    padding: 20px;
+/* Container for centering content */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Aligns content to the top */
+    height: 100vh; /* Full viewport height */
+    padding: 20px; /* Adds some padding */
 }
-/* City Cards with Japanese-Style Frames */
-.city-card .image-frame {
+
+/* Search input and button styling */
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px; /* Space between the frame and the search bar */
+}
+
+#search {
     padding: 10px;
-    background-color: #f8f4ec; /* Light parchment-like color for a Shoji screen effect */
-    border: 5px solid #d52d2d; /* Deep red lacquer border */
-    border-radius: 10px; /* Slight rounding for modern touch */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
-    position: relative; /* For decorative accents */
+    width: 300px; /* Adjust width as needed */
+    font-size: 16px;
+    border: 2px solid #d52d2d;
+    border-radius: 5px;
 }
 
-/* Decorative corners for the frame (to mimic traditional Shoji corners) */
-.image-frame::before, .image-frame::after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #d52d2d; /* Deep red */
-    border-radius: 50%; /* Circular accents */
+button {
+    margin-top: 10px;
+    background-color: #d3412e; /* Button background */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
 }
 
-/* Top-left corner */
-.image-frame::before {
-    top: -10px;
-    left: -10px;
+/* Optional: To make the "كيوتو" or "أوساكا" text more prominent */
+.japanese-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background-color: #f8f4ec;
+    border: 8px solid #d52d2d;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
 }
 
-/* Bottom-right corner */
-.image-frame::after {
-    bottom: -10px;
-    right: -10px;
+/* Footer Styling */
+.footer {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    text-align: center;
+    padding: 10px 0; /* Padding for spacing */
+    font-size: 14px; /* Adjust font size as needed */
+    font-family: 'Noto Serif JP', serif; /* Consistent font */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+    position: relative; /* Ensure it stays at the bottom */
+    width: 100%; /* Full width */
 }
 
-/* Images within the Japanese frame */
-.city-card img {
-    width: 200px; /* Resize image */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 5px; /* Slight rounding for image corners */
-    object-fit: cover;
-    border: 2px solid #fff; /* Thin white border inside the frame */
+/* Ensure the content pushes the footer down */
+body, html {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Main content container */
+.container {
+    flex: 1; /* Takes up remaining space */
+}
+
+/* Ensure body and html take full height */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Full height */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+}
+
+/* Main content container */
+.container {
+    flex: 1; /* Makes the container take up all available space */
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    text-align: center;
+    padding: 10px 0; /* Padding for spacing */
+    font-size: 16px; /* Adjust font size as needed */
+    font-family: 'Noto Serif JP', serif; /* Consistent font */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+    width: 100%; /* Full width */
+}

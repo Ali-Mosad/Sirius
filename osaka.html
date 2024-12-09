@@ -7,12 +7,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Top navigation bar -->
+    <div class="top-bar">
+        <div class="logo">
+            <a href="index.html">𝑺𝒉𝒊𝒓𝒂𝒊┊⚕┊𝑲𝒊𝒏𝒅𝒐𝒎</a>
+        </div>
+        <div class="menu-button" id="menuButton">☰</div>
+        <nav class="menu" id="menu">
+            <a href="kyoto.html">كيوتو</a>
+            <a href="osaka.html">أوساكا</a>
+            <a href="store.html">المتجر</a>
+        </nav>
+    </div>
+
     <div class="container">
-        <h1 id="city-name">أوساكا</h1>
-        <input type="text" id="search" placeholder="ابحث عن لقب">
-        <button onclick="searchPerson('osaka')">بحث</button>
+        <div class="japanese-frame">
+            <h1 class="japanese-text">أوساكا</h1>
+        </div>
+        
+        <div class="search-container">
+            <input type="text" id="search" placeholder="ابحث عن لقب">
+            <button onclick="searchPerson('osaka')">بحث</button>
+        </div>
         <div id="result"></div>
     </div>
+
+    <footer class="footer">
+    <p>جوا الرواية رواية مكتوبة بين السطور.. عن بطل كان مغمور.. ومحدش فيه سائل.. حلمه ماشفش النور.. لكنه مات بيحاول." - مغمور وكفى"</p>
+</footer>
+
     <script src="script.js"></script>
 </body>
 </html>
