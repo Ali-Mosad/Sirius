@@ -7,10 +7,10 @@ body, html {
     flex-direction: column; /* Stack children vertically */
     font-family: 'Noto Serif JP', serif; /* Consistent font */
     background-image: url('japanese-pattern.png'); /* Your image path */
-    background-size: cover; /* Ensures the background image covers the entire screen */
-    background-repeat: no-repeat; /* Prevents repeating the background image */
-    background-position: center; /* Centers the background image */
-    background-attachment: scroll; /* Scrolls the background with the content (use 'fixed' for parallax effect) */
+    background-size: cover; /* Ensures image covers the entire viewport */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: scroll; /* Smooth scrolling */
     position: relative; /* To place the overlay correctly */
 }
 
@@ -96,12 +96,6 @@ body::before {
 
     .menu.show {
         display: flex; /* Show menu when toggled */
-    }
-
-    /* Adjustments for background image on smaller screens */
-    body {
-        background-size: cover; /* Ensures the image fits the viewport */
-        background-position: center; /* Keeps the image centered */
     }
 }
 
@@ -207,7 +201,7 @@ body::before {
     margin-top: 10px; /* Space between the image and the title */
     padding: 5px 10px; /* Padding for the frame */
     border: 2px solid #d52d2d; /* Red border color */
-    border-radius: 5px; /* Rounded corners for the frame */
+    border-radius: 5px; /* Rounded corners */
     background-color: #f8f4ec; /* Light background color */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for a lifted effect */
 }
