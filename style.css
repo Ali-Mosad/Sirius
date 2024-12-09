@@ -173,3 +173,112 @@ body {
     font-size: 18px;
     color: #4b5563;
 }
+
+/* General Transition */
+* {
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Header and Navigation Animation */
+.top-bar {
+    animation: slideInTop 1s ease-out;
+}
+
+@keyframes slideInTop {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Search Bar Animation */
+.search-container input[type="text"] {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.search-container button {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInUp 0.5s ease-out 0.2s forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Navigation Button Animation */
+.menu-button {
+    opacity: 0;
+    transform: rotate(0deg);
+    animation: fadeInRotate 0.5s ease-out 0.5s forwards;
+}
+
+@keyframes fadeInRotate {
+    from {
+        opacity: 0;
+        transform: rotate(-45deg);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+}
+
+/* City Card Animation */
+.city-card {
+    opacity: 0;
+    transform: scale(0.9);
+    animation: popIn 0.5s ease-out forwards;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Button Hover Animation */
+button:hover, .city-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer Animation */
+.footer {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 0.5s ease-out 1s forwards;
+}
+
+/* Animations for the results */
+#result {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
