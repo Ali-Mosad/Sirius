@@ -86,12 +86,39 @@ body {
     font-weight: bold;
 }
 
+/* General styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Ensure the body and HTML take up full height */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "Arial", sans-serif;
+    background-color: #f0f0f5;
+    color: #333;
+}
+
+/* Main content container */
+.container {
+    flex: 1; /* Pushes the footer to the bottom if content is short */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
 /* Footer */
 .footer {
     background-color: #1e3a8a;
     color: #f9f871;
+    text-align: center;
     padding: 15px;
-    position: absolute;
-    bottom: 0;
     width: 100%;
+    position: relative; /* Ensure it's always visible */
 }
+
