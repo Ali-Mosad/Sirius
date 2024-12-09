@@ -33,16 +33,37 @@ body {
     font-size: 1.5rem;
 }
 
+/* Menu hidden by default */
 .menu {
-    display: flex;
-    gap: 15px;
+    display: none;
+    flex-direction: column;
+    background-color: #4b5563;
+    position: absolute;
+    top: 60px; /* Below the top bar */
+    right: 0;
+    width: 200px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.menu a {
-    text-decoration: none;
-    color: #f3f4f6;
-    font-size: 1rem;
+/* Menu visible when toggled */
+.menu.menu-visible {
+    display: flex;
 }
+
+/* Links inside the menu */
+.menu a {
+    color: #f3f4f6;
+    text-decoration: none;
+    padding: 10px;
+    border-bottom: 1px solid #9ca3af;
+}
+
+.menu a:last-child {
+    border-bottom: none;
+}
+
 
 /* Welcome Message */
 .welcome-message {

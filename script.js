@@ -156,3 +156,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const menuButton = document.getElementById("menuButton");
+    const menu = document.getElementById("menu");
+
+    menuButton.addEventListener("click", () => {
+        menu.classList.toggle("menu-visible");
+    });
+});
+
