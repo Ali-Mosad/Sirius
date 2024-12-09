@@ -178,6 +178,7 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
     margin: 20px;
     cursor: pointer;
     position: relative; /* Position relative to control title positioning */
@@ -203,15 +204,13 @@ button {
 
 .city-card-title {
     display: flex;
-    justify-content: center; /* Center the text */
+    justify-content: center; /* Center the text horizontally */
     align-items: center; /* Center the text vertically */
-    width: 100%; /* Full width */
     margin-top: 10px; /* Space between the image and the title */
 }
 
 .city-card-title p {
-    font-size: 18px; /* Adjust font size as needed */
-    color: #d3412e; /* Matching color with the button */
+    font-size: 20px; /* Adjust font size as needed */
+    color: #d3412e; /* Customize the color */
     margin: 0; /* Remove default margin */
 }
-
