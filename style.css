@@ -1,156 +1,103 @@
-/* General Styling */
-body {
-    font-family: 'Arial', sans-serif;
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
 }
 
-/* Top Navigation Bar */
+html, body {
+    height: 100%; /* Ensure the page takes up full height */
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* Arrange content vertically */
+    font-family: Arial, sans-serif;
+    background-color: #111827; /* Dark background */
+    color: #f3f4f6; /* Light text */
+}
+
+/* Top Bar */
 .top-bar {
+    background-color: #4b5563;
+    padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
-    padding: 10px 20px;
-    color: #fff;
+    color: #f3f4f6;
 }
 
+/* Logo */
 .logo a {
-    font-size: 1.8rem;
     text-decoration: none;
-    color: #fff;
+    color: #f3f4f6;
+    font-size: 1.5rem;
 }
 
-.menu-button {
-    font-size: 2rem;
-    cursor: pointer;
-    display: none; /* Hidden by default */
-}
-
+/* Navigation Menu */
 .menu {
     display: flex;
-    flex-direction: row;
-    gap: 10px;
+    gap: 15px;
 }
 
 .menu a {
-    color: #fff;
     text-decoration: none;
-    padding: 8px;
+    color: #f3f4f6;
+    font-size: 1rem;
 }
 
-/* Welcome Section */
-.welcome-section {
+/* Welcome Message */
+.welcome-message {
     text-align: center;
-    padding: 20px;
+    margin: 20px 0;
 }
 
-.welcome-text {
-    background: linear-gradient(45deg, #ff7eb3, #ff758c); /* Gradient background */
-    color: #fff;
-    font-size: 3rem;
-    padding: 20px 40px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    margin-bottom: 20px;
-    animation: fadeIn 2s ease-out;
+.welcome-message .japanese-frame {
+    background-color: #4b5563;
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 8px;
+    color: #f3f4f6;
 }
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Search Container */
-.search-container {
+/* Main Content */
+.container {
+    flex: 1; /* Allow this section to grow and fill space */
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 0;
-    padding: 10px;
-}
-
-.search-container input[type="text"] {
-    width: 250px;
-    padding: 8px;
-    border: 2px solid #333;
-    border-radius: 5px;
-    font-size: 1rem;
-    margin-right: 5px;
-}
-
-.search-container button {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-}
-
-.search-container button:hover {
-    background-color: #555;
-}
-
-/* City Cards */
-.container {
-    display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 20px;
     padding: 20px;
 }
 
+/* City Cards */
 .city-card {
-    position: relative;
-    width: 250px;
-    border-radius: 10px;
-    overflow: hidden;
+    width: 150px;
+    text-align: center;
+    background-color: #374151;
+    border: 1px solid #9ca3af;
+    padding: 15px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .city-card img {
-    width: 100%;
-    display: block;
-    transition: transform 0.3s;
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
-.city-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-.city-card h2 {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 1.2rem;
+.city-card-title {
+    color: #f3f4f6;
+    font-weight: bold;
 }
 
 /* Footer */
 .footer {
-    margin-top: auto;
-    background-color: #333;
-    color: #fff;
+    background-color: #4b5563;
+    color: #f3f4f6;
     text-align: center;
-    padding: 15px 20px;
+    padding: 15px;
+    margin-top: auto; /* Pushes the footer to the bottom */
 }
