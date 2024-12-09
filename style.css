@@ -256,3 +256,25 @@ body {
     font-size: 1.2em; /* Adjust font size for better readability */
     color: #333; /* Adjust color if needed */
 }
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Space between the search bar and the results */
+}
+
+#result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%; /* or any suitable width */
+    margin: 0 auto; /* Center horizontally */
+    text-align: center;
+}
+
+#result p {
+    margin: 10px 0; /* Adjust spacing */
+    font-size: 1.2em;
+    color: #333; /* Adjust color */
+}
