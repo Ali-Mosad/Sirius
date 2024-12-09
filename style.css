@@ -5,11 +5,10 @@ body, html {
     height: 100%; /* Full height */
     display: flex;
     flex-direction: column; /* Stack children vertically */
-    font-family: 'Noto Serif JP', serif; /* Consistent font */
-    position: relative; /* To place the overlay correctly */
-    background: linear-gradient(135deg, #2c2c54 0%, #1c1c36 100%); /* Dark gradient */
+    font-family: 'Noto Sans', sans-serif; /* Updated font */
+    background: linear-gradient(135deg, #2b2b52, #1e1e3f); /* Dark gradient */
     background-size: 200% 200%; /* Makes the background larger */
-    animation: backgroundShift 10s linear infinite; /* Subtle background animation */
+    animation: backgroundShift 15s linear infinite; /* Subtle background animation */
 }
 
 /* Animation for background shift */
@@ -33,7 +32,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay with 60% opacity */
     z-index: -1; /* Places the overlay behind the content */
 }
 
@@ -43,8 +42,10 @@ body::before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Aligns content to the top */
-    padding: 20px; /* Adds some padding */
+    justify-content: center; /* Centers the content */
+    padding: 30px; /* Added more padding */
+    max-width: 1200px; /* Limit container width */
+    margin: 0 auto; /* Center horizontally */
 }
 
 /* Top Navigation Bar */
@@ -52,23 +53,23 @@ body::before {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: #2b2929; /* Dark background for contrast */
+    background-color: rgba(30, 30, 30, 0.8); /* Semi-transparent background */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for elevation */
+    padding: 10px 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6); /* Shadow for elevation */
 }
 
 .top-bar .logo a {
-    font-size: 24px;
+    font-size: 28px; /* Slightly larger font */
     font-weight: bold;
     text-decoration: none;
     color: #fff; /* White text */
 }
 
 .top-bar .menu-button {
-    font-size: 24px;
+    font-size: 26px; /* Larger icon */
     color: #fff;
     cursor: pointer;
 }
@@ -76,18 +77,19 @@ body::before {
 /* Main Menu */
 .menu {
     display: flex;
-    gap: 20px; /* Space between menu items */
+    gap: 30px; /* Increased spacing */
 }
 
 .menu a {
     text-decoration: none;
     color: #fff;
-    font-size: 16px;
-    transition: color 0.3s ease;
+    font-size: 18px; /* Larger font */
+    transition: color 0.3s ease, transform 0.3s ease; /* Added transform for hover */
 }
 
 .menu a:hover {
-    color: #c92f00; /* Deep red for hover effect */
+    color: #d92c2c; /* Bright red */
+    transform: scale(1.1); /* Scale effect */
 }
 
 /* Responsive Menu for Mobile */
@@ -95,13 +97,13 @@ body::before {
     .menu {
         display: none; /* Hidden by default for mobile */
         flex-direction: column;
-        background-color: #1e1e1e; /* Dark dropdown background */
+        background-color: #222; /* Dark dropdown background */
         position: absolute;
         top: 60px; /* Adjust to appear below the top bar */
         right: 10px; /* Align with menu button */
-        width: 200px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Dropdown shadow */
-        padding: 10px 0;
+        width: 250px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Dropdown shadow */
+        padding: 15px 0;
         border-radius: 5px; /* Rounded corners */
     }
 
@@ -114,22 +116,25 @@ body::before {
 .welcome-message {
     display: flex;
     justify-content: center;
-    margin: 16px;
+    margin: 30px 0; /* Adjusted margin */
 }
 
 /* Japanese-styled frame */
 .japanese-frame {
     position: relative;
     display: inline-block;
-    padding: 30px; /* Adjusted for more space */
-    background-color: #f8f4ec; /* Light parchment-like color */
-    border: 8px solid #d52d2d; /* Deep red lacquered frame */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow */
-    margin-bottom: 20px; /* Space below the frame */
+    padding: 40px; /* Adjusted for more space */
+    background-color: #fdf6e3; /* Light, modern color */
+    border: 6px solid #d52d2d; /* Updated border color */
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
+    margin-bottom: 30px; /* Increased space below */
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 100%; /* Responsive */
+    width: 100%; /* Make full width */
+    background-image: linear-gradient(135deg, #ffffff 0%, #e0d6d6 100%); /* Subtle gradient */
 }
 
 /* Decorative corners for the frame */
@@ -137,30 +142,31 @@ body::before {
 .japanese-frame::after {
     content: "";
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #d52d2d; /* Deep red accents */
+    width: 24px;
+    height: 24px;
+    background-color: #d52d2d; /* Red accents */
     border-radius: 50%; /* Rounded decorative dots */
 }
 
 /* Top-left corner */
 .japanese-frame::before {
-    top: -10px;
-    left: -10px;
+    top: -12px;
+    left: -12px;
 }
 
 /* Bottom-right corner */
 .japanese-frame::after {
-    bottom: -10px;
-    right: -10px;
+    bottom: -12px;
+    right: -12px;
 }
 
 /* Text inside the frame */
 .japanese-text {
-    font-size: 48px; /* Larger font size for emphasis */
+    font-size: 56px; /* Larger font size for emphasis */
     color: #8b0000; /* Deep red color */
     text-align: center;
     margin: 0;
+    font-weight: bold; /* Bold text */
 }
 
 /* Footer Styling */
@@ -168,9 +174,9 @@ body::before {
     background-color: #000; /* Black background */
     color: #fff; /* White text */
     text-align: center;
-    padding: 10px 0; /* Padding for spacing */
-    font-size: 16px; /* Adjust font size as needed */
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+    padding: 15px 0; /* Padding for spacing */
+    font-size: 18px; /* Adjust font size */
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
     position: relative; /* Ensures it stays at the bottom */
     width: 100%; /* Full width */
     margin-top: auto; /* Pushes the footer to the bottom */
@@ -182,24 +188,26 @@ body::before {
     flex-direction: column;
     align-items: center; /* Center content horizontally */
     justify-content: center; /* Center content vertically */
-    margin: 20px;
+    margin: 30px;
     cursor: pointer;
     position: relative; /* Position relative to control title positioning */
+    max-width: 100%; /* Responsive */
 }
 
 .city-card .image-frame {
-    padding: 10px;
-    background-color: #fff; /* White frame */
-    border: 5px solid #d4a373; /* Gold accent border */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    padding: 12px;
+    background-color: #ffffff; /* White frame */
+    border: 6px solid #d4a373; /* Gold accent border */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
     display: flex;
     justify-content: center;
     align-items: center; /* Center the image */
+    overflow: hidden; /* Ensure no overflow */
 }
 
 .city-card img {
-    width: 150px; /* Adjust the width as needed */
+    width: 100%; /* Make image responsive */
     height: auto; /* Maintain aspect ratio */
     border-radius: 5px; /* Slight rounding for image corners */
     object-fit: cover; /* Ensure the image fits within its container */
@@ -209,16 +217,16 @@ body::before {
     display: flex;
     justify-content: center; /* Center the text horizontally */
     align-items: center; /* Center the text vertically */
-    margin-top: 10px; /* Space between the image and the title */
-    padding: 5px 10px; /* Padding for the frame */
-    border: 2px solid #d52d2d; /* Red border color */
-    border-radius: 5px; /* Rounded corners for the frame */
+    margin-top: 15px; /* Space between the image and the title */
+    padding: 10px 15px; /* Padding for the frame */
+    border: 3px solid #d52d2d; /* Red border */
+    border-radius: 8px; /* Rounded corners */
     background-color: #f8f4ec; /* Light background color */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for a lifted effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for a lifted effect */
 }
 
 .city-card-title p {
-    font-size: 20px; /* Adjust font size as needed */
-    color: #d3412e; /* Customize the color */
+    font-size: 24px; /* Larger font size */
+    color: #d3412e; /* Deep red color */
     margin: 0; /* Remove default margin */
 }
