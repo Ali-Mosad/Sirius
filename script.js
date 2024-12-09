@@ -39,7 +39,6 @@ function displayCityName() {
 
 /**
  * Searches for a person in the city's data and displays their details.
- * @param {string} city - The city whose data is being searched.
  */
 function searchPerson() {
     const query = document.getElementById("search").value.trim();
@@ -66,16 +65,14 @@ function searchPerson() {
 }
 
 /**
- * Gets the current city from the URL query parameter.
+ * Utility function to extract the city from the current URL.
  */
 function getCityFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get("city");
 }
 
-/**
- * Handles the menu toggle functionality for mobile view.
- */
+// Menu toggle functionality
 document.addEventListener("DOMContentLoaded", () => {
     const menuButton = document.getElementById("menuButton");
     const menu = document.getElementById("menu");

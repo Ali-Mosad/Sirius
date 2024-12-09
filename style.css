@@ -1,103 +1,167 @@
-/* General Reset */
-* {
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-html, body {
-    height: 100%; /* Ensure the page takes up full height */
-}
-
-body {
+    background-color: #f4f4f4;
     display: flex;
-    flex-direction: column; /* Arrange content vertically */
-    font-family: Arial, sans-serif;
-    background-color: #111827; /* Dark background */
-    color: #f3f4f6; /* Light text */
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* Top Bar */
+/* Top Navigation Bar */
 .top-bar {
-    background-color: #4b5563;
-    padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #f3f4f6;
+    background-color: #333;
+    padding: 10px 20px;
+    color: #fff;
 }
 
-/* Logo */
 .logo a {
     text-decoration: none;
-    color: #f3f4f6;
-    font-size: 1.5rem;
+    color: #fff;
+    font-size: 1.8rem;
 }
 
-/* Navigation Menu */
+.menu-button {
+    display: none; /* Hidden by default */
+    font-size: 2rem;
+    cursor: pointer;
+}
+
 .menu {
     display: flex;
-    gap: 15px;
+    gap: 10px;
 }
 
 .menu a {
+    color: #fff;
     text-decoration: none;
-    color: #f3f4f6;
-    font-size: 1rem;
+    padding: 8px;
 }
 
-/* Welcome Message */
-.welcome-message {
+/* Welcome Section */
+.welcome-section {
     text-align: center;
+    padding: 20px;
+}
+
+.welcome-text {
+    background: linear-gradient(45deg, #ff7eb3, #ff758c);
+    color: #fff;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Search Container */
+.search-container {
+    display: flex;
+    justify-content: center;
     margin: 20px 0;
 }
 
-.welcome-message .japanese-frame {
-    background-color: #4b5563;
-    padding: 10px 20px;
-    display: inline-block;
-    border-radius: 8px;
-    color: #f3f4f6;
+.search-container input[type="text"] {
+    padding: 8px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    width: 250px;
 }
 
-/* Main Content */
+.search-container button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    transition: background-color 0.3s;
+}
+
+.search-container button:hover {
+    background-color: #555;
+}
+
+/* City Cards */
 .container {
-    flex: 1; /* Allow this section to grow and fill space */
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
     padding: 20px;
 }
 
-/* City Cards */
 .city-card {
-    width: 150px;
-    text-align: center;
-    background-color: #374151;
-    border: 1px solid #9ca3af;
-    padding: 15px;
-    border-radius: 8px;
+    position: relative;
+    width: 250px;
+    border-radius: 10px;
+    overflow: hidden;
     cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .city-card img {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    width: 100%;
+    display: block;
+    transition: transform 0.3s;
 }
 
-.city-card-title {
-    color: #f3f4f6;
-    font-weight: bold;
+.city-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.city-card h2 {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.2rem;
 }
 
 /* Footer */
 .footer {
-    background-color: #4b5563;
-    color: #f3f4f6;
+    margin-top: auto;
+    background-color: #333;
+    color: #fff;
     text-align: center;
-    padding: 15px;
-    margin-top: auto; /* Pushes the footer to the bottom */
+    padding: 15px 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu {
+        display: none; /* Hide menu by default on smaller screens */
+        flex-direction: column;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .menu.show {
+        display: flex; /* Show menu when toggled */
+    }
 }
