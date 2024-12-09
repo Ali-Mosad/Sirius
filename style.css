@@ -222,15 +222,18 @@ body {
     color: #333;
 }
 
-/* Menu Button and Menu */
+/* Menu Button */
 .menu-button {
     font-size: 2rem;
     cursor: pointer;
-    display: none;
+    color: #FFD700; /* Gold color for visibility */
+    display: block; /* Make sure it is visible */
+    z-index: 1000; /* Ensure it appears above other content */
 }
 
+/* Menu Styling */
 .menu {
-    display: flex;
+    display: none; /* Hidden by default */
     flex-direction: column;
     align-items: center;
     background-color: #2A6F62; /* Muted emerald green */
@@ -238,24 +241,22 @@ body {
     top: 100%;
     left: 0;
     width: 100%;
-    display: none;
+    padding: 10px;
+    border-radius: 8px;
+    z-index: 999; /* Ensure it overlays properly */
 }
 
-.menu a {
-    color: #fff;
-    padding: 15px;
-    text-decoration: none;
-    display: block;
-    text-align: center;
-}
-
+/* Show menu when active */
 .menu.show {
     display: flex;
 }
 
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-    .menu-button {
-        display: block; /* Show the menu button */
-    }
+/* Menu items styling */
+.menu a {
+    color: #fff; /* White text */
+    padding: 15px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    width: 100%;
 }
