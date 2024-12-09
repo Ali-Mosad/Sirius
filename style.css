@@ -1,313 +1,128 @@
-/* General Reset */
-* {
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-html, body {
-    height: 100%; /* Full height */
-}
-
-body {
     display: flex;
-    flex-direction: column; /* Vertical layout */
-    font-family: Arial, sans-serif;
-    background-color: #111827; /* Dark background */
-    color: #f3f4f6; /* Light text */
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f0f0f0; /* Optional for a clean look */
 }
 
-/* Top Bar */
+/* Top Navigation Bar */
 .top-bar {
-    background-color: #4b5563;
-    padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #f3f4f6;
+    background-color: #222; /* Dark background */
+    padding: 10px 20px;
+    color: #fff;
 }
 
 .logo a {
+    font-size: 1.8rem;
     text-decoration: none;
-    color: #f3f4f6;
-    font-size: 1.5rem;
+    color: #fff;
 }
 
-/* Menu hidden by default */
+.menu-button {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Menu */
 .menu {
     display: none;
     flex-direction: column;
-    background-color: #4b5563;
+    gap: 15px;
     position: absolute;
-    top: 60px; /* Below the top bar */
-    right: 0;
-    width: 200px;
+    top: 50px;
+    right: 20px;
+    background-color: #333;
     padding: 10px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Menu visible when toggled */
-.menu.menu-visible {
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.menu-button.active + .menu {
     display: flex;
 }
-
-/* Links inside the menu */
-.menu a {
-    color: #f3f4f6;
-    text-decoration: none;
-    padding: 10px;
-    border-bottom: 1px solid #9ca3af;
-}
-
-.menu a:last-child {
-    border-bottom: none;
-}
-
 
 /* Welcome Message */
 .welcome-message {
     text-align: center;
-    margin: 20px 0;
+    margin: 40px 0;
 }
 
-.welcome-message .japanese-frame {
-    background-color: #4b5563;
-    padding: 10px 20px;
+.japanese-frame {
     display: inline-block;
-    border-radius: 8px;
-    color: #f3f4f6;
+    border: 5px solid #333;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
 }
 
-/* City Cards - Vertical Layout */
+.japanese-text {
+    font-size: 2rem;
+    color: #333;
+}
+
+/* City Card Styling */
 .container {
-    flex: 1;
     display: flex;
-    flex-direction: column;
-    gap: 20px; /* Spacing between cards */
-    align-items: center; /* Center-align the cards */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
     padding: 20px;
 }
 
 .city-card {
-    width: 90%; /* Full width */
-    max-width: 400px; /* Maximum card width */
-    background-color: #374151;
-    border: 1px solid #9ca3af;
-    border-radius: 8px;
+    position: relative;
+    width: 250px;
+    border-radius: 10px;
     overflow: hidden;
-    text-align: center;
     cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .city-card img {
     width: 100%;
-    height: auto;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.city-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .city-card-title {
-    padding: 10px;
-    color: #f3f4f6;
-    font-weight: bold;
-    background-color: #4b5563;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.2rem;
 }
 
-/* Footer */
+/* Footer Styling */
 .footer {
-    background-color: #4b5563;
-    color: #f3f4f6;
+    margin-top: auto;
+    background-color: #222;
+    color: #fff;
     text-align: center;
-    padding: 15px;
-    margin-top: auto; /* Pushes footer to the bottom */
+    padding: 15px 20px;
 }
 
-/* Search Container */
-.search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px auto;
-    flex-direction: column;
-    width: 100%;
-}
-
-/* Search Input */
-.search-container input[type="text"] {
-    width: 80%;
-    max-width: 500px;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: 2px solid #4b5563;
-    border-radius: 8px;
-    outline: none;
-    transition: border-color 0.3s ease;
-}
-
-/* Focus Effect */
-.search-container input[type="text"]:focus {
-    border-color: #6366f1; /* Primary accent color */
-}
-
-/* Search Button */
-.search-container button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #ffffff;
-    background-color: #4b5563;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-/* Search Button Hover */
-.search-container button:hover {
-    background-color: #6366f1;
-}
-
-/* Align the result text properly */
-#result {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 18px;
-    color: #4b5563;
-}
-
-/* General Transition */
-* {
-    box-sizing: border-box;
-    transition: all 0.3s ease-in-out;
-}
-
-/* Header and Navigation Animation */
-.top-bar {
-    animation: slideInTop 1s ease-out;
-}
-
-@keyframes slideInTop {
-    from {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* Search Bar Animation */
-.search-container input[type="text"] {
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: fadeInUp 0.5s ease-out forwards;
-}
-
-.search-container button {
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: fadeInUp 0.5s ease-out 0.2s forwards;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Navigation Button Animation */
-.menu-button {
-    opacity: 0;
-    transform: rotate(0deg);
-    animation: fadeInRotate 0.5s ease-out 0.5s forwards;
-}
-
-@keyframes fadeInRotate {
-    from {
-        opacity: 0;
-        transform: rotate(-45deg);
-    }
-    to {
-        opacity: 1;
-        transform: rotate(0deg);
-    }
-}
-
-/* City Card Animation */
-.city-card {
-    opacity: 0;
-    transform: scale(0.9);
-    animation: popIn 0.5s ease-out forwards;
-}
-
-@keyframes popIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* Button Hover Animation */
-button:hover, .city-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Footer Animation */
-.footer {
-    opacity: 0;
-    transform: translateY(50px);
-    animation: fadeInUp 0.5s ease-out 1s forwards;
-}
-
-/* Animations for the results */
-#result {
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* Add animation to the Kyoto city card */
-.city-card img {
-    opacity: 0;
-    transform: scale(0.9);
-    animation: popInIcon 0.6s ease-in-out forwards;
-}
-
-@keyframes popInIcon {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* Hover effect for the Kyoto icon */
-.city-card:hover img {
-    transform: scale(1.1);
-    transition: transform 0.3s ease-in-out;
-}
-
-/* Animation triggered when clicking on the icon */
+/* Animation */
 .city-card.clicked img {
     animation: clickAnimation 0.6s ease-in-out;
 }
@@ -324,5 +139,21 @@ button:hover, .city-card:hover {
     100% {
         transform: scale(1);
         opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu {
+        position: static;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
     }
 }
