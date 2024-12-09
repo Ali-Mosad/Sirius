@@ -240,3 +240,19 @@ body {
 .search-container button:hover {
     background-color: #555;
 }
+
+.result-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px auto; /* Center the container */
+    width: 80%; /* Adjust width as needed */
+    text-align: center;
+}
+
+.result-container p {
+    margin: 10px 0; /* Adjust spacing as needed */
+    font-size: 1.2em; /* Adjust font size for better readability */
+    color: #333; /* Adjust color if needed */
+}
