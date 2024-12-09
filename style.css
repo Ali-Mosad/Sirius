@@ -174,23 +174,44 @@ button {
     margin-top: auto; /* Pushes the footer to the bottom */
 }
 
-/* Styling for the city card title */
-.city-card-title {
+.city-card {
     display: flex;
-    justify-content: center; /* Center the button */
-    width: 100%; /* Full width of the card */
-    margin-top: 10px; /* Space between the image and the button */
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    margin: 20px;
+    cursor: pointer;
+    position: relative; /* Position relative to control title positioning */
 }
 
-.city-card button {
-    background-color: #d3412e; /* Button background */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px; /* Rounded corners */
-    text-align: center;
-    display: inline-block;
+.city-card .image-frame {
+    padding: 10px;
+    background-color: #fff; /* White frame */
+    border: 5px solid #d4a373; /* Gold accent border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center the image */
+}
+
+.city-card img {
+    width: 150px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Slight rounding for image corners */
+    object-fit: cover; /* Ensure the image fits within its container */
+}
+
+.city-card-title {
+    display: flex;
+    justify-content: center; /* Center the text */
+    align-items: center; /* Center the text vertically */
+    width: 100%; /* Full width */
+    margin-top: 10px; /* Space between the image and the title */
+}
+
+.city-card-title p {
+    font-size: 18px; /* Adjust font size as needed */
+    color: #d3412e; /* Matching color with the button */
+    margin: 0; /* Remove default margin */
 }
 
