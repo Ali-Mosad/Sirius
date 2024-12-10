@@ -285,12 +285,13 @@ body {
 .search-container button:hover {
     background-color: #f1c40f; /* Hover effect */
 }
+
 /* Initial state for the result */
 #result {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.5s ease, transform 0.5s ease;
-    visibility: hidden; /* Hidden by default */
+    visibility: hidden; /* Ensure it's hidden by default */
 }
 
 /* Animation for showing the result */
@@ -300,7 +301,7 @@ body {
     visibility: visible; /* Make it visible when the class is added */
 }
 
-/* Optional: keyframe animation */
+/* Optional: Add a keyframe animation */
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -311,3 +312,4 @@ body {
         transform: translateY(0);
     }
 }
+
