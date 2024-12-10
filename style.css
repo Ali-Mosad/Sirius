@@ -1,16 +1,19 @@
 /* General body styling */
 body {
     font-family: 'Montserrat', sans-serif; /* Modern font */
-    background-color: #f5f5f5; /* Light gray background */
-    color: #333; /* Dark text color for readability */
+    background-color: #e5e5e5; /* Light gray background */
+    color: #333; /* Dark text color */
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* Top bar */
+/* Top bar styling */
 .top-bar {
-    background-color: #2c3e50; /* Dark color for contrast */
-    color: white;
+    background-color: #1a1a1d; /* Dark background */
+    color: #f8f1f1; /* Light color for text */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,7 +29,7 @@ body {
 }
 
 .logo a:hover {
-    color: #f1c40f; /* Hover color */
+    color: #f1c40f; /* Hover effect */
 }
 
 .menu {
@@ -36,14 +39,14 @@ body {
 
 .menu a {
     text-decoration: none;
-    color: white;
+    color: #f8f1f1;
     padding: 5px 10px;
     border-radius: 5px;
     transition: background-color 0.3s ease-in-out;
 }
 
 .menu a:hover {
-    background-color: #34495e; /* Hover effect */
+    background-color: #444; /* Hover effect */
 }
 
 /* Welcome message styling */
@@ -53,18 +56,19 @@ body {
 }
 
 .japanese-frame {
-    background: linear-gradient(90deg, #4b0082, #6a0dad); /* Gradient background */
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    background: linear-gradient(135deg, #8e44ad, #3498db); /* Gradient for modern look */
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
 
 .japanese-text {
-    font-size: 2rem;
-    color: #f1c40f; /* Gold color for text */
+    font-size: 2.5rem;
+    color: #f8f1f1; /* Light text color */
 }
 
-/* City card styling */
+/* Container for city cards */
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -75,10 +79,11 @@ body {
 
 .city-card {
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
+    width: 250px;
 }
 
 .city-card:hover {
@@ -96,18 +101,14 @@ body {
     font-weight: bold;
 }
 
-/* Footer */
+/* Footer styling */
 .footer {
-    background-color: #2c3e50;
-    color: white;
+    background-color: #1a1a1d;
+    color: #f8f1f1;
     text-align: center;
-    padding: 20px 0;
-    margin-top: 20px;
+    padding: 10px 0;
+    margin-top: auto; /* Ensures the footer sticks at the bottom */
     font-size: 0.9rem;
-}
-
-.footer p {
-    margin: 0;
 }
 
 /* Responsive design */
