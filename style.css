@@ -319,8 +319,8 @@ body {
 }
 
 #credit-card img {
-      display: block;
-        margin: 50px auto;
-          width: 100px; /* Adjust size */
-          }
+  display: block;
+  margin: 20px auto;
+  width: 120px; /* Increase size */
+  height: auto; /* Maintain aspect ratio */
 }
