@@ -97,3 +97,15 @@ socket.onmessage = function(event) {
         location.reload(true); // Refresh when an update message is received
     }
 };
+
+function searchPerson(query) {
+    // Assuming you have logic here that sets `results` with matching data
+    let resultContainer = document.getElementById('result');
+    if (results.length > 0) {
+        resultContainer.classList.add('show');
+        // Add your logic for displaying search results
+    } else {
+        resultContainer.classList.remove('show');
+        resultContainer.innerHTML = "No results found.";
+    }
+}

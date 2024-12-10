@@ -317,3 +317,28 @@ body {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+/* Initial state for the result */
+#result {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Animation for showing the result */
+#result.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Optional: Add a keyframe animation */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
