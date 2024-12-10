@@ -76,13 +76,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuButton = document.getElementById('menuButton');
     const menu = document.getElementById('menu');
 
-    menuButton.addEventListener('click', () => {
-        // Toggle the 'menu-open' class to show/hide the menu
-        menu.classList.toggle('menu-open');
-    });
-});
-
-menuButton.addEventListener('click', () => {
-    console.log('Menu button clicked');
-    menu.classList.toggle('menu-open');
+    // Check if both the menu button and the menu exist
+    if (menuButton && menu) {
+        menuButton.addEventListener('click', () => {
+            // Add or remove 'menu-open' class to toggle visibility
+            if (menu.classList.contains('menu-open')) {
+                menu.classList.remove('menu-open');
+            } else {
+                menu.classList.add('menu-open');
+            }
+        });
+    }
 });
