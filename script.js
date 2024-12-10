@@ -43,13 +43,17 @@ function displayCityName() {
 function searchPerson() {
     const query = document.getElementById("search").value.trim();
     const resultDiv = document.getElementById("result");
-    const city = getCityFromURL(); // Function to get city from URL query
+    const city = getCityFromURL(); // Get city from URL query
     const data = cityData[city];
 
     if (!resultDiv) {
         console.error("Result container not found in the DOM.");
         return;
     }
+
+    // Clear previous results and remove the animation class
+    resultDiv.innerHTML = "";
+    resultDiv.classList.remove("show");
 
     if (data && data[query]) {
         const details = data[query];
@@ -62,6 +66,11 @@ function searchPerson() {
     } else {
         resultDiv.innerHTML = "<p>لا توجد بيانات لهذا اللقب.</p>";
     }
+
+    // Add the animation class after updating the content
+    setTimeout(() => {
+        resultDiv.classList.add("show");
+    }, 10); // Small delay to ensure animation applies correctly
 }
 
 /**
@@ -72,81 +81,19 @@ function getCityFromURL() {
     return urlParams.get("city");
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const menuButton = document.getElementById('menuButton');
-    const menu = document.getElementById('menu');
+/**
+ * Toggles the menu's visibility on mobile.
+ */
+document.addEventListener("DOMContentLoaded", () => {
+    const menuButton = document.getElementById("menuButton");
+    const menu = document.getElementById("menu");
 
-    // Check if both the menu button and the menu exist
     if (menuButton && menu) {
-        menuButton.addEventListener('click', () => {
-            // Add or remove 'menu-open' class to toggle visibility
-            if (menu.classList.contains('menu-open')) {
-                menu.classList.remove('menu-open');
-            } else {
-                menu.classList.add('menu-open');
-            }
+        menuButton.addEventListener("click", () => {
+            menu.classList.toggle("menu-open");
         });
     }
+
+    // Display city name when the page loads
+    displayCityName();
 });
-
-function searchPerson() {
-    const query = document.getElementById("search").value.trim();
-    const resultDiv = document.getElementById("result");
-    const city = getCityFromURL(); // Function to get city from URL query
-    const data = cityData[city];
-
-    if (!resultDiv) {
-        console.error("Result container not found in the DOM.");
-        return;
-    }
-
-    // Clear previous results and remove the animation class before applying the new one
-    resultDiv.classList.remove('show');
-
-    if (data && data[query]) {
-        const details = data[query];
-        resultDiv.innerHTML = `
-            <p><strong>اللقب:</strong> ${query}</p>
-            <p><strong>الرتبة:</strong> ${details.rank}</p>
-            <p><strong>الرصيد:</strong> ${details.balance}</p>
-            <p><strong>السلعة:</strong> ${details.item}</p>
-        `;
-        // Add the animation class after updating the content
-        setTimeout(() => {
-            resultDiv.classList.add('show');
-        }, 10); // Small delay to ensure the class is applied after rendering
-    } else {
-        resultDiv.innerHTML = "<p>لا توجد بيانات لهذا اللقب.</p>";
-        // Add the animation class after updating the content
-        setTimeout(() => {
-            resultDiv.classList.add('show');
-        }, 10);
-    }
-}
-
-const resultDiv = document.getElementById("result");
-if (data && data[query]) {
-    resultDiv.innerHTML = `
-        <p><strong>اللقب:</strong> ${query}</p>
-        <p><strong>الرتبة:</strong> ${details.rank}</p>
-        <p><strong>الرصيد:</strong> ${details.balance}</p>
-        <p><strong>السلعة:</strong> ${details.item}</p>
-    `;
-    resultDiv.classList.add("show");
-} else {
-    resultDiv.innerHTML = "<p>لا توجد بيانات لهذا اللقب.</p>";
-    resultDiv.classList.add("show");
-}
-
-window.addEventListener("load", () => {
-    const idCard = document.querySelector(".id-card");
-    if (idCard) {
-        idCard.classList.add("show");
-    }
-});
-
-window.addEventListener("load", () => {
-    document.body.classList.add("loaded");
-});
-
-
