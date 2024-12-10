@@ -99,13 +99,18 @@ socket.onmessage = function(event) {
 };
 
 function searchPerson(query) {
-    // Assuming you have logic here that sets `results` with matching data
     let resultContainer = document.getElementById('result');
+    // Simulate a search result for demonstration
+    let results = ['Result 1', 'Result 2', 'Result 3']; // Replace with actual logic
+
     if (results.length > 0) {
+        // Display results and show animation
+        resultContainer.innerHTML = results.join('<br>');
         resultContainer.classList.add('show');
-        // Add your logic for displaying search results
     } else {
-        resultContainer.classList.remove('show');
+        // If no results, clear and remove the animation class
         resultContainer.innerHTML = "No results found.";
+        resultContainer.classList.remove('show');
     }
 }
+

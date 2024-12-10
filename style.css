@@ -323,12 +323,14 @@ body {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.5s ease, transform 0.5s ease;
+    visibility: hidden; /* Ensure it's hidden by default */
 }
 
 /* Animation for showing the result */
 #result.show {
     opacity: 1;
     transform: translateY(0);
+    visibility: visible; /* Make it visible when the class is added */
 }
 
 /* Optional: Add a keyframe animation */
