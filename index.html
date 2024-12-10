@@ -1,52 +1,57 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="ar">
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyrus Kingdom</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Shirai Kingdom</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Top Navigation Bar -->
-    <header class="top-bar">
+    <!-- Top navigation bar -->
+    <div class="top-bar">
         <div class="logo">
-            <a href="index.html">𝑪𝒚𝒓𝒖𝒔 ┊ ⚕ ┊ 𝑲𝒊𝒏𝒅𝒐𝒎</a>
+            <a href="index.html">𝑺𝒉𝒊𝒓𝒂𝒊┊⚕┊𝑲𝒊𝒏𝒅𝒐𝒎</a>
         </div>
-        <button class="menu-button" id="menuButton">☰</button>
+        <div class="menu-button" id="menuButton">☰</div>
         <nav class="menu" id="menu">
-            <a href="index.html">الرئيسية</a>
             <a href="kyoto.html">كيوتو</a>
             <a href="osaka.html">أوساكا</a>
             <a href="store.html">المتجر</a>
         </nav>
-    </header>
+    </div>
 
-    <!-- Welcome Message -->
-    <section class="welcome-section">
-        <h1 class="welcome-text">مرحبا بكم في سايروس</h1>
-        <div class="search-container">
-            <input type="text" id="search" placeholder="ابحث عن لقب">
-            <button onclick="searchPerson()">بحث</button>
+    <!-- Welcome message with a Japanese-styled frame -->
+    <div class="welcome-message">
+        <div class="japanese-frame">
+            <p class="japanese-text">مملكة شيراي</p>
         </div>
-        <div id="result"></div>
-    </section>
+    </div>
 
-    <!-- City Cards -->
-    <section class="container">
+    <!-- Container for city options -->
+    <div class="container">
         <div class="city-card" onclick="navigate('kyoto')">
-            <img src="kyoto-small.png" alt="Kyoto">
-            <h2>كيوتو</h2>
-        </div>
+            <div class="image-frame">
+                <img src="kyoto-small.png" data-src="kyoto.png" alt="Kyoto" class="lazy-load">
+            </div>
+            <div class="city-card-title">
+                <p>Kyoto</p>
+            </div>
+        </div>           
         <div class="city-card" onclick="navigate('osaka')">
-            <img src="osaka-small.jpg" alt="Osaka">
-            <h2>أوساكا</h2>
-        </div>
-    </section>
+            <div class="image-frame">
+                <img src="osaka-small.jpg" data-src="osaka.png" alt="Osaka" class="lazy-load">
+            </div>
+            <div class="city-card-title">
+                <p>Osaka</p>
+            </div>
+        </div>        
+    
+    </div>
 
-    <!-- Footer -->
     <footer class="footer">
-        <p>جوا الرواية رواية مكتوبة بين السطور.. عن بطل كان مغمور.. ومحدش فيه سائل.. حلمه ماشفش النور.. لكنه مات بيحاول.</p>
-    </footer>
+        <p>جوا الرواية رواية مكتوبة بين السطور.. عن بطل كان مغمور.. ومحدش فيه سائل.. حلمه ماشفش النور.. لكنه مات بيحاول." - مغمور وكفى</p>
+    </footer>  
 
     <script src="script.js"></script>
 </body>
