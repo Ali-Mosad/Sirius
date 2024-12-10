@@ -61,6 +61,7 @@ body {
     padding: 15px 25px; /* Adjusted padding */
     border-radius: 10px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease-out; /* Animation */
 }
 
 .japanese-text {
@@ -75,6 +76,33 @@ body {
     justify-content: space-around;
     gap: 15px;
     padding: 20px;
+}
+
+/* Animation for "البنك" and "القوانين" */
+.banking, .laws {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideIn 1s forwards;
+}
+
+.banking {
+    animation-delay: 0.5s; /* Delay for sequential animation */
+}
+
+.laws {
+    animation-delay: 1s; /* Delay for sequential animation */
+}
+
+/* Animation keyframes */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Footer styling */
