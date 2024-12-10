@@ -117,7 +117,7 @@ body {
 }
 
 .city-card img {
-    width: 50%;
+    width: 80%;
     height: auto;
     transition: transform 0.3s ease;
 }
@@ -171,7 +171,35 @@ body {
     }
 }
 
-/* Default state of the menu (hidden) */
+/* Default menu state (hidden on small screens) */
+.menu {
+    display: none;
+    flex-direction: column;
+    background-color: var(--primary-color);
+    padding: 10px;
+    position: absolute;
+    top: 60px; /* Adjust to match your top bar height */
+    right: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* Style for the menu button */
+.top-bar .menu-button {
+    display: block;
+    font-size: 2rem;
+    color: var(--accent-color);
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+    transition: transform 0.3s ease-in-out;
+}
+
+.top-bar .menu-button:hover {
+    transform: rotate(90deg); /* Rotate effect when hovered */
+}
+
 .menu {
     display: none;
     flex-direction: column;
@@ -184,9 +212,33 @@ body {
     z-index: 1000;
 }
 
-/* Show the menu when the 'menu-open' class is applied */
 .menu.menu-open {
     display: flex;
+}
+
+.menu a {
+    padding: 10px;
+    text-decoration: none;
+    color: var(--accent-color);
+    font-weight: bold;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.menu a:last-child {
+    border-bottom: none;
+}
+
+.menu a:hover {
+    background-color: var(--hover-color);
+}
+
+/* Mobile-specific menu button */
+@media (max-width: 768px) {
+    .menu {
+        top: 50px; /* Adjust based on the top bar's height */
+        right: 0;
+    }
 }
 
 .search-container {
