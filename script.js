@@ -89,28 +89,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// WebSocket code
-const socket = new WebSocket('ws://yourserver.com/updates');
+function searchPerson() {
+    const query = document.getElementById("search").value.trim();
+    const resultDiv = document.getElementById("result");
+    const city = getCityFromURL(); // Function to get city from URL query
+    const data = cityData[city];
 
-socket.onmessage = function(event) {
-    if (event.data === 'update') {
-        location.reload(true); // Refresh when an update message is received
+    if (!resultDiv) {
+        console.error("Result container not found in the DOM.");
+        return;
     }
-};
 
-function searchPerson(query) {
-    let resultContainer = document.getElementById('result');
-    // Simulate a search result for demonstration
-    let results = ['Result 1', 'Result 2', 'Result 3']; // Replace with actual logic
+    // Clear previous results and remove the animation class before applying the new one
+    resultDiv.classList.remove('show');
 
-    if (results.length > 0) {
-        // Display results and show animation
-        resultContainer.innerHTML = results.join('<br>');
-        resultContainer.classList.add('show');
+    if (data && data[query]) {
+        const details = data[query];
+        resultDiv.innerHTML = `
+            <p><strong>اللقب:</strong> ${query}</p>
+            <p><strong>الرتبة:</strong> ${details.rank}</p>
+            <p><strong>الرصيد:</strong> ${details.balance}</p>
+            <p><strong>السلعة:</strong> ${details.item}</p>
+        `;
+        // Add the animation class after updating the content
+        setTimeout(() => {
+            resultDiv.classList.add('show');
+        }, 10); // Small delay to ensure the class is applied after rendering
     } else {
-        // If no results, clear and remove the animation class
-        resultContainer.innerHTML = "No results found.";
-        resultContainer.classList.remove('show');
+        resultDiv.innerHTML = "<p>لا توجد بيانات لهذا اللقب.</p>";
+        // Add the animation class after updating the content
+        setTimeout(() => {
+            resultDiv.classList.add('show');
+        }, 10);
     }
 }
 
