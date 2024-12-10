@@ -88,3 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// WebSocket code
+const socket = new WebSocket('ws://yourserver.com/updates');
+
+socket.onmessage = function(event) {
+    if (event.data === 'update') {
+        location.reload(true); // Refresh when an update message is received
+    }
+};
