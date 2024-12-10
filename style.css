@@ -127,7 +127,7 @@ body {
 }
 
 .city-card img {
-    width: 65%;
+    width: 70%;
     height: auto;
     transition: transform 0.3s ease;
 }
