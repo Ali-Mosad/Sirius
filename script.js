@@ -124,4 +124,29 @@ function searchPerson() {
     }
 }
 
+const resultDiv = document.getElementById("result");
+if (data && data[query]) {
+    resultDiv.innerHTML = `
+        <p><strong>اللقب:</strong> ${query}</p>
+        <p><strong>الرتبة:</strong> ${details.rank}</p>
+        <p><strong>الرصيد:</strong> ${details.balance}</p>
+        <p><strong>السلعة:</strong> ${details.item}</p>
+    `;
+    resultDiv.classList.add("show");
+} else {
+    resultDiv.innerHTML = "<p>لا توجد بيانات لهذا اللقب.</p>";
+    resultDiv.classList.add("show");
+}
+
+window.addEventListener("load", () => {
+    const idCard = document.querySelector(".id-card");
+    if (idCard) {
+        idCard.classList.add("show");
+    }
+});
+
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+});
+
 
