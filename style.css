@@ -286,30 +286,35 @@ body {
     background-color: #f1c40f; /* Hover effect */
 }
 
-/* Initial state for the result */
+/* Styling for the result container */
 #result {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.5s ease, transform 0.5s ease;
-    visibility: hidden; /* Ensure it's hidden by default */
+    visibility: hidden; /* Hidden by default */
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--background-light);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    text-align: center;
 }
 
-/* Animation for showing the result */
+/* Make the result container visible with animation */
 #result.show {
     opacity: 1;
     transform: translateY(0);
     visibility: visible; /* Make it visible when the class is added */
 }
 
-/* Optional: Add a keyframe animation */
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Additional styling for the frame */
+.japanese-frame {
+    border: 4px solid var(--border-color);
+    padding: 20px;
+    display: inline-block;
+    background-color: var(--secondary-color);
+    border-radius: 15px; /* Rounded corners */
+    margin: 0 auto; /* Center the frame */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
