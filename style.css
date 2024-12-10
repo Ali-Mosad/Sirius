@@ -525,3 +525,18 @@ body {
     border-radius: 10px;
     text-align: center;
 }
+
+@font-face {
+    font-family: 'Zumurud';
+    src: url('Zumurud.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Zumurud', sans-serif; /* Apply the custom font */
+}
+
+h1, h2, h3 {
+    font-family: 'Zumurud', sans-serif;
+}
