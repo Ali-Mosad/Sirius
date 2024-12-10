@@ -66,11 +66,17 @@ body {
     color: var(--primary-color);
 }
 
+.welcome-message {
+    display: flex;
+    justify-content: center; /* Centers the frame horizontally */
+    align-items: center; /* Centers the frame vertically */
+    margin: 30px 0; /* Adjust top and bottom margin as needed */
+}
+
 .welcome-message .japanese-frame {
     border: 2px solid var(--primary-color); /* Thin border with primary color */
     border-radius: 12px; /* Rounded corners */
     padding: 20px;
-    display: inline-block;
     background: rgba(34, 34, 34, 0.8); /* Semi-transparent background */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease-in-out;
