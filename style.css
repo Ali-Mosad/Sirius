@@ -189,30 +189,23 @@ body {
     display: flex;
 }
 
-/* For desktop, always show the menu */
-@media (min-width: 768px) {
-    .menu {
-        display: flex;
-        position: static;
-        flex-direction: row;
-        background: none;
-        box-shadow: none;
-    }
-}
-.menu-button {
-    display: block;
-    font-size: 1.5rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: var(--accent-color);
+.menu {
+    display: flex;
+    gap: 20px;
 }
 
-@media (min-width: 768px) {
-    .menu-button {
-        display: none; /* Hide the button on larger screens */
-    }
+.menu a {
+    text-decoration: none;
+    color: #ecf0f1;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
 }
+
+.menu a:hover {
+    background-color: #34495e; /* Hover effect */
+}
+
 .search-container {
     display: flex;
     justify-content: center;
