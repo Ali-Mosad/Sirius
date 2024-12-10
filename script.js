@@ -72,30 +72,12 @@ function getCityFromURL() {
     return urlParams.get("city");
 }
 
-// Menu toggle functionality
-document.addEventListener("DOMContentLoaded", () => {
-    const menuButton = document.getElementById("menuButton");
-    const menu = document.getElementById("menu");
-
-    if (menuButton && menu) {
-        menuButton.addEventListener("click", () => {
-            menu.classList.toggle("show");
-        });
-
-        document.addEventListener("click", (e) => {
-            if (!menu.contains(e.target) && e.target !== menuButton) {
-                menu.classList.remove("show");
-            }
-        });
-    }
-});
-
 document.addEventListener('DOMContentLoaded', () => {
     const menuButton = document.getElementById('menuButton');
     const menu = document.getElementById('menu');
 
     menuButton.addEventListener('click', () => {
+        // Toggle the 'menu-open' class to show/hide the menu
         menu.classList.toggle('menu-open');
     });
 });
-
