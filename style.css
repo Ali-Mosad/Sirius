@@ -276,3 +276,35 @@ body {
 .search-container button:hover {
     background-color: #f1c40f; /* Hover effect */
 }
+/* Container for search results */
+#result {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the content horizontally */
+    justify-content: center; /* Centers the content vertically */
+    margin: 20px auto; /* Adds space above and below, centers horizontally */
+    padding: 10px;
+    background-color: var(--background-light);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 90%; /* Adjust width as needed */
+    max-width: 600px; /* Limits the maximum width */
+    color: var(--accent-color);
+    text-align: center; /* Centers the text */
+}
+
+/* Optional: Style for individual result items */
+.result-item {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    width: 100%; /* Ensures the item takes up full width */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.result-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
