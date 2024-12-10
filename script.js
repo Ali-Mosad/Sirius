@@ -81,3 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
         menu.classList.toggle('menu-open');
     });
 });
+
+menuButton.addEventListener('click', () => {
+    console.log('Menu button clicked');
+    menu.classList.toggle('menu-open');
+});
