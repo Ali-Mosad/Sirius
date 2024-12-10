@@ -204,12 +204,11 @@ body {
     display: none;
     flex-direction: column;
     background-color: var(--primary-color);
+    padding: 10px;
     position: absolute;
-    top: 60px; /* Adjust as needed */
-    right: 20px;
-    width: 200px;
+    top: 60px; /* Adjust based on your top bar height */
+    right: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
     z-index: 1000;
 }
 
