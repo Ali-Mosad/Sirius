@@ -20,17 +20,18 @@
         </nav>
     </div>
 
-    <!-- Welcome message -->
-    <div id="credit-card">
-          <img src="credit-card.png" alt="Credit Card" style="width: 50px; height: auto;">
-          </div>
-
-    <!-- Search bar -->
-    <div class="search-container">
-        <input type="text" id="search" placeholder="ابحث عن لقب">
-        <button onclick="searchPerson('kyoto')">بحث</button>
+    <div class="id-card-container">
+        <div class="id-card">
+            <div class="id-photo">
+                <img src="default-photo.png" alt="ID Photo" />
+            </div>
+            <div class="id-details">
+                <input type="text" id="search" placeholder="ادخل اللقب" />
+                <button onclick="searchPerson()">بحث</button>
+            </div>
+        </div>
     </div>
-    <div id="result"></div>
+    <div id="result" class="result"></div>    
 
     <!-- City content -->
     <div class="container">
