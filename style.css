@@ -634,14 +634,14 @@ body {
 }
 
 /* Footer */
-.footer {
-    background-color: var(--secondary-color);
+footer {
+    background-color: #333;
+    color: white;
     text-align: center;
-    padding: 20px;
-    font-size: 1rem;
-    color: var(--accent-color);
-    border-top: 2px solid var(--border-color);
-    margin-top: auto; /* Ensures the footer stays at the bottom */
+    padding: 10px;
+    position: relative;
+    width: 100%;
+    margin-top: auto;  /* Pushes footer to the bottom of the page */
 }
 
 /* Logo Container Styling */
