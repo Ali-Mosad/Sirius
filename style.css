@@ -679,3 +679,50 @@ body {
         text-shadow: 0 0 15px var(--primary-color), 0 0 20px var(--primary-color);
     }
 }
+/* Logo Link Styling */
+.logo-link {
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Ensure the link wraps both image and text */
+}
+
+/* Add hover effect for logo link */
+.logo-link:hover .logo-text {
+    color: var(--secondary-color); /* Change text color on hover */
+    text-shadow: 0 0 10px var(--secondary-color); /* Enhanced glow effect */
+}
+
+.logo-link:hover .logo-image {
+    transform: scale(1.1); /* Slight zoom-in effect on hover */
+    transition: transform 0.3s ease;
+}
+
+/* Apply background image */
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-light);
+    color: var(--accent-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image: url('background.jpg'); /* Replace with your image URL */
+    background-size: cover; /* Ensures the image covers the whole viewport */
+    background-position: center center; /* Centers the image */
+    background-attachment: fixed; /* Makes the background fixed during scrolling */
+}
+
+/* Optional: Apply a slight overlay to darken the background */
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Darkens the background */
+    z-index: -1; /* Puts the overlay behind the content */
+}
+
+/* Ensuring main content is visible above the background */
+.main-content {
+    position: relative; /* Ensure this sits on top of the background */
+    z-index: 1;
+}
