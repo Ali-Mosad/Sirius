@@ -613,37 +613,6 @@ body {
     box-sizing: border-box;
 }
 
-/* Body setup for Flexbox Layout */
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Ensures body spans the full height of the viewport */
-    font-family: var(--font-family);
-    background-color: var(--background-light);
-    color: var(--accent-color);
-}
-
-/* Main Content Area */
-.main-content {
-    flex: 1; /* Fills remaining space, pushing the footer down */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 20px;
-}
-
-/* Footer */
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: relative;
-    width: 100%;
-    margin-top: auto;  /* Pushes footer to the bottom of the page */
-}
-
 /* Logo Container Styling */
 .logo-container {
     display: flex;
