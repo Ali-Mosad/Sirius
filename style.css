@@ -726,19 +726,32 @@ body::after {
     position: relative; /* Ensure this sits on top of the background */
     z-index: 1;
 }
+/* Reset default body and html styles */
 html, body {
     height: 100%;
     margin: 0;
 }
 
-/* Flexbox layout for the body to arrange content vertically */
+/* Apply Flexbox layout to the entire body */
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /* Ensure the body takes up at least the full height of the viewport */
 }
 
-/* Main content container should expand to take available space */
+/* This is your main content container; it should grow to fill available space */
 .container {
-    flex: 1;
+    flex: 1; /* Ensures this content area takes up available space */
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    position: relative;
+    margin-top: auto;  /* Pushes footer to the bottom of the page */
+    bottom: 0;  /* Ensures footer stays at the bottom */
 }
