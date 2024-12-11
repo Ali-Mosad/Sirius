@@ -695,22 +695,23 @@ body::after {
     position: relative; /* Ensure this sits on top of the background */
     z-index: 1;
 }
-/* Reset default body and html styles */
+
+/* Ensure the entire page takes the full viewport height */
 html, body {
     height: 100%;
     margin: 0;
-}
-
-/* Apply Flexbox layout to the entire body */
-body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensure the body takes up at least the full height of the viewport */
 }
 
-/* This is your main content container; it should grow to fill available space */
+/* The body takes up the full height and arranges its content in a column */
+body {
+    flex: 1;
+}
+
+/* The main content area should take all available space */
 .container {
-    flex: 1; /* Ensures this content area takes up available space */
+    flex-grow: 1; /* This makes the container fill the available space */
 }
 
 /* Footer styles */
@@ -721,6 +722,5 @@ footer {
     padding: 10px;
     width: 100%;
     position: relative;
-    margin-top: auto;  /* Pushes footer to the bottom of the page */
-    bottom: 0;  /* Ensures footer stays at the bottom */
+    margin-top: auto; /* Forces footer to stick at the bottom */
 }
