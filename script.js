@@ -65,7 +65,7 @@ function searchPerson() {
                     <p><strong>اللقب:</strong> ${query}</p>
                     <p><strong>الرتبة:</strong> ${details.rank}</p>
                     <p><strong>الرصيد:</strong> ${details.balance}</p>
-                    <p><strong>السلعة:</strong> ${details.item}</p>
+                    <p><strong>الانذار:</strong> ${details.item}</p>
                 </div>
             </div>
         `;
