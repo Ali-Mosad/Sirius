@@ -43,7 +43,7 @@ function displayCityName() {
 function searchPerson() {
     const query = document.getElementById("search").value.trim();
     const resultDiv = document.getElementById("result");
-    const city = getCityFromURL(); // Get city from URL query
+    const city = getCityFromURL(); // Function to get city from URL query
     const data = cityData[city];
 
     if (!resultDiv) {
@@ -51,26 +51,35 @@ function searchPerson() {
         return;
     }
 
-    // Clear previous results and remove the animation class
-    resultDiv.innerHTML = "";
-    resultDiv.classList.remove("show");
+    // Clear previous results and remove the animation class before applying the new one
+    resultDiv.classList.remove('show');
 
     if (data && data[query]) {
         const details = data[query];
         resultDiv.innerHTML = `
-            <p><strong>اللقب:</strong> ${query}</p>
-            <p><strong>الرتبة:</strong> ${details.rank}</p>
-            <p><strong>الرصيد:</strong> ${details.balance}</p>
-            <p><strong>السلعة:</strong> ${details.item}</p>
+            <div class="id-card">
+                <div class="id-photo">
+                    <img src="default-photo.png" alt="Photo">
+                </div>
+                <div class="id-details">
+                    <p><strong>اللقب:</strong> ${query}</p>
+                    <p><strong>الرتبة:</strong> ${details.rank}</p>
+                    <p><strong>الرصيد:</strong> ${details.balance}</p>
+                    <p><strong>السلعة:</strong> ${details.item}</p>
+                </div>
+            </div>
         `;
+        // Add the animation class after updating the content
+        setTimeout(() => {
+            resultDiv.classList.add('show');
+        }, 10);
     } else {
         resultDiv.innerHTML = "<p>لا توجد بيانات لهذا اللقب.</p>";
+        // Add the animation class after updating the content
+        setTimeout(() => {
+            resultDiv.classList.add('show');
+        }, 10);
     }
-
-    // Add the animation class after updating the content
-    setTimeout(() => {
-        resultDiv.classList.add("show");
-    }, 10); // Small delay to ensure animation applies correctly
 }
 
 /**
