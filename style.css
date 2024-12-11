@@ -680,3 +680,20 @@ body {
     }
 }
 
+/* Logo Link Styling */
+.logo-link {
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Ensure the link wraps both image and text */
+}
+
+/* Add hover effect for logo link */
+.logo-link:hover .logo-text {
+    color: var(--secondary-color); /* Change text color on hover */
+    text-shadow: 0 0 10px var(--secondary-color); /* Enhanced glow effect */
+}
+
+.logo-link:hover .logo-image {
+    transform: scale(1.1); /* Slight zoom-in effect on hover */
+    transition: transform 0.3s ease;
+}
+
