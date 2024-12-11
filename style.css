@@ -1,26 +1,10 @@
-/* General Reset */
-* {
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f4;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --primary-color: #60b3f7e1;
-    --secondary-color: #222;
-    --accent-color: #fff;
-    --hover-color: #86c2f3;
-    --font-family: 'Poppins', sans-serif;
-    --background-light: #1a1a1a;
-    --border-color: #333;
-}
-
-body {
-    font-family: var(--font-family);
-    background-color: var(--background-light);
-    color: var(--accent-color);
-    line-height: 1.6;
-    overflow-x: hidden;
+    color: #333;
 }
 
 /* Top Bar */
@@ -28,725 +12,113 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--secondary-color);
     padding: 10px 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    background: #004aad;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.top-bar .logo a {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.top-bar .menu-button {
-    display: none;
-    font-size: 1.5rem;
-    color: var(--accent-color);
-    cursor: pointer;
-}
-
-.top-bar .menu {
+/* Clickable Logo */
+.logo-link {
     display: flex;
-    gap: 20px;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
 }
 
-.top-bar .menu a {
-    color: var(--accent-color);
-    text-decoration: none;
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.logo-text {
+    font-size: 1.5rem;
     font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+/* Hover Effects */
+.logo-link:hover .logo-text {
+    color: #ffcc00;
     transition: color 0.3s ease;
 }
 
-.top-bar .menu a:hover {
-    color: var(--primary-color);
-}
-
-.welcome-message {
+/* Navigation Links */
+.menu {
     display: flex;
-    justify-content: center; /* Centers the frame horizontally */
-    align-items: center; /* Centers the frame vertically */
-    margin: 30px 0; /* Adjust top and bottom margin as needed */
+    gap: 15px;
 }
 
-.welcome-message .japanese-frame {
-    border: 2px solid var(--primary-color); /* Thin border with primary color */
-    border-radius: 12px; /* Rounded corners */
-    padding: 20px;
-    background: rgba(34, 34, 34, 0.8); /* Semi-transparent background */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease-in-out;
-}
-
-.welcome-message .japanese-text {
-    font-size: 2rem;
+.menu a {
+    text-decoration: none;
+    color: #fff;
     font-weight: bold;
-    color: var(--primary-color);
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Text shadow for a glowing effect */
 }
 
-/* Hover effect */
-.welcome-message .japanese-frame:hover {
-    transform: translateY(-5px); /* Slight lift effect */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Darker and larger shadow */
+.menu a:hover {
+    color: #ffcc00;
 }
 
-/* Container for Cities */
+/* Welcome Message */
+.welcome-message {
+    text-align: center;
+    padding: 20px;
+    background: #004aad;
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* City Cards */
 .container {
     display: flex;
     justify-content: center;
     gap: 20px;
-    flex-wrap: wrap;
-    padding: 20px;
+    margin: 20px;
 }
 
 .city-card {
-    background-color: var(--secondary-color);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    overflow: hidden;
-    width: 250px;
     text-align: center;
-    cursor: pointer;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.city-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-.city-card .image-frame {
-    height: 150px;
-    background-color: var(--background-light);
-    overflow: hidden;
+    cursor: pointer;
 }
 
 .city-card img {
-    width: 70%;
-    height: auto;
-    transition: transform 0.3s ease;
-}
-
-.city-card:hover img {
-    transform: scale(1.1);
-}
-
-.city-card-title {
-    padding: 10px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: var(--accent-color);
-}
-
-/* Footer */
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Ensures the body spans the full height of the viewport */
-}
-
-.container {
-    flex: 1; /* Pushes the footer to the bottom */
-}
-
-.footer {
-    background-color: var(--secondary-color);
-    text-align: center;
-    padding: 20px;
-    font-size: 1rem;
-    color: var(--accent-color);
-    border-top: 2px solid var(--border-color);
-    margin-top: auto; /* Ensures the footer stays at the bottom */
-}
-
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .top-bar .menu {
-        display: none;
-    }
-
-    .top-bar .menu-button {
-        display: block;
-    }
-
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-/* Default menu state (hidden on small screens) */
-.menu {
-    display: none;
-    flex-direction: column;
-    background-color: var(--primary-color);
-    padding: 10px;
-    position: absolute;
-    top: 60px; /* Adjust to match your top bar height */
-    right: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-}
-
-/* Style for the menu button */
-.top-bar .menu-button {
-    display: block;
-    font-size: 2rem;
-    color: var(--accent-color);
-    cursor: pointer;
-    background: none;
-    border: none;
-    outline: none;
-    transition: transform 0.3s ease-in-out;
-}
-
-.top-bar .menu-button:hover {
-    transform: rotate(90deg); /* Rotate effect when hovered */
-}
-
-.menu {
-    display: none;
-    flex-direction: column;
-    background-color: var(--primary-color);
-    padding: 10px;
-    position: absolute;
-    top: 60px; /* Adjust based on your top bar height */
-    right: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-}
-
-.menu.menu-open {
-    display: flex;
-}
-
-.menu a {
-    padding: 10px;
-    text-decoration: none;
-    color: var(--accent-color);
-    font-weight: bold;
-    border-bottom: 1px solid var(--border-color);
-    transition: background-color 0.3s ease-in-out;
-}
-
-.menu a:last-child {
-    border-bottom: none;
-}
-
-.menu a:hover {
-    background-color: var(--hover-color);
-}
-
-/* Mobile-specific menu button */
-@media (max-width: 768px) {
-    .menu {
-        top: 50px; /* Adjust based on the top bar's height */
-        right: 0;
-    }
-}
-
-.search-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.search-container input {
-    padding: 10px;
-    width: 300px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-size: 1rem;
-    background-color: #e9eff5; /* Darker input background */
-    color: #ecf0f1; /* Light text color */
-}
-
-.search-container input::placeholder {
-    color: #95a5a6; /* Placeholder text color */
-}
-
-.search-container button {
-    padding: 10px 15px;
-    margin-left: 5px;
-    border: none;
-    background-color: #1974eb; /* Accent color */
-    color: #ecf0f1;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.search-container button:hover {
-    background-color: #f1c40f; /* Hover effect */
-}
-
-/* Styling for the result container */
-#result {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    visibility: hidden; /* Hidden by default */
-    margin-top: 20px;
-    padding: 20px;
-    background-color: var(--background-light);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    text-align: center;
-}
-
-/* Make the result container visible with animation */
-#result.show {
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible; /* Make it visible when the class is added */
-}
-
-/* Additional styling for the frame */
-.japanese-frame {
-    border: 4px solid var(--border-color);
-    padding: 20px;
-    display: inline-block;
-    background-color: var(--secondary-color);
-    border-radius: 15px; /* Rounded corners */
-    margin: 0 auto; /* Center the frame */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* ID Card Container */
-.id-card-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-/* ID Card Design */
-.id-card {
-    display: flex;
-    align-items: center;
-    background-color: var(--secondary-color);
-    border: 2px solid var(--border-color);
-    border-radius: 10px;
-    padding: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    width: 350px;
-    max-width: 90%;
-}
-
-/* ID Photo */
-.id-photo {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-}
-
-.id-photo img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 2px solid var(--primary-color);
-}
-
-/* ID Details */
-.id-details {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 0 10px;
-}
-
-.id-details input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid var(--border-color);
-    background-color: #e9eff5; /* Adjust background for input */
-    color: #222;
-    font-size: 1rem;
-    font-family: var(--font-family);
-}
-
-.id-details input::placeholder {
-    color: #777;
-}
-
-.id-details button {
-    align-self: flex-end;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--primary-color);
-    color: var(--accent-color);
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.id-details button:hover {
-    background-color: var(--hover-color);
-}
-
-/* Animations for Smooth Effects */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideInLeft {
-    from {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes glow {
-    0%, 100% {
-        box-shadow: 0 0 5px var(--primary-color);
-    }
-    50% {
-        box-shadow: 0 0 15px var(--primary-color);
-    }
-}
-
-/* Adjustments for Welcome Message */
-.welcome-message {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 40px 0;
-    animation: fadeIn 1s ease forwards;
-}
-
-.japanese-frame {
-    border: 2px solid var(--primary-color);
-    border-radius: 12px;
-    padding: 20px;
-    background: rgba(34, 34, 34, 0.8);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    animation: glow 2s infinite ease-in-out;
-}
-
-.japanese-text {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* ID Card Styling and Animation */
-.id-card-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-    animation: fadeIn 1.5s ease forwards;
-}
-
-.id-card {
-    display: flex;
-    align-items: center;
-    background-color: var(--secondary-color);
-    border: 2px solid var(--border-color);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    width: 350px;
-    max-width: 90%;
-    animation: slideInLeft 1s ease forwards;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.id-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-}
-
-.id-photo img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 2px solid var(--primary-color);
-}
-
-/* Input Enhancements */
-.id-details input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid var(--border-color);
-    background-color: #e9eff5;
-    color: #333;
-    font-size: 1rem;
-}
-
-.id-details input:focus {
-    border-color: var(--primary-color);
-    outline: none;
-}
-
-/* Button Hover Effects */
-.id-details button:hover,
-.search-container button:hover {
-    background-color: #f1c40f;
-    color: var(--secondary-color);
-}
-
-/* Animated Search Results */
-#result {
-    opacity: 0;
-    transform: translateY(20px);
-    visibility: hidden;
-    animation: fadeIn 0.8s ease forwards;
-    animation-delay: 0.5s;
-    margin-top: 20px;
-    padding: 20px;
-    background-color: var(--background-light);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    text-align: center;
-}
-
-@font-face {
-    font-family: 'Zumurud';
-    src: url('Zumurud.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-body {
-    font-family: 'Zumurud', sans-serif; /* Apply the custom font */
-}
-
-h1, h2, h3 {
-    font-family: 'Zumurud', sans-serif;
-}
-
-body {
-    font-size: 16px; /* Default font size */
-}
-
-@media (max-width: 768px) {
-    body {
-        font-size: 20px; /* Smaller font size for smaller screens */
-    }
-}
-
-/* Modern ID Card Styles */
-.id-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: linear-gradient(135deg, #2b2b2b, #1a1a1a);
-    border: 2px solid var(--primary-color);
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-    max-width: 500px;
-    margin: 20px auto;
-    color: var(--accent-color);
-    font-family: var(--font-family);
-}
-
-/* Profile Photo Section */
-.id-photo {
-    flex-shrink: 0;
-    text-align: center;
-}
-
-.id-photo img {
     width: 100px;
     height: 100px;
-    border-radius: 50%;
-    border: 3px solid var(--primary-color);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    object-fit: cover;
+    border-radius: 10px;
 }
 
-/* ID Details Section */
-.id-details {
-    flex-grow: 1;
-    padding-left: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.city-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.id-details p {
-    margin: 0;
-    font-size: 1.2rem;
-}
-
-.id-details p strong {
-    color: var(--primary-color);
-}
-
-/* Add subtle hover effect */
-.id-card:hover {
-    transform: scale(1.03);
-    transition: transform 0.3s ease-in-out;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-}
-
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Body setup for Flexbox Layout */
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Ensures body spans the full height of the viewport */
-    font-family: var(--font-family);
-    background-color: var(--background-light);
-    color: var(--accent-color);
-}
-
-/* Main Content Area */
-.main-content {
-    flex: 1; /* Fills remaining space, pushing the footer down */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 20px;
+.city-card p {
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 /* Footer */
 .footer {
-    background-color: var(--secondary-color);
     text-align: center;
-    padding: 20px;
-    font-size: 1rem;
-    color: var(--accent-color);
-    border-top: 2px solid var(--border-color);
-    margin-top: auto; /* Ensures the footer stays at the bottom */
+    padding: 15px;
+    background: #333;
+    color: #fff;
+    font-size: 0.9rem;
 }
-
-/* Logo Container Styling */
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Adds spacing between the image and the text */
-    padding: 10px;
-}
-
-/* Logo Image */
-.logo-image {
-    width: 50px; /* Adjust the size as needed */
-    height: 50px;
-    border-radius: 50%; /* Makes the image circular */
-    border: 2px solid var(--primary-color); /* Adds a border in the primary color */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for the image */
-}
-
-/* Logo Text */
-.logo-text {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Glowing text effect */
-    animation: glow 2s infinite ease-in-out;
-}
-
-/* Glow animation for the text */
-@keyframes glow {
-    0%, 100% {
-        text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color);
-    }
-    50% {
-        text-shadow: 0 0 15px var(--primary-color), 0 0 20px var(--primary-color);
-    }
-}
-
-/* Logo Link Styling */
-.logo-link {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    justify-content: center;
-    margin: 10px;
-    transition: all 0.3s ease;
-}
-
-.logo-link:hover {
-    transform: translateY(-5px); /* Adds a hover lift effect */
-    transition: transform 0.3s ease;
-}
-
-/* Logo Container */
-.logo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-/* Logo Circle */
-.logo-circle {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: radial-gradient(circle, #ffffff, var(--primary-color));
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-}
-
-.logo-circle:hover {
-    transform: scale(1.1); /* Slight zoom on hover */
-}
-
-/* Logo Image */
-.logo-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Logo Text */
-.logo-text {
-    font-family: "Arial", sans-serif;
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    font-weight: bold;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    margin-top: 10px;
-}
-
-.logo-text:hover {
-    color: var(--secondary-color);
-    text-shadow: 0 0 15px var(--secondary-color);
-}
-
-/* Variables */
-:root {
-    --primary-color: #004aad; /* Main logo color */
-    --secondary-color: #ff8c00; /* Highlight color */
-}
-
