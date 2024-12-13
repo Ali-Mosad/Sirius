@@ -158,32 +158,23 @@ const app = firebase.initializeApp(firebaseConfig);
 const database = firebase.database(app);
 
 function addOrEditPerson() {
-    console.log("Button clicked");  // Debugging line to check if the function is called
+    console.log("Button clicked"); // Debugging line to check if function is called
 
     const nickname = document.getElementById("nickname").value.trim();
     const rank = document.getElementById("rank").value.trim();
     const balance = document.getElementById("balance").value.trim();
     const item = document.getElementById("item").value.trim();
 
-    // Log the form values to ensure they are captured correctly
-    console.log('Adding/Editing Person:', nickname, rank, balance, item);
+    console.log("Nickname: ", nickname);  // Check form values
 
     if (nickname && rank && balance && item) {
-        console.log("Attempting to save data to Firebase...");
+        // Here we simulate saving to the data and updating the UI
+        // For now, just log the data
+        cityData[getCityFromURL()][nickname] = { rank, balance, item };
+        console.log("Updated city data: ", cityData);
 
-        const dbRef = firebase.database().ref('titles/' + nickname); // Use nickname as key
-        dbRef.set({
-            rank: rank,
-            balance: balance,
-            item: item
-        }).then(() => {
-            console.log("Data saved successfully");
-            alert("تمت إضافة أو تعديل اللقب بنجاح!");
-            document.getElementById("editForm").reset();  // Reset the form after saving
-        }).catch(error => {
-            console.error("Error saving data: ", error);
-            alert("حدث خطأ أثناء حفظ البيانات.");
-        });
+        // Now update the UI by calling searchPerson or directly modifying the DOM
+        searchPerson();
     } else {
         alert("جميع الحقول مطلوبة.");
     }
