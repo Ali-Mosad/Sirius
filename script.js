@@ -37,84 +37,50 @@ function displayCityName() {
     }
 }
 
+/**
+ * Searches for a person in the city's data and displays their details.
+ */
 function searchPerson() {
     const query = document.getElementById("search").value.trim();
     const resultDiv = document.getElementById("result");
+    const city = getCityFromURL(); // Function to get city from URL query
+    const data = cityData[city];
 
     if (!resultDiv) {
         console.error("Result container not found in the DOM.");
         return;
     }
 
-    // Clear previous results
+    // Clear previous results and remove the animation class before applying the new one
     resultDiv.classList.remove('show');
-    
-    if (query) {
-        const dbRef = firebase.database().ref('titles/' + query);  // Search for the nickname
 
-        dbRef.once('value').then(snapshot => {
-            const data = snapshot.val();
-
-            if (data) {
-                resultDiv.innerHTML = `
-                    <div class="id-card">
-                        <div class="id-photo">
-                            <img src="default-photo.png" alt="Photo">
-                        </div>
-                        <div class="id-details">
-                            <p><strong>اللقب:</strong> ${query}</p>
-                            <p><strong>الرتبة:</strong> ${data.rank}</p>
-                            <p><strong>الرصيد:</strong> ${data.balance}</p>
-                            <p><strong>الانذار:</strong> ${data.item}</p>
-                        </div>
-                    </div>
-                `;
-                setTimeout(() => {
-                    resultDiv.classList.add('show');
-                }, 10);
-            } else {
-                resultDiv.innerHTML = "<p>لا توجد بيانات لهذا اللقب.</p>";
-                setTimeout(() => {
-                    resultDiv.classList.add('show');
-                }, 10);
-            }
-        }).catch(error => {
-            console.error("Error fetching data: ", error);
-        });
+    if (data && data[query]) {
+        const details = data[query];
+        resultDiv.innerHTML = `
+            <div class="id-card">
+                <div class="id-photo">
+                    <img src="default-photo.png" alt="Photo">
+                </div>
+                <div class="id-details">
+                    <p><strong>اللقب:</strong> ${query}</p>
+                    <p><strong>الرتبة:</strong> ${details.rank}</p>
+                    <p><strong>الرصيد:</strong> ${details.balance}</p>
+                    <p><strong>الانذار:</strong> ${details.item}</p>
+                </div>
+            </div>
+        `;
+        // Add the animation class after updating the content
+        setTimeout(() => {
+            resultDiv.classList.add('show');
+        }, 10);
+    } else {
+        resultDiv.innerHTML = "<p>لا توجد بيانات لهذا اللقب.</p>";
+        // Add the animation class after updating the content
+        setTimeout(() => {
+            resultDiv.classList.add('show');
+        }, 10);
     }
 }
-
-    // Function to display all titles from Firebase
-    function displayAllTitles() {
-        const dbRef = firebase.database().ref('titles');
-        
-        dbRef.once('value').then(snapshot => {
-            const data = snapshot.val();
-            const titlesList = document.getElementById('titlesList');
-            
-            if (data) {
-                titlesList.innerHTML = ''; // Clear existing titles
-                for (const nickname in data) {
-                    const titleData = data[nickname];
-                    titlesList.innerHTML += `
-                        <div class="title-item">
-                            <h3>${nickname}</h3>
-                            <p>الرتبة: ${titleData.rank}</p>
-                            <p>الرصيد: ${titleData.balance}</p>
-                            <p>الانذار: ${titleData.item}</p>
-                        </div>
-                    `;
-                }
-            } else {
-                titlesList.innerHTML = "<p>لا توجد ألقاب.</p>";
-            }
-        }).catch(error => {
-            console.error("Error fetching titles: ", error);
-        });
-    }
-
-    // Call this function on page load to display all titles
-    document.addEventListener('DOMContentLoaded', displayAllTitles);
 
 /**
  * Utility function to extract the city from the current URL.
@@ -139,48 +105,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Display city name when the page loads
     displayCityName();
-});
-
-import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set } from "firebase/database";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyD1IS98TdEYjWncrSKwbWWyLgCkPyjmWu4",
-    authDomain: "sirius-b68de.firebaseapp.com",
-    databaseURL: "https://sirius-b68de-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "sirius-b68de",
-    storageBucket: "sirius-b68de.firebasestorage.app",
-    messagingSenderId: "404062048289",
-    appId: "1:404062048289:web:c7f5749e785c1e9b571360"
-};
-
-const app = firebase.initializeApp(firebaseConfig);
-const database = firebase.database(app);
-
-function addOrEditPerson() {
-    console.log("Button clicked"); // Debugging line to check if function is called
-
-    const nickname = document.getElementById("nickname").value.trim();
-    const rank = document.getElementById("rank").value.trim();
-    const balance = document.getElementById("balance").value.trim();
-    const item = document.getElementById("item").value.trim();
-
-    console.log("Nickname: ", nickname);  // Check form values
-
-    if (nickname && rank && balance && item) {
-        // Here we simulate saving to the data and updating the UI
-        // For now, just log the data
-        cityData[getCityFromURL()][nickname] = { rank, balance, item };
-        console.log("Updated city data: ", cityData);
-
-        // Now update the UI by calling searchPerson or directly modifying the DOM
-        searchPerson();
-    } else {
-        alert("جميع الحقول مطلوبة.");
-    }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    const saveButton = document.querySelector('button[type="button"]');
-    saveButton.addEventListener("click", addOrEditPerson);
 });

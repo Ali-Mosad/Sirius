@@ -5,10 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>البنك - 𝑺𝒊𝒓𝒊𝒖𝒔</title>
-
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js"></script>
 </head>
 <body>
     <!-- Top navigation bar -->
@@ -42,29 +38,6 @@
         </div>
     </div>
     <div id="result" class="result"></div>    
-
-    <!-- Form to Add or Edit Titles -->
-    <div id="editSection" class="form-container">
-        <h2>إضافة أو تعديل لقب</h2>
-        <form id="editForm">
-            <label for="nickname">اللقب:</label>
-            <input type="text" id="nickname" placeholder="ادخل اللقب" required>
-            
-            <label for="rank">الرتبة:</label>
-            <input type="text" id="rank" placeholder="ادخل الرتبة" required>
-            
-            <label for="balance">الرصيد:</label>
-            <input type="number" id="balance" placeholder="ادخل الرصيد" required>
-            
-            <label for="item">الانذار:</label>
-            <input type="text" id="item" placeholder="ادخل الانذار" required>
-            
-            <button type="button" onclick="addOrEditPerson()">حفظ</button>
-        </form>
-    </div>
-
-    <!-- Section to Display All Titles -->
-    <div id="titlesList"></div>
 
     <!-- City content -->
     <div class="container">
