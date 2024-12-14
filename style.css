@@ -1819,3 +1819,58 @@ footer {
     text-shadow: 0 0 10px #5acaff;
 }
 
+/* Ensure the body and html cover the full viewport height */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+    background: radial-gradient(circle, #0b1124 40%, #001635 90%); /* Sirius cosmic gradient */
+    color: #d9f3ff; /* Soft glowing white-blue text */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Fix background cutting issue */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://source.unsplash.com/1600x900/?stars,space') center/cover no-repeat, 
+                radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+                radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+    z-index: -1;
+    animation: shimmer 20s linear infinite;
+}
+
+/* Ensure the footer is positioned correctly */
+footer {
+    background: rgba(11, 25, 48, 0.9); /* Sirius deep overlay */
+    color: #d9f3ff;
+    padding: 15px;
+    border-top: 1px solid #5acaff;
+    text-shadow: 0 0 10px #5acaff;
+    text-align: center;
+}
+
+/* Make sure the container spans the full height of the screen */
+.container {
+    min-height: calc(100vh - 100px); /* Adjust height to include space for header/footer */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Ensure footer sticks to the bottom if content is short */
+html, body, .container {
+    display: flex;
+    flex-direction: column;
+}
+.container {
+    flex: 1;
+}
+
