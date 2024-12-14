@@ -1902,17 +1902,6 @@ footer {
     margin-top: auto; /* Push footer to the bottom */
 }
 
-/* City card container (responsive adjustments) */
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px; /* Adds consistent spacing between cards */
-    width: 100%; /* Ensure it spans the full width */
-    padding: 10px; /* Add padding to prevent overflow */
-    box-sizing: border-box; /* Includes padding in width calculation */
-}
-
 /* City card styles */
 .city-card {
     background: rgba(0, 22, 53, 0.8); /* Semi-transparent Sirius theme */
