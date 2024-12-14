@@ -1750,3 +1750,104 @@ body::before {
     opacity: 0.2;
     pointer-events: none;
 }
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #6a5acd; /* Sirius-inspired purple */
+    --accent-color: #ffd700; /* Gold */
+    --background-color: #1c1b2d; /* Dark background */
+    --text-color: #ffffff; /* Light text */
+    --border-color: #412f7b; /* Glowing border */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+header {
+    background: var(--border-color);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header .menu a {
+    text-decoration: none;
+    color: var(--text-color);
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+header .menu a:hover,
+header .menu .active {
+    color: var(--accent-color);
+    text-shadow: 0 0 8px var(--accent-color);
+}
+
+/* Rules Page Layout */
+.rules-container {
+    max-width: 900px;
+    margin: 50px auto;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.rules-container h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+}
+
+.rules-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.rules-section h2 {
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    text-align: center;
+    text-shadow: 0 0 5px var(--accent-color);
+}
+
+.rules-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.rules-section li {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--border-color);
+    color: var(--text-color);
+}
