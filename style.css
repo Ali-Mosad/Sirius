@@ -1670,7 +1670,7 @@ body::before {
     z-index: -1; /* Send it behind all content */
 }
 
-/* Full-Screen Container */
+/* /* Full-Screen Container */
 .full-screen-container {
     display: flex;
     flex-direction: column;
@@ -1721,6 +1721,21 @@ body::before {
         opacity: 1;
     }
 }
+
+/* Adjust Scrollbar for Sirius Theme */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #5acaff, #1f4161);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #001021;
+}
+
 
 /* Adjust Scrollbar for Sirius Theme */
 ::-webkit-scrollbar {
