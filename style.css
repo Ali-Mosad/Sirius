@@ -1722,11 +1722,31 @@ button:hover {
 
 body {
     background: linear-gradient(135deg, #1d1d3b, #412f7b, #6e5c9d);
-    background-image: url('https://files.fm/u/ukfzex6hm7'), linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
-    background-size: cover, cover;
-    background-position: center, center;
-    background-attachment: fixed;
+    position: relative;
     min-height: 100vh;
     color: #f0f0f0;
     font-family: 'Helvetica', sans-serif;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.7));
+    pointer-events: none;
+    z-index: -1;
+}
+
+.starfield {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;base64,...') repeat;
+    opacity: 0.2;
+    pointer-events: none;
 }
