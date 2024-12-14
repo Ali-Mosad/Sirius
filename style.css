@@ -158,3 +158,83 @@ footer a {
 footer a:hover {
     color: #fff;
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Apply fade-in animation to specific sections */
+#hero {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+#about {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+#services {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+footer {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Hover effect for buttons */
+#hero .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Hover effect for service cards */
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Create the starry background */
+@keyframes stars {
+    0% { background-position: 0 0; }
+    100% { background-position: 10000px 10000px; }
+}
+
+body {
+    background: #0d0d1c; /* Default dark background */
+    background-image: url('stars.png'); /* Replace with a stars image or use a radial gradient */
+    background-size: cover;
+    animation: stars 20000s infinite linear;
+}
+
+/* Adding a subtle twinkle effect to the stars */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 1.5s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+/* Optional: To generate multiple stars */
+.star:nth-child(even) {
+    animation-delay: 1s;
+}
+.star:nth-child(odd) {
+    animation-delay: 0.5s;
+}
+
