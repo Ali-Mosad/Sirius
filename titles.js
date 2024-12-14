@@ -12,11 +12,11 @@ const defaultCityData = {
 };
 
 // Function to update display based on city data
-function updateDisplay(city = 'kyoto') {
+function updateDisplay(city = "kyoto") {
     const cityData = document.getElementById("cityData");
     cityData.innerHTML = ""; // Clear previous data
 
-    if (Object.keys(defaultCityData[city]).length === 0) {
+    if (!defaultCityData[city] || Object.keys(defaultCityData[city]).length === 0) {
         cityData.innerHTML = "<p>لا توجد ألقاب مضافة.</p>";
         return;
     }
@@ -36,26 +36,20 @@ function updateDisplay(city = 'kyoto') {
 }
 
 // Search functionality
-document.getElementById("searchButton").addEventListener("click", function() {
-    var searchQuery = document.getElementById("searchInput").value.toLowerCase();
-    var titles = document.querySelectorAll(".title");
+document.getElementById("searchButton").addEventListener("click", function () {
+    const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+    const titles = document.querySelectorAll(".title");
 
-    titles.forEach(function(title) {
-        var titleText = title.textContent.toLowerCase();
-        if (titleText.includes(searchQuery)) {
-            title.style.display = "block"; // Show matching titles
-        } else {
-            title.style.display = "none"; // Hide non-matching titles
-        }
+    titles.forEach((title) => {
+        const titleText = title.textContent.toLowerCase();
+        title.style.display = titleText.includes(searchQuery) ? "block" : "none";
     });
+});
+
+// Prevent form submission default behavior
+document.getElementById("searchForm").addEventListener("submit", function (event) {
+    event.preventDefault();
 });
 
 // Display titles on page load (initially for kyoto city)
 updateDisplay();
-
-// Optionally, add a listener to switch between cities, if needed:
-// Example for switching cities (not in the original code but helpful)
-document.getElementById("citySelector").addEventListener("change", function() {
-    const selectedCity = this.value;
-    updateDisplay(selectedCity);
-});
