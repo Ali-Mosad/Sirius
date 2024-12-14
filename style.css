@@ -1720,3 +1720,12 @@ button:hover {
   color: #6c757d;
 }
 
+body {
+    background: linear-gradient(to right, #0d1b2a, #1d2a45, #2f3b5d);
+    color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    background-size: cover;
+    background-position: center;
+}
+
+
