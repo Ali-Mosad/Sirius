@@ -1682,24 +1682,25 @@ html, body {
     position: relative;
   }
   
-/* General Reset */
-html, body {
+/* Apply the background to the body and ensure it covers the entire page */
+body {
     margin: 0;
     padding: 0;
-    height: 100%; /* Ensure it spans the full height */
-    font-family: 'Poppins', sans-serif; /* Modern and clean font */
+    background: url('your-background-image.jpg') no-repeat center center fixed; /* Use your image */
+    background-size: cover; /* Ensures the image scales to fill the screen */
+    min-height: 100vh; /* Ensures it starts at full screen height */
+    height: 100%; /* Fallback for compatibility */
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-/* Background with Sirius starry theme */
-body {
-    background: radial-gradient(circle at center, #0b1e39, #000000) fixed; /* Deep space gradient */
-    background-size: cover;
-    color: #ffffff; /* Text color for better contrast */
-    position: relative;
+/* Ensure the HTML element spans the full height of the page */
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-/* Add animated stars to the background */
+/* Optional: Add a translucent overlay for better readability */
 body::before {
     content: '';
     position: fixed;
@@ -1707,155 +1708,6 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('https://i.imgur.com/U7FlrVW.png') repeat; /* Starry pattern image */
-    animation: moveStars 30s linear infinite; /* Animate the stars */
-    z-index: -1;
-    opacity: 0.7; /* Slight transparency for depth effect */
+    background: rgba(0, 0, 0, 0.5); /* Adjust transparency */
+    z-index: -1; /* Send it behind all content */
 }
-
-/* Optional: Sirius Glow effect */
-body::after {
-    content: '';
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.8), transparent);
-    filter: blur(100px);
-    z-index: -1;
-}
-
-/* Navigation Bar */
-.top-bar {
-    background: rgba(11, 30, 57, 0.8); /* Semi-transparent bar */
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
-    padding: 10px 20px;
-    position: fixed;
-    width: 100%;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.top-bar .logo-link {
-    text-decoration: none;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-}
-
-.top-bar .logo-image {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.top-bar .logo-text {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #00d4ff; /* Sirius blue glow */
-    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
-}
-
-/* Menu Links */
-.menu a {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 1.1rem;
-    margin: 0 15px;
-    transition: color 0.3s ease;
-}
-
-.menu a:hover {
-    color: #00d4ff; /* Sirius blue hover effect */
-}
-
-/* Welcome Message */
-.welcome-message {
-    text-align: center;
-    margin-top: 100px;
-    color: #ffffff;
-    font-size: 2rem;
-    animation: fadeIn 2s ease-in-out;
-}
-
-.typing-text {
-    color: #00d4ff; /* Sirius glow */
-    font-family: 'Poppins', sans-serif;
-    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
-}
-
-/* Cards for Options */
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin: 20px auto;
-    padding: 20px;
-}
-
-.city-card {
-    width: 200px;
-    background: rgba(255, 255, 255, 0.1); /* Semi-transparent card background */
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.city-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.7);
-}
-
-.city-card img {
-    width: 100%;
-    border-bottom: 2px solid #00d4ff;
-}
-
-.city-card-title {
-    padding: 10px;
-    font-size: 1.2rem;
-    color: #ffffff;
-    text-shadow: 0 0 10px #00d4ff;
-}
-
-/* Footer */
-.footer {
-    background: rgba(11, 30, 57, 0.8);
-    color: #ffffff;
-    text-align: center;
-    padding: 20px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    box-shadow: 0px -4px 15px rgba(0, 0, 0, 0.5);
-}
-
-/* Animations */
-@keyframes moveStars {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 1000px 1000px;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-  
