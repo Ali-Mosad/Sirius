@@ -1280,28 +1280,6 @@ h2 {
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-/* Edit Button */
-.title-item .edit-button {
-    background-color: #57e3ff; /* Bright cyan */
-    box-shadow: 0px 0px 10px rgba(87, 227, 255, 0.7);
-}
-
-.title-item .edit-button:hover {
-    background-color: #46c5e3;
-    box-shadow: 0px 0px 15px rgba(87, 227, 255, 1);
-}
-
-/* Delete Button */
-.title-item .delete-button {
-    background-color: #ff5757; /* Bright red */
-    box-shadow: 0px 0px 10px rgba(255, 87, 87, 0.7);
-}
-
-.title-item .delete-button:hover {
-    background-color: #e34b4b;
-    box-shadow: 0px 0px 15px rgba(255, 87, 87, 1);
-}
-
 /* Form Styling */
 form#titleForm {
     max-width: 600px;
