@@ -1656,3 +1656,17 @@ button:hover {
         width: 90%;
     }
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: url('your-image-url.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+  
+  body {
+    min-height: 100%;
+    background-attachment: scroll; /* Use this if fixed causes problems */
+  }
+  
