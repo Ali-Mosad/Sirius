@@ -1,24 +1,21 @@
+/* Global Background */
 body {
     background: url('path/to/starry-background.gif') no-repeat center center fixed;
     background-size: cover;
+    font-family: 'Roboto', sans-serif; /* Default font */
     color: #fff;
-    font-family: 'Roboto', sans-serif;
-    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
-
-body {
-    font-family: 'Orbitron', sans-serif;
-    color: #ffffff;
+/* Make sure the header and footer are on top of the background */
+.top-bar, .footer {
+    position: relative;
+    z-index: 2;
 }
 
-/* Logo Style */
-.logo-container {
-    display: flex;
-    align-items: center;
-}
-
+/* Logo Image - Ensure it doesn't disturb layout */
 .logo-image {
     width: 40px;
     height: auto;
@@ -26,71 +23,15 @@ body {
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
 }
 
-/* Neon hover effect for the logo text */
-.logo-text {
-    font-size: 2rem;
+/* Typing Text for welcome message */
+.typing-text {
+    font-family: 'Orbitron', sans-serif;
     color: #fff;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+    font-size: 1.8rem;
+    text-shadow: 0px 0px 10px rgba(0, 255, 255, 0.8);
 }
 
-.logo-text:hover {
-    color: #00ffcc;
-    text-shadow: 0 0 20px rgba(0, 255, 255, 1);
-}
-
-/* Navigation hover effects */
-nav a {
-    font-size: 1.2rem;
-    color: #fff;
-    text-transform: uppercase;
-    margin: 0 20px;
-    text-shadow: 0 0 5px rgba(0, 255, 255, 0.6);
-}
-
-nav a:hover {
-    color: #00ffcc;
-    text-shadow: 0 0 15px rgba(0, 255, 255, 1);
-}
-
-.city-card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    margin: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.city-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
-}
-
-.city-card-title {
-    text-align: center;
-    padding: 10px;
-    font-size: 1.5rem;
-    color: #fff;
-    text-shadow: 0 0 5px rgba(0, 255, 255, 0.6);
-}
-
-/* Glowing Button Effect */
-button, .menu a {
-    border: 2px solid #00ffcc;
-    background-color: transparent;
-    color: #fff;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover, .menu a:hover {
-    background-color: #00ffcc;
-    color: #000;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
-}
-
+/* Footer styling */
 footer {
     background-color: #111;
     padding: 20px;
@@ -100,6 +41,45 @@ footer {
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
 }
 
-footer p {
-    margin: 0;
+/* Keep the original flex structure */
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
 }
+
+.city-card {
+    flex: 1;
+    margin: 10px;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.city-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+}
+
+.city-card-title p {
+    color: #fff;
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+/* Hover effects for navigation */
+nav a {
+    font-size: 1.2rem;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 0 20px;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.6);
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #00ffcc;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 1);
+}
+
