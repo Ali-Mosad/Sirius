@@ -29,7 +29,23 @@
         </nav>
     </header>
 
-    <!-- Admin-Only Section -->
+    <!-- Form for Adding Titles -->
+<section id="titleSection">
+    <h2>إضافة لقب</h2>
+    <form id="titleForm">
+        <label for="title">لقب (Title):</label>
+        <input type="text" id="title" name="title" required>
+        <button type="submit">إضافة</button>
+    </form>
+    <div id="message"></div>
+</section>
+
+<!-- Admin Access Button -->
+<div class="admin-access-container">
+    <button id="adminAccessButton" class="sirius-button">الوصول إلى الإدارة</button>
+</div>
+
+<!-- Admin-Only Section -->
 <section id="adminSection" style="display: none;">
     <div class="section-header">
         <h2>إدارة بيانات اللقب</h2>
