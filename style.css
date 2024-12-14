@@ -1,37 +1,109 @@
-/* Global Background */
+/* Global Styles */
 body {
+    font-family: 'Roboto', sans-serif;
     background: url('path/to/starry-background.gif') no-repeat center center fixed;
     background-size: cover;
-    font-family: 'Roboto', sans-serif; /* Default font */
-    color: #fff;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    color: #fff;
 }
 
-/* Make sure the header and footer are on top of the background */
-.top-bar, .footer {
+/* Top Bar */
+.top-bar {
     position: relative;
-    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    z-index: 10;
 }
 
-/* Logo Image - Ensure it doesn't disturb layout */
+.logo {
+    display: inline-block;
+}
+
 .logo-image {
     width: 40px;
-    height: auto;
+    height: 40px;
     border-radius: 50%;
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
 }
 
-/* Typing Text for welcome message */
+.logo-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+    margin-left: 10px;
+}
+
+.menu {
+    display: inline-block;
+    float: right;
+    text-align: center;
+}
+
+.menu a {
+    color: #fff;
+    text-transform: uppercase;
+    margin: 0 20px;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.6);
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.menu a:hover {
+    color: #00ffcc;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 1);
+}
+
+/* Welcome Section */
+.welcome-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    text-align: center;
+    font-size: 2rem;
+}
+
 .typing-text {
     font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
     color: #fff;
-    font-size: 1.8rem;
     text-shadow: 0px 0px 10px rgba(0, 255, 255, 0.8);
 }
 
-/* Footer styling */
+/* City Cards Container */
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.city-card {
+    flex: 1;
+    margin: 10px;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+.city-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.8);
+}
+
+.city-card-title p {
+    color: #fff;
+    font-size: 1.5rem;
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 10px;
+}
+
+/* Footer */
 footer {
     background-color: #111;
     padding: 20px;
@@ -41,41 +113,14 @@ footer {
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
 }
 
-/* Keep the original flex structure */
-.container {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-}
-
-.city-card {
-    flex: 1;
-    margin: 10px;
-    text-align: center;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
-
-.city-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
-}
-
-.city-card-title p {
-    color: #fff;
-    font-size: 1.5rem;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
-}
-
-/* Hover effects for navigation */
+/* Hover Effects on Navigation */
 nav a {
-    font-size: 1.2rem;
     color: #fff;
     text-transform: uppercase;
     margin: 0 20px;
+    font-size: 1.2rem;
     text-shadow: 0 0 5px rgba(0, 255, 255, 0.6);
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 nav a:hover {
@@ -83,3 +128,16 @@ nav a:hover {
     text-shadow: 0 0 15px rgba(0, 255, 255, 1);
 }
 
+/* Ensure images fit and load lazily */
+.lazy-load {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Responsiveness: Ensure cards stack on smaller screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
