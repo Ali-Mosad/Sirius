@@ -1912,22 +1912,47 @@ footer {
     margin-top: auto; /* Push footer to the bottom */
 }
 
-/* Optional card styling for bank, rules, and titles */
+/* City card container (responsive adjustments) */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Adds consistent spacing between cards */
+    width: 100%; /* Ensure it spans the full width */
+    padding: 10px; /* Add padding to prevent overflow */
+    box-sizing: border-box; /* Includes padding in width calculation */
+}
+
+/* City card styles */
 .city-card {
-    background: rgba(0, 22, 53, 0.8); /* Transparent space-like overlay */
+    background: rgba(0, 22, 53, 0.8); /* Semi-transparent Sirius theme */
     border: 2px solid #5acaff; /* Glowing border */
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 15px;
-    margin: 10px;
     text-align: center;
     color: #d9f3ff;
     box-shadow: 0 0 15px rgba(90, 202, 255, 0.6);
+    width: 100%; /* Full width on smaller screens */
+    max-width: 300px; /* Limit the width for consistency */
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
+/* Hover effect */
 .city-card:hover {
     transform: scale(1.05);
     box-shadow: 0 0 25px rgba(90, 202, 255, 1);
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    .city-card {
+        width: calc(100% - 20px); /* Slightly smaller than the full width to avoid edge clipping */
+        margin: 0 auto; /* Center the cards on mobile */
+    }
 }
 
 
