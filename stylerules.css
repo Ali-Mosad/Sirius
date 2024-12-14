@@ -1,55 +1,16 @@
-/* Scoped Rules Page Styles */
+/* Rules Page Specific Styles */
 #rules-page {
     font-family: 'Poppins', sans-serif;
-    background: #1c1b2d; /* Dark Sirius-themed background */
-    color: #ffffff;
+    background: rgba(28, 27, 45, 0.9); /* Dark background */
+    color: #ffffff; /* Light text */
     padding: 20px;
-    line-height: 1.6;
 }
 
-header.top-bar {
-    background: #2e2b5f;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-}
-
-header .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-header .menu a {
-    color: #ffffff;
-    text-decoration: none;
-    margin: 0 15px;
-    transition: color 0.3s ease;
-}
-
-header .menu a:hover,
-header .menu a.active {
-    color: #ffd700; /* Gold accent for hover and active links */
-    text-shadow: 0 0 8px #ffd700;
-}
-
-main {
-    max-width: 1000px;
-    margin: 50px auto;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.8); /* Semi-transparent container */
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-}
-
-main h1 {
+#rules-page h1 {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 30px;
-    color: #ffd700;
-    text-shadow: 0 0 10px #ffd700;
+    margin-bottom: 20px;
+    color: #ffd700; /* Gold */
 }
 
 .rules-section {
@@ -57,44 +18,32 @@ main h1 {
     padding: 20px;
     border: 2px solid #6a5acd; /* Sirius purple border */
     border-radius: 10px;
-    background: rgba(50, 50, 80, 0.9);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent */
 }
 
 .rules-section h2 {
-    font-size: 1.8rem;
     margin-bottom: 15px;
+    font-size: 1.8rem;
+    color: #ffd700; /* Gold */
     text-align: center;
-    color: #ffd700;
-    text-shadow: 0 0 8px #ffd700;
+    text-shadow: 0 0 5px #ffd700; /* Glowing effect */
 }
 
 .rules-section ul {
     list-style: none;
-    padding: 0;
+    padding-left: 0;
 }
 
 .rules-section li {
     margin: 10px 0;
-    font-size: 1.2rem;
-    color: #ffffff;
-    padding-left: 15px;
-    position: relative;
-}
-
-.rules-section li::before {
-    content: '★';
-    position: absolute;
-    left: 0;
-    color: #6a5acd; /* Purple icon */
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
 }
 
 footer#rules-footer {
     text-align: center;
-    background: #2e2b5f;
-    color: #ffffff;
     padding: 20px;
+    background: rgba(42, 40, 60, 1); /* Slightly lighter footer */
+    color: #ffffff;
     border-top: 2px solid #6a5acd;
-    font-size: 1rem;
 }
