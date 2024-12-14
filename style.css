@@ -1721,9 +1721,12 @@ button:hover {
 }
 
 body {
-    background: linear-gradient(to right, #0d1b2a, #1d2a45, #2f3b5d);
-    color: #f4f4f4;
-    font-family: 'Arial', sans-serif;
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(135deg, #1d1d3b, #412f7b, #6e5c9d);
+    background-image: url('https://files.fm/u/ukfzex6hm7'), linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+    background-size: cover, cover;
+    background-position: center, center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: #f0f0f0;
+    font-family: 'Helvetica', sans-serif;
 }
