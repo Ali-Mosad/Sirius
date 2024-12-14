@@ -1874,34 +1874,6 @@ html, body, .container {
     flex: 1;
 }
 
-/* Apply a consistent full-page background */
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to bottom, #0b1124, #001635); /* Sirius cosmic gradient */
-    background-attachment: fixed; /* Ensure the background stays in place */
-    color: #d9f3ff; /* Soft glowing white-blue text */
-    overflow-x: hidden;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-
-
-/* Footer positioned at the bottom */
-footer {
-    background: rgba(11, 25, 48, 0.9); /* Sirius deep overlay */
-    color: #d9f3ff;
-    padding: 15px;
-    border-top: 1px solid #5acaff;
-    text-shadow: 0 0 10px #5acaff;
-    text-align: center;
-    width: 100%;
-    margin-top: auto; /* Push footer to the bottom */
-}
-
 /* City card styles */
 .city-card {
     background: rgba(0, 22, 53, 0.8); /* Semi-transparent Sirius theme */
