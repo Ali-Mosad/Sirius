@@ -679,11 +679,6 @@ html, body {
     flex-direction: column;
 }
 
-/* The body takes up the full height and arranges its content in a column */
-body {
-    flex: 1;
-}
-
 /* The main content area should take all available space */
 .container {
     flex-grow: 1; /* This makes the container fill the available space */
@@ -698,18 +693,6 @@ footer {
     width: 100%;
     position: relative;
     margin-top: auto; /* Forces footer to stick at the bottom */
-}
-
-/* Add/Edit Section Container */
-.form-container {
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 20px 30px;
-    text-align: right; /* Align text for Arabic */
-    direction: rtl; /* Set direction for Arabic */
 }
 
 /* Section Title */
