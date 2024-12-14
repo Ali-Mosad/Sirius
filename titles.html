@@ -1,6 +1,5 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="ar">
-
 <head>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
@@ -10,9 +9,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 </head>
-
 <body>
-
     <!-- Top Navigation Bar -->
     <header class="top-bar">
         <div class="logo">
@@ -37,17 +34,21 @@
         <h2>البحث عن لقب</h2>
         <form id="searchForm">
             <label for="search">ابحث عن لقب:</label>
-            <input type="text" id="searchInput" name="search" required>
-            <button type="submit" id="searchButton">بحث</button>
+            <input type="text" id="search" name="search" required>
+            <button type="submit">بحث</button>
         </form>
         <div id="searchResult"></div>
     </section>
 
     <!-- Container for displaying titles -->
-    <section id="titlesContainer"></section>
+<section id="titlesContainer"></section>
+
+    <!-- Kyoto Data -->
+    <section id="kyotoData"></section>
+
+<div id="cityData"></div>
 
     <!-- JavaScript -->
     <script src="titles.js"></script>
 </body>
-
 </html>
