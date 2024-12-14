@@ -82,6 +82,31 @@ titleForm.addEventListener("submit", (e) => {
     }
 });
 
+// Handle edit button click
+function handleEdit(event) {
+    const title = event.target.getAttribute("data-title");
+    const data = cityData.kyoto[title];
+
+    if (data) {
+        document.getElementById("title").value = title;
+        document.getElementById("rank").value = data.rank;
+        document.getElementById("balance").value = data.balance;
+        document.getElementById("item").value = data.item;
+    }
+}
+
+// Handle delete button click
+function handleDelete(event) {
+    const title = event.target.getAttribute("data-title");
+
+    if (title && cityData.kyoto[title]) {
+        delete cityData.kyoto[title];
+        showMessage("تم حذف اللقب بنجاح!", "success");
+        saveCityData();
+        updateDisplay();
+    }
+}
+
 // Show message
 function showMessage(text, type) {
     message.textContent = text;
