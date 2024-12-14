@@ -1,49 +1,103 @@
-/* Rules Page Specific Styles */
+/* Scoped Rules Page Styles */
 #rules-page {
     font-family: 'Poppins', sans-serif;
-    background: rgba(28, 27, 45, 0.9); /* Dark background */
-    color: #ffffff; /* Light text */
+    background: #1c1b2d; /* Dark cosmic background */
+    color: #ffffff;
     padding: 20px;
+    line-height: 1.8;
 }
 
-#rules-page h1 {
+header.top-bar {
+    background: #2e2b5f; /* Dark blue Sirius header */
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+header .menu a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+header .menu a:hover,
+header .menu a.active {
+    color: #ffd700; /* Gold accent */
+    text-shadow: 0 0 8px #ffd700;
+}
+
+.rules-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent cosmic background */
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.intro-section {
     text-align: center;
+    margin-bottom: 30px;
+}
+
+.intro-section h1 {
     font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #ffd700; /* Gold */
+    margin-bottom: 10px;
+    color: #ffd700;
+    text-shadow: 0 0 8px #ffd700;
+}
+
+.intro-section p {
+    font-size: 1.2rem;
+    color: #ccc;
 }
 
 .rules-section {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     padding: 20px;
     border: 2px solid #6a5acd; /* Sirius purple border */
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.6); /* Semi-transparent */
+    background: rgba(50, 50, 80, 0.9);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .rules-section h2 {
-    margin-bottom: 15px;
     font-size: 1.8rem;
-    color: #ffd700; /* Gold */
+    margin-bottom: 15px;
     text-align: center;
-    text-shadow: 0 0 5px #ffd700; /* Glowing effect */
+    color: #ffd700; /* Gold for headings */
+    text-shadow: 0 0 8px #ffd700;
 }
 
-.rules-section ul {
+.rules-list {
     list-style: none;
-    padding-left: 0;
+    padding: 0;
 }
 
-.rules-section li {
+.rules-list li {
     margin: 10px 0;
-    font-size: 1.1rem;
-    line-height: 1.5;
+    font-size: 1.2rem;
+    color: #ffffff;
+    padding-left: 20px;
+    position: relative;
+}
+
+.rules-list li::before {
+    content: '★';
+    position: absolute;
+    left: 0;
+    color: #6a5acd; /* Purple icon */
+    font-size: 1.2rem;
 }
 
 footer#rules-footer {
     text-align: center;
     padding: 20px;
-    background: rgba(42, 40, 60, 1); /* Slightly lighter footer */
+    background: #2e2b5f;
     color: #ffffff;
+    font-size: 1rem;
     border-top: 2px solid #6a5acd;
 }
