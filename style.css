@@ -1888,17 +1888,7 @@ html, body {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-}
 
-/* Main content container */
-.container {
-    flex: 1; /* Allow the container to fill available space */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 20px;
-}
 
 /* Footer positioned at the bottom */
 footer {
