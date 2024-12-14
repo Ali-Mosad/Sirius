@@ -1874,3 +1874,60 @@ html, body, .container {
     flex: 1;
 }
 
+/* Apply a consistent full-page background */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #0b1124, #001635); /* Sirius cosmic gradient */
+    background-attachment: fixed; /* Ensure the background stays in place */
+    color: #d9f3ff; /* Soft glowing white-blue text */
+    overflow-x: hidden;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content container */
+.container {
+    flex: 1; /* Allow the container to fill available space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+/* Footer positioned at the bottom */
+footer {
+    background: rgba(11, 25, 48, 0.9); /* Sirius deep overlay */
+    color: #d9f3ff;
+    padding: 15px;
+    border-top: 1px solid #5acaff;
+    text-shadow: 0 0 10px #5acaff;
+    text-align: center;
+    width: 100%;
+    margin-top: auto; /* Push footer to the bottom */
+}
+
+/* Optional card styling for bank, rules, and titles */
+.city-card {
+    background: rgba(0, 22, 53, 0.8); /* Transparent space-like overlay */
+    border: 2px solid #5acaff; /* Glowing border */
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    text-align: center;
+    color: #d9f3ff;
+    box-shadow: 0 0 15px rgba(90, 202, 255, 0.6);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.city-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(90, 202, 255, 1);
+}
+
+
