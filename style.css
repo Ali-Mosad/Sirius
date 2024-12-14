@@ -1,160 +1,105 @@
-/* General Styling */
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #0d0d1c; /* Dark cosmic background */
-    color: #f1f1f1; /* Light text for contrast */
+    background: url('path/to/starry-background.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
 }
 
-/* Header Styling */
-#header {
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    color: #ffffff;
+}
+
+/* Logo Style */
+.logo-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
-    background: #1f1f3d; /* Dark background */
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 999;
 }
 
-#header .logo h1 {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 36px;
-    color: #f9c20f; /* Neon yellow for a sci-fi vibe */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Glow effect */
+.logo-image {
+    width: 40px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
 }
 
-#header nav ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-}
-
-#header nav ul li a {
-    font-size: 16px;
-    font-weight: 600;
-    color: #f1f1f1;
-    text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: 1px;
-    transition: color 0.3s ease;
-}
-
-#header nav ul li a:hover {
-    color: #f9c20f; /* Neon hover effect */
-}
-
-/* Hero Section */
-#hero {
-    height: 100vh;
-    background: linear-gradient(135deg, #2d3a6e, #112b4f), url('your-space-image.jpg') no-repeat center center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-#hero h2 {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 48px;
+/* Neon hover effect for the logo text */
+.logo-text {
+    font-size: 2rem;
     color: #fff;
-    text-shadow: 0 0 10px #f9c20f;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
 }
 
-#hero p {
-    font-size: 20px;
-    color: #b0b0b0;
+.logo-text:hover {
+    color: #00ffcc;
+    text-shadow: 0 0 20px rgba(0, 255, 255, 1);
 }
 
-#hero .btn {
-    background: #f9c20f;
-    color: #111;
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-size: 18px;
+/* Navigation hover effects */
+nav a {
+    font-size: 1.2rem;
+    color: #fff;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    text-decoration: none;
-    margin-top: 20px;
-    transition: background 0.3s ease;
+    margin: 0 20px;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.6);
 }
 
-#hero .btn:hover {
-    background: #f1f1f1;
-    color: #333;
+nav a:hover {
+    color: #00ffcc;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 1);
 }
 
-/* About Section */
-#about {
-    background: #222d3d;
-    padding: 100px 50px;
-    text-align: center;
-}
-
-#about h2 {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 36px;
-    color: #f9c20f;
-    margin-bottom: 20px;
-}
-
-#about p {
-    font-size: 18px;
-    color: #b0b0b0;
-}
-
-/* Services Section */
-#services {
-    display: flex;
-    justify-content: space-around;
-    padding: 100px 50px;
-    background: #1e2a38;
-}
-
-.service-card {
-    background: #2d3a6e;
-    padding: 20px;
-    text-align: center;
+.city-card {
+    position: relative;
+    overflow: hidden;
     border-radius: 10px;
-    width: 25%;
+    margin: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+.city-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
 }
 
-.service-card h3 {
-    font-family: 'Press Start 2P', cursive;
-    color: #f9c20f;
-    font-size: 28px;
+.city-card-title {
+    text-align: center;
+    padding: 10px;
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.6);
 }
 
-.service-card p {
-    color: #b0b0b0;
-    font-size: 16px;
+/* Glowing Button Effect */
+button, .menu a {
+    border: 2px solid #00ffcc;
+    background-color: transparent;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* Footer Styling */
+button:hover, .menu a:hover {
+    background-color: #00ffcc;
+    color: #000;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+}
+
 footer {
-    background-color: #1f1f3d;
-    color: #b0b0b0;
+    background-color: #111;
     padding: 20px;
     text-align: center;
-    font-size: 14px;
+    color: #bbb;
+    font-size: 1rem;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
 }
 
-footer a {
-    color: #f9c20f;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-footer a:hover {
-    color: #fff;
+footer p {
+    margin: 0;
 }
