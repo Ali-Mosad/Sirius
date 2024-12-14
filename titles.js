@@ -11,18 +11,18 @@ const defaultCityData = {
     },
 };
 
-// Function to update display based on city data
-function updateDisplay(city = 'kyoto') {
+// Function to update the display of titles
+function updateDisplay() {
     const cityData = document.getElementById("cityData");
     cityData.innerHTML = ""; // Clear previous data
 
-    if (Object.keys(defaultCityData[city]).length === 0) {
+    if (Object.keys(defaultCityData.kyoto).length === 0) {
         cityData.innerHTML = "<p>لا توجد ألقاب مضافة.</p>";
         return;
     }
 
     // Loop through titles in the selected city and display them
-    for (const [title, info] of Object.entries(defaultCityData[city])) {
+    for (const [title, info] of Object.entries(defaultCityData.kyoto)) {
         const entry = document.createElement("div");
         entry.className = "title-item title"; // Add class 'title' for search filtering
         entry.innerHTML = `
@@ -50,12 +50,5 @@ document.getElementById("searchButton").addEventListener("click", function() {
     });
 });
 
-// Display titles on page load (initially for kyoto city)
+// Display titles on page load
 updateDisplay();
-
-// Optionally, add a listener to switch between cities, if needed:
-// Example for switching cities (not in the original code but helpful)
-document.getElementById("citySelector").addEventListener("change", function() {
-    const selectedCity = this.value;
-    updateDisplay(selectedCity);
-});
