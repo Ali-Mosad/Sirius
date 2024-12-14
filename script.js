@@ -211,20 +211,6 @@ document.getElementById("adminForm").addEventListener("submit", function (e) {
     }
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    var typedText = document.querySelector('.typing-text');
-    var text = typedText.textContent;
-    typedText.textContent = '';
-    var i = 0;
-    function typeWriter() {
-        if (i < text.length) {
-            typedText.textContent += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 100);
-        }
-    }
-    typeWriter();
-});
 
 
 
