@@ -1802,37 +1802,35 @@ header .menu .active {
     text-shadow: 0 0 8px var(--accent-color);
 }
 
-/* Rules Page Layout */
-.rules-container {
-    max-width: 900px;
-    margin: 50px auto;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+/* Rules Page Specific Styles */
+#rules-page {
+    font-family: 'Poppins', sans-serif;
+    background: rgba(28, 27, 45, 0.9); /* Dark background */
+    color: #ffffff; /* Light text */
+    padding: 20px;
 }
 
-.rules-container h1 {
+#rules-page h1 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: var(--accent-color);
+    color: #ffd700; /* Gold */
 }
 
 .rules-section {
     margin-bottom: 30px;
     padding: 20px;
-    border: 2px solid var(--border-color);
+    border: 2px solid #6a5acd; /* Sirius purple border */
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent */
 }
 
 .rules-section h2 {
     margin-bottom: 15px;
     font-size: 1.8rem;
-    color: var(--accent-color);
+    color: #ffd700; /* Gold */
     text-align: center;
-    text-shadow: 0 0 5px var(--accent-color);
+    text-shadow: 0 0 5px #ffd700; /* Glowing effect */
 }
 
 .rules-section ul {
@@ -1843,11 +1841,13 @@ header .menu .active {
 .rules-section li {
     margin: 10px 0;
     font-size: 1.1rem;
+    line-height: 1.5;
 }
 
-footer {
+footer#rules-footer {
     text-align: center;
     padding: 20px;
-    background: var(--border-color);
-    color: var(--text-color);
+    background: rgba(42, 40, 60, 1); /* Slightly lighter footer */
+    color: #ffffff;
+    border-top: 2px solid #6a5acd;
 }
