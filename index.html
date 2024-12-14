@@ -1,5 +1,6 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="ar">
+
 <head>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
@@ -7,11 +8,10 @@
     <title>𝑺𝒊𝒓𝒊𝒖𝒔</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <!-- Top navigation bar -->
     <div class="top-bar">
         <div class="logo">
-            <!-- Clickable logo with image and text -->
             <a href="index.html" class="logo-link">
                 <div class="logo-container">
                     <img src="cyrus-photo.jpg" alt="Cyrus" class="logo-image">
@@ -28,14 +28,12 @@
         </nav>
     </div>
 
-    <!-- Welcome message with a Japanese-styled frame -->
     <div class="welcome-message">
         <div class="japanese-frame">
             <p class="typing-text">أهلا بكم في سايروس</p>
         </div>
     </div>
-    
-    <!-- Container for city options -->
+
     <div class="container">
         <div class="city-card" onclick="navigate('kyoto')">
             <div class="image-frame">
@@ -45,6 +43,7 @@
                 <p>البنك</p>
             </div>
         </div>           
+
         <div class="city-card" onclick="navigate('osaka')">
             <div class="image-frame">
                 <img src="rules.gif" data-src="osaka.png" alt="Osaka" class="lazy-load">
@@ -53,6 +52,7 @@
                 <p>القوانين</p>
             </div>
         </div>      
+
         <div class="city-card" onclick="navigate('titles')">
             <div class="image-frame">
                 <img src="title.gif" data-src="osaka.png" alt="Osaka" class="lazy-load">
@@ -61,32 +61,12 @@
                 <p>الالقاب</p>
             </div>
         </div>     
-    
     </div>
 
     <footer class="footer">
         <p>جوا الرواية رواية مكتوبة بين السطور.. عن بطل كان مغمور.. ومحدش فيه سائل.. حلمه ماشفش النور.. لكنه مات بيحاول." - مغمور وكفى</p>
-    </footer>  
+    </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
-
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-
-<script>
-    setInterval(function() {
-        fetch('/version.txt')  // URL to a file or endpoint that changes when the website is updated
-            .then(response => response.text())
-            .then(currentVersion => {
-                if (localStorage.getItem('version') !== currentVersion) {
-                    localStorage.setItem('version', currentVersion);
-                    location.reload(true); // Force refresh if the version has changed
-                }
-            })
-            .catch(error => console.error('Error checking for updates:', error));
-    }, 5000); // Check every 5 seconds
-</script>
-
