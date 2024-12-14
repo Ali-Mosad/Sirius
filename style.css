@@ -1656,3 +1656,67 @@ button:hover {
         width: 90%;
     }
 }
+
+.rules-container {
+  font-family: 'Cairo', sans-serif;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.rules-title {
+  font-size: 24px;
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.rule-category {
+  background: #ffffff;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.rule-category h3 {
+  font-size: 20px;
+  color: #dc3545;
+  margin-bottom: 10px;
+}
+
+.rule-category ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.rule-category ul li {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #495057;
+}
+
+.note {
+  background: #e9ecef;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.note p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffc107;
+}
+
+.note ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.note ul li {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #6c757d;
+}
+
