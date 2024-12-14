@@ -1,7 +1,8 @@
 // Default data
 const defaultCityData = {
     kyoto: {
-        "إيرين": { rank: "عضو", balance: 100, item: "لا يوجد" },
+        "إيرين": { rank: "عضو", balance: 100, item: "لا يوجد" },  
+        "سمايل": { rank: "باكا", balance: 1, item: "مدري" },
         "ماساكو": { rank: "مدير", balance: 200, item: "سيف" },
     },
     osaka: {
@@ -10,115 +11,51 @@ const defaultCityData = {
     },
 };
 
-// Load data from localStorage or use default data
-const cityData = JSON.parse(localStorage.getItem("cityData")) || defaultCityData;
+// Search functionality when the button is clicked
+document.getElementById("searchButton").addEventListener("click", function() {
+    const query = document.getElementById("search").value.trim();
+    const searchResult = document.getElementById("searchResult");
+    
+    searchResult.innerHTML = ""; // Clear previous results
 
-// Function to save data to localStorage
-function saveCityData() {
-    localStorage.setItem("cityData", JSON.stringify(cityData));
-}
-
-// DOM Elements
-const titleForm = document.getElementById("titleForm");
-const kyotoData = document.getElementById("kyotoData");
-const message = document.getElementById("message");
-
-// Render Kyoto Data
-function updateDisplay() {
-    kyotoData.innerHTML = ""; // Clear previous data
-
-    if (Object.keys(cityData.kyoto).length === 0) {
-        kyotoData.innerHTML = "<p>لا توجد ألقاب مضافة.</p>";
-        return;
-    }
-
-    for (const [title, info] of Object.entries(cityData.kyoto)) {
-        const entry = document.createElement("div");
-        entry.className = "title-item";
-        entry.innerHTML = `
-            <h3>${title}</h3>
-            <p>رتبة: ${info.rank}</p>
-            <p>رصيد: ${info.balance}</p>
-            <p>أداة: ${info.item || "لا يوجد"}</p>
-            <button class="edit-button" data-title="${title}">تعديل</button>
-            <button class="delete-button" data-title="${title}">حذف</button>
+    // Search in the kyoto data
+    if (defaultCityData.kyoto[query]) {
+        const { rank, balance, item } = defaultCityData.kyoto[query];
+        searchResult.innerHTML = `
+            <h3>${query}</h3>
+            <p>رتبة: ${rank}</p>
+            <p>رصيد: ${balance}</p>
+            <p>أداة: ${item || "لا يوجد"}</p>
         `;
-        kyotoData.appendChild(entry);
-    }
-
-    // Add event listeners for edit and delete buttons
-    document.querySelectorAll(".edit-button").forEach((button) => {
-        button.addEventListener("click", handleEdit);
-    });
-    document.querySelectorAll(".delete-button").forEach((button) => {
-        button.addEventListener("click", handleDelete);
-    });
-}
-
-// Handle form submission
-titleForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const title = document.getElementById("title").value.trim();
-    const rank = document.getElementById("rank").value.trim();
-    const balance = parseFloat(document.getElementById("balance").value);
-    const item = document.getElementById("item").value.trim();
-
-    if (title) {
-        // Add or update the title in kyoto data
-        cityData.kyoto[title] = { rank, balance, item };
-
-        // Show success message
-        showMessage("تم تحديث البيانات بنجاح!", "success");
-
-        // Save to localStorage and update display
-        saveCityData();
-        updateDisplay();
-
-        // Clear the form
-        titleForm.reset();
     } else {
-        showMessage("يرجى إدخال لقب صحيح!", "error");
+        searchResult.innerHTML = "<p>لا توجد بيانات لهذا اللقب.</p>";
     }
 });
 
-// Handle edit button click
-function handleEdit(event) {
-    const title = event.target.getAttribute("data-title");
-    const data = cityData.kyoto[title];
+// Handle search functionality
+const searchForm = document.getElementById("searchForm");
+const searchResult = document.getElementById("searchResult");
 
-    if (data) {
-        document.getElementById("title").value = title;
-        document.getElementById("rank").value = data.rank;
-        document.getElementById("balance").value = data.balance;
-        document.getElementById("item").value = data.item;
+searchForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    const query = document.getElementById("search").value.trim();
+    searchResult.innerHTML = ""; // Clear previous results
+    
+    if (defaultCityData.kyoto[query]) {
+        const { rank, balance, item } = defaultCityData.kyoto[query];
+        searchResult.innerHTML = `
+            <h3>${query}</h3>
+            <p>رتبة: ${rank}</p>
+            <p>رصيد: ${balance}</p>
+            <p>أداة: ${item || "لا يوجد"}</p>
+        `;
+    } else {
+        searchResult.innerHTML = "<p>لا توجد بيانات لهذا اللقب.</p>";
     }
-}
+});
 
-// Handle delete button click
-function handleDelete(event) {
-    const title = event.target.getAttribute("data-title");
-
-    if (title && cityData.kyoto[title]) {
-        delete cityData.kyoto[title];
-        showMessage("تم حذف اللقب بنجاح!", "success");
-        saveCityData();
-        updateDisplay();
-    }
-}
-
-// Show message
-function showMessage(text, type) {
-    message.textContent = text;
-    message.className = type === "success" ? "message success" : "message error";
-
-    setTimeout(() => {
-        message.textContent = "";
-        message.className = "";
-    }, 3000);
-}
-
-// Initial data display
+// Initial render
 updateDisplay();
 
 /**

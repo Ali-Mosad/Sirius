@@ -29,76 +29,24 @@
         </nav>
     </header>
 
-    <!-- Form for Adding Titles -->
-<section id="titleSection">
-    <h2>إضافة لقب</h2>
-    <form id="titleForm">
-        <label for="title">لقب (Title):</label>
-        <input type="text" id="title" name="title" required>
-        <button type="submit">إضافة</button>
-    </form>
-    <div id="message"></div>
-</section>
-
-<!-- Admin Access Button -->
-<div class="admin-access-container">
-    <button id="adminAccessButton" class="sirius-button">الوصول إلى الإدارة</button>
-</div>
-
-<!-- Admin-Only Section -->
-<section id="adminSection" style="display: none;">
-    <div class="section-header">
-        <h2>إدارة بيانات اللقب</h2>
-        <p>قم بإضافة، تعديل، أو إدارة البيانات الخاصة بالألقاب هنا.</p>
-    </div>
-    <div class="management-form-container">
-        <form id="titleManagementForm">
-            <div class="form-group">
-                <label for="titleRank">الرتبة:</label>
-                <input type="text" id="titleRank" name="titleRank" placeholder="أدخل رتبة اللقب">
-            </div>
-            <div class="form-group">
-                <label for="titleBalance">الرصيد:</label>
-                <input type="number" id="titleBalance" name="titleBalance" placeholder="أدخل الرصيد">
-            </div>
-            <div class="form-group">
-                <label for="titleItem">الأداة:</label>
-                <input type="text" id="titleItem" name="titleItem" placeholder="أدخل الأداة (اختياري)">
-            </div>
-            <div class="button-group">
-                <button type="submit" class="sirius-button">حفظ البيانات</button>
-                <button type="reset" class="sirius-button secondary">إعادة تعيين</button>
-            </div>
+    <!-- Search for Titles -->
+    <section id="titleSection">
+        <h2>البحث عن لقب</h2>
+        <form id="searchForm">
+            <label for="search">ابحث عن لقب:</label>
+            <input type="text" id="search" name="search" required>
+            <button type="submit">بحث</button>
         </form>
-    </div>
-</section>
+        <div id="searchResult"></div>
+    </section>
+
+    <!-- Container for displaying titles -->
+<section id="titlesContainer"></section>
 
     <!-- Kyoto Data -->
     <section id="kyotoData"></section>
 
-    <!-- City Content -->
-    <section class="container">
-        <div class="city-info">
-            <p>🦝</p>
-        </div>
-    </section>
-
     <!-- JavaScript -->
-    <script src="script.js"></script>
-
-    <!-- Auto-Refresh for Updates -->
-    <script>
-        setInterval(function() {
-            fetch('/version.txt')  // URL to a file or endpoint that changes when the website is updated
-                .then(response => response.text())
-                .then(currentVersion => {
-                    if (localStorage.getItem('version') !== currentVersion) {
-                        localStorage.setItem('version', currentVersion);
-                        location.reload(true); // Force refresh if the version has changed
-                    }
-                })
-                .catch(error => console.error('Error checking for updates:', error));
-        }, 5000); // Check every 5 seconds
-    </script>
+    <script src="titles.js"></script>
 </body>
 </html>

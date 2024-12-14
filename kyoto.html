@@ -30,34 +30,41 @@
     </header>
 
     <!-- ID Card Container -->
-    <section class="id-card-container">
-        <div class="id-card">
-            <div class="id-photo">
-                <img src="default-photo.gif" alt="ID Photo">
-            </div>
-            <div class="id-details">
-                <input type="text" id="search" placeholder="ادخل اللقب">
-                <button onclick="searchPerson()">بحث</button>
-            </div>
+<section class="id-card-container">
+    <div class="id-card">
+        <div class="id-photo">
+            <img src="default-photo.gif" alt="ID Photo">
         </div>
-    </section>
-    
-    <!-- Search Results -->
-    <section id="result" class="result"></section>  
+        <div class="id-details">
+            <input type="text" id="search" placeholder="ادخل اللقب">
+            <button id="searchButton">بحث</button>
+        </div>
+    </div>
+</section>
+
+<section id="searchResult"></section>
+
 
         <!-- Form for Adding Titles -->
 <section id="titleSection">
-    <h2>↓ جميع الالقاب موجودة هنا ↓</h2>
+    <h2>لاضافة لقبك اذهب لصفحة الالقاب</h2>
     <form id="titleForm">
 
         <div class="city-card" onclick="navigate('titles')">
             <div class="image-frame">
-                <img src="title.gif" data-src="osaka.png" alt="Osaka" class="lazy-load">
+                <img src="rules.gif" data-src="osaka.png" alt="Osaka" class="lazy-load">
             </div>
             <div class="city-card-title">
                 <p>الالقاب</p>
             </div>
         </div>   
+
+    <!-- City Content -->
+    <section class="container">
+        <div class="city-info">
+            <p>🦝</p>
+        </div>
+    </section>
 
     <!-- JavaScript -->
     <script src="script.js"></script>
