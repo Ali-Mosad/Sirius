@@ -1678,11 +1678,11 @@ body::before {
     align-items: center;
     height: 100vh; /* Full screen height */
     padding: 20px;
-    background: rgba(11, 30, 57, 0.9); /* Semi-transparent cosmic background */
-    border: 2px solid #00d4ff; /* Glowing Sirius-blue border */
+    background: linear-gradient(145deg, #001021, #001b40); /* Deep cosmic gradient */
+    border: 2px solid #5acaff; /* Soft Sirius-blue border */
     border-radius: 20px;
     margin: 20px auto;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 4px 25px rgba(26, 61, 94, 0.8); /* Starry glow effect */
     animation: fadeIn 2s ease-in-out;
 }
 
@@ -1691,23 +1691,25 @@ body::before {
     text-align: center;
     padding: 20px;
     width: 90%; /* Responsive width */
-    background: rgba(0, 0, 0, 0.8); /* Slightly darker section */
-    border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    background: rgba(11, 25, 48, 0.9); /* Slightly lighter for contrast */
+    border: 1px solid #5acaff; /* Subtle glowing border */
+    border-radius: 15px;
+    box-shadow: 0px 4px 20px rgba(36, 113, 184, 0.5); /* Glow around sections */
+    backdrop-filter: blur(8px); /* Add depth with blur */
 }
 
 /* Section Titles */
 .section h2 {
-    font-size: 2rem;
-    color: #00d4ff; /* Glowing Sirius blue */
-    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+    font-size: 2.2rem;
+    color: #68dfff; /* Bright Sirius-blue */
+    text-shadow: 0 0 20px #68dfff, 0 0 30px #5acaff; /* Star-like glow */
 }
 
 /* Section Content */
 .section p {
     font-size: 1.2rem;
-    color: #ffffff;
-    text-shadow: 0 0 5px #ffffff;
+    color: #d9f3ff; /* Soft white-blue */
+    text-shadow: 0 0 8px #5acaff; /* Gentle glowing effect */
 }
 
 /* Animations */
@@ -1718,5 +1720,19 @@ body::before {
     to {
         opacity: 1;
     }
+}
+
+/* Adjust Scrollbar for Sirius Theme */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #5acaff, #1f4161);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #001021;
 }
 
