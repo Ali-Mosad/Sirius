@@ -34,5 +34,19 @@ function updateDisplay() {
     }
 }
 
+document.getElementById("searchButton").addEventListener("click", function() {
+    var searchQuery = document.getElementById("searchInput").value.toLowerCase();
+    var titles = document.querySelectorAll(".title");
+    
+    titles.forEach(function(title) {
+        var titleText = title.textContent.toLowerCase();
+        if (titleText.includes(searchQuery)) {
+            title.style.display = "block";
+        } else {
+            title.style.display = "none";
+        }
+    });
+});
+
 // Display titles on load
 updateDisplay();
