@@ -13,15 +13,15 @@ const defaultCityData = {
 
 // Function to update the display of titles
 function updateDisplay() {
-    const cityData = document.getElementById("cityData");
-    cityData.innerHTML = ""; // Clear previous data
+    const titlesContainer = document.getElementById("titlesContainer");
+    titlesContainer.innerHTML = ""; // Clear previous data
 
     if (Object.keys(defaultCityData.kyoto).length === 0) {
-        cityData.innerHTML = "<p>لا توجد ألقاب مضافة.</p>";
+        titlesContainer.innerHTML = "<p>لا توجد ألقاب مضافة.</p>";
         return;
     }
 
-    // Loop through titles in the selected city and display them
+    // Loop through titles and display them
     for (const [title, info] of Object.entries(defaultCityData.kyoto)) {
         const entry = document.createElement("div");
         entry.className = "title-item title"; // Add class 'title' for search filtering
@@ -31,12 +31,13 @@ function updateDisplay() {
             <p>رصيد: ${info.balance}</p>
             <p>أداة: ${info.item || "لا يوجد"}</p>
         `;
-        cityData.appendChild(entry);
+        titlesContainer.appendChild(entry);
     }
 }
 
 // Search functionality
-document.getElementById("searchButton").addEventListener("click", function() {
+document.getElementById("searchButton").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent form submission
     var searchQuery = document.getElementById("searchInput").value.toLowerCase();
     var titles = document.querySelectorAll(".title");
 
