@@ -5,9 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الألقاب - 𝑺𝒊𝒓𝒊𝒖𝒔</title>
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
 </head>
 
 <body>
@@ -25,40 +22,27 @@
         <a href="kyoto.html">البنك</a>
         <a href="osaka.html">القوانين</a>
         <a href="store.html">المتجر</a>
-        <a href="titles.html">الألقاب</a>
+        <a href="titles.html" class="active">الألقاب</a>
     </nav>
 </header>
 
 <!-- Search for Titles -->
 <section id="titleSection">
-    <div class="search-container">
-        <h2>البحث عن لقب</h2>
-        <form id="searchForm" class="search-form">
-            <label for="searchInput">ابحث عن لقب:</label>
-            <input type="text" id="searchInput" name="search" required placeholder="أدخل لقب البحث">
-            <button type="button" id="searchButton">بحث</button>
-        </form>
-    </div>
+    <h2>البحث عن لقب</h2>
+    <form id="searchForm">
+        <input type="text" id="searchInput" placeholder="أدخل لقب البحث">
+        <button type="button" id="searchButton">بحث</button>
+    </form>
 </section>
 
 <!-- Container for displaying titles -->
-<section id="cityData">
-    <div class="container">
-        <img src="profile-placeholder.jpg" alt="Placeholder" class="title-image">
-        <h3>عنوان 1</h3>
-        <p>هذا هو الوصف</p>
-        <a href="#" class="button">تفاصيل</a>
-    </div>
-    <div class="container">
-        <img src="profile-placeholder.jpg" alt="Placeholder" class="title-image">
-        <h3>عنوان 2</h3>
-        <p>هذا هو الوصف</p>
-        <a href="#" class="button">تفاصيل</a>
-    </div>
-    <!-- Additional title containers can be added here -->
-</section>
+<section id="cityData"></section>
 
-<link rel="stylesheet" href="styletitles.css">
+<footer class="footer">
+    <p>حقوق النشر © 2024، جميع الحقوق محفوظة.</p>
+    <nav>
+    </nav>
+</footer>
 
 <script src="titles.js"></script>
 </body>
