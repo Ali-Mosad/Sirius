@@ -50,7 +50,7 @@ function renderResult(title, data) {
         <div class="result-wrapper">
             <div class="id-card">
                 <div class="id-photo">
-                    <img src="default-photo.gif" alt="Photo">
+                    <img src="default-photo.png" alt="Photo">
                 </div>
                 <div class="id-details">
                     <p><strong>اللقب:</strong> ${title}</p>
