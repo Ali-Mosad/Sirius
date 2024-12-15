@@ -6,100 +6,62 @@ body, h1, h2, p, nav, a {
 }
 
 body {
-    font-family: 'Cairo', sans-serif; /* Update font-family */
-    background: linear-gradient(to bottom, #1e293b, #0f172a); /* Adjusted background gradient */
-    color: #f8fafc;
-    line-height: 1.6;
-    direction: rtl; /* Right-to-left layout */
-    text-align: right;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle, #1e293b, #0e1726);
+    color: #f1f5f9;
 }
 
-/* Top Navigation Bar */
+/* Top Bar */
 .nav-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 20px;
-    background: rgba(30, 41, 59, 0.95);
-    border-bottom: 4px solid #3b82f6;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 15px 40px;
     position: sticky;
     top: 0;
     z-index: 1000;
-    transition: background 0.3s ease; /* Transition for hover effect */
-}
-
-.nav-bar:hover {
-    background: rgba(30, 41, 59, 1); /* Hover effect */
+    background: rgba(30, 41, 59, 0.9); /* Semi-transparent background */
+    backdrop-filter: blur(8px); /* Adds blur to background */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Logo Section */
 .nav-bar .logo {
     display: flex;
     align-items: center;
-    gap: 15px;
-    transition: transform 0.3s ease;
+    gap: 20px;
 }
 
-.logo-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: transform 0.3s ease;
-}
-
-.logo-image {
+.nav-bar .logo img {
     height: 50px;
-    width: 50px;
-    border-radius: 10px; /* Rounded edges */
-    border: 2px solid #3b82f6;
-    padding: 5px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: auto;
 }
 
-.logo-text {
-    font-size: 1.8rem;
-    color: #3b82f6;
+.nav-bar .logo span {
+    font-size: 2rem;
+    color: #fff;
     font-weight: bold;
-    text-shadow: 1px 1px 6px rgba(59, 130, 246, 0.4);
-    transition: color 0.3s ease, transform 0.3s ease;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-/* Hover Effects for Logo */
-.logo-container:hover .logo-image {
-    transform: rotate(360deg) scale(1.2); /* Rotate and scale the logo image */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow */
-}
-
-.logo-container:hover .logo-text {
-    color: #2563eb;
-    transform: translateX(10px); /* Slight move on hover */
-}
-
-/* Menu */
-.menu {
+/* Menu Links */
+.nav-bar nav {
     display: flex;
-    gap: 15px;
+    gap: 25px;
 }
 
-.menu a {
+.nav-bar nav a {
     text-decoration: none;
-    color: #f8fafc;
-    padding: 8px 12px;
-    font-size: 0.9rem;
+    color: #f1f5f9;
+    font-size: 1rem;
+    padding: 10px 15px;
     border-radius: 6px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.menu a:hover, .menu a.active {
+.nav-bar nav a:hover, .nav-bar nav a.active {
     background: #3b82f6;
     color: #ffffff;
 }
@@ -107,25 +69,26 @@ body {
 .menu-toggle {
     display: none;
     font-size: 1.5rem;
-    color: #f8fafc;
+    color: #f1f5f9;
     cursor: pointer;
 }
 
+/* Responsive Menu (Hidden by Default) */
 @media (max-width: 768px) {
-    .menu {
+    .nav-bar nav {
         display: none;
         flex-direction: column;
-        background: rgba(30, 41, 59, 0.95);
-        border-radius: 8px;
         position: absolute;
         top: 60px;
-        right: 10px;
-        width: 150px;
+        right: 20px;
+        background: rgba(30, 41, 59, 0.95);
+        border-radius: 8px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
         padding: 10px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
     }
 
-    .menu.active {
+    .nav-bar nav.active {
         display: flex;
     }
 
