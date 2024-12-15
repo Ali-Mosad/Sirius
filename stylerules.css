@@ -326,64 +326,101 @@ body {
     }
 }
 
-/* Top Bar with Framed Icon */
+//* Top Navigation Bar */
 .nav-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 40px;
+    padding: 15px 20px;
+    background: rgba(30, 41, 59, 0.95);
+    border-bottom: 4px solid #3b82f6;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(51, 65, 85, 0.85));
-    backdrop-filter: blur(10px);
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    border-bottom: 4px solid #3b82f6; /* Frame at the bottom */
-    border-radius: 8px 8px 0 0; /* Rounded top corners */
-    margin: 10px 0; /* Adds space outside the frame */
+    transition: background 0.3s ease; /* Transition for hover effect */
 }
 
-/* Logo */
+.nav-bar:hover {
+    background: rgba(30, 41, 59, 1); /* Hover effect */
+}
+
+/* Logo Section */
 .nav-bar .logo {
     display: flex;
     align-items: center;
     gap: 15px;
+    transition: transform 0.3s ease;
 }
 
-.nav-bar .logo img {
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.3s ease;
+}
+
+.logo-image {
     height: 50px;
-    width: auto;
-    border: 3px solid #3b82f6;  /* Frame around the icon */
-    border-radius: 50%;  /* Rounded frame */
-    padding: 5px;  /* Space between the image and the border */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);  /* Adds shadow around the icon */
+    width: 50px;
+    border-radius: 10px; /* Rounded edges */
+    border: 2px solid #3b82f6;
+    padding: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.nav-bar .logo span {
+.logo-text {
     font-size: 1.8rem;
     color: #3b82f6;
     font-weight: bold;
-    text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.3);
+    text-shadow: 1px 1px 6px rgba(59, 130, 246, 0.4);
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.nav-links {
+/* Hover Effects for Logo */
+.logo-container:hover .logo-image {
+    transform: rotate(360deg) scale(1.2); /* Rotate and scale the logo image */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+}
+
+.logo-container:hover .logo-text {
+    color: #2563eb;
+    transform: translateX(10px); /* Slight move on hover */
+}
+
+/* Menu */
+.menu {
     display: flex;
-    gap: 20px;
+    gap: 15px;
 }
 
-.nav-links a {
+.menu a {
     text-decoration: none;
-    color: #f1f5f9;
-    font-size: 1rem;
+    color: #f8fafc;
     padding: 8px 12px;
+    font-size: 0.9rem;
     border-radius: 6px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.nav-links a:hover, .nav-links a.active {
+.menu a:hover, .menu a.active {
     background: #3b82f6;
     color: #ffffff;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: #f8fafc;
+    cursor: pointer;
 }
 
 /* Keyframes for animation */
