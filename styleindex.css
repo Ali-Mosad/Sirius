@@ -14,75 +14,95 @@ body {
 /* Top Bar */
 .nav-bar {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     padding: 15px 40px;
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(30, 41, 59, 0.9); /* Semi-transparent background */
-    backdrop-filter: blur(8px); /* Adds blur to background */
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background: #0e1726; /* Dark background */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    flex-direction: row-reverse; /* Move logo to the right */
 }
 
-/* Logo Section */
+/* Logo Section - Modernized */
 .nav-bar .logo {
     display: flex;
     align-items: center;
-    gap: 20px;
-    order: 1; /* Places logo on the right */
-    transition: transform 0.3s ease;
+    gap: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #ffffff;
 }
 
 .nav-bar .logo img {
-    height: 60px; /* Increased logo size */
-    width: auto;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    width: 50px; /* Icon size */
+    height: 50px;
+    object-fit: cover;
+    border-radius: 10px; /* Rounded corners */
     transition: transform 0.3s ease;
 }
 
+/* On Hover Effect for Logo */
+.nav-bar .logo img:hover {
+    transform: scale(1.1); /* Slight zoom-in effect on hover */
+}
+
+/* Logo Text */
 .nav-bar .logo span {
-    font-size: 2.4rem; /* Slightly larger text */
-    color: #fff;
-    font-weight: bold;
-    letter-spacing: 1px;
+    font-size: 1.8rem;
+    color: #ffffff;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    transition: transform 0.3s ease;
+    transition: color 0.3s ease;
 }
 
-.nav-bar .logo:hover {
-    transform: scale(1.1); /* Makes the logo scale up slightly on hover */
+/* Hover Effect for Logo Text */
+.nav-bar .logo span:hover {
+    color: #3b82f6; /* Change color on hover */
 }
 
 /* Menu Links */
 .nav-bar nav {
     display: flex;
     gap: 25px;
-    order: 0; /* Keep menu on the left */
 }
 
 .nav-bar nav a {
     text-decoration: none;
     color: #f1f5f9;
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 10px 15px;
     border-radius: 6px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Hover Effect on Menu Links */
 .nav-bar nav a:hover, .nav-bar nav a.active {
     background: #3b82f6;
     color: #ffffff;
 }
 
-.menu-toggle {
-    display: none;
-    font-size: 1.5rem;
-    color: #f1f5f9;
-    cursor: pointer;
+/* Responsive Menu */
+@media (max-width: 768px) {
+    .nav-bar nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: rgba(30, 41, 59, 0.95);
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .nav-bar nav.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
 }
 
 /* Responsive Menu (Hidden by Default) */
