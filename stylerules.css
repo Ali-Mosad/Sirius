@@ -1,32 +1,42 @@
- /* Top Bar */
- .nav-bar {
+/* Top Bar with Framed Icon */
+.nav-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 15px 40px;
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.8));
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(51, 65, 85, 0.85));
     backdrop-filter: blur(10px);
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 1s ease-in-out;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 4px solid #3b82f6; /* Frame at the bottom */
+    border-radius: 8px 8px 0 0; /* Rounded top corners */
+    margin: 10px 0; /* Adds space outside the frame */
 }
 
+/* Logo */
 .nav-bar .logo {
     display: flex;
     align-items: center;
+    gap: 15px;
 }
 
 .nav-bar .logo img {
-    height: 40px;
-    margin-left: 10px; /* Adjusted for right-to-left alignment */
+    height: 50px;
+    width: auto;
+    border: 3px solid #3b82f6;  /* Frame around the icon */
+    border-radius: 50%;  /* Rounded frame */
+    padding: 5px;  /* Space between the image and the border */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);  /* Adds shadow around the icon */
 }
 
 .nav-bar .logo span {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: #3b82f6;
     font-weight: bold;
+    text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.3);
 }
 
 .nav-links {
