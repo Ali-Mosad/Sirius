@@ -6,9 +6,12 @@ body, h1, h2, p, nav, a {
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: radial-gradient(circle, #1e293b, #0e1726);
-    color: #f1f5f9;
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(to bottom, #1e293b, #0f172a);
+    color: #f8fafc;
+    line-height: 1.6;
+    direction: rtl; /* Right-to-left layout */
+    text-align: right;
 }
 
 * Top Navigation Bar */
