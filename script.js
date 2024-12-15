@@ -26,21 +26,11 @@ searchButton.addEventListener("click", function () {
  * Updates the search result container based on the query.
  * @param {string} query - The user's search input.
  */
-// Handle Search Functionality
-searchButton.addEventListener("click", function () {
-    const query = searchInput.value.trim();
-    updateSearchResult(query);
-});
-
-/**
- * Updates the search result container based on the query.
- * @param {string} query - The user's search input.
- */
 function updateSearchResult(query) {
     searchResult.innerHTML = ""; // Clear previous results
     searchResult.style.display = "block"; // Show the result container
 
-    // Search logic
+    // Search in defaultCityData
     const kyotoData = defaultCityData.kyoto[query];
     const osakaData = defaultCityData.osaka[query];
 
@@ -51,12 +41,6 @@ function updateSearchResult(query) {
     } else {
         searchResult.innerHTML = `<p>لا توجد بيانات لهذا اللقب.</p>`;
     }
-}
-
-    // Add animation class after updating content
-    setTimeout(() => {
-        searchResult.classList.add("show");
-    }, 10);
 }
 
 /**
