@@ -11,7 +11,6 @@ const defaultCityData = {
     },
 };
 
-// Function to update display based on city data
 function updateDisplay(city = "kyoto") {
     const cityData = document.getElementById("cityData");
     cityData.innerHTML = ""; // Clear previous data
@@ -23,15 +22,17 @@ function updateDisplay(city = "kyoto") {
 
     // Loop through titles in the selected city and display them
     for (const [title, info] of Object.entries(defaultCityData[city])) {
-        const entry = document.createElement("div");
-        entry.className = "title-item title"; // Add class 'title' for search filtering
-        entry.innerHTML = `
+        const container = document.createElement("div");
+        container.className = "container"; // Apply the container class
+
+        container.innerHTML = `
             <h3>${title}</h3>
             <p>رتبة: ${info.rank}</p>
             <p>رصيد: ${info.balance}</p>
             <p>أداة: ${info.item || "لا يوجد"}</p>
         `;
-        cityData.appendChild(entry);
+
+        cityData.appendChild(container); // Append container to cityData
     }
 }
 
