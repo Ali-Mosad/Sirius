@@ -1,47 +1,56 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <link rel="stylesheet" href="styleindex.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الالقاب - 𝑺𝒊𝒓𝒊𝒖𝒔</title>
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-</head>
-<body>
-    <!-- Top Navigation Bar -->
-    <header class="nav-bar">
-        <div class="logo">
-            <a href="index.html" class="logo-link">
-                <div class="logo-container">
-                    <img src="cyrus-photo.jpg" alt="Cyrus" class="logo-image">
-                    <div class="logo-text">𝑺𝒊𝒓𝒊𝒖𝒔</div>
-                </div>
-            </a>
-        </div>
-    </header>
+// Default Data
+const defaultCityData = {
+    kyoto: {
+        "إيرين": { rank: "عضو", balance: 100, item: "لا يوجد" },
+        "سمايل": { rank: "باكا", balance: 1, item: "مدري" },
+        "ماساكو": { rank: "مدير", balance: 200, item: "سيف" },
+    },
+    osaka: {
+        "كين": { rank: "مدير", balance: 500, item: "كتاب" },
+        "هانا": { rank: "عضو", balance: 150, item: "قوس" },
+    },
+};
 
-<!-- Search for Titles -->
-<section id="titleSection">
-    <h2>البحث عن لقب</h2>
-    <form id="searchForm">
-        <input type="text" id="searchInput" placeholder="أدخل لقب البحث">
-        <button type="button" id="searchButton">بحث</button>
-    </form>
-</section>
+// Display Titles
+function updateDisplay(city = "kyoto") {
+    const cityData = document.getElementById("cityData");
+    cityData.innerHTML = ""; // Clear previous data
 
-<!-- Container for displaying titles -->
-<section id="cityData"></section>
+    if (!defaultCityData[city] || Object.keys(defaultCityData[city]).length === 0) {
+        cityData.innerHTML = "<p>لا توجد ألقاب مضافة.</p>";
+        return;
+    }
 
-<footer class="footer">
-    <p>حقوق النشر © 2024، جميع الحقوق محفوظة.</p>
-    <nav>
-    </nav>
-</footer>\
+    for (const [title, info] of Object.entries(defaultCityData[city])) {
+        const container = document.createElement("div");
+        container.className = "container searchable";
 
-<link rel="stylesheet" href="styletitles.css">
+        container.innerHTML = `
+            <h3>${title}</h3>
+            <p>رتبة: ${info.rank}</p>
+            <p>رصيد: ${info.balance}</p>
+            <p>أداة: ${info.item || "لا يوجد"}</p>
+        `;
 
-<script src="titles.js"></script>
-</body>
-</html>
+        cityData.appendChild(container);
+    }
+}
+
+// Search Functionality
+document.getElementById("searchButton").addEventListener("click", () => {
+    const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+    const containers = document.querySelectorAll(".searchable");
+
+    containers.forEach((container) => {
+        const titleText = container.querySelector("h3").textContent.toLowerCase();
+        container.style.display = titleText.includes(searchQuery) ? "block" : "none";
+    });
+});
+
+// Prevent Form Default Submission
+document.getElementById("searchForm").addEventListener("submit", (event) => {
+    event.preventDefault();
+});
+
+// Initial Display
+updateDisplay();
