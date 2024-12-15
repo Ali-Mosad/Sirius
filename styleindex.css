@@ -110,7 +110,7 @@ body {
     align-items: center;
     text-align: center;
     padding: 50px 20px; /* Smaller padding for a compact hero section */
-    background-image: url('anime-background.jpg'); /* Add your anime image URL here */
+    background-image: url('background.jpg'); /* Add your anime image URL here */
     background-size: cover;
     background-position: center;
     position: relative;
