@@ -26,6 +26,16 @@ searchButton.addEventListener("click", function () {
  * Updates the search result container based on the query.
  * @param {string} query - The user's search input.
  */
+// Handle Search Functionality
+searchButton.addEventListener("click", function () {
+    const query = searchInput.value.trim();
+    updateSearchResult(query);
+});
+
+/**
+ * Updates the search result container based on the query.
+ * @param {string} query - The user's search input.
+ */
 function updateSearchResult(query) {
     searchResult.innerHTML = ""; // Clear previous results
     searchResult.classList.remove("show"); // Remove animation class before updating
