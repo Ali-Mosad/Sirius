@@ -22,13 +22,9 @@ searchButton.addEventListener("click", function () {
     updateSearchResult(query);
 });
 
-/**
- * Updates the search result container based on the query.
- * @param {string} query - The user's search input.
- */
 function updateSearchResult(query) {
     searchResult.innerHTML = ""; // Clear previous results
-    searchResult.style.display = "block"; // Show the result container
+    searchResult.style.display = "block"; // Ensure the container is visible
 
     // Search in defaultCityData
     const kyotoData = defaultCityData.kyoto[query];

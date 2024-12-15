@@ -161,17 +161,14 @@ body {
     border-radius: 12px;
     text-align: center;
     width: 100%;
-    max-width: 600px;
+    max-width: 600px; /* Keep the max-width to ensure it's centered */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     color: #f8fafc;
-    display: none;  /* Hidden by default */
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    display: none; /* Initially hidden */
 }
 
 #searchResult.show {
-    display: block;
+    display: block; /* Make it visible when search results are updated */
 }
 
 /* ID Card Container */
