@@ -11,98 +11,101 @@ body {
     color: #f1f5f9;
 }
 
-/* Top Bar */
+/* Top Navigation Bar */
 .nav-bar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 15px 40px;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background: rgba(30, 41, 59, 0.95);
+    border-bottom: 4px solid #3b82f6;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: #0e1726; /* Dark background */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background 0.3s ease; /* Transition for hover effect */
 }
 
-/* Logo Section - Modernized */
+.nav-bar:hover {
+    background: rgba(30, 41, 59, 1); /* Hover effect */
+}
+
+/* Logo Section */
 .nav-bar .logo {
     display: flex;
     align-items: center;
     gap: 15px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    color: #ffffff;
-}
-
-.nav-bar .logo img {
-    width: 50px; /* Icon size */
-    height: 50px;
-    object-fit: cover;
-    border-radius: 10px; /* Rounded corners */
     transition: transform 0.3s ease;
 }
 
-/* On Hover Effect for Logo */
-.nav-bar .logo img:hover {
-    transform: scale(1.1); /* Slight zoom-in effect on hover */
-}
-
-/* Logo Text */
-.nav-bar .logo span {
-    font-size: 1.8rem;
-    color: #ffffff;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-}
-
-/* Hover Effect for Logo Text */
-.nav-bar .logo span:hover {
-    color: #3b82f6; /* Change color on hover */
-}
-
-/* Menu Links */
-.nav-bar nav {
+.logo-link {
     display: flex;
-    gap: 25px;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
 }
 
-.nav-bar nav a {
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.3s ease;
+}
+
+.logo-image {
+    height: 50px;
+    width: 50px;
+    border-radius: 10px; /* Rounded edges */
+    border: 2px solid #3b82f6;
+    padding: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    color: #3b82f6;
+    font-weight: bold;
+    text-shadow: 1px 1px 6px rgba(59, 130, 246, 0.4);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover Effects for Logo */
+.logo-container:hover .logo-image {
+    transform: rotate(360deg) scale(1.2); /* Rotate and scale the logo image */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+}
+
+.logo-container:hover .logo-text {
+    color: #2563eb;
+    transform: translateX(10px); /* Slight move on hover */
+}
+
+/* Menu */
+.menu {
+    display: flex;
+    gap: 15px;
+}
+
+.menu a {
     text-decoration: none;
-    color: #f1f5f9;
-    font-size: 1rem;
-    padding: 10px 15px;
+    color: #f8fafc;
+    padding: 8px 12px;
+    font-size: 0.9rem;
     border-radius: 6px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Hover Effect on Menu Links */
-.nav-bar nav a:hover, .nav-bar nav a.active {
+.menu a:hover, .menu a.active {
     background: #3b82f6;
     color: #ffffff;
 }
 
-/* Responsive Menu */
-@media (max-width: 768px) {
-    .nav-bar nav {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        background: rgba(30, 41, 59, 0.95);
-        padding: 10px;
-        border-radius: 8px;
-    }
-
-    .nav-bar nav.active {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: #f8fafc;
+    cursor: pointer;
 }
 
 /* Responsive Menu (Hidden by Default) */
