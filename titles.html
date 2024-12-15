@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styletitles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الألقاب - 𝑺𝒊𝒓𝒊𝒖𝒔</title>
@@ -9,54 +9,35 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 </head>
-<header class="top-bar">
-    <div class="logo">
-        <a href="index.html" class="logo-link">
-            <div class="logo-container">
-                <img src="cyrus-photo.jpg" alt="Cyrus" class="logo-image">
-                <div class="logo-text">𝑺𝒊𝒓𝒊𝒖𝒔</div>
-            </div>
-        </a>
-    </div>
-    <div class="menu-button" id="menuButton">☰</div>
-    <nav class="menu" id="menu">
-        <a href="kyoto.html">البنك</a>
-        <a href="osaka.html">القوانين</a>
-        <a href="store.html">المتجر</a>
-        <a href="titles.html">الألقاب</a>
-    </nav>
-</header>
+<body>
+    <!-- Top Navigation Bar -->
+    <header class="nav-bar">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <div class="logo-container">
+                    <img src="cyrus-photo.jpg" alt="Cyrus" class="logo-image">
+                    <div class="logo-text">𝑺𝒊𝒓𝒊𝒖𝒔</div>
+                </div>
+            </a>
+        </div>
+    </header>
 
-<!-- Search for Titles -->
-<section id="titleSection">
-    <h2>البحث عن لقب</h2>
-    <form id="searchForm">
-        <label for="searchInput">ابحث عن لقب:</label>
-        <input type="text" id="searchInput" name="search" required>
-        <button type="button" id="searchButton">بحث</button>
-    </form>
-</section>
+    <!-- Search for Titles -->
+    <section id="titleSection">
+        <h2>البحث عن لقب</h2>
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="أدخل لقب البحث">
+            <button type="button" id="searchButton">بحث</button>
+        </form>
+    </section>
 
-<!-- Container for displaying titles -->
-<section id="cityData">
-    <div class="container">
-        <img src="profile-placeholder.jpg" alt="Placeholder">
-        <h2>عنوان 1</h2>
-        <p>هذا هو الوصف</p>
-        <a href="#" class="button">تفاصيل</a>
-    </div>
-    <div class="container">
-        <img src="profile-placeholder.jpg" alt="Placeholder">
-        <h2>عنوان 2</h2>
-        <p>هذا هو الوصف</p>
-        <a href="#" class="button">تفاصيل</a>
-    </div>
-    <!-- Add more containers as needed -->
-</section>
+    <!-- Container for displaying titles -->
+    <section id="cityData"></section>
 
-<link rel="stylesheet" href="styletitles.css">
+    <footer class="footer">
+        <p>مغمور</p>
+    </footer>
 
-<!-- JavaScript -->
-<script src="titles.js"></script>
+    <script src="titles.js"></script>
 </body>
 </html>
