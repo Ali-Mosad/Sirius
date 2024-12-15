@@ -7,61 +7,55 @@ body, h1, h2, p, nav, a, input, button {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: radial-gradient(circle, #1e293b, #0e1726);
-    color: #f1f5f9;
+    background: radial-gradient(circle at center, #0f172a, #0e1219);
+    color: #e2e8f0;
     overflow-x: hidden;
 }
 
-/* Top Bar with Framed Icon */
+/* Top Bar */
 .top-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 40px;
+    padding: 15px 30px;
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(51, 65, 85, 0.85));
-    backdrop-filter: blur(10px);
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-    border-bottom: 4px solid #3b82f6;
-    border-radius: 8px 8px 0 0;
-    margin: 10px 0;
+    background: linear-gradient(145deg, #0f172a, #1e293b);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-bottom: 3px solid #3b82f6;
 }
 
 .top-bar .logo {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
 
 .top-bar .logo img {
-    height: 50px;
-    width: auto;
-    border: 3px solid #3b82f6;
+    height: 45px;
+    width: 45px;
     border-radius: 50%;
-    padding: 5px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .top-bar .logo-text {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: #3b82f6;
     font-weight: bold;
-    text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
 }
 
-/* Menu Links */
 .top-bar nav {
     display: flex;
-    gap: 25px;
+    gap: 20px;
 }
 
 .top-bar nav a {
     text-decoration: none;
-    color: #f1f5f9;
+    color: #cbd5e1;
     font-size: 1rem;
-    padding: 10px 15px;
+    padding: 8px 12px;
     border-radius: 6px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -71,11 +65,11 @@ body {
     color: #ffffff;
 }
 
-/* Mobile Menu */
+/* Responsive Menu */
 .menu-button {
     display: none;
     font-size: 1.5rem;
-    color: #f1f5f9;
+    color: #e2e8f0;
     cursor: pointer;
 }
 
@@ -83,13 +77,12 @@ body {
     .top-bar nav {
         display: none;
         flex-direction: column;
+        background: #1e293b;
+        padding: 10px;
+        border-radius: 8px;
         position: absolute;
         top: 60px;
         right: 20px;
-        background: rgba(30, 41, 59, 0.95);
-        border-radius: 8px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-        padding: 10px;
         z-index: 1000;
     }
 
@@ -102,76 +95,77 @@ body {
     }
 }
 
-/* Title Search Section */
+/* Title Section */
 #titleSection {
-    padding: 40px 20px;
+    padding: 50px 20px;
     text-align: center;
-    background-color: #1e293b;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border-radius: 10px;
     margin: 20px 0;
-    border-radius: 8px;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 #titleSection h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #3b82f6;
     margin-bottom: 15px;
+    font-weight: 700;
 }
 
 #searchForm {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 #searchForm input {
-    padding: 10px;
-    border-radius: 8px;
-    border: 2px solid #3b82f6;
-    background-color: #334155;
-    color: #f1f5f9;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: #334155;
+    color: #e2e8f0;
     font-size: 1rem;
-    width: 250px;
+    width: 300px;
 }
 
 #searchForm button {
-    padding: 10px 20px;
-    background-color: #f97316; /* Vibrant orange */
-    color: white;
+    padding: 12px 25px;
+    background: #3b82f6;
+    color: #ffffff;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 #searchForm button:hover {
-    background-color: #ea580c; /* Darker shade on hover */
-    transform: scale(1.05);
+    background: #2563eb;
+    transform: translateY(-2px);
 }
 
-/* Title Containers Section */
+/* Titles Section */
 #cityData {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 25px;
     justify-content: center;
     padding: 40px 20px;
 }
 
 .container {
-    background: #3b82f6;
+    background: linear-gradient(135deg, #2563eb, #1e40af);
     border-radius: 12px;
     padding: 25px;
     width: 280px;
     text-align: center;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
-    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
 .container img {
@@ -179,42 +173,43 @@ body {
     height: 150px;
     object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .container h3 {
-    font-size: 1.4rem;
-    color: #f1f5f9;
-    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 8px;
 }
 
 .container p {
     font-size: 1rem;
-    color: #94a3b8;
-    margin-bottom: 15px;
+    color: #cbd5e1;
+    margin-bottom: 12px;
 }
 
 .container .button {
-    padding: 8px 15px;
-    background-color: #2563eb;
-    color: white;
+    padding: 8px 18px;
+    background: #1d4ed8;
+    color: #ffffff;
     text-decoration: none;
     border-radius: 6px;
-    transition: background-color 0.3s ease, transform 0.3s;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .container .button:hover {
-    background-color: #1d4ed8;
-    transform: scale(1.05);
+    background: #2563eb;
+    transform: scale(1.1);
 }
 
 /* Footer */
 .footer {
-    text-align: center;
     padding: 25px 20px;
-    background: #1e293b;
+    background: #0f172a;
     color: #94a3b8;
-    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .footer nav {
@@ -227,7 +222,7 @@ body {
 .footer nav a {
     color: #3b82f6;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1rem;
     transition: color 0.3s ease;
 }
 
