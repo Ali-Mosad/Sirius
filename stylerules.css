@@ -1,214 +1,404 @@
-/* Scoped Rules Page Styles */
-#rules-page {
-    font-family: 'Poppins', sans-serif;
-    background: #1c1b2d; /* Dark cosmic background */
-    color: #ffffff;
-    padding: 20px;
-    line-height: 1.8;
-}
-
-header.top-bar {
-    background: #2e2b5f; /* Dark blue Sirius header */
-    padding: 15px 30px;
+ /* Top Bar */
+ .nav-bar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.8));
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
 }
 
-header .menu a {
-    color: #ffffff;
+.nav-bar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar .logo img {
+    height: 40px;
+    margin-left: 10px; /* Adjusted for right-to-left alignment */
+}
+
+.nav-bar .logo span {
+    font-size: 1.5rem;
+    color: #3b82f6;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
     text-decoration: none;
-    margin: 0 15px;
-    transition: color 0.3s ease;
+    color: #f1f5f9;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-header .menu a:hover,
-header .menu a.active {
-    color: #ffd700; /* Gold accent */
-    text-shadow: 0 0 8px #ffd700;
+.nav-links a:hover, .nav-links a.active {
+    background: #3b82f6;
+    color: #ffffff;
 }
 
+/* Keyframes for animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Rules Container */
 .rules-container {
-    max-width: 1000px;
-    margin: 50px auto;
-    padding: 30px;
-    background: rgba(0, 0, 0, 0.8); /* Semi-transparent cosmic background */
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f1f5f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: right; /* Right-align for Arabic content */
+    animation: fadeIn 1.5s ease-in-out;
 }
 
-.intro-section {
+.rules-container h1 {
     text-align: center;
-    margin-bottom: 30px;
-}
-
-.intro-section h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    color: #ffd700;
-    text-shadow: 0 0 8px #ffd700;
-}
-
-.intro-section p {
-    font-size: 1.2rem;
-    color: #ccc;
+    margin-bottom: 20px;
+    color: #3b82f6;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .rules-section {
-    margin-bottom: 40px;
-    padding: 20px;
-    border: 2px solid #6a5acd; /* Sirius purple border */
-    border-radius: 10px;
-    background: rgba(50, 50, 80, 0.9);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
 }
 
 .rules-section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    text-align: center;
-    color: #ffd700; /* Gold for headings */
-    text-shadow: 0 0 8px #ffd700;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #3b82f6;
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.rules-list {
+.rules-section ul {
     list-style: none;
-    padding: 0;
+    padding-right: 0;
 }
 
-.rules-list li {
-    margin: 10px 0;
-    font-size: 1.2rem;
-    color: #ffffff;
-    padding-left: 20px;
-    position: relative;
+.rules-section ul li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background: rgba(30, 41, 59, 0.8);
+    border-radius: 6px;
+    border-right: 4px solid #3b82f6; /* Adjusted for right-to-left alignment */
+    transition: transform 0.2s ease, background 0.3s ease;
 }
 
-.rules-list li::before {
-    content: '★';
-    position: absolute;
-    left: 0;
-    color: #6a5acd; /* Purple icon */
-    font-size: 1.2rem;
+.rules-section ul li:hover {
+    transform: scale(1.02);
+    background: rgba(51, 65, 85, 0.9);
 }
 
-footer#rules-footer {
+.notes ul li {
+    background: rgba(51, 65, 85, 0.8);
+    border-right: 4px solid #fbbf24; /* Adjusted for right-to-left alignment */
+}
+
+footer {
     text-align: center;
     padding: 20px;
-    background: #2e2b5f;
-    color: #ffffff;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.8));
+    color: #f1f5f9;
+}
+
+footer a {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* General Reset */
+body, h1, h2, p, nav, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle, #1e293b, #0e1726);
+    color: #f1f5f9;
+}
+
+/* Top Bar */
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(30, 41, 59, 0.8); /* Glassmorphism effect */
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo Styling */
+.nav-bar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar .logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.nav-bar .logo span {
+    font-size: 1.5rem;
+    color: #3b82f6;
+    font-weight: bold;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #f1f5f9;
     font-size: 1rem;
-    border-top: 2px solid #6a5acd;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background: url('your-anime-background-image.jpg') no-repeat center center fixed;
-    background-size: cover;
-  }
+.nav-links a:hover {
+    background: #3b82f6;
+    color: #ffffff;
+}
 
-  body {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
-                url('your-anime-background-image.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: #fff;
-  }
+/* Responsive Menu (Hidden by Default) */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: #f1f5f9;
+    cursor: pointer;
+}
 
-  .parallax {
-    background-image: url('your-anime-background.jpg');
-    height: 100%;
-    background-attachment: fixed;
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: rgba(30, 41, 59, 0.95);
+        border-radius: 8px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 100px 20px;
+    background-image: url('background.jpg'); /* Add your anime image URL here */
+    background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     position: relative;
-  }
-  
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    font-family: 'Arial', sans-serif;
-    background: radial-gradient(circle, #0b1124 40%, #001635 90%); /* Sirius cosmic gradient */
-    color: #d9f3ff; /* Soft glowing white-blue text */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    height: 100vh; /* Ensures the hero section takes up the full height of the screen */
 }
 
-/* Fix background cutting issue */
-body::before {
+/* Gradient Overlay */
+.hero::before {
     content: '';
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('https://source.unsplash.com/1600x900/?stars,space') center/cover no-repeat, 
-                radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
-                radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
-    z-index: -1;
-    animation: shimmer 20s linear infinite;
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.6));
+    z-index: 1;
 }
 
-/* Ensure the footer is positioned correctly */
-footer {
-    background: rgba(11, 25, 48, 0.9); /* Sirius deep overlay */
-    color: #d9f3ff;
-    padding: 15px;
-    border-top: 1px solid #5acaff;
-    text-shadow: 0 0 10px #5acaff;
-    text-align: center;
-}
-
-/* Make sure the container spans the full height of the screen */
-.container {
-    min-height: calc(100vh - 100px); /* Adjust height to include space for header/footer */
+/* Hero Section */
+.hero {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-}
-
-/* Ensure footer sticks to the bottom if content is short */
-html, body, .container {
-    display: flex;
-    flex-direction: column;
-}
-.container {
-    flex: 1;
-}
-
-/* City card styles */
-.city-card {
-    background: rgba(0, 22, 53, 0.8); /* Semi-transparent Sirius theme */
-    border: 2px solid #5acaff; /* Glowing border */
-    border-radius: 15px;
-    padding: 15px;
     text-align: center;
-    color: #d9f3ff;
-    box-shadow: 0 0 15px rgba(90, 202, 255, 0.6);
-    width: 100%; /* Full width on smaller screens */
-    max-width: 300px; /* Limit the width for consistency */
+    padding: 100px 20px;
+    background-image: url('cyrus-photo.jpg'); /* Add your anime image path here */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 100vh;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.7)); /* Dark gradient for readability */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: #f1f5f9;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    color: #3b82f6;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #94a3b8;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.cta-button {
+    padding: 12px 30px;
+    background: #3b82f6;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.cta-button:hover {
+    background: #2563eb;
+    transform: scale(1.05);
+}
+
+/* Responsive Hero Section */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 50px 20px;
+}
+
+.feature-item {
+    background: #334155;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* Hover effect */
-.city-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(90, 202, 255, 1);
+.feature-item img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
 
-/* Mobile-friendly adjustments */
-@media (max-width: 768px) {
-    .container {
-        padding: 10px; /* Adjust padding for smaller screens */
-    }
-
-    .city-card {
-        width: calc(100% - 20px); /* Slightly smaller than the full width to avoid edge clipping */
-        margin: 0 auto; /* Center the cards on mobile */
-    }
+.feature-item h2 {
+    font-size: 1.5rem;
+    color: #e2e8f0;
 }
+
+.feature-item p {
+    font-size: 1rem;
+    color: #94a3b8;
+}
+
+.feature-item .feature-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 20px;
+    background: #3b82f6;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.feature-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+.feature-item .feature-link:hover {
+    background: #2563eb;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: #1e293b;
+    color: #94a3b8;
+}
+
+.footer nav {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer nav a {
+    color: #3b82f6;
+    text-decoration: none;
+}
+

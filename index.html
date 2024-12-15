@@ -1,65 +1,74 @@
 <!DOCTYPE html>
 <html lang="ar">
-
 <head>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>𝑺𝒊𝒓𝒊𝒖𝒔</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>𝑺𝒊𝒓𝒊𝒖𝒔 - الصفحة الرئيسية</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="top-bar">
+    <!-- Navigation Bar -->
+    <header class="nav-bar">
         <div class="logo">
-            <a href="index.html" class="logo-link">
-                <div class="logo-container">
-                    <img src="cyrus-photo.jpg" alt="Cyrus" class="logo-image">
-                    <div class="logo-text">𝑺𝒊𝒓𝒊𝒖𝒔</div>
-                </div>
+            <a href="index.html">
+                <img src="cyrus-photo.jpg" alt="Sirius Logo">
+                <span>𝑺𝒊𝒓𝒊𝒖𝒔</span>
             </a>
         </div>
-        <div class="menu-button" id="menuButton">☰</div>
-        <nav class="menu" id="menu">
+        <nav>
             <a href="kyoto.html">البنك</a>
             <a href="osaka.html">القوانين</a>
             <a href="store.html">المتجر</a>
-            <a href="titles.html">الالقاب</a>
+            <a href="titles.html">الألقاب</a>
         </nav>
-    </div>
+        <div class="menu-toggle" id="menuToggle">☰</div>
+    </header>
 
-    <div class="welcome-message">
-        <div class="japanese-frame">
-            <div class="parallax"></div>
-            <p class="typing-text">أهلا بكم في سايروس</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>𝑺𝒊𝒓𝒊𝒖𝒔</h1>
+            <p>مرحبًا بكم في عالم 𝑺𝒊𝒓𝒊𝒖𝒔، حيث يجتمع الإبداع والقوانين مع أفضل المزايا.</p>
+            <a href="#features" class="cta-button">استكشاف المزيد</a>
         </div>
-    </div>
+    </section>
 
-    <div class="container">
-        <div class="city-card" onclick="navigate('kyoto')">
-            <div class="image-frame">
-                <img src="bank.gif" data-src="kyoto.png" alt="Kyoto" class="lazy-load">
-            </div>
-            <div class="city-card-title">
-                <p>البنك</p>
-            </div>
-        </div>           
+    <!-- Features Section -->
+    <section id="features" class="features-grid">
+        <div class="feature-item">
+            <img src="bank.gif" alt="Feature 1">
+            <h2>البنك</h2>
+            <p>قم بإدارة أموالك بسهولة باستخدام نظامنا الحديث.</p>
+            <a href="kyoto.html" class="feature-link">اقرأ المزيد</a>
+        </div>
+        <div class="feature-item">
+            <img src="rules.gif" alt="Feature 2">
+            <h2>القوانين</h2>
+            <p>تعرف على القوانين واللوائح التي تحكم النظام.</p>
+            <a href="osaka.html" class="feature-link">اقرأ المزيد</a>
+        </div>
+        <div class="feature-item">
+            <img src="feature3.jpg" alt="Feature 3">
+            <h2>المتجر</h2>
+            <p>اكتشف العناصر الحصرية والمميزة لدينا.</p>
+            <a href="store.html" class="feature-link">اقرأ المزيد</a>
+        </div>
+        <div class="feature-item">
+            <img src="title.gif" alt="Feature 4">
+            <h2>الألقاب</h2>
+            <p>احصل على ألقاب مميزة وشخصية تناسبك.</p>
+            <a href="titles.html" class="feature-link">اقرأ المزيد</a>
+        </div>
+    </section>
 
-        <div class="city-card" onclick="navigate('osaka')">
-            <div class="image-frame">
-                <img src="rules.gif" data-src="osaka.png" alt="Osaka" class="lazy-load">
-            </div>
-            <div class="city-card-title">
-                <p>القوانين</p>
-            </div>
-        </div>      
-
+    <!-- Footer Section -->
     <footer class="footer">
-        <p>جوا الرواية رواية مكتوبة بين السطور.. عن بطل كان مغمور.. ومحدش فيه سائل.. حلمه ماشفش النور.. لكنه مات بيحاول." - مغمور وكفى</p>
+        <p>&copy; 2024 𝑺𝒊𝒓𝒊𝒖𝒔. جميع الحقوق محفوظة.</p>
+        <nav>
     </footer>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="styleindex.css">
 </body>
 </html>

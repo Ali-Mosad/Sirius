@@ -1,44 +1,32 @@
 <!DOCTYPE html>
 <html lang="ar">
-
 <head>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>𝑺𝒊𝒓𝒊𝒖𝒔</title>
-    <link rel="stylesheet" href="style.css">
+    <title>قوانين - Sirius</title>
+    <link rel="stylesheet" href="stylerules.css">
 </head>
-
 <body>
-    <div class="top-bar">
+    <header class="nav-bar">
         <div class="logo">
-            <a href="index.html" class="logo-link">
-                <div class="logo-container">
-                    <img src="cyrus-photo.jpg" alt="Cyrus" class="logo-image">
-                    <div class="logo-text">𝑺𝒊𝒓𝒊𝒖𝒔</div>
-                </div>
+            <a href="index.html">
+                <img src="cyrus-photo.jpg" alt="Sirius Logo">
+                <span>Sirius</span>
             </a>
         </div>
-        <div class="menu-button" id="menuButton">☰</div>
-        <nav class="menu" id="menu">
-            <a href="kyoto.html">البنك</a>
-            <a href="osaka.html">القوانين</a>
-            <a href="store.html">المتجر</a>
-            <a href="titles.html">الالقاب</a>
+        <nav class="nav-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="rules.html" class="active">القوانين</a>
         </nav>
-    </div>
+    </header>
 
-    <!-- Main Content -->
     <main class="rules-container">
-        <div class="intro-section">
-            <h1>قوانين Sirius</h1>
-            <p>الرجاء قراءة القوانين التالية بعناية لضمان تجربة ممتعة للجميع.</p>
-        </div>
+        <h1>القوانين</h1>
 
         <!-- General Rules -->
         <section class="rules-section">
-            <h2>القوانين العامة</h2>
-            <ul class="rules-list">
+            <h2>★ القوانين العامة ★</h2>
+            <ul>
                 <li>طلب اشراف</li>
                 <li>أخذ دور المُشرف</li>
                 <li>التحدث عن الحلقة قبل مرور 12 ساعة من نزولها</li>
@@ -51,10 +39,10 @@
             </ul>
         </section>
 
-        <!-- Two-Strike Rules -->
-        <section class="rules-section warning">
-            <h2>قوانين الإنذارين ⛔</h2>
-            <ul class="rules-list">
+        <!-- Warning Rules -->
+        <section class="rules-section warning-rules">
+            <h2>★ قوانين الإنذارين: ⛔ ★</h2>
+            <ul>
                 <li>التهديد بالحرق 『 جدية 』</li>
                 <li>العنصرية العرقية أو القبلية أو الطائفية</li>
                 <li>عدم احترام الأعضاء / المشرفين</li>
@@ -63,10 +51,10 @@
             </ul>
         </section>
 
-        <!-- Permanent Ban Rules -->
-        <section class="rules-section ban">
-            <h2>قوانين المؤبد ⛔</h2>
-            <ul class="rules-list">
+        <!-- Ban Rules -->
+        <section class="rules-section ban-rules">
+            <h2>★ قوانين المؤبد: ⛔ ★</h2>
+            <ul>
                 <li>النشر ويشمل الحسابات / ممالك آخرى</li>
                 <li>إرسال صور شخصية / لك أو لأي عضو آخر</li>
                 <li>التهديد والابتزاز</li>
@@ -84,8 +72,8 @@
 
         <!-- Notes -->
         <section class="rules-section notes">
-            <h2>ملاحظات ⚠️</h2>
-            <ul class="rules-list">
+            <h2>★ ملاحظات: ⚠️ ★</h2>
+            <ul>
                 <li>خذوا راحتكم بالسوالف وغيرها بالنهاية نقابة عشان نستمتع فيها.</li>
                 <li>الدخول للمشرف فقط في حالة وجود مشكلة أو للاستفسار.</li>
                 <li>يحق للمشرف اتخاذ إجراءات مضادة في حال لاحظ وجود أي تعدي بأي شكل من الأشكال، حتى وإن لم يكن مذكورًا في القوانين.</li>
@@ -94,10 +82,8 @@
         </section>
     </main>
 
-    <link rel="stylesheet" href="stylerules.css">
-    <!-- Footer -->
-    <footer id="rules-footer">
-        <p>© 2024 Sirius. جميع الحقوق محفوظة.</p>
+    <footer>
+        <p>&copy; 2024 Sirius. جميع الحقوق محفوظة.</p>
     </footer>
 </body>
 </html>

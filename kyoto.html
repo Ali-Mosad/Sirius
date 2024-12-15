@@ -11,7 +11,7 @@
 </head>
 <body>
     <!-- Top Navigation Bar -->
-    <header class="top-bar">
+    <header class="nav-bar">
         <div class="logo">
             <a href="index.html" class="logo-link">
                 <div class="logo-container">
@@ -20,7 +20,7 @@
                 </div>
             </a>
         </div>
-        <div class="menu-button" id="menuButton">☰</div>
+        <div class="menu-toggle" id="menuButton">☰</div>
         <nav class="menu" id="menu">
             <a href="kyoto.html">البنك</a>
             <a href="osaka.html">القوانين</a>
@@ -30,36 +30,36 @@
     </header>
 
     <!-- ID Card Container -->
-<section class="id-card-container">
-    <div class="id-card">
-        <div class="id-photo">
-            <img src="default-photo.gif" alt="ID Photo">
-        </div>
-        <div class="id-details">
-            <input type="text" id="search" placeholder="ادخل اللقب">
-            <button id="searchButton">بحث</button>
-        </div>
-    </div>
-</section>
-
-<section id="searchResult"></section>
-
-
-        <!-- Form for Adding Titles -->
-<section id="titleSection">
-    <h2>↓ جميع الألقاب ↓</h2>
-    <form id="titleForm">
-
-        <div class="city-card" onclick="navigate('titles')">
-            <div class="image-frame">
-                <img src="title.gif" data-src="osaka.png" alt="Osaka" class="lazy-load">
+    <section class="id-card-container">
+        <div class="id-card">
+            <div class="id-photo">
+                <img src="default-photo.gif" alt="ID Photo">
             </div>
-            <div class="city-card-title">
-                <p>الالقاب</p>
+            <div class="id-details">
+                <input type="text" id="search" placeholder="ادخل اللقب">
+                <button id="searchButton">بحث</button>
             </div>
-        </div>   
+        </div>
+    </section>
 
-    <!-- City Content -->
+    <!-- Search Result Section -->
+    <div id="searchResult"></div>
+
+    <section id="titleSection">
+        <h2>↓ جميع الألقاب ↓</h2>
+        <form id="titleForm">
+            <div class="city-card" onclick="navigate('titles')">
+                <div class="image-frame">
+                    <img src="title.gif" data-src="osaka.png" alt="Osaka" class="lazy-load">
+                </div>
+                <div class="city-card-title">
+                    <p>الالقاب</p>
+                </div>
+            </div>   
+        </form>
+    </section>
+
+    <!-- City Content Section -->
     <section class="container">
         <div class="city-info">
             <p>🦝</p>
@@ -68,6 +68,8 @@
 
     <!-- JavaScript -->
     <script src="script.js"></script>
+
+    <link rel="stylesheet" href="stylebank.css">
 
     <!-- Auto-Refresh for Updates -->
     <script>
