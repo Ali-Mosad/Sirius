@@ -1907,3 +1907,119 @@ html, body, .container {
 }
 
 
+        /* Body Background */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: radial-gradient(circle, #1e293b, #0e1726);
+            color: #f1f5f9;
+        }
+
+        /* Center and Style Title Section */
+        #titleSection {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        #titleSection h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #e2e8f0;
+        }
+
+        #searchForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #searchInput {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #64748b;
+            width: 300px;
+            font-size: 1rem;
+            color: #0e1726;
+        }
+
+        #searchButton {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #3b82f6;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #searchButton:hover {
+            background: #2563eb;
+        }
+
+        /* Container Section */
+        #cityData {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            justify-content: center;
+            width: 90%;
+            margin-top: 20px;
+        }
+
+        .container {
+            background: linear-gradient(145deg, #1e293b, #334155);
+            border-radius: 15px;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4), -4px -4px 8px rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            text-align: center;
+            color: #f1f5f9;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid #64748b;
+            margin-bottom: 10px;
+        }
+
+        .container h2 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            color: #e2e8f0;
+        }
+
+        .container p {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .container .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 15px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .container .button:hover {
+            background: #2563eb;
+        }
+
+        .container:hover {
+            transform: translateY(-10px);
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.6), -6px -6px 12px rgba(255, 255, 255, 0.1);
+        }
+

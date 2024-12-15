@@ -4,45 +4,57 @@
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>البنك - 𝑺𝒊𝒓𝒊𝒖𝒔</title>
+    <title>الألقاب - 𝑺𝒊𝒓𝒊𝒖𝒔</title>
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 </head>
-<body>
-    <!-- Top Navigation Bar -->
-    <header class="top-bar">
-        <div class="logo">
-            <a href="index.html" class="logo-link">
-                <div class="logo-container">
-                    <img src="cyrus-photo.jpg" alt="Cyrus" class="logo-image">
-                    <div class="logo-text">𝑺𝒊𝒓𝒊𝒖𝒔</div>
-                </div>
-            </a>
-        </div>
-        <div class="menu-button" id="menuButton">☰</div>
-        <nav class="menu" id="menu">
-            <a href="kyoto.html">البنك</a>
-            <a href="osaka.html">القوانين</a>
-            <a href="store.html">المتجر</a>
-            <a href="titles.html">الألقاب</a>
-        </nav>
-    </header>
+<header class="top-bar">
+    <div class="logo">
+        <a href="index.html" class="logo-link">
+            <div class="logo-container">
+                <img src="cyrus-photo.jpg" alt="Cyrus" class="logo-image">
+                <div class="logo-text">𝑺𝒊𝒓𝒊𝒖𝒔</div>
+            </div>
+        </a>
+    </div>
+    <div class="menu-button" id="menuButton">☰</div>
+    <nav class="menu" id="menu">
+        <a href="kyoto.html">البنك</a>
+        <a href="osaka.html">القوانين</a>
+        <a href="store.html">المتجر</a>
+        <a href="titles.html">الألقاب</a>
+    </nav>
+</header>
 
-    <!-- Search for Titles -->
-    <section id="titleSection">
-        <h2>البحث عن لقب</h2>
-        <form id="searchForm">
-            <label for="searchInput">ابحث عن لقب:</label>
-            <input type="text" id="searchInput" name="search" required>
-            <button type="button" id="searchButton">بحث</button>
-        </form>
-    </section>
+<!-- Search for Titles -->
+<section id="titleSection">
+    <h2>البحث عن لقب</h2>
+    <form id="searchForm">
+        <label for="searchInput">ابحث عن لقب:</label>
+        <input type="text" id="searchInput" name="search" required>
+        <button type="button" id="searchButton">بحث</button>
+    </form>
+</section>
 
-    <!-- Container for displaying titles -->
-    <section id="cityData"></section>
+<!-- Container for displaying titles -->
+<section id="cityData">
+    <div class="container">
+        <img src="profile-placeholder.jpg" alt="Placeholder">
+        <h2>عنوان 1</h2>
+        <p>هذا هو الوصف</p>
+        <a href="#" class="button">تفاصيل</a>
+    </div>
+    <div class="container">
+        <img src="profile-placeholder.jpg" alt="Placeholder">
+        <h2>عنوان 2</h2>
+        <p>هذا هو الوصف</p>
+        <a href="#" class="button">تفاصيل</a>
+    </div>
+    <!-- Add more containers as needed -->
+</section>
 
-    <!-- JavaScript -->
-    <script src="titles.js"></script>
+<!-- JavaScript -->
+<script src="titles.js"></script>
 </body>
 </html>
