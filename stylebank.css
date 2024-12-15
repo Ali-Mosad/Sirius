@@ -10,7 +10,7 @@ body {
     background: linear-gradient(to bottom, #1e293b, #0f172a);
     color: #f8fafc;
     line-height: 1.6;
-    direction: rtl; /* Right-to-left layout */
+    direction: rtl;
     text-align: right;
 }
 
@@ -26,11 +26,11 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    transition: background 0.3s ease; /* Transition for hover effect */
+    transition: background 0.3s ease;
 }
 
 .nav-bar:hover {
-    background: rgba(30, 41, 59, 1); /* Hover effect */
+    background: rgba(30, 41, 59, 1);
 }
 
 /* Logo Section */
@@ -58,7 +58,7 @@ body {
 .logo-image {
     height: 50px;
     width: 50px;
-    border-radius: 10px; /* Rounded edges */
+    border-radius: 10px;
     border: 2px solid #3b82f6;
     padding: 5px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -75,13 +75,13 @@ body {
 
 /* Hover Effects for Logo */
 .logo-container:hover .logo-image {
-    transform: rotate(360deg) scale(1.2); /* Rotate and scale the logo image */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    transform: rotate(360deg) scale(1.2);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .logo-container:hover .logo-text {
     color: #2563eb;
-    transform: translateX(10px); /* Slight move on hover */
+    transform: translateX(10px);
 }
 
 /* Menu */
