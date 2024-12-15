@@ -9,6 +9,8 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 </head>
+
+<body>
 <header class="top-bar">
     <div class="logo">
         <a href="index.html" class="logo-link">
@@ -29,34 +31,35 @@
 
 <!-- Search for Titles -->
 <section id="titleSection">
-    <h2>البحث عن لقب</h2>
-    <form id="searchForm">
-        <label for="searchInput">ابحث عن لقب:</label>
-        <input type="text" id="searchInput" name="search" required>
-        <button type="button" id="searchButton">بحث</button>
-    </form>
+    <div class="search-container">
+        <h2>البحث عن لقب</h2>
+        <form id="searchForm" class="search-form">
+            <label for="searchInput">ابحث عن لقب:</label>
+            <input type="text" id="searchInput" name="search" required placeholder="أدخل لقب البحث">
+            <button type="button" id="searchButton">بحث</button>
+        </form>
+    </div>
 </section>
 
 <!-- Container for displaying titles -->
 <section id="cityData">
     <div class="container">
-        <img src="profile-placeholder.jpg" alt="Placeholder">
-        <h2>عنوان 1</h2>
+        <img src="profile-placeholder.jpg" alt="Placeholder" class="title-image">
+        <h3>عنوان 1</h3>
         <p>هذا هو الوصف</p>
         <a href="#" class="button">تفاصيل</a>
     </div>
     <div class="container">
-        <img src="profile-placeholder.jpg" alt="Placeholder">
-        <h2>عنوان 2</h2>
+        <img src="profile-placeholder.jpg" alt="Placeholder" class="title-image">
+        <h3>عنوان 2</h3>
         <p>هذا هو الوصف</p>
         <a href="#" class="button">تفاصيل</a>
     </div>
-    <!-- Add more containers as needed -->
+    <!-- Additional title containers can be added here -->
 </section>
 
 <link rel="stylesheet" href="styletitles.css">
 
-<!-- JavaScript -->
 <script src="titles.js"></script>
 </body>
 </html>
