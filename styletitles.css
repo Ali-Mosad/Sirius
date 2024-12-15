@@ -114,7 +114,7 @@ body {
 }
 
 /* Title Containers */
-#cityData {
+#titleContainer {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
