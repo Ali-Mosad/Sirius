@@ -38,9 +38,9 @@ searchButton.addEventListener("click", function () {
  */
 function updateSearchResult(query) {
     searchResult.innerHTML = ""; // Clear previous results
-    searchResult.classList.remove("show"); // Remove animation class before updating
+    searchResult.style.display = "block"; // Show the result container
 
-    // Search in defaultCityData
+    // Search logic
     const kyotoData = defaultCityData.kyoto[query];
     const osakaData = defaultCityData.osaka[query];
 
@@ -51,6 +51,7 @@ function updateSearchResult(query) {
     } else {
         searchResult.innerHTML = `<p>لا توجد بيانات لهذا اللقب.</p>`;
     }
+}
 
     // Add animation class after updating content
     setTimeout(() => {
