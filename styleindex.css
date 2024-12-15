@@ -103,42 +103,18 @@ body {
     }
 }
 
-/* Responsive Menu (Hidden by Default) */
-@media (max-width: 768px) {
-    .nav-bar nav {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        background: rgba(30, 41, 59, 0.95);
-        border-radius: 8px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-        padding: 10px;
-        z-index: 1000;
-    }
-
-    .nav-bar nav.active {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-}
-
 /* Hero Section */
 .hero {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 100px 20px;
+    padding: 50px 20px; /* Smaller padding for a compact hero section */
     background-image: url('anime-background.jpg'); /* Add your anime image URL here */
     background-size: cover;
     background-position: center;
     position: relative;
-    height: 100vh; /* Ensures the hero section takes up the full height of the screen */
+    height: 60vh; /* Adjust height to be smaller */
 }
 
 /* Gradient Overlay */
@@ -161,7 +137,7 @@ body {
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: 2.8rem; /* Smaller font size for the title */
     margin-bottom: 15px;
     color: #3b82f6;
     text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
@@ -169,7 +145,7 @@ body {
 }
 
 .hero p {
-    font-size: 1.3rem;
+    font-size: 1.1rem; /* Smaller font size for the paragraph */
     margin-bottom: 20px;
     color: #94a3b8;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
@@ -196,7 +172,7 @@ body {
 /* Responsive Hero Section */
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem; /* Further decrease title size for smaller screens */
     }
 
     .hero p {
