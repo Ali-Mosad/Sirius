@@ -14,7 +14,7 @@ body {
     text-align: right;
 }
 
-* Top Navigation Bar */
+/* Top Navigation Bar */
 .nav-bar {
     display: flex;
     align-items: center;
