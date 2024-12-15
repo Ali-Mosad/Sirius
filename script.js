@@ -101,3 +101,33 @@ function displayCityName() {
     }
 }
 
+setInterval(function() {
+    fetch('/version.txt')  // URL to a file or endpoint that changes when the website is updated
+        .then(response => response.text())
+        .then(currentVersion => {
+            if (localStorage.getItem('version') !== currentVersion) {
+                localStorage.setItem('version', currentVersion);
+                location.reload(true); // Force refresh if the version has changed
+            }
+        })
+        .catch(error => console.error('Error checking for updates:', error));
+}, 5000); // Check every 5 seconds
+
+document.addEventListener("DOMContentLoaded", function () {
+    const images = document.querySelectorAll('img.lazy');
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const image = entry.target;
+                image.src = image.getAttribute('data-src');
+                image.classList.remove('lazy');
+                observer.unobserve(image);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    images.forEach(image => {
+        observer.observe(image);
+    });
+});
+
