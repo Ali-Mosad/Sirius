@@ -1,4 +1,4 @@
-* General Reset */
+/* General Reset */
 body, h1, h2, p, nav, a {
     margin: 0;
     padding: 0;
@@ -26,11 +26,11 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    transition: background 0.3s ease; /* Transition for hover effect */
+    transition: background 0.3s ease;
 }
 
 .nav-bar:hover {
-    background: rgba(30, 41, 59, 1); /* Hover effect */
+    background: rgba(30, 41, 59, 1);
 }
 
 /* Logo Section */
@@ -38,7 +38,6 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
-    transition: transform 0.3s ease;
 }
 
 .logo-link {
@@ -52,13 +51,12 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: transform 0.3s ease;
 }
 
 .logo-image {
     height: 50px;
     width: 50px;
-    border-radius: 10px; /* Rounded edges */
+    border-radius: 10px;
     border: 2px solid #3b82f6;
     padding: 5px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -70,18 +68,6 @@ body {
     color: #3b82f6;
     font-weight: bold;
     text-shadow: 1px 1px 6px rgba(59, 130, 246, 0.4);
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-/* Hover Effects for Logo */
-.logo-container:hover .logo-image {
-    transform: rotate(360deg) scale(1.2); /* Rotate and scale the logo image */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow */
-}
-
-.logo-container:hover .logo-text {
-    color: #2563eb;
-    transform: translateX(10px); /* Slight move on hover */
 }
 
 /* Menu */
@@ -153,6 +139,7 @@ body {
     margin-bottom: 20px;
 }
 
+/* Search Result */
 #searchResult {
     display: flex;
     justify-content: center;
@@ -163,14 +150,14 @@ body {
     border-radius: 12px;
     text-align: center;
     width: 100%;
-    max-width: 600px; /* Ensure it's not too wide */
+    max-width: 600px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     color: #f8fafc;
-    display: none; /* Initially hidden */
+    display: none;
 }
 
 #searchResult.show {
-    display: flex; /* Ensure it's displayed when results are ready */
+    display: flex;
 }
 
 .result-wrapper {
@@ -285,10 +272,12 @@ body {
 @media (max-width: 768px) {
     .id-card {
         width: 90%;
+        padding: 10px;
     }
 
     #searchResult {
         width: 90%;
+        padding: 15px;
     }
 
     .city-card {
@@ -302,5 +291,18 @@ body {
 
     #titleSection h2 {
         font-size: 1.2rem;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
     }
 }
