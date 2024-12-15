@@ -82,33 +82,6 @@ body {
     transform: translateX(10px); /* Slight move on hover */
 }
 
-/* Menu */
-.menu {
-    display: flex;
-    gap: 15px;
-}
-
-.menu a {
-    text-decoration: none;
-    color: #f8fafc;
-    padding: 8px 12px;
-    font-size: 0.9rem;
-    border-radius: 6px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.menu a:hover, .menu a.active {
-    background: #3b82f6;
-    color: #ffffff;
-}
-
-.menu-toggle {
-    display: none;
-    font-size: 1.5rem;
-    color: #f8fafc;
-    cursor: pointer;
-}
-
 /* Title Section */
 #titleSection {
     padding: 50px 20px;
