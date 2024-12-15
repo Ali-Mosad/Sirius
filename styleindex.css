@@ -29,7 +29,7 @@ body {
     margin: 10px 0; /* Adds space outside the frame */
 }
 
-/* Logo */
+/* Logo Section */
 .nav-bar .logo {
     display: flex;
     align-items: center;
@@ -110,7 +110,7 @@ body {
     align-items: center;
     text-align: center;
     padding: 50px 20px; /* Smaller padding for a compact hero section */
-    background-image: url('background.jpg'); /* Add your anime image URL here */
+    background-image: url('anime-background.jpg'); /* Add your anime image URL here */
     background-size: cover;
     background-position: center;
     position: relative;
