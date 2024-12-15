@@ -9,11 +9,10 @@ body {
     font-family: 'Poppins', sans-serif;
     background: radial-gradient(circle, #1e293b, #0e1726);
     color: #f1f5f9;
-    direction: rtl; /* Right-to-left text direction */
 }
 
-/* Top Bar */
-.top-bar {
+/* Top Bar with Framed Icon */
+.nav-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -27,22 +26,26 @@ body {
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     border-bottom: 4px solid #3b82f6; /* Frame at the bottom */
     border-radius: 8px 8px 0 0; /* Rounded top corners */
+    margin: 10px 0; /* Adds space outside the frame */
 }
 
-.top-bar .logo-container {
+/* Logo */
+.nav-bar .logo {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-.top-bar .logo-image {
+.nav-bar .logo img {
     height: 50px;
     width: auto;
-    border-radius: 50%;
-    border: 3px solid #3b82f6;
+    border: 3px solid #3b82f6;  /* Frame around the icon */
+    border-radius: 50%;  /* Rounded frame */
+    padding: 5px;  /* Space between the image and the border */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);  /* Adds shadow around the icon */
 }
 
-.top-bar .logo-text {
+.nav-bar .logo span {
     font-size: 1.8rem;
     color: #3b82f6;
     font-weight: bold;
@@ -50,12 +53,12 @@ body {
 }
 
 /* Menu Links */
-.top-bar nav {
+.nav-bar nav {
     display: flex;
     gap: 25px;
 }
 
-.top-bar nav a {
+.nav-bar nav a {
     text-decoration: none;
     color: #f1f5f9;
     font-size: 1rem;
@@ -64,9 +67,16 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.top-bar nav a:hover, .top-bar nav a.active {
+.nav-bar nav a:hover, .nav-bar nav a.active {
     background: #3b82f6;
     color: #ffffff;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: #f1f5f9;
+    cursor: pointer;
 }
 
 /* Responsive Menu (Hidden by Default) */
