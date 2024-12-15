@@ -107,3 +107,15 @@ function displayCityName() {
         console.error("City name element not found in the DOM.");
     }
 }
+
+setInterval(function() {
+    fetch('/version.txt')  // URL to a file or endpoint that changes when the website is updated
+        .then(response => response.text())
+        .then(currentVersion => {
+            if (localStorage.getItem('version') !== currentVersion) {
+                localStorage.setItem('version', currentVersion);
+                location.reload(true); // Force refresh if the version has changed
+            }
+        })
+        .catch(error => console.error('Error checking for updates:', error));
+}, 5000); // Check every 5 seconds
