@@ -47,15 +47,17 @@ function updateSearchResult(query) {
 function renderResult(title, data) {
     const { rank, balance, item } = data;
     searchResult.innerHTML = `
-        <div class="id-card">
-            <div class="id-photo">
-                <img src="default-photo.gif" alt="Photo">
-            </div>
-            <div class="id-details">
-                <p><strong>اللقب:</strong> ${title}</p>
-                <p><strong>الرتبة:</strong> ${rank}</p>
-                <p><strong>الرصيد:</strong> ${balance}</p>
-                <p><strong>الأداة:</strong> ${item || "لا يوجد"}</p>
+        <div class="result-wrapper">
+            <div class="id-card">
+                <div class="id-photo">
+                    <img src="default-photo.gif" alt="Photo">
+                </div>
+                <div class="id-details">
+                    <p><strong>اللقب:</strong> ${title}</p>
+                    <p><strong>الرتبة:</strong> ${rank}</p>
+                    <p><strong>الرصيد:</strong> ${balance}</p>
+                    <p><strong>الأداة:</strong> ${item || "لا يوجد"}</p>
+                </div>
             </div>
         </div>
     `;

@@ -153,22 +153,33 @@ body {
     margin-bottom: 20px;
 }
 
-/* Title Result Container */
 #searchResult {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 20px auto;
     padding: 20px;
     background: #334155;
     border-radius: 12px;
     text-align: center;
     width: 100%;
-    max-width: 600px; /* Keep the max-width to ensure it's centered */
+    max-width: 600px; /* Ensure it's not too wide */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     color: #f8fafc;
     display: none; /* Initially hidden */
 }
 
 #searchResult.show {
-    display: block; /* Make it visible when search results are updated */
+    display: flex; /* Ensure it's displayed when results are ready */
+}
+
+.result-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
 }
 
 /* ID Card Container */
