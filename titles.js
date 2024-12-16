@@ -36,32 +36,49 @@ function updateDisplay(city = "kyoto") {
     }
 }
 
-// Google Sheets Fetch Function
-function fetchGoogleSheetsData() {
-    const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
+// Google Sheets URL (CSV format)
+const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
 
-    fetch(sheetURL)
-        .then((response) => response.text())
-        .then((csv) => {
-            const rows = csv.split("\n").slice(1); // Skip the header row
-            const dynamicContainer = document.getElementById("dynamic-titles");
-            dynamicContainer.innerHTML = ""; // Clear any existing content
+// Fetch and process the data
+fetch(sheetURL)
+    .then((response) => response.text())
+    .then((csv) => {
+        console.log("Fetched Google Sheets Data:");  // Debugging step
+        console.log(csv); // Log the CSV data to ensure it's fetched
 
-            rows.forEach((row) => {
-                const columns = row.split(","); // Split row into columns
-                if (columns.length < 2) return; // Skip invalid rows
+        // Split CSV into rows and parse
+        const rows = csv.split("\n").slice(1); // Skip the header row
+        const dynamicContainer = document.getElementById("dynamic-titles");
+        dynamicContainer.innerHTML = ""; // Clear any existing content
 
-                const titleDiv = document.createElement("div");
-                titleDiv.className = "title-item searchable";
-                titleDiv.innerHTML = `
-                    <h3>${columns[0]}</h3>
-                    <p>${columns[1]}</p>
-                `;
-                dynamicContainer.appendChild(titleDiv);
-            });
-        })
-        .catch((error) => console.error("Error loading Google Sheets data:", error));
-}
+        if (rows.length === 0) {
+            console.error("No data found in the Google Sheets CSV.");
+        }
+
+        rows.forEach((row, index) => {
+            if (row.trim() === "") return; // Skip empty rows
+
+            const columns = row.split(","); // Split row into columns
+            if (columns.length < 2) {
+                console.warn(`Skipping invalid row ${index + 1}: ${row}`);
+                return; // Skip rows that don't have enough columns
+            }
+
+            // Log each row's content to check if it is parsed correctly
+            console.log("Parsed Row:", columns);
+
+            const titleDiv = document.createElement("div");
+            titleDiv.className = "title-item searchable";
+            titleDiv.innerHTML = `
+                <h3>${columns[0]}</h3>
+                <p>${columns[1]}</p>
+            `;
+            dynamicContainer.appendChild(titleDiv);
+        });
+    })
+    .catch((error) => {
+        console.error("Error loading Google Sheets data:", error);
+    });
 
 // Search Functionality for Both Sections
 document.getElementById("searchButton").addEventListener("click", () => {
