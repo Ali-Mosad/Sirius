@@ -92,4 +92,3 @@ document.getElementById('addTitleForm').addEventListener('submit', async (e) => 
         alert('حدث خطأ أثناء إضافة اللقب');
     }
 });
-
