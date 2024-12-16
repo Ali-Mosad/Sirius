@@ -385,7 +385,7 @@ h2 {
 
 /* Search Section */
 .search-section {
-    background: url('your-anime-image.jpg') no-repeat center center;
+    background: url('anime-background.jpg') no-repeat center center;
     background-size: cover;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
