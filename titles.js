@@ -45,7 +45,7 @@ function updateDisplay() {
                     <h3>${columns[0]}</h3>
                     <p>رتبة: ${columns[1]}</p>
                     <p>رصيد: ${columns[2]}</p>
-                    <p>أداة: ${columns[3] || "لا يوجد"}</p>
+                    <p>انذار: ${columns[3] || "لا يوجد"}</p>
                 `;
 
                 // Append to the dynamic container
