@@ -63,3 +63,33 @@ document.getElementById("searchForm").addEventListener("submit", (event) => {
 
 // Initial Data Display
 updateDisplay(); // Show local default data
+
+document.getElementById('addTitleForm').addEventListener('submit', async (e) => {
+    e.preventDefault(); // Prevent the default form submission
+
+    // Get form data
+    const title = document.getElementById('title').value;
+    const rank = document.getElementById('rank').value;
+    const balance = document.getElementById('balance').value;
+    const tool = document.getElementById('tool').value;
+
+    // The Google Apps Script URL
+    const scriptUrl = 'YOUR_GOOGLE_APPS_SCRIPT_URL'; // Replace with your script URL
+
+    // Send data to the Google Apps Script
+    const response = await fetch(scriptUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ title, rank, balance, tool })
+    });
+
+    // Check if the request was successful
+    if (response.ok) {
+        alert('تم إضافة اللقب بنجاح');
+    } else {
+        alert('حدث خطأ أثناء إضافة اللقب');
+    }
+});
+
