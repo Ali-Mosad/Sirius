@@ -39,7 +39,7 @@ function updateDisplay(city = "kyoto") {
 // Google Sheets URL (CSV format)
 const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
 
-// Fetch and process the data
+// Fetch and process the data from Google Sheets
 fetch(sheetURL)
     .then((response) => response.text())
     .then((csv) => {
@@ -71,7 +71,9 @@ fetch(sheetURL)
             titleDiv.className = "title-item searchable";
             titleDiv.innerHTML = `
                 <h3>${columns[0]}</h3>
-                <p>${columns[1]}</p>
+                <p>رتبة: ${columns[1]}</p>
+                <p>رصيد: ${columns[2]}</p>
+                <p>أداة: ${columns[3] || "لا يوجد"}</p>
             `;
             dynamicContainer.appendChild(titleDiv);
         });
@@ -98,4 +100,3 @@ document.getElementById("searchForm").addEventListener("submit", (event) => {
 
 // Initial Data Display
 updateDisplay(); // Show local default data
-fetchGoogleSheetsData(); // Fetch and display data from Google Sheets

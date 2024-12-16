@@ -18,18 +18,25 @@
         </div>
     </header>
 
-    <section id="cityData">
-        <h2>الألقاب المحلية</h2>
-        <!-- Local default data will load here -->
+    <!-- Search Section -->
+    <section id="titleSection">
+        <h2>البحث عن لقب</h2>
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="أدخل لقب البحث">
+            <button type="button" id="searchButton">بحث</button>
+        </form>
     </section>
-    
+
     <section id="dynamic-titles">
         <h2>الألقاب من جوجل شيت</h2>
         <!-- Data from Google Sheets will load here -->
-    </section>     
+    </section>    
+
+    <!-- Titles Display Section -->
+    <section id="cityData"></section>
 
     <footer class="footer">
-        <p>حقوق النشر © 2024 جميع الحقوق محفوظة.</p>
+        <p>حقوق النشر © 2024، جميع الحقوق محفوظة.</p>
     </footer>
 
     <script src="titles.js"></script>
