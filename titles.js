@@ -64,39 +64,37 @@ document.getElementById("searchForm").addEventListener("submit", (event) => {
 // Initial Data Display
 updateDisplay(); // Show local default data
 
+// Add Title Form Submit Handler
 document.getElementById('addTitleForm').addEventListener('submit', async (e) => {
     e.preventDefault(); // Prevent the default form submission
 
     // Get form data
-    const title = document.getElementById('لقب').value;
-    const rank = document.getElementById('رتبة').value;
-    const balance = document.getElementById('رصيد').value;
-    const tool = document.getElementById('أداة').value;
+    const title = document.getElementById('title').value;
+    const rank = document.getElementById('rank').value;
+    const balance = document.getElementById('balance').value;
+    const tool = document.getElementById('tool').value;
+
+    // Log the data for debugging
+    console.log({ title, rank, balance, tool });
 
     // The Google Apps Script URL
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzvOmCC7yzHZ3xLqzgdK4R669V_KKr-o3NjTK8mt3Gr8YNxj0vSxCjbOWY6-eNWkSYI/exec'; // Replace with your script URL
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzvOmCC7yzHZ3xLqzgdK4R669V_KKr-o3NjTK8mt3Gr8YNxj0vSxCjbOWY6-eNWkSYI/exec'; // Replace with the actual script URL from Google Apps Script
 
-    try {
-        // Send data to the Google Apps Script
-        const response = await fetch(scriptUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ title, rank, balance, tool })
-        });
+    // Send data to Google Apps Script
+    const response = await fetch(scriptUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ title, rank, balance, tool })
+    });
 
-        // Log the response for debugging
-        const responseText = await response.text();
-        console.log("Response from Apps Script:", responseText);
-
-        // Check if the request was successful
-        if (response.ok) {
-            alert('تم إضافة اللقب بنجاح');
-        } else {
-            alert('حدث خطأ أثناء إضافة اللقب');
-        }
-    } catch (error) {
-        console.error('Error during request:', error);
+    // Check if the request was successful
+    if (response.ok) {
+        alert('تم إضافة اللقب بنجاح');
+        // Optionally refresh the titles displayed on the website
+        updateDisplay(); // Or any other function to refresh the displayed data
+    } else {
+        alert('حدث خطأ أثناء إضافة اللقب');
     }
 });
