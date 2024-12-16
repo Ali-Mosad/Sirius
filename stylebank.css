@@ -366,85 +366,101 @@ body {
 
 /* General Styling */
 body {
-    font-family: 'Cairo', sans-serif; /* Arabic-friendly font */
-    background-color: #f7f7f7;
-    color: #333;
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a; /* Dark theme for modern look */
+    color: #f0f0f0; /* Light text for contrast */
     margin: 0;
     padding: 0;
+    line-height: 1.6;
 }
 
 h2 {
-    font-size: 24px;
-    color: #444;
+    font-size: 30px;
+    color: #ffffff;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 /* Search Section */
 .search-section {
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    margin: 20px auto;
-    padding: 20px;
+    background-color: #2c2c2c;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    margin: 30px auto;
+    padding: 30px;
     width: 90%;
-    max-width: 600px;
+    max-width: 650px;
+    transition: all 0.3s ease;
+}
+
+.search-section:hover {
+    transform: scale(1.02); /* Subtle hover effect */
 }
 
 .search-section form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     align-items: center;
 }
 
 .search-section input[type="text"] {
     width: 90%;
     max-width: 500px;
-    padding: 10px 15px;
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    font-size: 16px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
     text-align: right;
-    transition: border-color 0.3s ease;
+    background-color: #444;
+    color: #fff;
+    transition: all 0.3s ease;
 }
 
 .search-section input[type="text"]:focus {
-    border-color: #007BFF;
+    background-color: #333;
     outline: none;
+    border: 2px solid #0078FF; /* Blue focus color */
 }
 
 .search-button {
-    padding: 10px 20px;
-    background-color: #007BFF;
+    padding: 12px 25px;
+    background-color: #0078FF;
     color: #fff;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     border: none;
-    border-radius: 25px;
+    border-radius: 50px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 50%;
 }
 
 .search-button:hover {
-    background-color: #0056b3;
+    background-color: #0057b7;
+    transform: translateY(-3px); /* Slight hover lift effect */
 }
 
 /* Results Section */
 .result-section {
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    margin: 20px auto;
-    padding: 20px;
+    background-color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+    margin: 25px auto;
+    padding: 25px;
     width: 90%;
-    max-width: 600px;
+    max-width: 650px;
+    display: none; /* Initially hidden */
+    transition: all 0.3s ease;
 }
 
 .result-wrapper {
     display: flex;
     align-items: center;
     gap: 20px;
+    justify-content: center;
 }
 
 .id-card {
@@ -453,35 +469,44 @@ h2 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 15px;
-    background-color: #334155;
-    border: 1px solid #334155;
+    padding: 20px;
+    background-color: #444;
     border-radius: 10px;
     width: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .id-photo img {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     object-fit: cover;
-    border: 2px solid #007BFF;
+    border: 3px solid #0078FF;
+    transition: transform 0.3s ease;
+}
+
+.id-photo img:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
 }
 
 .id-details p {
-    font-size: 14px;
-    margin: 5px 0;
-    color: #555;
+    font-size: 16px;
+    margin: 8px 0;
+    color: #bbb;
 }
 
-/* Footer */
+.id-details p strong {
+    color: #0078FF;
+}
+
+/* Footer Section */
 .footer {
     text-align: center;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    margin-top: 30px;
+    padding: 15px 20px;
+    background-color: #2c2c2c;
+    color: #aaa;
     font-size: 14px;
-    border-top: 3px solid #007BFF;
+    margin-top: 40px;
+    border-top: 2px solid #0078FF;
 }
