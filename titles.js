@@ -11,7 +11,7 @@ const defaultCityData = {
     },
 };
 
-// Display Titles
+// Display Local Data
 function updateDisplay(city = "kyoto") {
     const cityData = document.getElementById("cityData");
     cityData.innerHTML = ""; // Clear previous data
@@ -36,10 +36,39 @@ function updateDisplay(city = "kyoto") {
     }
 }
 
-// Search Functionality
+// Google Sheets Integration
+function fetchGoogleSheetsData() {
+    const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
+
+    fetch(sheetURL)
+        .then((response) => response.text())
+        .then((csv) => {
+            // Log fetched data for debugging
+            console.log("Fetched Google Sheets Data:", csv);
+
+            const rows = csv.split("\n").slice(1); // Skip the header row
+            const dynamicContainer = document.getElementById("dynamic-titles");
+
+            rows.forEach((row) => {
+                const columns = row.split(",");
+                if (columns.length < 2) return; // Skip invalid rows
+
+                const titleDiv = document.createElement("div");
+                titleDiv.className = "title-item";
+                titleDiv.innerHTML = `
+                    <h3>${columns[0]}</h3>
+                    <p>${columns[1]}</p>
+                `;
+                dynamicContainer.appendChild(titleDiv);
+            });
+        })
+        .catch((error) => console.error("Error loading Google Sheets data:", error));
+}
+
+// Search Functionality for Both Sections
 document.getElementById("searchButton").addEventListener("click", () => {
     const searchQuery = document.getElementById("searchInput").value.toLowerCase();
-    const containers = document.querySelectorAll(".searchable");
+    const containers = document.querySelectorAll(".container, .title-item");
 
     containers.forEach((container) => {
         const titleText = container.querySelector("h3").textContent.toLowerCase();
@@ -52,39 +81,6 @@ document.getElementById("searchForm").addEventListener("submit", (event) => {
     event.preventDefault();
 });
 
-// Initial Display
-updateDisplay();
-
-// Google Sheets URL (CSV format)
-const sheetURL = "https://docs.google.com/spreadsheets/d/1dsoPol1QT9yDGmtIt9b-TQ7EJm8_3ag4-hrLqK6Cn2I/gviz/tq?tqx=out:csv";
-
-// Fetch and process the data
-fetch(sheetURL)
-    .then(response => response.text())
-    .then(csv => {
-        const rows = csv.split("\n").slice(1); // Skip the header row
-        const container = document.getElementById("dynamic-titles");
-
-        rows.forEach(row => {
-            const columns = row.split(",");
-            const titleDiv = document.createElement("div");
-            titleDiv.className = "title-item";
-            titleDiv.innerHTML = `
-                <h3>${columns[0]}</h3>
-                <p>${columns[1]}</p>
-            `;
-            container.appendChild(titleDiv);
-        });
-    })
-    .catch(error => console.error("Error loading Google Sheets data:", error));
-
-// Search functionality
-document.getElementById("searchButton").addEventListener("click", () => {
-    const query = document.getElementById("searchInput").value.trim();
-    const titles = document.querySelectorAll(".title-item");
-
-    titles.forEach(title => {
-        const titleText = title.querySelector("h3").textContent;
-        title.style.display = titleText.includes(query) ? "block" : "none";
-    });
-});
+// Initial Data Display
+updateDisplay(); // Show local default data
+fetchGoogleSheetsData(); // Fetch and display Google Sheets data
