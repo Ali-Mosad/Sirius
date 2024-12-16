@@ -1,4 +1,4 @@
-// Default Data
+// Default Local Data
 const defaultCityData = {
     kyoto: {
         "إيرين": { rank: "عضو", balance: 100, item: "لا يوجد" },
@@ -11,7 +11,7 @@ const defaultCityData = {
     },
 };
 
-// Display Local Data
+// Display Local Data Function
 function updateDisplay(city = "kyoto") {
     const cityData = document.getElementById("cityData");
     cityData.innerHTML = ""; // Clear previous data
@@ -36,41 +36,37 @@ function updateDisplay(city = "kyoto") {
     }
 }
 
-// Google Sheets URL (CSV format)
-const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
+// Google Sheets Fetch Function
+function fetchGoogleSheetsData() {
+    const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
 
-// Fetch and process the data
-fetch(sheetURL)
-    .then((response) => response.text())
-    .then((csv) => {
-        console.log("Fetched Google Sheets Data:", csv); // Debugging
+    fetch(sheetURL)
+        .then((response) => response.text())
+        .then((csv) => {
+            const rows = csv.split("\n").slice(1); // Skip the header row
+            const dynamicContainer = document.getElementById("dynamic-titles");
+            dynamicContainer.innerHTML = ""; // Clear any existing content
 
-        // Split CSV into rows and parse
-        const rows = csv.split("\n").slice(1); // Skip the header row
-        const dynamicContainer = document.getElementById("dynamic-titles");
-        dynamicContainer.innerHTML = ""; // Clear any existing content
+            rows.forEach((row) => {
+                const columns = row.split(","); // Split row into columns
+                if (columns.length < 2) return; // Skip invalid rows
 
-        rows.forEach((row) => {
-            const columns = row.split(","); // Split row into columns
-            if (columns.length < 2) return; // Skip invalid rows
-
-            // Create a styled div for each row
-            const titleDiv = document.createElement("div");
-            titleDiv.className = "title-item";
-            titleDiv.innerHTML = `
-                <h3>${columns[0]}</h3>
-                <p>${columns[1]}</p>
-            `;
-            dynamicContainer.appendChild(titleDiv);
-        });
-    })
-    .catch((error) => console.error("Error loading Google Sheets data:", error));
+                const titleDiv = document.createElement("div");
+                titleDiv.className = "title-item searchable";
+                titleDiv.innerHTML = `
+                    <h3>${columns[0]}</h3>
+                    <p>${columns[1]}</p>
+                `;
+                dynamicContainer.appendChild(titleDiv);
+            });
+        })
+        .catch((error) => console.error("Error loading Google Sheets data:", error));
 }
 
 // Search Functionality for Both Sections
 document.getElementById("searchButton").addEventListener("click", () => {
     const searchQuery = document.getElementById("searchInput").value.toLowerCase();
-    const containers = document.querySelectorAll(".container, .title-item");
+    const containers = document.querySelectorAll(".searchable");
 
     containers.forEach((container) => {
         const titleText = container.querySelector("h3").textContent.toLowerCase();
@@ -85,4 +81,4 @@ document.getElementById("searchForm").addEventListener("submit", (event) => {
 
 // Initial Data Display
 updateDisplay(); // Show local default data
-fetchGoogleSheetsData(); 
+fetchGoogleSheetsData(); // Fetch and display data from Google Sheets
