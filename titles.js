@@ -22,7 +22,7 @@ function updateDisplay() {
                 if (row.trim() === "") return; // Skip empty rows
 
                 const columns = row.split(","); // Split row into columns
-                if (columns.length < 5) {
+                if (columns.length < 6) {
                     console.warn(`Skipping invalid row ${index + 1}: ${row}`);
                     return; // Skip rows that don't have enough columns
                 }
@@ -34,11 +34,14 @@ function updateDisplay() {
                 const titleDiv = document.createElement("div");
                 titleDiv.className = "container searchable"; // Use the same container class and make it searchable
 
-                // Set the background image dynamically using column[4] for the image URL
-                const imageUrl = columns[5] || ""; // Assuming column[4] contains the image URL
+                // Set the background image dynamically using column[5] for the image URL
+                const imageUrl = columns[5] || ""; // Assuming column[5] contains the image URL
                 if (imageUrl) {
                     titleDiv.style.backgroundImage = `url(${imageUrl})`;
                 }
+
+                // Extract phone number from the 6th column (index 4 for the new phone number)
+                const phoneNumber = columns[4] || ""; // Assuming column[4] contains the phone number
 
                 // Add the content inside the titleDiv
                 titleDiv.innerHTML = `
@@ -46,6 +49,7 @@ function updateDisplay() {
                     <p>رتبة: ${columns[1]}</p>
                     <p>رصيد: ${columns[2]}</p>
                     <p>انذار: ${columns[3] || "لا يوجد"}</p>
+                    ${phoneNumber ? `<p><a href="tel:${phoneNumber}">📞 ${phoneNumber}</a></p>` : ""}
                 `;
 
                 // Append to the dynamic container
