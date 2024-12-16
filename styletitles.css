@@ -302,7 +302,7 @@ body {
 .container.card {
     background-size: cover;
     background-position: center;
-    height: 125px;
+    height: 160px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
