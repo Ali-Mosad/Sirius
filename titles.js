@@ -67,16 +67,18 @@ document.getElementById("searchForm").addEventListener("submit", (event) => {
 updateDisplay(); // Show local default data
 
 document.getElementById('addTitleForm').addEventListener('submit', async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault(); // Prevent default form submission
 
-    const title = document.getElementById('title').value;
-    const rank = document.getElementById('rank').value;
-    const balance = document.getElementById('balance').value;
-    const tool = document.getElementById('tool').value;
+    const title = document.getElementById('title').value.trim();
+    const rank = document.getElementById('rank').value.trim();
+    const balance = document.getElementById('balance').value.trim();
+    const tool = document.getElementById('tool').value.trim();
 
-    const scriptUrl = "https://script.google.com/macros/s/AKfycbzjIU9JKUTBYwWpXLl165mhee9wsk3VyhTuW8IvekPpmhDNmGtoGZOmJyCbvhn5W5ns/exec";
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbzvOmCC7yzHZ3xLqzgdK4R669V_KKr-o3NjTK8mt3Gr8YNxj0vSxCjbOWY6-eNWkSYI/exec";
 
     try {
+        console.log("Sending data:", { title, rank, balance, tool }); // Debugging
+
         const response = await fetch(scriptUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -87,12 +89,12 @@ document.getElementById('addTitleForm').addEventListener('submit', async (e) => 
 
         if (result.success) {
             alert('تم إضافة اللقب بنجاح');
-            document.getElementById('addTitleForm').reset(); // Reset the form
+            document.getElementById('addTitleForm').reset(); // Reset form
         } else {
             throw new Error(result.error || 'Unknown error occurred');
         }
     } catch (error) {
-        console.error('Error adding title:', error);
+        console.error('Error:', error.message);
         alert('حدث خطأ أثناء إضافة اللقب. يرجى المحاولة مرة أخرى.');
     }
 });
