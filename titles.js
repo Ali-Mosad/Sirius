@@ -32,7 +32,7 @@ function updateDisplay() {
 
                 // Create a div for each title using the container style
                 const titleDiv = document.createElement("div");
-                titleDiv.className = "container searchable"; // Use the same container class and make it searchable
+                titleDiv.className = "container searchable card"; // Use the 'card' class for modern design
 
                 // Set the background image dynamically using column[5] for the image URL
                 const imageUrl = columns[5] || ""; // Assuming column[5] contains the image URL
@@ -40,16 +40,22 @@ function updateDisplay() {
                     titleDiv.style.backgroundImage = `url(${imageUrl})`;
                 }
 
-                // Extract phone number from the 6th column (index 4 for the new phone number)
+                // Extract phone number from the 6th column
                 const phoneNumber = columns[4] || ""; // Assuming column[4] contains the phone number
 
                 // Add the content inside the titleDiv
                 titleDiv.innerHTML = `
-                    <h3>${columns[0]}</h3>
-                    <p>رتبة: ${columns[1]}</p>
-                    <p>رصيد: ${columns[2]}</p>
-                    <p>انذار: ${columns[3] || "لا يوجد"}</p>
-                    ${phoneNumber ? `<p><a href="tel:${phoneNumber}">📞 ${phoneNumber}</a></p>` : ""}
+                    <div class="card-content">
+                        <h3>${columns[0]}</h3>
+                        <p class="rank">رتبة: ${columns[1]}</p>
+                        <p class="balance">رصيد: ${columns[2]}</p>
+                        <p class="warning">انذار: ${columns[3] || "لا يوجد"}</p>
+                        ${
+                            phoneNumber
+                                ? `<p class="phone"><a href="tel:${phoneNumber}"><i class="fas fa-phone"></i> ${phoneNumber}</a></p>`
+                                : ""
+                        }
+                    </div>
                 `;
 
                 // Append to the dynamic container
