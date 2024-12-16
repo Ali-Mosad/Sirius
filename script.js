@@ -1,51 +1,59 @@
-// Default data
-const defaultCityData = {
-    kyoto: {
-        "إيرين": { rank: "عضو", balance: 100, item: "لا يوجد" },
-        "سمايل": { rank: "باكا", balance: 1, item: "مدري" },
-        "ماساكو": { rank: "مدير", balance: 200, item: "سيف" },
-    },
-    osaka: {
-        "كين": { rank: "مدير", balance: 500, item: "كتاب" },
-        "هانا": { rank: "عضو", balance: 150, item: "قوس" },
-    },
-};
+// Google Sheets URL (CSV format)
+const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
 
 // DOM Elements
 const searchButton = document.getElementById("searchButton");
-const searchInput = document.getElementById("search");
+const searchInput = document.getElementById("searchInput");
 const searchResult = document.getElementById("searchResult");
 
-// Handle Search Functionality
-searchButton.addEventListener("click", function () {
-    const query = searchInput.value.trim();
-    updateSearchResult(query);
-});
+// Store fetched data
+let sheetData = {};
 
+/**
+ * Fetch data from Google Sheets and store it in sheetData.
+ */
+function fetchSheetData() {
+    fetch(sheetURL)
+        .then((response) => response.text())
+        .then((csv) => {
+            // Parse CSV data
+            const rows = csv.split("\n").slice(1); // Skip the header row
+            rows.forEach((row) => {
+                const columns = row.split(","); // Split row into columns
+                if (columns.length >= 4) {
+                    const [title, rank, balance, tool] = columns.map((col) => col.trim());
+                    sheetData[title] = { rank, balance, tool };
+                }
+            });
+        })
+        .catch((error) => {
+            console.error("Error fetching Google Sheets data:", error);
+        });
+}
+
+/**
+ * Updates the search results based on the search query.
+ * @param {string} query - The search query (title).
+ */
 function updateSearchResult(query) {
     searchResult.innerHTML = ""; // Clear previous results
     searchResult.style.display = "block"; // Ensure the container is visible
 
-    // Search in defaultCityData
-    const kyotoData = defaultCityData.kyoto[query];
-    const osakaData = defaultCityData.osaka[query];
-
-    if (kyotoData) {
-        renderResult(query, kyotoData);
-    } else if (osakaData) {
-        renderResult(query, osakaData);
+    const data = sheetData[query]; // Search in the sheet data
+    if (data) {
+        renderResult(query, data);
     } else {
         searchResult.innerHTML = `<p>لا توجد بيانات لهذا اللقب.</p>`;
     }
 }
 
 /**
- * Renders the search result for a given title and data.
+ * Renders the search result for a given title and its data.
  * @param {string} title - The title being searched.
  * @param {Object} data - The data associated with the title.
  */
 function renderResult(title, data) {
-    const { rank, balance, item } = data;
+    const { rank, balance, tool } = data;
     searchResult.innerHTML = `
         <div class="result-wrapper">
             <div class="id-card">
@@ -56,48 +64,20 @@ function renderResult(title, data) {
                     <p><strong>اللقب:</strong> ${title}</p>
                     <p><strong>الرتبة:</strong> ${rank}</p>
                     <p><strong>الرصيد:</strong> ${balance}</p>
-                    <p><strong>الأداة:</strong> ${item || "لا يوجد"}</p>
+                    <p><strong>الأداة:</strong> ${tool || "لا يوجد"}</p>
                 </div>
             </div>
         </div>
     `;
 }
 
-/**
- * Utility function to extract the city from the URL.
- * @returns {string} The city name from the URL query parameters.
- */
-function getCityFromURL() {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get("city");
-}
-
-// Additional Enhancements
+// Fetch Google Sheets data on page load
 document.addEventListener("DOMContentLoaded", () => {
-    // Display city name when the page loads
-    displayCityName();
-
-    // Menu toggle functionality for mobile
-    const menuButton = document.getElementById("menuButton");
-    const menu = document.getElementById("menu");
-    if (menuButton && menu) {
-        menuButton.addEventListener("click", () => {
-            menu.classList.toggle("menu-open");
-        });
-    }
+    fetchSheetData(); // Load data from Google Sheets
 });
 
-/**
- * Displays the current city name on the page.
- */
-function displayCityName() {
-    const city = getCityFromURL();
-    const cityNameElement = document.getElementById("city-name");
-
-    if (cityNameElement) {
-        cityNameElement.textContent = city ? city : "مدينة غير معروفة";
-    } else {
-        console.error("City name element not found in the DOM.");
-    }
-}
-
+// Add event listener for the search button
+searchButton.addEventListener("click", () => {
+    const query = searchInput.value.trim();
+    updateSearchResult(query);
+});
