@@ -29,17 +29,13 @@
         </nav>
     </header>
 
-    <!-- ID Card Container -->
-    <section class="id-card-container">
-        <div class="id-card">
-            <div class="id-photo">
-                <img src="default-photo.png" alt="ID Photo">
-            </div>
-            <div class="id-details">
-                <input type="text" id="search" placeholder="ادخل اللقب">
-                <button id="searchButton">بحث</button>
-            </div>
-        </div>
+    <section id="searchSection" class="search-section">
+        <h2>البحث عن لقب</h2>
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="أدخل لقب البحث">
+            <button type="button" id="searchButton" class="search-button">بحث</button>
+        </form>
+        <div id="searchResult" class="result-section"></div>
     </section>
 
     <!-- Search Result Section -->
