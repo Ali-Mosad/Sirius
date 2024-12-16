@@ -66,33 +66,37 @@ document.getElementById("searchForm").addEventListener("submit", (event) => {
 // Initial Data Display
 updateDisplay(); // Show local default data
 
+// Event listener for the Add Title form submission
 document.getElementById('addTitleForm').addEventListener('submit', async (e) => {
-    e.preventDefault(); // Prevent the default form submission
+    e.preventDefault(); // Prevent default form submission behavior
 
-    // Get form data
+    // Get values from the form
     const title = document.getElementById('title').value;
     const rank = document.getElementById('rank').value;
     const balance = document.getElementById('balance').value;
     const tool = document.getElementById('tool').value;
 
-    console.log({ title, rank, balance, tool });
+    // Your deployed Google Apps Script URL
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbzvOmCC7yzHZ3xLqzgdK4R669V_KKr-o3NjTK8mt3Gr8YNxj0vSxCjbOWY6-eNWkSYI/exec";
 
-    // The Google Apps Script URL
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzvOmCC7yzHZ3xLqzgdK4R669V_KKr-o3NjTK8mt3Gr8YNxj0vSxCjbOWY6-eNWkSYI/exec'; // Replace with your Apps Script URL
+    try {
+        // Post data to the Google Apps Script
+        const response = await fetch(scriptUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ title, rank, balance, tool })
+        });
 
-    // Send data to the Google Apps Script
-    const response = await fetch(scriptUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ title, rank, balance, tool })
-    });
-
-    if (response.ok) {
-        alert('تم إضافة اللقب بنجاح');
-        updateDisplay(); // Refresh the data display after successful submission
-    } else {
-        alert('حدث خطأ أثناء إضافة اللقب');
+        if (response.ok) {
+            alert('تم إضافة اللقب بنجاح'); // Success message
+            document.getElementById('addTitleForm').reset(); // Reset the form
+        } else {
+            throw new Error('Failed to add title');
+        }
+    } catch (error) {
+        console.error('Error adding title:', error);
+        alert('حدث خطأ أثناء إضافة اللقب. يرجى المحاولة مرة أخرى.');
     }
 });
