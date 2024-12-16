@@ -216,3 +216,40 @@ body {
 .footer nav a:hover {
     color: #2563eb;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.titles-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.title-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.title-item h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #555;
+}
+
+.title-item p {
+    margin: 5px 0 0;
+    color: #777;
+}

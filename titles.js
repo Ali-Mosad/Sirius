@@ -54,3 +54,37 @@ document.getElementById("searchForm").addEventListener("submit", (event) => {
 
 // Initial Display
 updateDisplay();
+
+// Google Sheets URL (CSV format)
+const sheetURL = "https://docs.google.com/spreadsheets/d/1dsoPol1QT9yDGmtIt9b-TQ7EJm8_3ag4-hrLqK6Cn2I/gviz/tq?tqx=out:csv";
+
+// Fetch and process the data
+fetch(sheetURL)
+    .then(response => response.text())
+    .then(csv => {
+        const rows = csv.split("\n").slice(1); // Skip the header row
+        const container = document.getElementById("dynamic-titles");
+
+        rows.forEach(row => {
+            const columns = row.split(",");
+            const titleDiv = document.createElement("div");
+            titleDiv.className = "title-item";
+            titleDiv.innerHTML = `
+                <h3>${columns[0]}</h3>
+                <p>${columns[1]}</p>
+            `;
+            container.appendChild(titleDiv);
+        });
+    })
+    .catch(error => console.error("Error loading Google Sheets data:", error));
+
+// Search functionality
+document.getElementById("searchButton").addEventListener("click", () => {
+    const query = document.getElementById("searchInput").value.trim();
+    const titles = document.querySelectorAll(".title-item");
+
+    titles.forEach(title => {
+        const titleText = title.querySelector("h3").textContent;
+        title.style.display = titleText.includes(query) ? "block" : "none";
+    });
+});
