@@ -66,34 +66,30 @@ document.getElementById("searchForm").addEventListener("submit", (event) => {
 // Initial Data Display
 updateDisplay(); // Show local default data
 
-// Event listener for the Add Title form submission
 document.getElementById('addTitleForm').addEventListener('submit', async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
 
-    // Get values from the form
     const title = document.getElementById('title').value;
     const rank = document.getElementById('rank').value;
     const balance = document.getElementById('balance').value;
     const tool = document.getElementById('tool').value;
 
-    // Your deployed Google Apps Script URL
-    const scriptUrl = "https://script.google.com/macros/s/AKfycbzvOmCC7yzHZ3xLqzgdK4R669V_KKr-o3NjTK8mt3Gr8YNxj0vSxCjbOWY6-eNWkSYI/exec";
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbzjIU9JKUTBYwWpXLl165mhee9wsk3VyhTuW8IvekPpmhDNmGtoGZOmJyCbvhn5W5ns/exec";
 
     try {
-        // Post data to the Google Apps Script
         const response = await fetch(scriptUrl, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ title, rank, balance, tool })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title, rank, balance, tool }),
         });
 
-        if (response.ok) {
-            alert('تم إضافة اللقب بنجاح'); // Success message
+        const result = await response.json();
+
+        if (result.success) {
+            alert('تم إضافة اللقب بنجاح');
             document.getElementById('addTitleForm').reset(); // Reset the form
         } else {
-            throw new Error('Failed to add title');
+            throw new Error(result.error || 'Unknown error occurred');
         }
     } catch (error) {
         console.error('Error adding title:', error);
