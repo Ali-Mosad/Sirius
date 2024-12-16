@@ -36,33 +36,30 @@ function updateDisplay(city = "kyoto") {
     }
 }
 
-// Google Sheets Integration
-function fetchGoogleSheetsData() {
-    const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
+// Google Sheets URL (CSV format)
+const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
 
-    fetch(sheetURL)
-        .then((response) => response.text())
-        .then((csv) => {
-            // Log fetched data for debugging
-            console.log("Fetched Google Sheets Data:", csv);
+fetch(sheetURL)
+    .then((response) => response.text())
+    .then((csv) => {
+        console.log("Fetched Google Sheets Data:", csv); // Debugging
+        const rows = csv.split("\n").slice(1); // Skip the header row
+        const dynamicContainer = document.getElementById("dynamic-titles");
 
-            const rows = csv.split("\n").slice(1); // Skip the header row
-            const dynamicContainer = document.getElementById("dynamic-titles");
+        rows.forEach((row) => {
+            const columns = row.split(",");
+            if (columns.length < 2) return; // Skip invalid rows
 
-            rows.forEach((row) => {
-                const columns = row.split(",");
-                if (columns.length < 2) return; // Skip invalid rows
-
-                const titleDiv = document.createElement("div");
-                titleDiv.className = "title-item";
-                titleDiv.innerHTML = `
-                    <h3>${columns[0]}</h3>
-                    <p>${columns[1]}</p>
-                `;
-                dynamicContainer.appendChild(titleDiv);
-            });
-        })
-        .catch((error) => console.error("Error loading Google Sheets data:", error));
+            const titleDiv = document.createElement("div");
+            titleDiv.className = "title-item";
+            titleDiv.innerHTML = `
+                <h3>${columns[0]}</h3>
+                <p>${columns[1]}</p>
+            `;
+            dynamicContainer.appendChild(titleDiv);
+        });
+    })
+    .catch((error) => console.error("Error loading Google Sheets data:", error));
 }
 
 // Search Functionality for Both Sections
