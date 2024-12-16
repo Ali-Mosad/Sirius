@@ -83,4 +83,4 @@ document.getElementById("searchForm").addEventListener("submit", (event) => {
 
 // Initial Data Display
 updateDisplay(); // Show local default data
-fetchGoogleSheetsData(); // Fetch and display Google Sheets data
+fetchGoogleSheetsData(); 
