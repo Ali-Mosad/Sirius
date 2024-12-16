@@ -308,3 +308,32 @@ body {
     transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 }
+
+/* Adjust styles for dynamic titles */
+.container {
+    width: 100%;
+    height: 300px; /* Adjust height as needed */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.searchable h3 {
+    margin: 0;
+}
+
+/* Optional styling for the search input */
+#searchInput {
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+}
+
+.search-button {
+    padding: 10px;
+}
