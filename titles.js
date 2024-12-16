@@ -1,42 +1,3 @@
-// Default Local Data
-const defaultCityData = {
-    kyoto: {
-        "إيرين": { rank: "عضو", balance: 100, item: "لا يوجد" },
-        "سمايل": { rank: "باكا", balance: 1, item: "مدري" },
-        "ماساكو": { rank: "مدير", balance: 200, item: "سيف" },
-    },
-    osaka: {
-        "كين": { rank: "مدير", balance: 500, item: "كتاب" },
-        "هانا": { rank: "عضو", balance: 150, item: "قوس" },
-    },
-};
-
-// Display Local Data Function
-function updateDisplay(city = "kyoto") {
-    const cityData = document.getElementById("cityData");
-    cityData.innerHTML = ""; // Clear previous data
-
-    if (!defaultCityData[city] || Object.keys(defaultCityData[city]).length === 0) {
-        cityData.innerHTML = "<p>لا توجد ألقاب مضافة.</p>";
-        return;
-    }
-
-    for (const [title, info] of Object.entries(defaultCityData[city])) {
-        const container = document.createElement("div");
-        container.className = "container searchable";
-
-        container.innerHTML = `
-            <h3>${title}</h3>
-            <p>رتبة: ${info.rank}</p>
-            <p>رصيد: ${info.balance}</p>
-            <p>أداة: ${info.item || "لا يوجد"}</p>
-        `;
-
-        cityData.appendChild(container);
-    }
-}
-
-// Google Sheets URL (CSV format)
 const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
 
 // Fetch and process the data from Google Sheets
@@ -59,7 +20,7 @@ fetch(sheetURL)
             if (row.trim() === "") return; // Skip empty rows
 
             const columns = row.split(","); // Split row into columns
-            if (columns.length < 2) {
+            if (columns.length < 4) {
                 console.warn(`Skipping invalid row ${index + 1}: ${row}`);
                 return; // Skip rows that don't have enough columns
             }
@@ -67,8 +28,10 @@ fetch(sheetURL)
             // Log each row's content to check if it is parsed correctly
             console.log("Parsed Row:", columns);
 
+            // Create a div for each title using the container style
             const titleDiv = document.createElement("div");
-            titleDiv.className = "title-item searchable";
+            titleDiv.className = "container"; // Use the same container class from CSS
+
             titleDiv.innerHTML = `
                 <h3>${columns[0]}</h3>
                 <p>رتبة: ${columns[1]}</p>
