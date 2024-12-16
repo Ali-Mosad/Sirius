@@ -290,7 +290,7 @@ body {
 
 /* Card Content */
 .card-content {
-    background: rgba(77, 129, 133, 0.8);
+    background: rgba(61, 109, 138, 0.8);
     padding: 10px;
     border-radius: 10px;
     color: white; /* Ensures text is visible over dark background */
