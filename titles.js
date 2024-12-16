@@ -35,7 +35,7 @@ function updateDisplay() {
                 titleDiv.className = "container searchable"; // Use the same container class and make it searchable
 
                 // Set the background image dynamically using column[4] for the image URL
-                const imageUrl = columns[4] || ""; // Assuming column[4] contains the image URL
+                const imageUrl = columns[5] || ""; // Assuming column[4] contains the image URL
                 if (imageUrl) {
                     titleDiv.style.backgroundImage = `url(${imageUrl})`;
                 }
