@@ -74,7 +74,7 @@ document.getElementById('addTitleForm').addEventListener('submit', async (e) => 
     const tool = document.getElementById('tool').value;
 
     // The Google Apps Script URL
-    const scriptUrl = 'YOUR_GOOGLE_APPS_SCRIPT_URL'; // Replace with your script URL
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzvOmCC7yzHZ3xLqzgdK4R669V_KKr-o3NjTK8mt3Gr8YNxj0vSxCjbOWY6-eNWkSYI/exec'; // Replace with your script URL
 
     // Send data to the Google Apps Script
     const response = await fetch(scriptUrl, {
