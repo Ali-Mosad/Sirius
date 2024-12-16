@@ -278,34 +278,14 @@ body {
     gap: 20px;                /* Add space between items */
 }
 
-/* Modern Card Design */
-.container.card {
-    position: relative;
-    background: #334155 (0, 0, 0, 0.7);
-    border-radius: 15px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
-    overflow: hidden;
-    margin: 15px;
-    padding: 15px;
-    color: #fff;
-    backdrop-filter: blur(10px);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.container.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 8px 20px #334155 (0, 0, 0, 0.6);
-}
-
 /* Background Image */
 .container.card {
     background-size: cover;
     background-position: center;
-    height: 190px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    padding: 10px; /* Optional: Adds padding to the card */
 }
 
 /* Card Content */
@@ -313,6 +293,7 @@ body {
     background: rgba(0, 0, 0, 0.8);
     padding: 10px;
     border-radius: 10px;
+    color: white; /* Ensures text is visible over dark background */
 }
 
 /* Typography */
