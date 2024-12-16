@@ -39,17 +39,22 @@ function updateDisplay(city = "kyoto") {
 // Google Sheets URL (CSV format)
 const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
 
+// Fetch and process the data
 fetch(sheetURL)
     .then((response) => response.text())
     .then((csv) => {
         console.log("Fetched Google Sheets Data:", csv); // Debugging
+
+        // Split CSV into rows and parse
         const rows = csv.split("\n").slice(1); // Skip the header row
         const dynamicContainer = document.getElementById("dynamic-titles");
+        dynamicContainer.innerHTML = ""; // Clear any existing content
 
         rows.forEach((row) => {
-            const columns = row.split(",");
+            const columns = row.split(","); // Split row into columns
             if (columns.length < 2) return; // Skip invalid rows
 
+            // Create a styled div for each row
             const titleDiv = document.createElement("div");
             titleDiv.className = "title-item";
             titleDiv.innerHTML = `
