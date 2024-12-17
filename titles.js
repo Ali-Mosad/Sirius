@@ -40,17 +40,26 @@ function updateDisplay() {
                 const phoneNumber = columns[4] || "";
                 const imageUrl = columns[5] || "";
 
-                // Normalize rank for comparison (remove spaces and emojis)
-                const normalizedRank = rank.replace(/[\s\u200C-\u200F]/g, "").toLowerCase();
+                // Normalize rank for comparison: remove spaces, invisible characters, and emojis
+                const normalizedRank = rank
+                    .replace(/[\s\u200C-\u200F]/g, "") // Remove spaces and invisible characters
+                    .replace(/[\uD800-\uDFFF]/g, "") // Remove emojis
+                    .toLowerCase();
 
                 // Determine the target section
                 let targetSection;
 
-                if (
-                    /لورد|نائبةاللورد|مستشار|المحاربالراكون|قائدالفرسان|اجدععضو|وزيرالبنك/.test(
-                        normalizedRank
-                    )
-                ) {
+                const adminRanks = [
+                    "لورد",
+                    "نائبةاللورد",
+                    "مستشار",
+                    "المحاربالراكون",
+                    "قائدالفرسان",
+                    "اجدععضو",
+                    "وزيرالبنك",
+                ];
+
+                if (adminRanks.some((adminRank) => normalizedRank.includes(adminRank))) {
                     targetSection = sections["الإدارة العليا"];
                 } else if (normalizedRank.includes("فارس")) {
                     targetSection = sections["فرسان"];
