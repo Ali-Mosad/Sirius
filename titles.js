@@ -1,33 +1,27 @@
 // Function to fetch and display data from Google Sheets
 function updateDisplay() {
-    const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
-
-    // Define rank categories and their sections
-    const rankCategories = {
-        "الإدارة العليا": ["لورد", "نائبة اللورد", "مستشار", "المحارب الراكون", "قائد الفرسان", "اجدع عضو", "وزير البنك"],
-        "فرسان": [],
-        "محاربين": [],
-        "أعضاء": []
-    };
+    const sheetURL =
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
 
     // Fetch and process the data from Google Sheets
     fetch(sheetURL)
         .then((response) => response.text())
         .then((csv) => {
             console.log("Fetched Google Sheets Data:");
-            console.log(csv);
+            console.log(csv); // Debugging: Log the CSV data
 
             // Split CSV into rows and parse
             const rows = csv.split("\n").slice(1); // Skip the header row
-            
-            // Clear the existing content in each section
-            Object.keys(rankCategories).forEach((sectionId) => {
-                document.getElementById(sectionId).innerHTML = ""; // Clear the sections
-            });
 
-            if (rows.length === 0) {
-                console.error("No data found in the Google Sheets CSV.");
-            }
+            // Clear any existing content in the sections
+            const sections = {
+                "الإدارة العليا": document.getElementById("الإدارة العليا"),
+                "فرسان": document.getElementById("فرسان"),
+                "محاربين": document.getElementById("محاربين"),
+                "أعضاء": document.getElementById("أعضاء"),
+            };
+
+            Object.values(sections).forEach((section) => (section.innerHTML = ""));
 
             rows.forEach((row, index) => {
                 if (row.trim() === "") return; // Skip empty rows
@@ -38,20 +32,37 @@ function updateDisplay() {
                     return; // Skip rows that don't have enough columns
                 }
 
-                // Log parsed data
-                console.log("Parsed Row:", columns);
-
-                const titleName = columns[0];
-                const rank = columns[1];
-                const balance = columns[2];
+                // Extract data for each row
+                const titleName = columns[0] || "اسم غير معروف";
+                const rank = columns[1] || "غير محدد";
+                const balance = columns[2] || "0";
                 const warning = columns[3] || "لا يوجد";
                 const phoneNumber = columns[4] || "";
                 const imageUrl = columns[5] || "";
 
-                // Create a div for the title
-                const titleDiv = document.createElement("div");
-                titleDiv.className = "container searchable card"; // Use the 'card' class for modern design
+                // Normalize rank for comparison (remove spaces and emojis)
+                const normalizedRank = rank.replace(/[\s\u200C-\u200F]/g, "").toLowerCase();
 
+                // Determine the target section
+                let targetSection;
+
+                if (
+                    /لورد|نائبةاللورد|مستشار|المحاربالراكون|قائدالفرسان|اجدععضو|وزيرالبنك/.test(
+                        normalizedRank
+                    )
+                ) {
+                    targetSection = sections["الإدارة العليا"];
+                } else if (normalizedRank.includes("فارس")) {
+                    targetSection = sections["فرسان"];
+                } else if (normalizedRank.includes("محارب")) {
+                    targetSection = sections["محاربين"];
+                } else {
+                    targetSection = sections["أعضاء"];
+                }
+
+                // Create a div for each title
+                const titleDiv = document.createElement("div");
+                titleDiv.className = "container searchable card";
                 if (imageUrl) {
                     titleDiv.style.backgroundImage = `url(${imageUrl})`;
                 }
@@ -70,16 +81,8 @@ function updateDisplay() {
                     </div>
                 `;
 
-                // Append the title to the appropriate section
-                if (rankCategories["الإدارة العليا"].includes(rank)) {
-                    document.getElementById("الإدارة العليا").appendChild(titleDiv);
-                } else if (rank === "فارس") {
-                    document.getElementById("فرسان").appendChild(titleDiv);
-                } else if (rank === "محارب") {
-                    document.getElementById("محاربين").appendChild(titleDiv);
-                } else {
-                    document.getElementById("أعضاء").appendChild(titleDiv);
-                }
+                // Append the title card to the correct section
+                targetSection.appendChild(titleDiv);
             });
         })
         .catch((error) => {
