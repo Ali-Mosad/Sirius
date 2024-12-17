@@ -1,7 +1,5 @@
-// Function to fetch and display data from Google Sheets
 function updateDisplay() {
-    const sheetURL =
-        "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
+    const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
 
     // Fetch and process the data from Google Sheets
     fetch(sheetURL)
@@ -12,16 +10,12 @@ function updateDisplay() {
 
             // Split CSV into rows and parse
             const rows = csv.split("\n").slice(1); // Skip the header row
+            const dynamicContainer = document.getElementById("dynamic-titles");
+            dynamicContainer.innerHTML = ""; // Clear any existing content
 
-            // Clear any existing content in the sections
-            const sections = {
-                "الإدارة العليا": document.getElementById("الإدارة العليا"),
-                "فرسان": document.getElementById("فرسان"),
-                "محاربين": document.getElementById("محاربين"),
-                "أعضاء": document.getElementById("أعضاء"),
-            };
-
-            Object.values(sections).forEach((section) => (section.innerHTML = ""));
+            if (rows.length === 0) {
+                console.error("No data found in the Google Sheets CSV.");
+            }
 
             rows.forEach((row, index) => {
                 if (row.trim() === "") return; // Skip empty rows
@@ -32,56 +26,29 @@ function updateDisplay() {
                     return; // Skip rows that don't have enough columns
                 }
 
-                // Extract data for each row
-                const titleName = columns[0] || "اسم غير معروف";
-                const rank = columns[1] || "غير محدد";
-                const balance = columns[2] || "0";
-                const warning = columns[3] || "لا يوجد";
-                const phoneNumber = columns[4] || "";
-                const imageUrl = columns[5] || "";
+                // Log each row's content to check if it is parsed correctly
+                console.log("Parsed Row:", columns);
 
-                // Normalize rank for comparison: remove spaces, invisible characters, and emojis
-                const normalizedRank = rank
-                    .replace(/[\s\u200C-\u200F]/g, "") // Remove spaces and invisible characters
-                    .replace(/[\uD800-\uDFFF]/g, "") // Remove emojis
-                    .toLowerCase();
-
-                // Determine the target section
-                let targetSection;
-
-                const adminRanks = [
-                    "لورد",
-                    "نائبةاللورد",
-                    "مستشار",
-                    "المحاربالراكون",
-                    "قائدالفرسان",
-                    "اجدععضو",
-                    "وزيرالبنك",
-                ];
-
-                if (adminRanks.some((adminRank) => normalizedRank.includes(adminRank))) {
-                    targetSection = sections["الإدارة العليا"];
-                } else if (normalizedRank.includes("فارس")) {
-                    targetSection = sections["فرسان"];
-                } else if (normalizedRank.includes("محارب")) {
-                    targetSection = sections["محاربين"];
-                } else {
-                    targetSection = sections["أعضاء"];
-                }
-
-                // Create a div for each title
+                // Create a div for each title using the container style
                 const titleDiv = document.createElement("div");
-                titleDiv.className = "container searchable card";
+                titleDiv.className = "card"; // Use the 'card' class for modern design
+
+                // Set the background image dynamically using column[5] for the image URL
+                const imageUrl = columns[5] || ""; // Assuming column[5] contains the image URL
                 if (imageUrl) {
                     titleDiv.style.backgroundImage = `url(${imageUrl})`;
                 }
 
+                // Extract phone number from the 6th column
+                const phoneNumber = columns[4] || ""; // Assuming column[4] contains the phone number
+
+                // Add the content inside the titleDiv
                 titleDiv.innerHTML = `
                     <div class="card-content">
-                        <h3>${titleName}</h3>
-                        <p class="rank">رتبة: ${rank}</p>
-                        <p class="balance">رصيد: ${balance}</p>
-                        <p class="warning">انذار: ${warning}</p>
+                        <h3>${columns[0]}</h3>
+                        <p class="rank">رتبة: ${columns[1]}</p>
+                        <p class="balance">رصيد: ${columns[2]}</p>
+                        <p class="warning">انذار: ${columns[3] || "لا يوجد"}</p>
                         ${
                             phoneNumber
                                 ? `<p class="phone"><a href="tel:${phoneNumber}"><i class="fas fa-phone"></i> ${phoneNumber}</a></p>`
@@ -90,8 +57,13 @@ function updateDisplay() {
                     </div>
                 `;
 
-                // Append the title card to the correct section
-                targetSection.appendChild(titleDiv);
+                // Determine where to append based on the rank
+                const rank = columns[1];
+                const rankSection = document.getElementById(rank); // Get the section based on the rank
+
+                if (rankSection) {
+                    rankSection.appendChild(titleDiv); // Append the titleDiv to the corresponding rank section
+                }
             });
         })
         .catch((error) => {
@@ -99,7 +71,7 @@ function updateDisplay() {
         });
 }
 
-// Search Functionality for Both Sections
+// Search functionality remains the same
 document.getElementById("searchButton").addEventListener("click", () => {
     const searchQuery = document.getElementById("searchInput").value.toLowerCase();
     const containers = document.querySelectorAll(".searchable");
@@ -110,7 +82,7 @@ document.getElementById("searchButton").addEventListener("click", () => {
     });
 });
 
-// Prevent Form Default Submission
+// Prevent form default submission
 document.getElementById("searchForm").addEventListener("submit", (event) => {
     event.preventDefault();
 });
