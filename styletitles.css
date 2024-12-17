@@ -15,7 +15,7 @@ body {
 
 /* Top Navigation Bar */
 header.nav-bar {
-    background: linear-gradient(90deg, #0b1b2f, #122846); /* Gradient Similar to Cyrus */
+    background: linear-gradient(90deg, #0b1b2f, #122846);
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -47,10 +47,11 @@ header .logo-text {
 
 /* Search Section */
 .search-section {
-    margin: 50px auto 30px;
+    margin: 30px auto;
     padding: 20px;
-    width: 50%;
-    background-color: #161b22; /* Slightly Lighter Dark Background */
+    width: 90%;
+    max-width: 500px;
+    background-color: #161b22;
     border-radius: 12px;
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
 }
@@ -58,17 +59,16 @@ header .logo-text {
 .search-section h2 {
     color: #58a6ff;
     margin-bottom: 20px;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 .search-section input[type="text"] {
-    width: 70%;
+    width: calc(100% - 90px);
     padding: 10px;
     font-size: 1rem;
     border: none;
     border-radius: 8px;
     outline: none;
-    margin-right: 10px;
     background-color: #0d1117;
     color: #ffffff;
     box-shadow: inset 0 0 4px rgba(88, 166, 255, 0.5);
@@ -91,9 +91,10 @@ header .logo-text {
 
 /* Titles Section */
 .titles-section {
-    margin: 0 auto;
-    padding: 30px;
+    margin: 30px auto;
+    padding: 20px;
     width: 90%;
+    max-width: 800px;
     background-color: #161b22;
     border-radius: 12px;
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
@@ -107,6 +108,58 @@ header .logo-text {
     text-shadow: 0 0 8px #58a6ff;
 }
 
+/* Rank Group Headers */
+.rank-group {
+    margin-bottom: 30px;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+}
+
+.rank-group h3 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* Styles for Each Rank */
+.rank-group.high-admin {
+    background: linear-gradient(90deg, #1f6feb, #004d99);
+    border: 2px solid #1f6feb;
+}
+
+.rank-group.high-admin h3 {
+    color: #e6f7ff;
+}
+
+.rank-group.knights {
+    background: linear-gradient(90deg, #004d40, #00796b);
+    border: 2px solid #00bfa5;
+}
+
+.rank-group.knights h3 {
+    color: #c8e6c9;
+}
+
+.rank-group.warriors {
+    background: linear-gradient(90deg, #b71c1c, #880e4f);
+    border: 2px solid #d50000;
+}
+
+.rank-group.warriors h3 {
+    color: #ffccbc;
+}
+
+.rank-group.members {
+    background: linear-gradient(90deg, #37474f, #263238);
+    border: 2px solid #90a4ae;
+}
+
+.rank-group.members h3 {
+    color: #eceff1;
+}
+
 /* Card Design */
 .card {
     background-color: #0d1117;
@@ -114,7 +167,6 @@ header .logo-text {
     border-radius: 10px;
     margin: 15px auto;
     padding: 20px;
-    max-width: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -170,4 +222,21 @@ header .logo-text {
     font-size: 0.9rem;
     letter-spacing: 1px;
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .search-section,
+    .titles-section {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    header .logo-text {
+        font-size: 1.5rem;
+    }
 }
