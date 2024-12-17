@@ -1,255 +1,165 @@
-/* General Reset */
-body, h1, h2, h3, p, a, input, button {
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", Arial, sans-serif; /* Modern Font */
 }
 
-body {
-    background-color: #0e1013; /* Dark background */
-    color: #ffffff;
-    line-height: 1.6;
+h2, h3 {
+    color: #2a2a2a;
     text-align: center;
 }
 
-/* Top Navigation Bar */
-header.nav-bar {
-    background: linear-gradient(90deg, #0b1b2f, #122846);
-    padding: 10px 20px;
+/* Navigation Bar Styles (Top Bar) */
+.nav-bar {
+    background-color: #101010;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
-header .logo-container {
+.logo-container {
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
-header .logo-image {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 2px solid #58a6ff;
+.logo-image {
+    height: 50px;
+    width: 50px;
 }
 
-header .logo-text {
-    font-size: 1.8rem;
-    color: #58a6ff;
+.logo-text {
+    font-size: 30px;
     font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 0 0 5px #58a6ff;
+    color: #fff;
+    margin-left: 10px;
 }
 
-/* Search Section */
+.top-nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.top-nav li {
+    margin: 0 15px;
+}
+
+.top-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Search Section Styles */
 .search-section {
-    margin: 30px auto;
-    padding: 20px;
-    width: 90%;
-    max-width: 500px;
-    background-color: #161b22;
-    border-radius: 12px;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 120px;
+    padding: 40px;
 }
 
-.search-section h2 {
-    color: #58a6ff;
-    margin-bottom: 20px;
-    font-size: 1.6rem;
-}
-
-.search-section input[type="text"] {
-    width: calc(100% - 90px);
+.search-section input {
     padding: 10px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
-    outline: none;
-    background-color: #0d1117;
-    color: #ffffff;
-    box-shadow: inset 0 0 4px rgba(88, 166, 255, 0.5);
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
 }
 
-.search-section .search-button {
-    padding: 10px 15px;
-    background-color: #58a6ff;
-    color: #0e1013;
+.search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0052cc;
+    color: white;
     border: none;
-    border-radius: 8px;
-    font-weight: bold;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-.search-section .search-button:hover {
-    background-color: #1f6feb;
+.search-button:hover {
+    background-color: #003d99;
 }
 
-/* Titles Section */
+/* Dynamic Titles Section */
 .titles-section {
-    margin: 30px auto;
-    padding: 20px;
-    width: 90%;
-    max-width: 800px;
-    background-color: #161b22;
-    border-radius: 12px;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
-}
-
-.titles-section h2 {
-    color: #58a6ff;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    text-shadow: 0 0 8px #58a6ff;
-}
-
-/* Rank Group Headers */
-.rank-group {
-    margin-bottom: 30px;
-    border-radius: 12px;
-    padding: 15px;
+    padding: 60px 20px 20px;
     text-align: center;
 }
 
-.rank-group h3 {
-    color: #ffffff;
-    font-size: 1.5rem;
+.rank-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Rank Section Styles */
+.rank-section h3 {
+    font-size: 24px;
     margin-bottom: 15px;
-    text-transform: uppercase;
 }
 
-/* Styles for Each Rank */
-.rank-group.high-admin {
-    background: linear-gradient(90deg, #1f6feb, #004d99);
-    border: 2px solid #1f6feb;
-}
-
-.rank-group.high-admin h3 {
-    color: #e6f7ff;
-}
-
-.rank-group.knights {
-    background: linear-gradient(90deg, #004d40, #00796b);
-    border: 2px solid #00bfa5;
-}
-
-.rank-group.knights h3 {
-    color: #c8e6c9;
-}
-
-.rank-group.warriors {
-    background: linear-gradient(90deg, #b71c1c, #880e4f);
-    border: 2px solid #d50000;
-}
-
-.rank-group.warriors h3 {
-    color: #ffccbc;
-}
-
-.rank-group.members {
-    background: linear-gradient(90deg, #37474f, #263238);
-    border: 2px solid #90a4ae;
-}
-
-.rank-group.members h3 {
-    color: #eceff1;
-}
-
-/* Card Design */
 .card {
-    background-color: #0d1117;
-    border: 1px solid #21262d;
+    background-color: #fff;
     border-radius: 10px;
-    margin: 15px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(88, 166, 255, 0.3);
-}
-
-.card-content h3 {
-    color: #58a6ff;
-    font-size: 1.5rem;
+.card h3 {
+    font-size: 18px;
     margin-bottom: 10px;
-    text-transform: capitalize;
 }
 
-.card-content p {
-    font-size: 1rem;
-    color: #c9d1d9;
-    margin: 5px 0;
+.card p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
 }
 
-.card-content .rank,
-.card-content .balance {
-    font-weight: bold;
-    color: #79c0ff;
+.high-admin {
+    background-color: #0052cc;
+    border-radius: 10px;
 }
 
-.card-content .warning {
-    color: #f85149; /* Red Warning */
-    font-weight: bold;
+.knights {
+    background-color: #004080;
+    border-radius: 10px;
 }
 
-.card-content a {
-    text-decoration: none;
-    color: #58a6ff;
-    font-weight: bold;
+.warriors {
+    background-color: #ff6600;
+    border-radius: 10px;
 }
 
-.card-content a:hover {
-    text-decoration: underline;
+.members {
+    background-color: #33cc33;
+    border-radius: 10px;
 }
 
-/* Footer */
+/* Footer Section */
 .footer {
-    margin-top: 50px;
-    padding: 15px 0;
-    background: #122846;
-    color: #58a6ff;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+    background-color: #101010;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .search-section,
-    .titles-section {
-        width: 95%;
-        padding: 15px;
-    }
-
-    .card {
-        width: 90%;
-    }
-
-    header .logo-text {
-        font-size: 1.5rem;
-    }
-
-    .rank-group {
-        padding: 10px;
-    }
-
-    .rank-group h3 {
-        font-size: 1.2rem;
-    }
-
-    .card-content h3 {
-        font-size: 1.3rem;
-    }
-}
-
