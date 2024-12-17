@@ -7,7 +7,7 @@ body, h1, h2, h3, p, a, input, button {
 }
 
 body {
-    background-color: #0e1013; /* Deep Dark Background */
+    background-color: #0e1013; /* Dark background */
     color: #ffffff;
     line-height: 1.6;
     text-align: center;
@@ -239,4 +239,17 @@ header .logo-text {
     header .logo-text {
         font-size: 1.5rem;
     }
+
+    .rank-group {
+        padding: 10px;
+    }
+
+    .rank-group h3 {
+        font-size: 1.2rem;
+    }
+
+    .card-content h3 {
+        font-size: 1.3rem;
+    }
 }
+
