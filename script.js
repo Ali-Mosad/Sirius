@@ -64,7 +64,7 @@ function renderResult(title, data) {
                     <p><strong>اللقب:</strong> ${title}</p>
                     <p><strong>الرتبة:</strong> ${rank}</p>
                     <p><strong>الرصيد:</strong> ${balance}</p>
-                    <p><strong>الأداة:</strong> ${tool || "لا يوجد"}</p>
+                    <p><strong>الإنذار:</strong> ${tool || "لا يوجد"}</p>
                 </div>
             </div>
         </div>
