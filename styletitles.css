@@ -348,30 +348,35 @@ body {
     text-align: center;
 }
 
-/* Dynamic Rank Section Styling */
+/* Base Styling for Rank Sections */
 .rank-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
-    margin: 10px 0;
+    gap: 20px;
+    margin-top: 20px;
 }
 
-/* Dynamic Title Cards */
 .rank-section .card {
-    background: #334155;
+    width: 250px;
     border-radius: 12px;
-    width: 280px;
-    text-align: center;
     padding: 20px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.rank-section .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+.rank-section .card h3 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+    color: inherit;
 }
+
+.rank-section .card p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #f1f5f9;
+}
+
 
 /* Card Content */
 .card-content {
@@ -403,4 +408,76 @@ body {
 
 .card-content .phone a:hover {
     color: #2563eb;
+}
+
+.rank-section.high-admin .card {
+    background: linear-gradient(135deg, #3b82f6, #1e293b);
+    border: 2px solid #e2e8f0;
+    color: #ffffff;
+    box-shadow: 0px 4px 12px rgba(59, 130, 246, 0.5);
+    transform-origin: center;
+}
+
+.rank-section.high-admin .card:hover {
+    transform: scale(1.05);
+}
+
+.rank-section.high-admin .card-content {
+    background: rgba(30, 41, 59, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.rank-section.knights .card {
+    background: linear-gradient(135deg, #64748b, #1e293b);
+    border: 2px solid #cbd5e1;
+    color: #f8fafc;
+    box-shadow: 0px 4px 12px rgba(100, 116, 139, 0.5);
+}
+
+.rank-section.knights .card:hover {
+    background: linear-gradient(135deg, #94a3b8, #1e293b);
+    box-shadow: 0px 6px 15px rgba(148, 163, 184, 0.7);
+}
+
+.rank-section.knights .card-content {
+    background: rgba(51, 65, 85, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.rank-section.warriors .card {
+    background: linear-gradient(135deg, #f97316, #7c2d12);
+    border: 2px solid #ef4444;
+    color: #ffffff;
+    box-shadow: 0px 4px 12px rgba(239, 68, 68, 0.5);
+}
+
+.rank-section.warriors .card:hover {
+    transform: rotate(-2deg) translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(239, 68, 68, 0.7);
+}
+
+.rank-section.warriors .card-content {
+    background: rgba(124, 45, 18, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.rank-section.members .card {
+    background: linear-gradient(135deg, #22c55e, #166534);
+    border: 2px solid #4ade80;
+    color: #ffffff;
+    box-shadow: 0px 4px 12px rgba(34, 197, 94, 0.5);
+}
+
+.rank-section.members .card:hover {
+    transform: scale(1.05) rotate(1deg);
+    box-shadow: 0px 8px 20px rgba(34, 197, 94, 0.7);
+}
+
+.rank-section.members .card-content {
+    background: rgba(22, 101, 52, 0.8);
+    padding: 15px;
+    border-radius: 10px;
 }
