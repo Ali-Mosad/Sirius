@@ -115,24 +115,15 @@ document.getElementById("searchForm").addEventListener("submit", (event) => {
     event.preventDefault();
 });
 
-// Initial Data Display
-updateDisplay(); // Show data from Google Sheets
-
+// **API for Adding Titles**
 const API_URL = 'https://script.google.com/macros/s/AKfycbwpO5Kf1WphT7rtH6NSrCep58aiD1foLP3YwRk94Ud2a5GInSlDEhLbwMfktJ1zSrdC/exec'; // Replace with your Google Apps Script URL
-
-// Titles Array
-let titles = [];
-
-// DOM Elements
-const titleInput = document.getElementById('titleInput');
-const titleForm = document.getElementById('titleForm');
-const titleSections = document.querySelectorAll('.rank-section');
 
 // Fetch Titles from Google Sheets
 async function fetchTitles() {
     const response = await fetch(API_URL);
-    titles = await response.json();
-    renderTitles();
+    const data = await response.json();
+    console.log("Fetched Titles:", data); // Debugging
+    updateDisplay();
 }
 
 // Add Title to Google Sheets
@@ -145,26 +136,16 @@ async function addTitle(title) {
     fetchTitles();
 }
 
-// Render Titles in Sections
-function renderTitles() {
-    titleSections.forEach(section => section.innerHTML = ''); // Clear existing titles
-    titles.forEach(title => {
-        const div = document.createElement('div');
-        div.textContent = title;
-        const section = document.getElementById(title.rank || 'أعضاء'); // Default to "أعضاء"
-        if (section) section.appendChild(div);
-    });
-}
-
 // Handle Title Form Submission
-titleForm.addEventListener('submit', async (e) => {
+document.getElementById("titleForm").addEventListener("submit", async (e) => {
     e.preventDefault();
-    const titleValue = titleInput.value.trim();
-    if (titleValue) {
-        await addTitle({ title: titleValue });
-        titleInput.value = '';
+    const titleInput = document.getElementById("titleInput").value.trim();
+    if (titleInput) {
+        await addTitle({ title: titleInput });
+        document.getElementById("titleInput").value = ""; // Clear input
     }
 });
 
 // Initial Fetch
+updateDisplay();
 fetchTitles();
