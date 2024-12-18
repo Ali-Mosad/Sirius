@@ -135,6 +135,5 @@ document.getElementById("goToأعضاء").addEventListener("click", () => {
     const targetSection = document.getElementById("أعضاء");
     targetSection.scrollIntoView({ behavior: "smooth" });
 });
-
 // Initial Data Display
 updateDisplay(); // Show data from Google Sheets
