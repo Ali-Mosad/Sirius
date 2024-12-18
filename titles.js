@@ -1,17 +1,19 @@
-const SHEET_CSV_URL =
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx8Bi4uYlCFbwJcx5Zro_kIFHSpnbXJxUDR3rYPiW_z7PJlwZCVuB49SJL_kd1kn4-D/exec"; // Replace with your Web App URL
-
-// Fetch and display data from Google Sheets
+// Function to fetch and display data from Google Sheets
 function updateDisplay() {
-    fetch(SHEET_CSV_URL)
+    const sheetURL =
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
+
+    // Fetch and process the data from Google Sheets
+    fetch(sheetURL)
         .then((response) => response.text())
         .then((csv) => {
             console.log("Fetched Google Sheets Data:");
-            console.log(csv);
+            console.log(csv); // Debugging: Log the CSV data
 
-            // Parse CSV into rows and display
-            const rows = csv.split("\n").slice(1); // Skip header
+            // Split CSV into rows and parse
+            const rows = csv.split("\n").slice(1); // Skip the header row
+
+            // Clear any existing content in the sections
             const sections = {
                 "الإدارة العليا": document.getElementById("الإدارة العليا"),
                 "فرسان": document.getElementById("فرسان"),
@@ -21,17 +23,53 @@ function updateDisplay() {
 
             Object.values(sections).forEach((section) => (section.innerHTML = ""));
 
-            rows.forEach((row) => {
-                if (!row.trim()) return; // Skip empty rows
+            rows.forEach((row, index) => {
+                if (row.trim() === "") return; // Skip empty rows
 
-                const [titleName, rank, balance, warning, phoneNumber, imageUrl] = row.split(",");
-                const normalizedRank = rank.replace(/[\s\u200C-\u200F]/g, "").toLowerCase();
+                const columns = row.split(","); // Split row into columns
+                if (columns.length < 6) {
+                    console.warn(`Skipping invalid row ${index + 1}: ${row}`);
+                    return; // Skip rows that don't have enough columns
+                }
 
-                const targetSection =
-                    normalizedRank.includes("فارس") ? sections["فرسان"] :
-                    normalizedRank.includes("محارب") ? sections["محاربين"] :
-                    sections["الإدارة العليا"]; // Default to "الإدارة العليا"
+                // Extract data for each row
+                const titleName = columns[0] || "اسم غير معروف";
+                const rank = columns[1] || "غير محدد";
+                const balance = columns[2] || "0";
+                const warning = columns[3] || "لا يوجد";
+                const phoneNumber = columns[4] || "";
+                const imageUrl = columns[5] || "";
 
+                // Normalize rank for comparison: remove spaces, invisible characters, and emojis
+                const normalizedRank = rank
+                    .replace(/[\s\u200C-\u200F]/g, "") // Remove spaces and invisible characters
+                    .replace(/[\uD800-\uDFFF]/g, "") // Remove emojis
+                    .toLowerCase();
+
+                // Determine the target section
+                let targetSection;
+
+                const adminRanks = [
+                    "لورد",
+                    "نائبةاللورد",
+                    "مستشار",
+                    "المحاربالراكون",
+                    "قائدالفرسان",
+                    "اجدععضو",
+                    "وزيرالبنك",
+                ];
+
+                if (adminRanks.some((adminRank) => normalizedRank.includes(adminRank))) {
+                    targetSection = sections["الإدارة العليا"];
+                } else if (normalizedRank.includes("فارس")) {
+                    targetSection = sections["فرسان"];
+                } else if (normalizedRank.includes("محارب")) {
+                    targetSection = sections["محاربين"];
+                } else {
+                    targetSection = sections["أعضاء"];
+                }
+
+                // Create a div for each title
                 const titleDiv = document.createElement("div");
                 titleDiv.className = "container searchable card";
                 if (imageUrl) {
@@ -43,7 +81,7 @@ function updateDisplay() {
                         <h3>${titleName}</h3>
                         <p class="rank">رتبة: ${rank}</p>
                         <p class="balance">رصيد: ${balance}</p>
-                        <p class="warning">إنذار: ${warning}</p>
+                        <p class="warning">انذار: ${warning}</p>
                         ${
                             phoneNumber
                                 ? `<p class="phone"><a href="tel:${phoneNumber}"><i class="fas fa-phone"></i> ${phoneNumber}</a></p>`
@@ -52,97 +90,30 @@ function updateDisplay() {
                     </div>
                 `;
 
+                // Append the title card to the correct section
                 targetSection.appendChild(titleDiv);
             });
         })
-        .catch((error) => console.error("Error fetching Google Sheets data:", error));
+        .catch((error) => {
+            console.error("Error loading Google Sheets data:", error);
+        });
 }
 
-// Add a new title
-function addTitle() {
-    const titleName = document.getElementById("titleName").value;
-    const rank = document.getElementById("rank").value;
-    const balance = document.getElementById("balance").value;
-    const warning = document.getElementById("warning").value;
-    const phoneNumber = document.getElementById("phoneNumber").value;
-    const imageUrl = document.getElementById("imageUrl").value;
-
-    if (!titleName || !rank) {
-        alert("Please provide both title name and rank.");
-        return;
-    }
-
-    fetch(WEB_APP_URL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            action: "add",
-            titleName,
-            rank,
-            balance,
-            warning,
-            phoneNumber,
-            imageUrl,
-        }),
-    })
-        .then((response) => response.text())
-        .then((message) => {
-            alert(message);
-            updateDisplay(); // Refresh the display
-        })
-        .catch((error) => console.error("Error adding title:", error));
-}
-
-// Edit an existing title
-function editTitle() {
-    const titleName = document.getElementById("titleName").value;
-    const rank = document.getElementById("rank").value;
-    const balance = document.getElementById("balance").value;
-    const warning = document.getElementById("warning").value;
-    const phoneNumber = document.getElementById("phoneNumber").value;
-    const imageUrl = document.getElementById("imageUrl").value;
-
-    if (!titleName) {
-        alert("Please provide the title name to edit.");
-        return;
-    }
-
-    fetch(WEB_APP_URL, {
-        method: "POST",
-        mode: "cors", // Enable CORS
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            action: "add",
-            titleName,
-            rank,
-            balance,
-            warning,
-            phoneNumber,
-            imageUrl,
-        }),
-    })
-        .then((response) => response.text())
-        .then((message) => {
-            alert(message);
-            updateDisplay();
-        })
-        .catch((error) => console.error("Error adding title:", error));    
-}
-
-// Event listeners
-document.getElementById("addButton").addEventListener("click", addTitle);
-document.getElementById("editButton").addEventListener("click", editTitle);
+// Search Functionality for Both Sections
 document.getElementById("searchButton").addEventListener("click", () => {
-    const query = document.getElementById("searchInput").value.toLowerCase();
-    document.querySelectorAll(".searchable").forEach((card) => {
-        const title = card.querySelector("h3").textContent.toLowerCase();
-        card.style.display = title.includes(query) ? "block" : "none";
+    const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+    const containers = document.querySelectorAll(".searchable");
+
+    containers.forEach((container) => {
+        const titleText = container.querySelector("h3").textContent.toLowerCase();
+        container.style.display = titleText.includes(searchQuery) ? "block" : "none";
     });
 });
 
-// Initial load
-updateDisplay();
+// Prevent Form Default Submission
+document.getElementById("searchForm").addEventListener("submit", (event) => {
+    event.preventDefault();
+});
+
+// Initial Data Display
+updateDisplay(); // Show data from Google Sheets
