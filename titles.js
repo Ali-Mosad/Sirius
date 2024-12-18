@@ -111,11 +111,12 @@ function editTitle() {
 
     fetch(WEB_APP_URL, {
         method: "POST",
+        mode: "cors", // Enable CORS
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            action: "edit",
+            action: "add",
             titleName,
             rank,
             balance,
@@ -127,9 +128,9 @@ function editTitle() {
         .then((response) => response.text())
         .then((message) => {
             alert(message);
-            updateDisplay(); // Refresh the display
+            updateDisplay();
         })
-        .catch((error) => console.error("Error editing title:", error));
+        .catch((error) => console.error("Error adding title:", error));    
 }
 
 // Event listeners
