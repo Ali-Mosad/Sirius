@@ -149,3 +149,35 @@ document.getElementById("titleForm").addEventListener("submit", async (e) => {
 // Initial Fetch
 updateDisplay();
 fetchTitles();
+
+// Ensure the DOM is fully loaded before running the script
+document.addEventListener("DOMContentLoaded", () => {
+    const API_URL = 'https://script.google.com/macros/s/AKfycbwpO5Kf1WphT7rtH6NSrCep58aiD1foLP3YwRk94Ud2a5GInSlDEhLbwMfktJ1zSrdC/exec';
+    const titleForm = document.getElementById("titleForm");
+    const titleInput = document.getElementById("titleInput");
+
+    // Add Title to Google Sheets
+    async function addTitle(title) {
+        console.log("Sending title to Google Sheets:", title); // Debugging
+        await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title }),
+        });
+        console.log("Title added successfully!"); // Debugging
+    }
+
+    // Handle Form Submission
+    titleForm.addEventListener("submit", async (e) => {
+        e.preventDefault(); // Prevent page refresh
+        const titleValue = titleInput.value.trim();
+
+        if (titleValue) {
+            console.log("Form submitted with value:", titleValue); // Debugging
+            await addTitle({ title: titleValue });
+            titleInput.value = ""; // Clear the input field
+        } else {
+            console.log("Input field is empty"); // Debugging
+        }
+    });
+});
