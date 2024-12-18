@@ -10,6 +10,19 @@ const searchResult = document.getElementById("searchResult");
 let sheetData = {};
 
 /**
+ * Utility function to normalize text by removing emojis and special characters, and trimming whitespace
+ * @param {string} text
+ * @returns {string} - Normalized text
+ */
+function normalizeText(text) {
+    return text
+        .replace(/[\u{1F600}-\u{1F6FF}\u{1F300}-\u{1F5FF}\u{1F900}-\u{1F9FF}\u{1FA70}-\u{1FAFF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]+/gu, "") // Remove emojis
+        .replace(/[\u2000-\u206F\u2E00-\u2E7F\\!"#$%&'()*+,\-.\/:;<=>?@[\\\]^_`{|}~༺༻]+/g, "") // Remove special characters like ༺༻
+        .trim()
+        .toLowerCase(); // Normalize to lowercase
+}
+
+/**
  * Fetch data from Google Sheets and store it in sheetData.
  */
 function fetchSheetData() {
@@ -39,10 +52,20 @@ function updateSearchResult(query) {
     searchResult.innerHTML = ""; // Clear previous results
     searchResult.style.display = "block"; // Ensure the container is visible
 
-    const data = sheetData[query]; // Search in the sheet data
-    if (data) {
-        renderResult(query, data);
-    } else {
+    const normalizedQuery = normalizeText(query); // Normalize the search query
+    let found = false;
+
+    // Search through the sheetData
+    for (const title in sheetData) {
+        const normalizedTitle = normalizeText(title); // Normalize the title
+        if (normalizedTitle === normalizedQuery) {
+            renderResult(title, sheetData[title]); // Use the original title for display
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) {
         searchResult.innerHTML = `<p>لا توجد بيانات لهذا اللقب.</p>`;
     }
 }
@@ -81,33 +104,3 @@ searchButton.addEventListener("click", () => {
     const query = searchInput.value.trim();
     updateSearchResult(query);
 });
-
-// Utility function to remove emojis from a string
-function removeEmojis(text) {
-    return text.replace(/[\u{1F600}-\u{1F6FF}\u{1F300}-\u{1F5FF}\u{1F900}-\u{1F9FF}\u{1FA70}-\u{1FAFF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]+/gu, "");
-}
-
-/**
- * Updates the search results based on the search query.
- * @param {string} query - The search query (title).
- */
-function updateSearchResult(query) {
-    searchResult.innerHTML = ""; // Clear previous results
-    searchResult.style.display = "block"; // Ensure the container is visible
-
-    const sanitizedQuery = removeEmojis(query.toLowerCase()); // Remove emojis from the search query
-    let found = false;
-
-    for (const title in sheetData) {
-        const sanitizedTitle = removeEmojis(title.toLowerCase()); // Remove emojis from the title
-        if (sanitizedTitle === sanitizedQuery) {
-            renderResult(title, sheetData[title]); // Use the original title for display
-            found = true;
-            break;
-        }
-    }
-
-    if (!found) {
-        searchResult.innerHTML = `<p>لا توجد بيانات لهذا اللقب.</p>`;
-    }
-}
