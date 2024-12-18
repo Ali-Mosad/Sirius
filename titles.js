@@ -118,7 +118,7 @@ document.getElementById("searchForm").addEventListener("submit", (event) => {
 // Initial Data Display
 updateDisplay(); // Show data from Google Sheets
 
-const API_URL = 'https://script.google.com/macros/s/AKfycbyETv_-3zvM3i4ueAYdOsi36udLzPf0sRbQzvUEkWKHIza-WDyD4UTdWJm8bGFinv9L/exec'; // Replace with your Google Apps Script URL
+const API_URL = 'https://script.google.com/macros/s/AKfycbwpO5Kf1WphT7rtH6NSrCep58aiD1foLP3YwRk94Ud2a5GInSlDEhLbwMfktJ1zSrdC/exec'; // Replace with your Google Apps Script URL
 
 // Titles Array
 let titles = [];
