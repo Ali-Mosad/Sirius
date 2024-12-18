@@ -1,6 +1,6 @@
 const SHEET_CSV_URL =
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxc4piiujLeivSLwiWj3SzE_idQDMiugvgW4rUQif0kqE5bpiBh6u-PQJ1unmSlpZs/exec"; // Replace with your Web App URL
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx8Bi4uYlCFbwJcx5Zro_kIFHSpnbXJxUDR3rYPiW_z7PJlwZCVuB49SJL_kd1kn4-D/exec"; // Replace with your Web App URL
 
 // Fetch and display data from Google Sheets
 function updateDisplay() {
