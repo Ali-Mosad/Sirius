@@ -108,3 +108,22 @@ searchButton.addEventListener("click", () => {
     const query = searchInput.value.trim();
     updateSearchResult(query);
 });
+
+// Wait for the DOM to be fully loaded before attaching event listeners
+document.addEventListener('DOMContentLoaded', function () {
+    const menuButton = document.getElementById('menuButton');
+    const menu = document.getElementById('menu');
+
+    // Toggle menu visibility when the menu button is clicked
+    menuButton.addEventListener('click', function () {
+        menu.classList.toggle('active');
+    });
+
+    // Close the menu if any menu item is clicked
+    const menuLinks = document.querySelectorAll('.menu a');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            menu.classList.remove('active');  // Close menu after clicking a link
+        });
+    });
+});
