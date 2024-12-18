@@ -10,14 +10,18 @@ const searchResult = document.getElementById("searchResult");
 let sheetData = {};
 
 /**
- * Utility function to normalize text by removing emojis and special characters, and trimming whitespace
+ * Utility function to normalize text by removing emojis, special characters, and unwanted symbols, and trimming whitespace
  * @param {string} text
  * @returns {string} - Normalized text
  */
 function normalizeText(text) {
     return text
-        .replace(/[\u{1F600}-\u{1F6FF}\u{1F300}-\u{1F5FF}\u{1F900}-\u{1F9FF}\u{1FA70}-\u{1FAFF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]+/gu, "") // Remove emojis
-        .replace(/[\u2000-\u206F\u2E00-\u2E7F\\!"#$%&'()*+,\-.\/:;<=>?@[\\\]^_`{|}~༺༻]+/g, "") // Remove special characters like ༺༻
+        // Remove emojis (including many symbols and characters from Unicode emoji ranges)
+        .replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{1F780}-\u{1F7FF}\u{1F800}-\u{1F8FF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{2300}-\u{23FF}\u{2B50}\u{2B06}\u{2194}-\u{21AA}\u{25AA}-\u{25AB}]+/gu, "")
+        // Remove special symbols, punctuation, and other unwanted characters (like from different language symbols)
+        .replace(/[\u2000-\u206F\u2E00-\u2E7F\!\@\#\$\%\^\&\*\(\)\_\+\=\{\}\[\]\|\\\/\:\;\"\'\<\>\,\.\?\~\^·\u00A0\u201C\u201D\u2018\u2019\u2022\u2026]+/g, "")
+        // Remove non-letter and non-number characters like `ʕ•` or `༺`, etc.
+        .replace(/[^a-zA-Z0-9ء-ي\u0600-\u06FF]/g, "") // Arabic letters and basic Latin
         .trim()
         .toLowerCase(); // Normalize to lowercase
 }
