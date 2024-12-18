@@ -152,7 +152,7 @@ fetchTitles();
 
 // Ensure the DOM is fully loaded before running the script
 document.addEventListener("DOMContentLoaded", () => {
-    const API_URL = 'https://script.google.com/macros/s/AKfycbyRk-NuZukYa5q6CZtI7hZwaBsy7cUN8UvJRj4tJE8DbQz-tJ5_vBpvUl91AVzG2NU/exec';
+    const API_URL = 'https://script.google.com/macros/s/AKfycbxJ6M4MPnDNoYnkT9R562d_8aJ03jvoXvKrOjPF9FIPKGu9H42QbQ0AR26oPUO-hhXH/exec';
     const titleForm = document.getElementById("titleForm");
     const titleInput = document.getElementById("titleInput");
 
