@@ -30,10 +30,15 @@
     <section id="dynamic-titles" class="titles-section">
         <h2>الألقاب</h2>
         
-        <div id="الإدارة العليا"></div>
-<div id="فرسان"></div>
-<div id="محاربين"></div>
-<div id="أعضاء"></div>
+        <section class="titles-section">
+            <h2 class="titles-heading">الرتب</h2> <!-- Title Field -->
+            <div class="rank-button-group">
+                <button class="rank-button high-admin-button" onclick="navigateToRank('high-admin')">الإدارة العليا</button>
+                <button class="rank-button knights-button" onclick="navigateToRank('knights')">فرسان</button>
+                <button class="rank-button warriors-button" onclick="navigateToRank('warriors')">محاربين</button>
+                <button class="rank-button members-button" onclick="navigateToRank('members')">أعضاء</button>
+            </div>
+        </section>
         
         <!-- الإدارة العليا -->
         <h3 class="rank-title high-admin-title">الإدارة العليا</h3>
@@ -61,6 +66,5 @@
     </footer>
 
     <script src="titles.js"></script>
-    <script src="ranks.js"></script>
 </body>
 </html>
