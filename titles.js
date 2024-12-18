@@ -117,3 +117,54 @@ document.getElementById("searchForm").addEventListener("submit", (event) => {
 
 // Initial Data Display
 updateDisplay(); // Show data from Google Sheets
+
+const API_URL = 'https://script.google.com/macros/s/AKfycbyETv_-3zvM3i4ueAYdOsi36udLzPf0sRbQzvUEkWKHIza-WDyD4UTdWJm8bGFinv9L/exec'; // Replace with your Google Apps Script URL
+
+// Titles Array
+let titles = [];
+
+// DOM Elements
+const titleInput = document.getElementById('titleInput');
+const titleForm = document.getElementById('titleForm');
+const titleSections = document.querySelectorAll('.rank-section');
+
+// Fetch Titles from Google Sheets
+async function fetchTitles() {
+    const response = await fetch(API_URL);
+    titles = await response.json();
+    renderTitles();
+}
+
+// Add Title to Google Sheets
+async function addTitle(title) {
+    await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title }),
+    });
+    fetchTitles();
+}
+
+// Render Titles in Sections
+function renderTitles() {
+    titleSections.forEach(section => section.innerHTML = ''); // Clear existing titles
+    titles.forEach(title => {
+        const div = document.createElement('div');
+        div.textContent = title;
+        const section = document.getElementById(title.rank || 'أعضاء'); // Default to "أعضاء"
+        if (section) section.appendChild(div);
+    });
+}
+
+// Handle Title Form Submission
+titleForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const titleValue = titleInput.value.trim();
+    if (titleValue) {
+        await addTitle({ title: titleValue });
+        titleInput.value = '';
+    }
+});
+
+// Initial Fetch
+fetchTitles();
