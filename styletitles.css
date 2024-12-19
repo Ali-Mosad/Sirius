@@ -678,3 +678,30 @@ body {
     text-align: center; /* Center content inside cards */
 }
 
+/* Background Image for Cards */
+.container.card {
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10px; /* Adds padding inside the card */
+    border-radius: 12px; /* Keeps the rounded corners */
+    color: #f1f5f9; /* Ensures text is visible on the image */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Subtle shadow for the card */
+    transition: transform 0.3s, box-shadow 0.3s; /* Adds smooth hover effect */
+}
+
+/* Card Content Overlay */
+.card-content {
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay for readability */
+    padding: 10px; /* Space around the text */
+    border-radius: 10px; /* Rounded corners for overlay */
+    color: #ffffff; /* White text for contrast */
+}
+
+/* Image Hover Effect */
+.container.card:hover {
+    transform: translateY(-10px); /* Moves the card up slightly */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); /* Enhances the shadow */
+}
