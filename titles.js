@@ -72,9 +72,11 @@ function updateDisplay() {
                 // Create a div for each title
                 const titleDiv = document.createElement("div");
                 titleDiv.className = "container searchable card";
-                if (imageUrl) {
-                    titleDiv.style.backgroundImage = `url(${imageUrl})`;
-                }
+                if (imageUrl.trim()) { // Ensure the imageUrl is not empty or just spaces
+    titleDiv.style.backgroundImage = `url("${imageUrl}")`; // Apply the image as a background
+} else {
+    console.warn(`No image URL provided for row: ${titleName}`);
+}
 
                 titleDiv.innerHTML = `
                     <div class="card-content">
@@ -129,6 +131,8 @@ document.getElementById("searchButton").addEventListener("click", () => {
 document.getElementById("searchForm").addEventListener("submit", (event) => {
     event.preventDefault();
 });
+
+console.log(`Image URL for ${titleName}:`, imageUrl);
 
 // Initial Data Display
 updateDisplay(); // Show data from Google Sheets
