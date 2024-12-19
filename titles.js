@@ -103,11 +103,26 @@ function updateDisplay() {
 document.getElementById("searchButton").addEventListener("click", () => {
     const searchQuery = document.getElementById("searchInput").value.toLowerCase();
     const containers = document.querySelectorAll(".searchable");
+    const searchResults = document.getElementById("searchResults");
+
+    // Clear previous search results
+    searchResults.innerHTML = "";
+
+    let hasResults = false;
 
     containers.forEach((container) => {
         const titleText = container.querySelector("h3").textContent.toLowerCase();
-        container.style.display = titleText.includes(searchQuery) ? "block" : "none";
+        if (titleText.includes(searchQuery)) {
+            hasResults = true;
+            const clonedContainer = container.cloneNode(true);
+            searchResults.appendChild(clonedContainer);
+        }
     });
+
+    // Display a message if no results are found
+    if (!hasResults) {
+        searchResults.innerHTML = `<p>لا توجد نتائج مطابقة.</p>`;
+    }
 });
 
 // Prevent Form Default Submission
