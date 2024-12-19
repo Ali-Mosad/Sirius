@@ -576,8 +576,8 @@ body {
 
 /* Rank Button Styles */
 .rank-button {
-    padding: 12px 25px;
-    font-size: 1.2rem;
+    padding: 10px 20px; /* Adjust padding for smaller screens */
+    font-size: 1rem; /* Smaller font size */
     font-weight: bold;
     text-transform: uppercase;
     border-radius: 8px;
@@ -643,7 +643,20 @@ body {
 /* Rank Button Group */
 .rank-button-group {
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+    gap: 15px; /* Smaller gap for mobile screens */
     justify-content: center;
     margin-top: 20px;
+}
+
+/* Media Query for Mobile Screens */
+@media (max-width: 768px) {
+    .rank-button {
+        padding: 8px 15px; /* Reduce padding for mobile */
+        font-size: 0.9rem; /* Smaller font size */
+    }
+
+    .rank-button-group {
+        gap: 10px; /* Smaller gap */
+    }
 }
