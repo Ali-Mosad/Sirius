@@ -660,3 +660,21 @@ body {
         gap: 10px; /* Smaller gap */
     }
 }
+
+#searchResults {
+    display: flex; /* Use flexbox for alignment */
+    flex-wrap: wrap; /* Allow wrapping for multiple results */
+    gap: 20px; /* Add space between cards */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin-top: 20px; /* Space above the results */
+    padding: 10px; /* Optional padding */
+    text-align: center; /* Center align any text inside */
+}
+
+#searchResults .card {
+    max-width: 300px; /* Limit card width for consistent layout */
+    flex: 1 1 auto; /* Allow flexible resizing */
+    text-align: center; /* Center content inside cards */
+}
+
