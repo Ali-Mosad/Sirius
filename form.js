@@ -1,5 +1,5 @@
 async function fetchSheetData() {
-      const sheetUrl = 'https://docs.google.com/spreadsheets/d/1_01SeG5p8YV0ihDiMIo7COl69RzIV4oHghgl2AuEtN0/gviz/tq?tqx=out:csv';
+      const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv';
       try {
         const response = await fetch(sheetUrl);
         const csvText = await response.text();
