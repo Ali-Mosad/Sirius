@@ -3,7 +3,7 @@ const sheetID = "1_01SeG5p8YV0ihDiMIo7COl69RzIV4oHghgl2AuEtN0";
 const sheetName = "Sheet2"; // Sheet name
 
 // Construct the URL for the published sheet
-const apiURL = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json&sheet=${sheetName}`;
+const apiURL = `https://docs.google.com/spreadsheets/d/1_01SeG5p8YV0ihDiMIo7COl69RzIV4oHghgl2AuEtN0/edit?usp=drivesdk`;
 
 async function fetchSheetData() {
     try {
