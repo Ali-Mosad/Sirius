@@ -706,48 +706,59 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); /* Enhances the shadow */
 }
 
+/* Container for each row */
 .row {
     display: flex;
-    align-items: flex-start;
-    margin-bottom: 15px;
+    flex-direction: column;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.column {
-    padding: 10px;
-}
-
+/* Title column */
 .title-column {
-    flex: 1;
+    font-size: 18px;
     font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
 }
 
+/* Content column */
 .content-column {
-    flex: 3;
     display: flex;
     flex-direction: column;
-    gap: 5px;
 }
 
+/* Textarea for content */
 .content-text {
     width: 100%;
-    min-height: 100px;
+    min-height: 150px;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
     resize: vertical;
-    background-color: #f9f9f9;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     font-size: 14px;
     line-height: 1.5;
+    color: #555;
+    background-color: #fff;
+    margin-bottom: 10px;
 }
 
+/* Copy button */
 .copy-button {
-    padding: 5px 10px;
+    align-self: flex-end;
+    padding: 8px 12px;
     background-color: #007bff;
-    color: white;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
 .copy-button:hover {
