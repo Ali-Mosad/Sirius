@@ -3,82 +3,69 @@ function updateDisplay() {
     const sheetURL =
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vRjjGXiKyN8BogrMo4qrs3-sRuwuei9Osf1MVmsnGCRojXniVZ2LzZXSYbmfhBXUJ-MvffiZ8lsG1Bv/pub?output=csv";
 
-    // Fetch and process the data from Google Sheets
+    // Fetch and parse the CSV using PapaParse
     fetch(sheetURL)
-        .then((response) => response.text())
-        .then((csv) => {
-            console.log("Fetched Google Sheets Data:");
-            console.log(csv); // Debugging: Log the CSV data
+        .then(response => response.text())
+        .then(csv => {
+            // Parse CSV data with PapaParse
+            const parsedData = Papa.parse(csv, {
+                header: true, // Use the first row as the header
+                skipEmptyLines: true, // Skip empty rows
+            });
 
-            // Split CSV into rows and parse
-            const rows = csv.split("\n").slice(1); // Skip the header row
-
-            // Get the target section
+            // Target HTML section to display the data
             const dynamicSection = document.getElementById("dynamicSection");
 
             // Clear existing content
             dynamicSection.innerHTML = "";
 
-            rows.forEach((row, index) => {
-                if (row.trim() === "") return; // Skip empty rows
+            // Process and display each row
+            parsedData.data.forEach((row, index) => {
+                const title = row['Title'] || "Unknown Title";
+                const content = row['Content'] || "No Data Available";
 
-                const columns = row.split(","); // Split row into columns
-                if (columns.length < 2) {
-                    console.warn(`Skipping invalid row ${index + 1}: ${row}`);
-                    return; // Skip rows that don't have at least two columns
-                }
-
-                // Extract data for each row
-                const titleName = columns[0] || "اسم غير معروف";
-                const contentText = columns[1] || "لا توجد بيانات";
-
-                // Create a row with two columns
+                // Create row element
                 const rowDiv = document.createElement("div");
                 rowDiv.className = "row";
 
-                // Column 1: Title
-                const titleColumn = document.createElement("div");
-                titleColumn.className = "column title-column";
-                titleColumn.textContent = titleName;
+                // Title Column
+                const titleDiv = document.createElement("div");
+                titleDiv.className = "column title-column";
+                titleDiv.textContent = title;
 
-                // Column 2: Content and Copy Button
-                const contentColumn = document.createElement("div");
-                contentColumn.className = "column content-column";
+                // Content Column
+                const contentDiv = document.createElement("div");
+                contentDiv.className = "column content-column";
 
-                const contentTextarea = document.createElement("textarea");
-                contentTextarea.className = "content-text";
-                contentTextarea.textContent = contentText;
-                contentTextarea.readOnly = true;
+                const textarea = document.createElement("textarea");
+                textarea.className = "content-text";
+                textarea.value = content;
+                textarea.readOnly = true;
 
                 const copyButton = document.createElement("button");
                 copyButton.className = "copy-button";
                 copyButton.textContent = "Copy";
                 copyButton.onclick = () => {
-                    navigator.clipboard
-                        .writeText(contentText)
-                        .then(() => {
-                            alert("تم نسخ النص بالكامل!");
-                        })
-                        .catch(() => {
-                            alert("تعذر نسخ النص!");
-                        });
+                    navigator.clipboard.writeText(content).then(() => {
+                        alert("Text copied to clipboard!");
+                    }).catch(() => {
+                        alert("Failed to copy text.");
+                    });
                 };
 
-                contentColumn.appendChild(contentTextarea);
-                contentColumn.appendChild(copyButton);
+                contentDiv.appendChild(textarea);
+                contentDiv.appendChild(copyButton);
 
-                // Append columns to the row
-                rowDiv.appendChild(titleColumn);
-                rowDiv.appendChild(contentColumn);
+                rowDiv.appendChild(titleDiv);
+                rowDiv.appendChild(contentDiv);
 
-                // Append the row to the dynamic section
                 dynamicSection.appendChild(rowDiv);
             });
         })
-        .catch((error) => {
+        .catch(error => {
             console.error("Error loading Google Sheets data:", error);
         });
 }
 
-// Initial Data Display
-updateDisplay(); // Show data from Google Sheets
+// Initial data display
+updateDisplay();

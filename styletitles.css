@@ -735,11 +735,10 @@ body {
     border-radius: 5px;
     padding: 10px;
     resize: vertical;
-    font-family: inherit;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
     font-size: 14px;
     line-height: 1.5;
-    overflow: auto;
-    background-color: #f9f9f9;
 }
 
 .copy-button {
