@@ -1,4 +1,5 @@
-   function updateDisplay() {
+// Function to fetch and display data from Google Sheets
+        function updateDisplay() {
             const sheetURL =
                 "https://docs.google.com/spreadsheets/d/e/2PACX-1vRjjGXiKyN8BogrMo4qrs3-sRuwuei9Osf1MVmsnGCRojXniVZ2LzZXSYbmfhBXUJ-MvffiZ8lsG1Bv/pub?output=csv";
 
@@ -44,15 +45,19 @@
                         const contentColumn = document.createElement("div");
                         contentColumn.className = "column content-column";
 
-                        const contentDiv = document.createElement("pre"); // Use <pre> to preserve line breaks
+                        const contentDiv = document.createElement("div"); // Use <div> for better content flexibility
+                        contentDiv.className = "content-text";
                         contentDiv.textContent = contentText;
 
                         const copyButton = document.createElement("button");
                         copyButton.className = "copy-button";
                         copyButton.textContent = "Copy";
                         copyButton.onclick = () => {
-                            navigator.clipboard.writeText(contentText);
-                            alert("تم نسخ النص!");
+                            navigator.clipboard.writeText(contentText).then(() => {
+                                alert("تم نسخ النص بالكامل!");
+                            }).catch(() => {
+                                alert("تعذر نسخ النص!");
+                            });
                         };
 
                         contentColumn.appendChild(contentDiv);
@@ -72,5 +77,4 @@
         }
 
         // Initial Data Display
-        updateDisplay(); // Show data from Google Sheets
- 
+        updateDisplay(); // Show data from Goog
