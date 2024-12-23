@@ -741,8 +741,8 @@ body {
             background-color: #0056b3;
         }
 
-        pre {
-            white-space: pre-wrap;
+        .content-text {
+            white-space: pre-wrap; /* Preserve line breaks and whitespace */
             word-wrap: break-word;
             font-family: inherit;
             font-size: 14px;
