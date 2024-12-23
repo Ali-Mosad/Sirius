@@ -705,3 +705,47 @@ body {
     transform: translateY(-10px); /* Moves the card up slightly */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); /* Enhances the shadow */
 }
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.column {
+    flex: 1;
+    padding: 10px;
+}
+
+.title-column {
+    font-weight: bold;
+    text-align: left;
+}
+
+.content-column {
+    text-align: right;
+}
+
+.copy-button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.copy-button:hover {
+    background-color: #0056b3;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: inherit;
+    font-size: 14px;
+    margin: 0;
+}
+
