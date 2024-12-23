@@ -77,4 +77,4 @@
         }
 
         // Initial Data Display
-        updateDisplay(); // Show data from Goog
+        updateDisplay(); // Show data from Google Sheets
