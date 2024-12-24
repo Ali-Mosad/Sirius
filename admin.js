@@ -1,3 +1,16 @@
+// Define the password at the top
+const correctPassword = 'sirius159'; // Replace 'your_password' with your desired password
+
+function checkPassword() {
+    const enteredPassword = document.getElementById('password').value;
+    if (enteredPassword === correctPassword) {
+        document.getElementById('password-overlay').style.display = 'none';
+        document.getElementById('protected-content').style.display = 'block';
+    } else {
+        alert('كلمة المرور غير صحيحة');
+    }
+}
+
 // Google Sheets URL (CSV format)
 const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
 
