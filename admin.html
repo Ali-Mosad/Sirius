@@ -9,40 +9,47 @@
     <meta http-equiv="Expires" content="0">
 </head>
 <body>
-    <!-- Top Navigation Bar -->
-    <header class="nav-bar">
-        <div class="logo">
-            <a href="index.html" class="logo-link">
-                <div class="logo-container">
-                    <img src="Sirius.jpg" alt="Cyrus" class="logo-image">
-                    <div class="logo-text">𝑺𝒊𝑹𝑰𝑼𝑺</div>
-                </div>
-            </a>
-        </div>
-        <div class="menu-toggle" id="menuButton">☰</div>
-        <nav class="menu" id="menu">
-            <a href="kyoto.html">البنك</a>
-            <a href="osaka.html">القوانين</a>
-            <a href="store.html">المتجر</a>
-            <a href="titles.html">الالقاب</a>
-        </nav>
-    </header>
+    <div id="password-overlay">
+        <h2>ادخل كلمة المرور</h2>
+        <input type="password" id="password" placeholder="كلمة المرور">
+        <button onclick="checkPassword()">دخول</button>
+    </div>
 
-    <!-- Features Section -->
-    <section id="features" class="features-grid">
-        <div class="feature-item">
-            <img src="document.png" alt="البنك">
-            <h2>الاستمارات</h2>
-            <p>جميع استمارات النقابة</p>
-            <a href="forms.html" class="feature-link">اضغط هنا</a>
-        </div>
-    </section>
+    <div id="protected-content">
+        <!-- Top Navigation Bar -->
+        <header class="nav-bar">
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <div class="logo-container">
+                        <img src="Sirius.jpg" alt="Cyrus" class="logo-image">
+                        <div class="logo-text">𝑺𝒊𝑹𝑰𝑼𝑺</div>
+                    </div>
+                </a>
+            </div>
+            <div class="menu-toggle" id="menuButton">☰</div>
+            <nav class="menu" id="menu">
+                <a href="kyoto.html">البنك</a>
+                <a href="osaka.html">القوانين</a>
+                <a href="store.html">المتجر</a>
+                <a href="titles.html">الالقاب</a>
+            </nav>
+        </header>
 
-    <!-- Footer Section -->
-    <footer class="footer">
-        <p>&copy; جوا الرواية رواية مكتوبة بين السطور... عن بطل كان مغمور.. ومحدش فيه سائل.. حلمه ماشفش النور.. لكنه مات بيحاول - مغمور وكفى</p>
-        </nav>
-    </footer>
+        <!-- Features Section -->
+        <section id="features" class="features-grid">
+            <div class="feature-item">
+                <img src="document.png" alt="البنك">
+                <h2>الاستمارات</h2>
+                <p>جميع استمارات النقابة</p>
+                <a href="forms.html" class="feature-link">اضغط هنا</a>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="footer">
+            <p>&copy; جوا الرواية رواية مكتوبة بين السطور... عن بطل كان مغمور.. ومحدش فيه سائل.. حلمه ماشفش النور.. لكنه مات بيحاول - مغمور وكفى</p>
+        </footer>
+    </div>
 
     <link rel="stylesheet" href="styleindex.css">
 </body>

@@ -127,3 +127,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+// Replace 'your_password' with your desired password
+const correctPassword = 'your_password';
+
+function checkPassword() {
+    const enteredPassword = document.getElementById('password').value;
+    if (enteredPassword === correctPassword) {
+        document.getElementById('password-overlay').style.display = 'none';
+        document.getElementById('protected-content').style.display = 'block';
+    } else {
+        alert('كلمة المرور غير صحيحة');
+    }
+}
