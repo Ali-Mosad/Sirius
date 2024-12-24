@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Replace 'your_password' with your desired password
-const correctPassword = 'your_password';
+const correctPassword = 'sirius123';
 
 function checkPassword() {
     const enteredPassword = document.getElementById('password').value;
