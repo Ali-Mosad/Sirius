@@ -12,7 +12,7 @@ async function fetchData() {
   
   rows.forEach(row => {
     const title = row[0];  // Assuming title is in the first column
-    const balance = parseInt(row[1], 10);  // Assuming balance is in the second column
+    const balance = parseInt(row[2], 10);  // Assuming balance is in the second column
     if (title && balance) {
       usersBalance[title] = balance;
     }
