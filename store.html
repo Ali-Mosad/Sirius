@@ -1,62 +1,35 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المتجر - 𝑺𝒊𝑹𝑰𝑼𝑺</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>متجر</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header>
+    <h1>مرحبا بك في المتجر</h1>
+  </header>
+  <main>
+    <section id="shop">
+      <div class="product">
+        <h2>اسم المنتج</h2>
+        <p>وصف المنتج</p>
+        <button class="request-button">طلب العرض</button>
+      </div>
+      <!-- Add more products as needed -->
+    </section>
 
-    <div class="top-bar">
-        <div class="logo">
-            <!-- Clickable logo with image and text -->
-            <a href="index.html" class="logo-link">
-                <div class="logo-container">
-                    <img src="Sirius.jpg" alt="Cyrus" class="logo-image">
-                    <div class="logo-text">𝑺𝒊𝑹𝑰𝑼𝑺</div>
-                </div>
-            </a>
-        </div>
-    <!-- Japanese-styled top bar -->
-    <div class="top-bar">
-        <button id="menuButton" class="menu-toggle">☰</button>
-        <div id="menu" class="menu hidden">
-            <a href="kyoto.html">البنك</a>
-            <a href="osaka.html">القوانين</a>
-            <a href="store.html">المتجر</a>
-        </div>
-        <div class="logo">
-            <a href="index.html">𝑺𝒊𝑹𝑰𝑼𝑺</a>
-        </div>
+    <!-- Modal -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h3>أدخل العنوان</h3>
+        <input type="text" id="title-input" placeholder="اكتب عنوانك هنا">
+        <button id="submit-button">تأكيد</button>
+      </div>
     </div>
-    <!-- End of top bar -->
-
-    <div class="container">
-        <h1>مرحباً بك في المتجر</h1>
-        <p>المتجر قيد التطوير. تابعنا لمزيد من التحديثات!</p>
-    </div>
-
-    <script src="script.js"></script>
+  </main>
+  <script src="script.js"></script>
 </body>
 </html>
-
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-
-<script>
-    setInterval(function() {
-        fetch('/version.txt')  // URL to a file or endpoint that changes when the website is updated
-            .then(response => response.text())
-            .then(currentVersion => {
-                if (localStorage.getItem('version') !== currentVersion) {
-                    localStorage.setItem('version', currentVersion);
-                    location.reload(true); // Force refresh if the version has changed
-                }
-            })
-            .catch(error => console.error('Error checking for updates:', error));
-    }, 5000); // Check every 5 seconds
-</script>
-
-<link rel="stylesheet" href="styleindex.css">
