@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       // Call Google Sheets API to verify title and balance
-      // const sheetUrl = "https://sheets.googleapis.com/v4/spreadsheets/1_01SeG5p8YV0ihDiMIo7COl69RzIV4oHghgl2AuEtN0/values/Sheet1?key=AIzaSyD1IS98TdEYjWncrSKwbWWyLgCkPyjmWu4";
+       const sheetUrl = "https://sheets.googleapis.com/v4/spreadsheets/1_01SeG5p8YV0ihDiMIo7COl69RzIV4oHghgl2AuEtN0/values/Sheet1?key=AIzaSyD1IS98TdEYjWncrSKwbWWyLgCkPyjmWu4";
       const response = await fetch(sheetUrl);
       if (!response.ok) throw new Error("Failed to fetch sheet data.");
       const data = await response.json();
