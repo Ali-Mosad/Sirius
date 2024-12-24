@@ -37,23 +37,23 @@ async function fetchData() {
     }
   }
   
-  // Function to check the balance for the title entered by the user
-  async function checkBalance() {
+  async function buyItem() {
     const title = document.getElementById('titleInput').value.trim();  // Get the title input and trim spaces
     const balanceMessage = document.getElementById('balanceMessage');
-    
-    const usersBalance = await fetchData();  // Fetch the balance data from the sheet
+  
+    // Fetch the user's balance from the Google Sheet
+    const usersBalance = await fetchData();
     
     // Check if the title exists in the data
     if (usersBalance[title]) {
       const balance = usersBalance[title];
-      const price = getProductPrice(window.selectedProduct);  // Assuming a function to get product price
+      const price = getProductPrice(window.selectedProduct);  // Assuming the selected product is stored
   
-      // Check if the user has enough balance to purchase the product
+      // Check if the user has enough balance to buy the item
       if (balance >= price) {
         balanceMessage.innerHTML = `تم شراء السلعة: ${window.selectedProduct}<br><small>صور الشاشة وابعتها لمشرف البنك (شانكس)</small>`;
         
-        // Deduct the balance
+        // Deduct the balance from the user's account
         usersBalance[title] -= price;
       } else {
         balanceMessage.innerHTML = "ليس لديك الرصيد الكافي.";
@@ -61,7 +61,7 @@ async function fetchData() {
     } else {
       balanceMessage.innerHTML = "اللقب غير موجود.";
     }
-  }
+  }  
   
   // Sample function to get product price (you will need to define this based on your product prices)
   function getProductPrice(product) {
