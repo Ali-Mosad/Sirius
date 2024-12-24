@@ -1,25 +1,41 @@
 // URL of the published Google Sheet
-const sheetURL = 'https://sheets.googleapis.com/v4/spreadsheets/1_01SeG5p8YV0ihDiMIo7COl69RzIV4oHghgl2AuEtN0/values/Sheet1?key=d7bb7f14ee2fd25055b77cf533eb8ea7d45291ad';
+const sheetURL = 'https://sheets.googleapis.com/v4/spreadsheets/1_01SeG5p8YV0ihDiMIo7COl69RzIV4oHghgl2AuEtN0/values/Sheet1?key=AIzaSyD1IS98TdEYjWncrSKwbWWyLgCkPyjmWu4';
 
-// Fetch data from Google Sheets
 async function fetchData() {
-  const response = await fetch(sheetURL);
-  const data = await response.json();
-  
-  // Parse the sheet data and create a balance object
-  const usersBalance = {};
-  const rows = data.values; // Array of rows from the sheet
-  
-  rows.forEach(row => {
-    const title = row[0];  // Assuming title is in the first column
-    const balance = parseInt(row[2], 10);  // Assuming balance is in the second column
-    if (title && balance) {
-      usersBalance[title] = balance;
+    try {
+      const response = await fetch(sheetURL);
+      
+      // Check if the response is valid
+      if (!response.ok) {
+        throw new Error('Failed to fetch data');
+      }
+      
+      const data = await response.json();
+      
+      // Ensure that the data has the 'values' property
+      if (!data.values) {
+        throw new Error('Data is not in the expected format');
+      }
+      
+      // Parse the sheet data and create a balance object
+      const usersBalance = {};
+      const rows = data.values; // Array of rows from the sheet
+      
+      rows.forEach(row => {
+        const title = row[0];  // Assuming title is in the first column
+        const balance = parseInt(row[2], 10);  // Assuming balance is in the second column
+        if (title && balance) {
+          usersBalance[title] = balance;
+        }
+      });
+      
+      return usersBalance;
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred while fetching the data. Please try again later.');
+      return {}; // Return an empty object in case of error
     }
-  });
-
-  return usersBalance;
-}
+  }  
 
 // Call the fetchData function and use it when a user tries to buy an item
 async function buyItem(productName) {
