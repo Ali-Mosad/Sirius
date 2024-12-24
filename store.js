@@ -1,98 +1,82 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const modal = document.getElementById("order-modal");
-  const closeModal = document.querySelector(".close-modal");
-  const orderButtons = document.querySelectorAll(".order-button");
-  const confirmOrder = document.getElementById("confirm-order");
-  const titleInput = document.getElementById("title-input");
-
-  const CLIENT_ID = "404062048289-52l1rue0600ckktsc3hr3jsqt6k03epe.apps.googleusercontent.com";
-  const API_KEY = "AIzaSyD1IS98TdEYjWncrSKwbWWyLgCkPyjmWu4";
-  const SPREADSHEET_ID = "1_01SeG5p8YV0ihDiMIo7COl69RzIV4oHghgl2AuEtN0";
-  const DISCOVERY_DOCS = [
-    "https://sheets.googleapis.com/$discovery/rest?version=v4",
-  ];
-  const SCOPES = "https://www.googleapis.com/auth/spreadsheets";
-
-  let selectedProduct = null;
-  let selectedPrice = 0;
-
-  // Load gapi and initialize
-  gapi.load("client:auth2", async () => {
-    await gapi.client.init({
-      apiKey: API_KEY,
-      clientId: CLIENT_ID,
-      discoveryDocs: DISCOVERY_DOCS,
-      scope: SCOPES,
-    });
-
-    // Sign in the user
-    gapi.auth2.getAuthInstance().signIn();
-  });
-
-  // Open modal and set product info
-  orderButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      selectedProduct = button.getAttribute("data-product");
-      selectedPrice = parseInt(button.getAttribute("data-price"), 10);
-      modal.style.display = "flex";
-    });
-  });
-
-  // Close modal
-  closeModal.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
-
-  // Confirm order
-  confirmOrder.addEventListener("click", async () => {
-    const title = titleInput.value.trim();
-    if (!title) {
-      alert("يرجى إدخال لقبك.");
-      return;
-    }
-
-    try {
-      // Fetch sheet data
-      const sheetData = await gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: SPREADSHEET_ID,
-        range: "Sheet1",
-      });
-
-      const rows = sheetData.result.values;
-      const titleRowIndex = rows.findIndex((row) => row[0] === title);
-
-      if (titleRowIndex === -1) {
-        alert("اللقب غير موجود.");
-        return;
-      }
-
-      // Check balance
-      const balance = parseInt(rows[titleRowIndex][2], 10); // Assuming balance is in column C
-      if (balance < selectedPrice) {
-        alert("رصيدك غير كافٍ.");
-        return;
-      }
-
-      // Deduct price and update balance
-      const newBalance = balance - selectedPrice;
-
-      await gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: SPREADSHEET_ID,
-        range: `Sheet1!C${titleRowIndex + 1}`, // Column C, row index (1-based)
-        valueInputOption: "RAW",
-        resource: {
-          values: [[newBalance]],
-        },
-      });
-
-      alert(
-        `تم شراء المنتج: ${selectedProduct} بنجاح. صور الشاشة وارسلها لاحد المشرفين.`
-      );
-    } catch (error) {
-      console.error("Error:", error);
-      alert("حدث خطأ أثناء التحقق.");
-    } finally {
-      modal.style.display = "none";
-    }
+document.querySelectorAll('.buy-button').forEach(button => {
+  button.addEventListener('click', function() {
+      const itemName = this.getAttribute('data-item');
+      const itemPrice = parseInt(this.getAttribute('data-price'));
+      showPopup(itemName, itemPrice);
   });
 });
+
+function showPopup(itemName, itemPrice) {
+  const popup = document.getElementById('popup');
+  popup.style.display = 'block';
+
+  // Store item details for later use
+  window.currentItem = { itemName, itemPrice };
+}
+
+function checkBalance() {
+  const لقب = document.getElementById('لقب').value;
+  if (لقب.trim() === "") {
+      alert("الرجاء إدخال لقبك");
+      return;
+  }
+
+  // Use Google Sheets API to check balance (you will need to set up the Sheets API)
+  const sheetUrl = "https://sheets.googleapis.com/v4/spreadsheets/1_01SeG5p8YV0ihDiMIo7COl69RzIV4oHghgl2AuEtN0/values/Sheet1!A:B"; // Example URL
+  fetch(sheetUrl)
+      .then(response => response.json())
+      .then(data => {
+          let userBalance = 0;
+          let userFound = false;
+
+          // Search for the user by لقب in the sheet
+          data.values.forEach(row => {
+              if (row[0] === لقب) { // Column A is the title (لقب)
+                  userBalance = parseInt(row[1]); // Column B is the balance
+                  userFound = true;
+              }
+          });
+
+          if (!userFound) {
+              alert("لم يتم العثور على اللقب في السجلات");
+              return;
+          }
+
+          if (userBalance >= window.currentItem.itemPrice) {
+              // Deduct price and show confirmation
+              userBalance -= window.currentItem.itemPrice;
+
+              // Update balance in Google Sheets (Google Sheets API)
+              updateBalance(لقب, userBalance);
+
+              const resultMessage = `تم شراء السلعة بلقب "${لقب}"`;
+              document.getElementById('result-message').innerHTML = `
+                  <p>${resultMessage}</p>
+                  <p style="font-size: small;">قم بتصوير الشاشة وارسالها لمسؤول البنك (شانكس)</p>
+              `;
+              document.getElementById('result-message').style.display = 'block';
+          } else {
+              alert("ليس لديك رصيد كافي");
+          }
+
+          document.getElementById('popup').style.display = 'none';
+      });
+}
+
+function updateBalance(لقب, newBalance) {
+  // Use Google Sheets API to update the balance
+  const sheetUrl = "https://sheets.googleapis.com/v4/spreadsheets/1_01SeG5p8YV0ihDiMIo7COl69RzIV4oHghgl2AuEtN0/values/Sheet1!B:B";
+  const updateData = {
+      values: [
+          [لقب, newBalance]
+      ]
+  };
+  fetch(sheetUrl, {
+      method: 'PUT',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer YOUR_API_KEY`
+      },
+      body: JSON.stringify(updateData)
+  });
+}

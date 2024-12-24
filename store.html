@@ -6,45 +6,28 @@
   <title>متجر</title>
   <link rel="stylesheet" href="store.css">
 </head>
-<main id="shop-container">
-  <!-- Product List -->
-  <div class="product-card">
-    <h2>حماية من كل شيء لمدة 3 ايام (باستثناء الانذارات)</h2>
-    <p>السعر: 750k</p>
-    <button class="order-button" data-price="750000" data-product="حماية من كل شيء لمدة 3 ايام">طلب العرض</button>
+<div id="items-list">
+  <div class="item">
+      <h3>Item Name 1</h3>
+      <p>Price: 100k</p>
+      <button class="buy-button" data-item="Item Name 1" data-price="100000">شراء السلعة</button>
   </div>
-  <div class="product-card">
-    <h2>كسر الحماية</h2>
-    <p>السعر: 850k</p>
-    <button class="order-button" data-price="850000" data-product="كسر الحماية">طلب العرض</button>
-  </div>
-  <div class="product-card">
-    <h2>الغاء انذار بعد يومين من نزول الانذار</h2>
-    <p>السعر: 200k</p>
-    <button class="order-button" data-price="200000" data-product="الغاء انذار بعد يومين">طلب العرض</button>
-  </div>
-  <div class="product-card">
-    <h2>طرد اي عضو لمدة نصف ساعة (يستخدم مره كل 3 ايام + لا يتجاوز الحماية)</h2>
-    <p>السعر: 500k</p>
-    <button class="order-button" data-price="500000" data-product="طرد عضو نصف ساعة">طلب العرض</button>
-  </div>
-  <div class="product-card">
-    <h2>طرد اي عضو لمدة ساعة (يستخدم مره كل 5 ايام + لا يتجاوز الحماية)</h2>
-    <p>السعر: 1M</p>
-    <button class="order-button" data-price="1000000" data-product="طرد عضو ساعة">طلب العرض</button>
-  </div>
-  <!-- Repeat for the rest of the products in the same format -->
-</main>
-
-<!-- Modal -->
-<div id="order-modal" class="modal">
-  <div class="modal-content">
-    <span class="close-modal">&times;</span>
-    <h3>أدخل عنوانك</h3>
-    <input type="text" id="title-input" placeholder="اكتب عنوانك هنا">
-    <button id="confirm-order">تأكيد الطلب</button>
+  <div class="item">
+      <h3>Item Name 2</h3>
+      <p>Price: 150k</p>
+      <button class="buy-button" data-item="Item Name 2" data-price="150000">شراء السلعة</button>
   </div>
 </div>
+
+<!-- Popup Form -->
+<div id="popup" style="display: none;">
+  <label for="لقب">أدخل لقبك:</label>
+  <input type="text" id="لقب" />
+  <button onclick="checkBalance()">إتمام الشراء</button>
+</div>
+
+<div id="result-message" style="display: none;"></div>
+
   
   <script src="store.js"></script>
 </body>
