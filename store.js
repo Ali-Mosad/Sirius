@@ -1,78 +1,62 @@
-// URL of the published Google Sheet
-const sheetURL = 'https://sheets.googleapis.com/v4/spreadsheets/1_01SeG5p8YV0ihDiMIo7COl69RzIV4oHghgl2AuEtN0/values/Sheet1?key=AIzaSyD1IS98TdEYjWncrSKwbWWyLgCkPyjmWu4';
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("order-modal");
+  const closeModal = document.querySelector(".close-modal");
+  const orderButtons = document.querySelectorAll(".order-button");
+  const confirmOrder = document.getElementById("confirm-order");
+  const titleInput = document.getElementById("title-input");
 
-// Fetch data from Google Sheets API and return it as a dictionary
-async function fetchData() {
+  let selectedProduct = null;
+  let selectedPrice = 0;
+
+  // Open modal and set product info
+  orderButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      selectedProduct = button.getAttribute("data-product");
+      selectedPrice = parseInt(button.getAttribute("data-price"), 10);
+      modal.style.display = "flex";
+    });
+  });
+
+  // Close modal
+  closeModal.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // Confirm order
+  confirmOrder.addEventListener("click", async () => {
+    const title = titleInput.value.trim();
+    if (!title) {
+      alert("يرجى إدخال لقبك.");
+      return;
+    }
+
     try {
-      const response = await fetch(sheetURL);
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch data');
-      }
-      
+      // Call Google Sheets API to verify title and balance
+      // const sheetUrl = "https://sheets.googleapis.com/v4/spreadsheets/1_01SeG5p8YV0ihDiMIo7COl69RzIV4oHghgl2AuEtN0/values/Sheet1?key=AIzaSyD1IS98TdEYjWncrSKwbWWyLgCkPyjmWu4";
+      const response = await fetch(sheetUrl);
+      if (!response.ok) throw new Error("Failed to fetch sheet data.");
       const data = await response.json();
-      
-      if (!data.values) {
-        throw new Error('Data is not in the expected format');
+
+      // Validate title
+      const titleRow = data.values.find(row => row[0] === title);
+      if (!titleRow) {
+        alert("اللقب غير موجود.");
+        return;
       }
-      
-      const usersBalance = {};
-      const rows = data.values;
-  
-      rows.forEach(row => {
-        // Normalize the title (trim extra spaces and normalize characters)
-        const title = row[0].trim();  // Trim any spaces or unwanted characters
-        const balance = parseInt(row[1], 10);  // Ensure balance is an integer
-        if (title && balance) {
-          // Store the title and balance in the dictionary
-          usersBalance[title] = balance;
-        }
-      });
-      
-      return usersBalance;
-    } catch (error) {
-      console.error(error);
-      alert('An error occurred while fetching the data. Please try again later.');
-      return {};  // Return an empty object in case of error
-    }
-  }
-  
-  async function buyItem() {
-    const title = document.getElementById('titleInput').value.trim();  // Get the title input and trim spaces
-    const balanceMessage = document.getElementById('balanceMessage');
-  
-    // Fetch the user's balance from the Google Sheet
-    const usersBalance = await fetchData();
-    
-    // Check if the title exists in the data
-    if (usersBalance[title]) {
-      const balance = usersBalance[title];
-      const price = getProductPrice(window.selectedProduct);  // Assuming the selected product is stored
-  
-      // Check if the user has enough balance to buy the item
-      if (balance >= price) {
-        balanceMessage.innerHTML = `تم شراء السلعة: ${window.selectedProduct}<br><small>صور الشاشة وابعتها لمشرف البنك (شانكس)</small>`;
-        
-        // Deduct the balance from the user's account
-        usersBalance[title] -= price;
+
+      // Check balance
+      const balance = parseInt(titleRow[2], 10); // Assuming balance is in column C
+      if (balance < selectedPrice) {
+        alert("رصيدك غير كافٍ.");
       } else {
-        balanceMessage.innerHTML = "ليس لديك الرصيد الكافي.";
+        alert(`تم شراء المنتج: ${selectedProduct} بنجاح. صور الشاشة وارسلها لاحد المشرفين.`);
+        // Optionally deduct balance in the backend
       }
-    } else {
-      balanceMessage.innerHTML = "اللقب غير موجود.";
+    } catch (error) {
+      console.error("Error:", error);
+      alert("حدث خطأ أثناء التحقق.");
+    } finally {
+      modal.style.display = "none";
     }
-  }  
-  
-  // Sample function to get product price (you will need to define this based on your product prices)
-  function getProductPrice(product) {
-    // Assuming a price map for products
-    const productPrices = {
-      "حماية من كل شيء لمدة 3 ايام": 750000,
-      "كسر الحماية": 850000,
-      "الغاء انذار": 200000,
-      // Add more products and prices as needed
-    };
-  
-    return productPrices[product] || 0;
-  }
-  
+  });
+});
