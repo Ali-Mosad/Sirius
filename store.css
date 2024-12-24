@@ -1,65 +1,25 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    text-align: center;
-    margin: 0;
-  }
-  
-  header {
-    background-color: #007bff;
-    color: white;
-    padding: 20px 0;
-  }
-  
-  #shop {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 20px;
-  }
-  
-  .product {
-    background: white;
-    margin: 10px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 200px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .request-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .modal {
-    display: none;
+#titleModal {
     position: fixed;
-    z-index: 1000;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
     justify-content: center;
     align-items: center;
   }
   
   .modal-content {
-    background: white;
+    background-color: white;
     padding: 20px;
     border-radius: 5px;
-    width: 300px;
+    text-align: center;
   }
   
-  .close-button {
-    float: right;
-    cursor: pointer;
-    color: red;
+  #balanceMessage {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: green;
   }
   

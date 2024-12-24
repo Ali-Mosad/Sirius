@@ -6,30 +6,30 @@
   <title>متجر</title>
   <link rel="stylesheet" href="store.css">
 </head>
-<body>
-  <header>
-    <h1>مرحبا بك في المتجر</h1>
-  </header>
-  <main>
-    <section id="shop">
-      <div class="product">
-        <h2>اسم المنتج</h2>
-        <p>وصف المنتج</p>
-        <button class="request-button">طلب العرض</button>
-      </div>
-      <!-- Add more products as needed -->
-    </section>
-
-    <!-- Modal -->
-    <div id="modal" class="modal">
-      <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h3>أدخل العنوان</h3>
-        <input type="text" id="title-input" placeholder="اكتب عنوانك هنا">
-        <button id="submit-button">تأكيد</button>
-      </div>
+<div id="product-list">
+    <div class="product">
+      <h3>حماية من كل شيء لمدة 3 ايام (باستثناء الانذارات)</h3>
+      <p>750k</p>
+      <button onclick="buyItem('حماية من كل شيء')">شراء السلعة</button>
     </div>
-  </main>
+    <div class="product">
+      <h3>كسر الحماية</h3>
+      <p>850k</p>
+      <button onclick="buyItem('كسر الحماية')">شراء السلعة</button>
+    </div>
+    <!-- Add more products here -->
+  </div>
+  
+  <div id="titleModal" style="display:none;">
+    <div class="modal-content">
+      <label for="titleInput">أدخل لقبك:</label>
+      <input type="text" id="titleInput" />
+      <button onclick="checkBalance()">تحقق من الرصيد</button>
+      <p id="balanceMessage"></p>
+      <button onclick="closeModal()">إغلاق</button>
+    </div>
+  </div>
+  
   <script src="store.js"></script>
 </body>
 </html>
