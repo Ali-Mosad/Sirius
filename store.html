@@ -26,23 +26,26 @@
     <!-- Add more items as needed -->
 </div>
 
-    <!-- Popup for Purchase -->
-<div id="popup" style="display: none; flex-direction: column; align-items: center;">
-    <div id="popupContent">
-        <input type="text" id="nicknameInput" placeholder="أدخل لقبك هنا">
-        <p id="balanceDisplay" style="margin-top: 10px;"></p>
-        <p id="confirmationMessage" style="margin-top: 10px; display: none;"></p>
-        <button id="confirmPurchaseButton" style="display: none;">تأكيد</button>
+   <!-- Popup for Nickname Input and Confirmation -->
+<div id="popup" class="popup hidden">
+    <div class="popup-content">
+        <h3>قم بإدخال اللقب</h3>
+        <input id="nicknameInput" type="text" placeholder="أدخل اللقب هنا" />
+        <p id="balanceDisplay"></p>
+        <p id="confirmationMessage" class="hidden"></p>
+        <button id="confirmPurchaseButton" class="hidden">تأكيد</button>
         <button id="cancelButton">إلغاء</button>
     </div>
 </div>
 
-<!-- Confirmation Message -->
-<div id="purchaseConfirmation" style="display: none; flex-direction: column; align-items: center; text-align: center;">
-    <h3 id="itemName"></h3>
-    <p id="purchaseMessage"></p>
-    <small id="screenshotMessage" style="margin-top: 5px;">قم بتصوير الشاشة وإرسالها للمسؤول عن المتجر</small>
-    <button id="closeConfirmationButton">إغلاق</button>
+<!-- Confirmation Screen -->
+<div id="purchaseConfirmation" class="popup hidden">
+    <div class="popup-content">
+        <h3 id="itemName"></h3>
+        <p id="purchaseMessage"></p>
+        <small id="screenshotMessage">قم بتصوير الشاشة وإرسالها للمسؤول عن المتجر</small>
+        <button id="closeConfirmationButton">إغلاق</button>
+    </div>
 </div>
 
 <script src="store.js"></script>
