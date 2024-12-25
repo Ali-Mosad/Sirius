@@ -1,82 +1,62 @@
-document.querySelectorAll('.buy-button').forEach(button => {
-  button.addEventListener('click', function() {
-      const itemName = this.getAttribute('data-item');
-      const itemPrice = parseInt(this.getAttribute('data-price'));
-      showPopup(itemName, itemPrice);
-  });
-});
+  // Sheet URL
+        const sheetURL =
+            "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
 
-function showPopup(itemName, itemPrice) {
-  const popup = document.getElementById('popup');
-  popup.style.display = 'block';
+        // Popup Elements
+        const popup = document.getElementById("popup");
+        const confirmButton = document.getElementById("confirmButton");
+        const cancelButton = document.getElementById("cancelButton");
+        const nicknameInput = document.getElementById("nicknameInput");
 
-  // Store item details for later use
-  window.currentItem = { itemName, itemPrice };
-}
+        let selectedPrice = 0;
 
-function checkBalance() {
-  const لقب = document.getElementById('لقب').value;
-  if (لقب.trim() === "") {
-      alert("الرجاء إدخال لقبك");
-      return;
-  }
+        // Show popup on buy button click
+        document.querySelectorAll(".buy-button").forEach((button) => {
+            button.addEventListener("click", (event) => {
+                selectedPrice = event.target.closest(".item-card").dataset.price;
+                popup.style.display = "flex";
+            });
+        });
 
-  // Use Google Sheets API to check balance (you will need to set up the Sheets API)
-  const sheetUrl = "https://sheets.googleapis.com/v4/spreadsheets/1_01SeG5p8YV0ihDiMIo7COl69RzIV4oHghgl2AuEtN0/values/Sheet1!A:B"; // Example URL
-  fetch(sheetUrl)
-      .then(response => response.json())
-      .then(data => {
-          let userBalance = 0;
-          let userFound = false;
+        // Cancel button to close the popup
+        cancelButton.addEventListener("click", () => {
+            popup.style.display = "none";
+        });
 
-          // Search for the user by لقب in the sheet
-          data.values.forEach(row => {
-              if (row[0] === لقب) { // Column A is the title (لقب)
-                  userBalance = parseInt(row[1]); // Column B is the balance
-                  userFound = true;
-              }
-          });
+        // Confirm button logic
+        confirmButton.addEventListener("click", () => {
+            const nickname = nicknameInput.value.trim();
+            if (!nickname) {
+                alert("الرجاء إدخال اللقب");
+                return;
+            }
 
-          if (!userFound) {
-              alert("لم يتم العثور على اللقب في السجلات");
-              return;
-          }
+            // Fetch data from Google Sheets
+            fetch(sheetURL)
+                .then((response) => response.text())
+                .then((csv) => {
+                    const rows = csv.split("\n").slice(1); // Skip header row
+                    let balance = null;
 
-          if (userBalance >= window.currentItem.itemPrice) {
-              // Deduct price and show confirmation
-              userBalance -= window.currentItem.itemPrice;
+                    rows.forEach((row) => {
+                        const [name, rank, bal] = row.split(",");
+                        if (name.trim() === nickname) {
+                            balance = parseInt(bal.trim(), 10);
+                        }
+                    });
 
-              // Update balance in Google Sheets (Google Sheets API)
-              updateBalance(لقب, userBalance);
-
-              const resultMessage = `تم شراء السلعة بلقب "${لقب}"`;
-              document.getElementById('result-message').innerHTML = `
-                  <p>${resultMessage}</p>
-                  <p style="font-size: small;">قم بتصوير الشاشة وارسالها لمسؤول البنك (شانكس)</p>
-              `;
-              document.getElementById('result-message').style.display = 'block';
-          } else {
-              alert("ليس لديك رصيد كافي");
-          }
-
-          document.getElementById('popup').style.display = 'none';
-      });
-}
-
-function updateBalance(لقب, newBalance) {
-  // Use Google Sheets API to update the balance
-  const sheetUrl = "https://sheets.googleapis.com/v4/spreadsheets/1_01SeG5p8YV0ihDiMIo7COl69RzIV4oHghgl2AuEtN0/values/Sheet1!B:B";
-  const updateData = {
-      values: [
-          [لقب, newBalance]
-      ]
-  };
-  fetch(sheetUrl, {
-      method: 'PUT',
-      headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer YOUR_API_KEY`
-      },
-      body: JSON.stringify(updateData)
-  });
-}
+                    if (balance === null) {
+                        alert("لم يتم العثور على اللقب.");
+                    } else if (balance >= selectedPrice) {
+                        alert("تمت العملية بنجاح!");
+                    } else {
+                        alert("الرصيد غير كافٍ.");
+                    }
+                    popup.style.display = "none";
+                })
+                .catch((error) => {
+                    console.error("Error fetching Google Sheets data:", error);
+                    alert("حدث خطأ أثناء التحقق من الرصيد.");
+                    popup.style.display = "none";
+                });
+        });
