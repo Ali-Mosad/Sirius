@@ -21,15 +21,24 @@
         <!-- Add more items here -->
     </div>
 
-    <!-- Popup -->
-    <div class="popup" id="popup">
-        <div class="popup-content">
-            <h2>الرجاء إدخال اللقب</h2>
-            <input type="text" id="nicknameInput" placeholder="أدخل اللقب">
-            <button id="confirmButton">تأكيد</button>
-            <button id="cancelButton">إلغاء</button>
-        </div>
+    <!-- Popup for Purchase -->
+<div id="popup" style="display: none; flex-direction: column; align-items: center;">
+    <div id="popupContent">
+        <input type="text" id="nicknameInput" placeholder="أدخل لقبك هنا">
+        <p id="balanceDisplay" style="margin-top: 10px;"></p>
+        <p id="confirmationMessage" style="margin-top: 10px; display: none;"></p>
+        <button id="confirmPurchaseButton" style="display: none;">تأكيد</button>
+        <button id="cancelButton">إلغاء</button>
     </div>
+</div>
+
+<!-- Confirmation Message -->
+<div id="purchaseConfirmation" style="display: none; flex-direction: column; align-items: center; text-align: center;">
+    <h3 id="itemName"></h3>
+    <p id="purchaseMessage"></p>
+    <small id="screenshotMessage" style="margin-top: 5px;">قم بتصوير الشاشة وإرسالها للمسؤول عن المتجر</small>
+    <button id="closeConfirmationButton">إغلاق</button>
+</div>
 
 <script src="store.js"></script>
 </body>
