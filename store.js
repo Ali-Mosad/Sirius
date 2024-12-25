@@ -1,4 +1,5 @@
- // Sheet URL
+document.addEventListener("DOMContentLoaded", () => {
+    // Sheet URL
     const sheetURL =
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
 
@@ -105,4 +106,4 @@
     closeConfirmationButton.addEventListener("click", () => {
         purchaseConfirmation.style.display = "none";
     });
-
+});
