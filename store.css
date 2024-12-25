@@ -1,85 +1,120 @@
-/* General Styles */
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f5f5f5;
-  margin: 0;
-  text-align: center;
-}
+            font-family: 'Arial', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            margin: 0;
+            padding: 0;
+        }
 
-header {
-  background-color: #007bff;
-  color: white;
-  padding: 20px;
-}
+        header {
+            background-color: #1e293b;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #475569;
+        }
 
-#shop-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 20px;
-}
+        header h1 {
+            margin: 0;
+            color: #f1f5f9;
+            font-size: 2rem;
+        }
 
-.product-card {
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  width: 250px;
-  margin: 15px;
-  padding: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+        .store-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
 
-.product-card img {
-  width: 100%;
-  border-radius: 8px;
-}
+        .item-card {
+            background-color: #1e293b;
+            border: 2px solid #475569;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 15px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
 
-.product-card h2 {
-  font-size: 18px;
-  margin: 10px 0;
-}
+        .item-card h2 {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            color: #e2e8f0;
+        }
 
-.product-card p {
-  color: #555;
-  font-size: 14px;
-}
+        .item-card p {
+            font-size: 1rem;
+            margin: 10px 0;
+            color: #94a3b8;
+        }
 
-.order-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-}
+        .item-card .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #38bdf8;
+        }
 
-.order-button:hover {
-  background-color: #0056b3;
-}
+        .buy-button {
+            display: inline-block;
+            background-color: #38bdf8;
+            color: #0f172a;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
 
-/* Modal Styles */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
-}
+        .buy-button:hover {
+            background-color: #0284c7;
+        }
 
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 300px;
-}
+        /* Popup styling */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
 
-.close-modal {
-  color: red;
-  font-size: 18px;
-  float: right;
-  cursor: pointer;
-}
+        .popup-content {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            color: #f8fafc;
+        }
+
+        .popup-content input {
+            width: 90%;
+            padding: 10px;
+            margin: 15px 0;
+            border: 1px solid #475569;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .popup-content button {
+            background-color: #38bdf8;
+            color: #0f172a;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .popup-content button:hover {
+            background-color: #0284c7;
+        }
