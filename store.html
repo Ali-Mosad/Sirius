@@ -1,34 +1,33 @@
-<!DOCTYPE html>
+ط<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>متجر</title>
-  <link rel="stylesheet" href="store.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر النقابة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<div id="items-list">
-  <div class="item">
-      <h3>Item Name 1</h3>
-      <p>Price: 100k</p>
-      <button class="buy-button" data-item="Item Name 1" data-price="100000">شراء السلعة</button>
-  </div>
-  <div class="item">
-      <h3>Item Name 2</h3>
-      <p>Price: 150k</p>
-      <button class="buy-button" data-item="Item Name 2" data-price="150000">شراء السلعة</button>
-  </div>
-</div>
+<body>
+    <header>
+        <h1>متجر النقابة</h1>
+    </header>
+    <div class="store-container">
+        <!-- Example Item -->
+        <div class="item-card" data-price="200">
+            <h2>تغيير لقب بشكل دائم</h2>
+            <p class="price">200k</p>
+            <button class="buy-button">شراء</button>
+        </div>
+        <!-- Add more items here -->
+    </div>
 
-<!-- Popup Form -->
-<div id="popup" style="display: none;">
-  <label for="لقب">أدخل لقبك:</label>
-  <input type="text" id="لقب" />
-  <button onclick="checkBalance()">إتمام الشراء</button>
-</div>
-
-<div id="result-message" style="display: none;"></div>
-
-  
-  <script src="store.js"></script>
+    <!-- Popup -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2>الرجاء إدخال اللقب</h2>
+            <input type="text" id="nicknameInput" placeholder="أدخل اللقب">
+            <button id="confirmButton">تأكيد</button>
+            <button id="cancelButton">إلغاء</button>
+        </div>
+    </div>
 </body>
 </html>
