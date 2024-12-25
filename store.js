@@ -100,14 +100,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     confirmPurchaseButton.addEventListener("click", () => {
-        const nickname = nicknameInput.value.trim();
-        itemName.textContent = selectedItem;
-        purchaseMessage.textContent = `تم شراء السلعة بلقب "${nickname}"`;
-        popup.classList.add("hidden");
-        purchaseConfirmation.classList.remove("hidden");
-    });
-
-    closeConfirmationButton.addEventListener("click", () => {
-        purchaseConfirmation.classList.add("hidden");
-    });
+    const nickname = nicknameInput.value.trim();
+    itemName.textContent = selectedItem; // Display the item name
+    purchaseMessage.textContent = `تم شراء السلعة بلقب "${nickname}"`; // Purchase message
+    screenshotMessage.textContent = "قم بتصوير الشاشة وإرسالها للمسؤول عن المتجر"; // Add screenshot message
+    popup.classList.add("hidden"); // Hide the popup
+    purchaseConfirmation.classList.remove("hidden"); // Show the confirmation
+});
 });
