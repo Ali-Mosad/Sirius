@@ -1,9 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Sheet URL
-    const sheetURL =
-        "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
-
-    // Popup and Confirmation Elements
     const popup = document.getElementById("popup");
     const nicknameInput = document.getElementById("nicknameInput");
     const balanceDisplay = document.getElementById("balanceDisplay");
@@ -20,16 +15,24 @@ document.addEventListener("DOMContentLoaded", () => {
     let selectedPrice = 0;
     let selectedItem = "";
 
-    // Normalize nickname by removing spaces, emojis, and special characters
+    const sheetURL =
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
+
+    // Function to normalize and extract the balance
+    function extractBalance(balanceString) {
+        // Match numeric values in the balance string
+        const match = balanceString.match(/\((\d+)k\)/);
+        return match ? parseInt(match[1], 10) * 1000 : 0; // Convert 'k' to thousands
+    }
+
     function normalizeNickname(nickname) {
         return nickname
             .replace(/[\s\u200C-\u200F]/g, "") // Remove spaces and invisible characters
-            .replace(/[\uD800-\uDFFF]/g, "")  // Remove emojis
-            .replace(/[^a-zA-Z0-9\u0600-\u06FF]/g, "") // Remove special characters (Arabic and English safe)
-            .toLowerCase(); // Convert to lowercase for case-insensitivity
+            .replace(/[\uD800-\uDFFF]/g, "") // Remove emojis
+            .replace(/[^a-zA-Z0-9\u0600-\u06FF]/g, "") // Remove non-alphanumeric or Arabic characters
+            .toLowerCase();
     }
 
-    // Show popup on buy button click
     document.querySelectorAll(".buy-button").forEach((button) => {
         button.addEventListener("click", (event) => {
             selectedPrice = parseInt(event.target.closest(".item-card").dataset.price, 10);
@@ -38,16 +41,14 @@ document.addEventListener("DOMContentLoaded", () => {
             balanceDisplay.textContent = "";
             confirmationMessage.style.display = "none";
             confirmPurchaseButton.style.display = "none";
-            popup.style.display = "flex";
+            popup.classList.remove("hidden");
         });
     });
 
-    // Cancel button to close the popup
     cancelButton.addEventListener("click", () => {
-        popup.style.display = "none";
+        popup.classList.add("hidden");
     });
 
-    // Confirm button logic
     nicknameInput.addEventListener("input", () => {
         const nickname = normalizeNickname(nicknameInput.value.trim());
         if (!nickname) {
@@ -57,17 +58,16 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Fetch data from Google Sheets
         fetch(sheetURL)
             .then((response) => response.text())
             .then((csv) => {
-                const rows = csv.split("\n").slice(1); // Skip header row
+                const rows = csv.split("\n").slice(1);
                 let balance = null;
 
                 rows.forEach((row) => {
-                    const [name, rank, bal] = row.split(",");
+                    const [name, , bal] = row.split(",");
                     if (normalizeNickname(name.trim()) === nickname) {
-                        balance = parseInt(bal.trim(), 10);
+                        balance = extractBalance(bal.trim());
                     }
                 });
 
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     confirmationMessage.style.display = "block";
                     confirmPurchaseButton.style.display = "block";
                 } else {
-                    balanceDisplay.textContent = "رصيدك: " + balance;
+                    balanceDisplay.textContent = `رصيدك: ${balance}`;
                     confirmationMessage.textContent = "ليس لديك رصيد كافٍ.";
                     confirmationMessage.style.display = "block";
                     confirmPurchaseButton.style.display = "none";
@@ -93,17 +93,15 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     });
 
-    // Confirm purchase
     confirmPurchaseButton.addEventListener("click", () => {
         const nickname = nicknameInput.value.trim();
         itemName.textContent = selectedItem;
         purchaseMessage.textContent = `تم شراء السلعة بلقب "${nickname}"`;
-        popup.style.display = "none";
-        purchaseConfirmation.style.display = "flex";
+        popup.classList.add("hidden");
+        purchaseConfirmation.classList.remove("hidden");
     });
 
-    // Close confirmation screen
     closeConfirmationButton.addEventListener("click", () => {
-        purchaseConfirmation.style.display = "none";
+        purchaseConfirmation.classList.add("hidden");
     });
 });
