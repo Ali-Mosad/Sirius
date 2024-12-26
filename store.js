@@ -1,4 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Sorting items by price
+    const store = document.querySelector('.store');
+    const items = Array.from(store.querySelectorAll('.item-card'));
+
+    items.sort((a, b) => {
+        const priceA = parseInt(a.getAttribute('data-price'), 10);
+        const priceB = parseInt(b.getAttribute('data-price'), 10);
+        return priceA - priceB;
+    });
+
+    items.forEach(item => store.appendChild(item));
+
+document.addEventListener("DOMContentLoaded", () => {
     const popup = document.getElementById("popup");
     const nicknameInput = document.getElementById("nicknameInput");
     const balanceDisplay = document.getElementById("balanceDisplay");
@@ -121,4 +134,3 @@ closeConfirmationButton.addEventListener("click", () => {
     console.log("Confirmation popup closed."); // Debugging message
 });
 
-});
