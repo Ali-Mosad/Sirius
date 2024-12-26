@@ -328,3 +328,46 @@ h1 {
 .footer nav a:hover {
     color: #2563eb;
 }
+
+/* Basic card layout */
+.item-card {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.item-image {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+}
+
+.buy-button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.buy-button:hover {
+    background-color: #45a049;
+}
+
+/* Mobile view (2 cards side by side) */
+@media (max-width: 768px) {
+    .item-card {
+        width: 48%; /* Adjust to fit 2 items per row */
+        margin: 1%; /* Add space between the items */
+    }
+}
+
+/* For very small screens (optional) */
+@media (max-width: 480px) {
+    .item-card {
+        width: 100%; /* Ensure each card takes full width on small devices */
+    }
+}
