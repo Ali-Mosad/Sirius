@@ -24,7 +24,7 @@ h1 {
 
 .store {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Default behavior */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     padding: 40px;
     max-width: 1200px;
@@ -63,6 +63,12 @@ h1 {
 .item-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(91, 192, 190, 0.3);
+}
+
+.item-card h3 {
+    color: #5bc0be;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
 }
 
 .item-card p {
@@ -181,14 +187,8 @@ h1 {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    /* Show 2 cards side by side on mobile */
     .store {
-        grid-template-columns: repeat(2, 1fr); /* Show 2 items per row */
-        gap: 15px; /* Adjust gap for mobile view */
-    }
-
-    .item-card {
-        padding: 15px; /* Reduce padding on mobile to fit better */
+        grid-template-columns: 1fr;
     }
 }
 
