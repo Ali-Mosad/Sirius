@@ -1,17 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Sorting items by price
-    const store = document.querySelector('.store');
-    const items = Array.from(store.querySelectorAll('.item-card'));
-
-    items.sort((a, b) => {
-        const priceA = parseInt(a.getAttribute('data-price'), 10);
-        const priceB = parseInt(b.getAttribute('data-price'), 10);
-        return priceA - priceB;
-    });
-
-    items.forEach(item => store.appendChild(item));
-
-document.addEventListener("DOMContentLoaded", () => {
     const popup = document.getElementById("popup");
     const nicknameInput = document.getElementById("nicknameInput");
     const balanceDisplay = document.getElementById("balanceDisplay");
@@ -57,6 +44,20 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         return result;
+    }
+
+    // Sorting items by price
+    const store = document.querySelector(".store");
+    if (store) {
+        const items = Array.from(store.querySelectorAll(".item-card"));
+
+        items.sort((a, b) => {
+            const priceA = parseInt(a.dataset.price, 10);
+            const priceB = parseInt(b.dataset.price, 10);
+            return priceA - priceB;
+        });
+
+        items.forEach(item => store.appendChild(item));
     }
 
     document.querySelectorAll(".buy-button").forEach((button) => {
@@ -120,17 +121,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     confirmPurchaseButton.addEventListener("click", () => {
-    const nickname = nicknameInput.value.trim();
-    itemName.textContent = selectedItem; // Display the item name
-    purchaseMessage.textContent = `تم شراء السلعة بلقب "${nickname}"`; // Purchase message
-    screenshotMessage.textContent = "قم بتصوير الشاشة وإرسالها للمسؤول عن المتجر"; // Add screenshot message
-    popup.classList.add("hidden"); // Hide the popup
-    purchaseConfirmation.classList.remove("hidden"); // Show the confirmation
-});
+        const nickname = nicknameInput.value.trim();
+        itemName.textContent = selectedItem; // Display the item name
+        purchaseMessage.textContent = `تم شراء السلعة بلقب "${nickname}"`; // Purchase message
+        screenshotMessage.textContent = "قم بتصوير الشاشة وإرسالها للمسؤول عن المتجر"; // Add screenshot message
+        popup.classList.add("hidden"); // Hide the popup
+        purchaseConfirmation.classList.remove("hidden"); // Show the confirmation
+    });
 
-// Add event listener for the Close button
-closeConfirmationButton.addEventListener("click", () => {
-    purchaseConfirmation.classList.add("hidden"); // Hide the confirmation popup
-    console.log("Confirmation popup closed."); // Debugging message
+    // Add event listener for the Close button
+    closeConfirmationButton.addEventListener("click", () => {
+        purchaseConfirmation.classList.add("hidden"); // Hide the confirmation popup
+        console.log("Confirmation popup closed."); 
+    });
 });
-
