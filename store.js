@@ -114,4 +114,11 @@ document.addEventListener("DOMContentLoaded", () => {
     popup.classList.add("hidden"); // Hide the popup
     purchaseConfirmation.classList.remove("hidden"); // Show the confirmation
 });
+
+// Add event listener for the Close button
+closeConfirmationButton.addEventListener("click", () => {
+    purchaseConfirmation.classList.add("hidden"); // Hide the confirmation popup
+    console.log("Confirmation popup closed."); // Debugging message
+});
+
 });
