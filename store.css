@@ -394,7 +394,7 @@ body {
 }
 
 header {
-    background: #1c1f4a;
+    background: #0a4050;
     padding: 20px;
     text-align: center;
     color: #fff;
@@ -417,7 +417,7 @@ h1 {
 }
 
 .item-card {
-    background: linear-gradient(145deg, #2a2961, #312859);
+    background: linear-gradient(145deg, #466185, #415a7a);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
@@ -443,7 +443,7 @@ h1 {
 }
 
 .item-card button {
-    background: #673ab7;
+    background: #3475a0;
     color: white;
     border: none;
     border-radius: 5px;
