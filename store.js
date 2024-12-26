@@ -48,15 +48,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".buy-button").forEach((button) => {
         button.addEventListener("click", (event) => {
-            selectedPrice = parseInt(event.target.closest(".item-card").dataset.price, 10);
-            selectedItem = event.target.closest(".item-card").querySelector("h3").textContent.trim();
+            // Get the price and item name
+            const itemCard = event.target.closest(".item-card");
+            if (!itemCard) return; // Ensure item-card exists
+            selectedPrice = parseInt(itemCard.dataset.price, 10);
+            selectedItem = itemCard.querySelector("h3").textContent.trim();
+    
+            // Reset popup inputs and messages
             nicknameInput.value = "";
             balanceDisplay.textContent = "";
-            confirmationMessage.style.display = "none";
+            confirmationMessage.textContent = "";
             confirmPurchaseButton.style.display = "none";
+    
+            // Display the popup
             popup.classList.remove("hidden");
         });
-    });
+    });    
 
     cancelButton.addEventListener("click", () => {
         popup.classList.add("hidden");
