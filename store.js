@@ -122,3 +122,14 @@ closeConfirmationButton.addEventListener("click", () => {
 });
 
 });
+
+const items = document.querySelectorAll(".item-card");
+const images = ["images/item1.jpg", "images/item2.jpg", "images/item3.jpg"];
+
+items.forEach((item, index) => {
+    const img = document.createElement("img");
+    img.src = images[index];
+    img.alt = `Item ${index + 1}`;
+    img.classList.add("item-image");
+    item.prepend(img); // Add the image at the beginning of the card
+});

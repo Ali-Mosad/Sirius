@@ -41,6 +41,25 @@ h1 {
     color: #ffffff;
 }
 
+.item-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.item-card h3 {
+    color: #5bc0be;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.item-card img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s;
+}
+
 .item-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(91, 192, 190, 0.3);
