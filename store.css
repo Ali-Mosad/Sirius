@@ -8,7 +8,7 @@ body {
 }
 
 header {
-    background: #1c2541;
+    background: #13222c;
     padding: 20px;
     text-align: center;
     color: #ffffff;
@@ -89,7 +89,7 @@ h1 {
 }
 
 .item-card button:hover {
-    background: #3a506b;
+    background: #4e6d8a;
     transform: scale(1.05);
 }
 
@@ -101,7 +101,7 @@ h1 {
     transform: translate(-50%, -50%);
     width: 90%;
     max-width: 400px;
-    background: #1c2541;
+    background: #3a556e;
     color: #ffffff;
     padding: 20px;
     border-radius: 12px;
