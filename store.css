@@ -24,7 +24,7 @@ h1 {
 
 .store {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Default behavior */
     gap: 20px;
     padding: 40px;
     max-width: 1200px;
@@ -184,6 +184,11 @@ h1 {
     /* Show 2 cards side by side on mobile */
     .store {
         grid-template-columns: repeat(2, 1fr); /* Show 2 items per row */
+        gap: 15px; /* Adjust gap for mobile view */
+    }
+
+    .item-card {
+        padding: 15px; /* Reduce padding on mobile to fit better */
     }
 }
 
