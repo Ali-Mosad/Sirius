@@ -65,12 +65,6 @@ h1 {
     box-shadow: 0 10px 20px rgba(91, 192, 190, 0.3);
 }
 
-.item-card h3 {
-    color: #5bc0be;
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-}
-
 .item-card p {
     color: #d9d9d9;
     margin-bottom: 20px;
@@ -187,8 +181,9 @@ h1 {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
+    /* Show 2 cards side by side on mobile */
     .store {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr); /* Show 2 items per row */
     }
 }
 
@@ -327,47 +322,4 @@ h1 {
 
 .footer nav a:hover {
     color: #2563eb;
-}
-
-/* Basic card layout */
-.item-card {
-    display: inline-block;
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    text-align: center;
-}
-
-.item-image {
-    width: 100%;
-    max-width: 200px;
-    height: auto;
-}
-
-.buy-button {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.buy-button:hover {
-    background-color: #45a049;
-}
-
-/* Mobile view (2 cards side by side) */
-@media (max-width: 768px) {
-    .item-card {
-        width: 48%; /* Adjust to fit 2 items per row */
-        margin: 1%; /* Add space between the items */
-    }
-}
-
-/* For very small screens (optional) */
-@media (max-width: 480px) {
-    .item-card {
-        width: 100%; /* Ensure each card takes full width on small devices */
-    }
 }
