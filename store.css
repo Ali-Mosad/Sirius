@@ -100,20 +100,29 @@ h1 {
 }
 
 .popup-content h3 {
-    margin-bottom: 20px;
-    font-size: 1.3rem;
-    text-align: center;
-    color: #5bc0be;
+    text-align: center; /* Center text and inline elements */
+    display: flex;
+    flex-direction: column; /* Arrange elements vertically */
+    align-items: center; /* Center elements horizontally */
+    justify-content: center; /* Center elements vertically */
+    gap: 15px; /* Add spacing between elements */
 }
 
 .popup-content input {
-    width: 100%;
+    width: 80%; /* Adjust width to fit within the popup */
+    max-width: 300px; /* Ensure it's not too wide */
     padding: 10px;
-    margin-bottom: 20px;
+    margin: 0 auto; /* Center horizontally within the popup */
     border: 2px solid #5bc0be;
     border-radius: 8px;
     background: #0b132b;
     color: #ffffff;
+    text-align: center; /* Center text inside the input */
+    font-size: 1rem;
+}
+
+.popup-content button {
+    margin-top: 10px; /* Add space above the button */
 }
 
 .popup-content button {
@@ -143,6 +152,14 @@ h1 {
 /* Confirmation Screen */
 #purchaseConfirmation {
     display: none;
+}
+
+#purchaseConfirmation {
+    display: none; /* Default hidden */
+}
+
+#purchaseConfirmation:not(.hidden) {
+    display: block; /* Make visible when 'hidden' class is removed */
 }
 
 .popup.hidden {
