@@ -68,53 +68,31 @@ body {
     text-shadow: 1px 1px 6px rgba(59, 130, 246, 0.4);
 }
 
-/* Hero Section */
-.hero {
+/* Menu */
+.menu {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 100px 20px;
-    background-image: url('anime-background.jpg'); /* Add your anime image URL here */
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    height: 100vh; /* Ensures the hero section takes up the full height of the screen */
+    gap: 15px;
 }
 
-/* Gradient Overlay */
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.6));
-    z-index: 1;
+.menu a {
+    text-decoration: none;
+    color: #f8fafc;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Hero Content (Text and Button) */
-.hero-content {
-    position: relative;
-    z-index: 2;
-    color: #f1f5f9;
+.menu a:hover, .menu a.active {
+    background: #3b82f6;
+    color: #ffffff;
 }
 
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 15px;
-    color: #3b82f6;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
-    font-family: 'Poppins', sans-serif;
-}
-
-.hero p {
-    font-size: 1.3rem;
-    margin-bottom: 20px;
-    color: #94a3b8;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-    font-family: 'Poppins', sans-serif;
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: #f8fafc;
+    cursor: pointer;
 }
 
 .cta-button {
@@ -267,113 +245,6 @@ body {
     }
 }
 
-/* Top Navigation Bar */
-.nav-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 20px;
-    background: rgba(30, 41, 59, 0.95);
-    border-bottom: 4px solid #3b82f6;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    transition: background 0.3s ease; /* Transition for hover effect */
-}
-
-.nav-bar:hover {
-    background: rgba(30, 41, 59, 1); /* Hover effect */
-}
-
-/* Logo Section */
-.nav-bar .logo {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    transition: transform 0.3s ease;
-}
-
-.logo-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: transform 0.3s ease;
-}
-
-.logo-image {
-    height: 50px;
-    width: 50px;
-    border-radius: 10px; /* Rounded edges */
-    border: 2px solid #3b82f6;
-    padding: 5px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.logo-text {
-    font-size: 1.8rem;
-    color: #3b82f6;
-    font-weight: bold;
-    text-shadow: 1px 1px 6px rgba(59, 130, 246, 0.4);
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-/* Hover Effects for Logo */
-.logo-container:hover .logo-image {
-    transform: rotate(360deg) scale(1.2); /* Rotate and scale the logo image */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow */
-}
-
-.logo-container:hover .logo-text {
-    color: #2563eb;
-    transform: translateX(10px); /* Slight move on hover */
-}
-
-/* Menu */
-.menu {
-    display: flex;
-    gap: 15px;
-}
-
-.menu a {
-    text-decoration: none;
-    color: #f8fafc;
-    padding: 8px 12px;
-    font-size: 0.9rem;
-    border-radius: 6px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.menu a:hover, .menu a.active {
-    background: #3b82f6;
-    color: #ffffff;
-}
-
-.menu-toggle {
-    display: none;
-    font-size: 1.5rem;
-    color: #f8fafc;
-    cursor: pointer;
-}
-
-/* Keyframes for animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
 /* Rules Container */
 .rules-container {
     max-width: 900px;
@@ -458,160 +329,6 @@ body {
     color: #f1f5f9;
 }
 
-/* Top Bar */
-.nav-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(30, 41, 59, 0.8); /* Glassmorphism effect */
-    backdrop-filter: blur(10px);
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Logo Styling */
-.nav-bar .logo {
-    display: flex;
-    align-items: center;
-}
-
-.nav-bar .logo img {
-    height: 40px;
-    margin-right: 10px;
-}
-
-.nav-bar .logo span {
-    font-size: 1.5rem;
-    color: #3b82f6;
-    font-weight: bold;
-}
-
-/* Navigation Links */
-.nav-links {
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #f1f5f9;
-    font-size: 1rem;
-    padding: 8px 12px;
-    border-radius: 6px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.nav-links a:hover {
-    background: #3b82f6;
-    color: #ffffff;
-}
-
-/* Responsive Menu (Hidden by Default) */
-.menu-toggle {
-    display: none;
-    font-size: 1.5rem;
-    color: #f1f5f9;
-    cursor: pointer;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        background: rgba(30, 41, 59, 0.95);
-        border-radius: 8px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-        padding: 10px;
-        z-index: 1000;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-}
-
-/* Hero Section */
-.hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 100px 20px;
-    background-image: url('background.jpg'); /* Add your anime image URL here */
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    height: 100vh; /* Ensures the hero section takes up the full height of the screen */
-}
-
-/* Gradient Overlay */
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.6));
-    z-index: 1;
-}
-
-/* Hero Section */
-.hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 100px 20px;
-    background-image: url('cyrus-photo.jpg'); /* Add your anime image path here */
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    height: 100vh;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.7)); /* Dark gradient for readability */
-    z-index: 1;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    color: #f1f5f9;
-}
-
-.hero h1 {
-    font-size: 4rem;
-    margin-bottom: 15px;
-    color: #3b82f6;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-}
-
-.hero p {
-    font-size: 1.3rem;
-    margin-bottom: 20px;
-    color: #94a3b8;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-}
-
 .cta-button {
     padding: 12px 30px;
     background: #3b82f6;
@@ -644,77 +361,3 @@ body {
         font-size: 1rem;
     }
 }
-
-/* Features Grid */
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 50px 20px;
-}
-
-.feature-item {
-    background: #334155;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.feature-item img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-
-.feature-item h2 {
-    font-size: 1.5rem;
-    color: #e2e8f0;
-}
-
-.feature-item p {
-    font-size: 1rem;
-    color: #94a3b8;
-}
-
-.feature-item .feature-link {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 20px;
-    background: #3b82f6;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background 0.3s;
-}
-
-.feature-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
-}
-
-.feature-item .feature-link:hover {
-    background: #2563eb;
-}
-
-/* Footer */
-.footer {
-    text-align: center;
-    padding: 20px;
-    background: #1e293b;
-    color: #94a3b8;
-}
-
-.footer nav {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.footer nav a {
-    color: #3b82f6;
-    text-decoration: none;
-}
-
