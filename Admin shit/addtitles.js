@@ -1,7 +1,7 @@
 // Google API configuration
-const CLIENT_ID = "YOUR_CLIENT_ID"; // Replace with your OAuth 2.0 Client ID
-const API_KEY = "YOUR_API_KEY"; // Replace with your API Key
-const SPREADSHEET_ID = "YOUR_SPREADSHEET_ID"; // Replace with your Google Sheet ID
+const CLIENT_ID = "404062048289-52l1rue0600ckktsc3hr3jsqt6k03epe.apps.googleusercontent.com"; // Replace with your OAuth 2.0 Client ID
+const API_KEY = "AIzaSyD1IS98TdEYjWncrSKwbWWyLgCkPyjmWu4"; // Replace with your API Key
+const SPREADSHEET_ID = "1_01SeG5p8YV0ihDiMIo7COl69RzIV4oHghgl2AuEtN0"; // Replace with your Google Sheet ID
 const SHEET_NAME = "Sheet1"; // Replace with your sheet name
 const DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
 const SCOPES = "https://www.googleapis.com/auth/spreadsheets";
