@@ -78,19 +78,19 @@ function updateDisplay() {
                 }
 
                 titleDiv.innerHTML = `
-                    <div class="card-content">
-                        <h3>${titleName}</h3>
-                        <p class="rank">رتبة: ${rank}</p>
-                        <p class="balance">رصيد: ${balance}</p>
-                        <p class="warning">انذار: ${warning}</p>
-                        ${
-                            phoneNumber
-                                ? `<p class="phone"><a href="tel:${phoneNumber}"><i class="fas fa-phone"></i> ${phoneNumber}</a></p>`
-                                : ""
-                        }
-                        <button class="details-button" onclick="showDetails('${details}')">تفاصيل اللقب</button>
-                    </div>
-                `;
+    <div class="card-content">
+        <h3>${titleName}</h3>
+        <p class="rank">رتبة: ${rank}</p>
+        <p class="balance">رصيد: ${balance}</p>
+        <p class="warning">انذار: ${warning}</p>
+        ${
+            phoneNumber
+                ? `<p class="phone"><a href="tel:${phoneNumber}"><i class="fas fa-phone"></i> ${phoneNumber}</a></p>`
+                : ""
+        }
+        <button class="details-button" onclick="showDetails('${details}')">تفاصيل اللقب</button>
+    </div>
+`;
 
                 // Append the title card to the correct section
                 targetSection.appendChild(titleDiv);
@@ -102,7 +102,11 @@ function updateDisplay() {
 }
 
 // Function to display details in the popup modal
+// Function to display details in the popup modal
 function showDetails(details) {
+    console.log("Details Button Clicked"); // Debugging
+    console.log("Details:", details); // Debugging
+
     const popupDetails = document.getElementById("popupDetails");
     const modal = document.getElementById("popupModal");
 
