@@ -21,7 +21,12 @@ function updateDisplay() {
                 "أعضاء": document.getElementById("أعضاء"),
             };
 
-            Object.values(sections).forEach((section) => (section.innerHTML = ""));
+            // Clear content from all sections
+            Object.values(sections).forEach((section) => {
+                if (section) {
+                    section.innerHTML = "";
+                }
+            });
 
             rows.forEach((row, index) => {
                 if (row.trim() === "") return; // Skip empty rows
@@ -47,7 +52,7 @@ function updateDisplay() {
                     .toLowerCase();
 
                 // Determine the target section
-                let targetSection;
+                let targetSection = null;
 
                 const adminRanks = [
                     "مؤبد",
@@ -61,66 +66,39 @@ function updateDisplay() {
                     targetSection = sections["محاربين"];
                 } 
 
-                // Create a div for each title
-                const titleDiv = document.createElement("div");
-                titleDiv.className = "container searchable card";
-                if (imageUrl) {
-                    titleDiv.style.backgroundImage = `url(${imageUrl})`;
+                if (targetSection) {
+                    // Create a div for each title
+                    const titleDiv = document.createElement("div");
+                    titleDiv.className = "container searchable card";
+                    if (imageUrl) {
+                        titleDiv.style.backgroundImage = `url(${imageUrl})`;
+                    }
+
+                    titleDiv.innerHTML = `
+                        <div class="card-content">
+                            <h3>${titleName}</h3>
+                            <p class="rank">المخالفة: ${rank}</p>
+                            <p class="balance">السبب: ${balance}</p>
+                            <p class="warning">السوابق: ${warning}</p>
+                            ${
+                                phoneNumber
+                                    ? `<p class="phone"><a href="tel:${phoneNumber}"><i class="fas fa-phone"></i> ${phoneNumber}</a></p>`
+                                    : ""
+                            }
+                        </div>
+                    `;
+
+                    // Append the title card to the correct section
+                    targetSection.appendChild(titleDiv);
+                } else {
+                    console.warn(`Skipping row ${index + 1} due to no matching section.`);
                 }
-
-                titleDiv.innerHTML = `
-                    <div class="card-content">
-                        <h3>${titleName}</h3>
-                        <p class="rank">المخالفة: ${rank}</p>
-                        <p class="balance">السبب: ${balance}</p>
-                        <p class="warning">السوابق: ${warning}</p>
-                        ${
-                            phoneNumber
-                                ? `<p class="phone"><a href="tel:${phoneNumber}"><i class="fas fa-phone"></i> ${phoneNumber}</a></p>`
-                                : ""
-                        }
-                    </div>
-                `;
-
-                // Append the title card to the correct section
-                targetSection.appendChild(titleDiv);
             });
         })
         .catch((error) => {
             console.error("Error loading Google Sheets data:", error);
         });
 }
-
-// Search Functionality for Both Sections
-document.getElementById("searchButton").addEventListener("click", () => {
-    const searchQuery = document.getElementById("searchInput").value.toLowerCase();
-    const containers = document.querySelectorAll(".searchable");
-    const searchResults = document.getElementById("searchResults");
-
-    // Clear previous search results
-    searchResults.innerHTML = "";
-
-    let hasResults = false;
-
-    containers.forEach((container) => {
-        const titleText = container.querySelector("h3").textContent.toLowerCase();
-        if (titleText.includes(searchQuery)) {
-            hasResults = true;
-            const clonedContainer = container.cloneNode(true);
-            searchResults.appendChild(clonedContainer);
-        }
-    });
-
-    // Display a message if no results are found
-    if (!hasResults) {
-        searchResults.innerHTML = `<p>لا توجد نتائج مطابقة.</p>`;
-    }
-});
-
-// Prevent Form Default Submission
-document.getElementById("searchForm").addEventListener("submit", (event) => {
-    event.preventDefault();
-});
 
 // Initial Data Display
 updateDisplay(); // Show data from Google Sheets
