@@ -1,3 +1,4 @@
+// Function to fetch and display data from Google Sheets
 function updateDisplay() {
     const sheetURL =
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
@@ -6,6 +7,7 @@ function updateDisplay() {
         .then((response) => response.text())
         .then((csv) => {
             const rows = csv.split("\n").slice(1); // Skip the header row
+
             const sections = {
                 "الإدارة العليا": document.getElementById("الإدارة العليا"),
                 "فرسان": document.getElementById("فرسان"),
@@ -15,19 +17,26 @@ function updateDisplay() {
 
             Object.values(sections).forEach((section) => (section.innerHTML = ""));
 
-            rows.forEach((row) => {
+            rows.forEach((row, index) => {
                 if (row.trim() === "") return;
-                const columns = row.split(",");
-                if (columns.length < 6) return;
 
+                const columns = row.split(","); // Split row into columns
+                if (columns.length < 7) {
+                    console.warn(`Skipping invalid row ${index + 1}: ${row}`);
+                    return;
+                }
+
+                // Extract data for each row
                 const titleName = columns[0] || "اسم غير معروف";
                 const rank = columns[1] || "غير محدد";
                 const balance = columns[2] || "0";
                 const warning = columns[3] || "لا يوجد";
                 const phoneNumber = columns[4] || "";
                 const imageUrl = columns[5] || "";
+                const details = columns[6] || "لا توجد تفاصيل"; // New details column
 
                 const normalizedRank = rank.replace(/[\s\u200C-\u200F]/g, "").toLowerCase();
+
                 let targetSection;
 
                 const adminRanks = [
@@ -67,21 +76,9 @@ function updateDisplay() {
                                 ? `<p class="phone"><a href="tel:${phoneNumber}"><i class="fas fa-phone"></i> ${phoneNumber}</a></p>`
                                 : ""
                         }
-                        <button class="details-button">تفاصيل اللقب</button>
+                        <button class="details-button" onclick="showDetails('${details}')">تفاصيل اللقب</button>
                     </div>
                 `;
-
-                const detailsButton = titleDiv.querySelector(".details-button");
-                detailsButton.addEventListener("click", () => {
-                    openPopup({
-                        titleName,
-                        rank,
-                        balance,
-                        warning,
-                        phoneNumber,
-                        imageUrl,
-                    });
-                });
 
                 targetSection.appendChild(titleDiv);
             });
@@ -91,38 +88,41 @@ function updateDisplay() {
         });
 }
 
-// Function to open and populate the popup
-function openPopup(details) {
+// Function to display details in the popup modal
+function showDetails(details) {
     const popupDetails = document.getElementById("popupDetails");
-    popupDetails.innerHTML = `
-        <h2>${details.titleName}</h2>
-        <p>رتبة: ${details.rank}</p>
-        <p>رصيد: ${details.balance}</p>
-        <p>انذار: ${details.warning}</p>
-        ${
-            details.phoneNumber
-                ? `<p><a href="tel:${details.phoneNumber}"><i class="fas fa-phone"></i> ${details.phoneNumber}</a></p>`
-                : ""
-        }
-        ${
-            details.imageUrl
-                ? `<img src="${details.imageUrl}" alt="${details.titleName}" style="width: 100%; border-radius: 8px; margin-top: 10px;">`
-                : ""
-        }
-    `;
     const modal = document.getElementById("popupModal");
+
+    popupDetails.innerHTML = `<p>${details}</p>`;
     modal.style.display = "block";
-
-    // Close modal on click
-    const closeModal = document.getElementById("closeModal");
-    closeModal.onclick = () => (modal.style.display = "none");
-
-    window.onclick = (event) => {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    };
 }
 
-// Initial Data Display
+// Search functionality
+document.getElementById("searchButton").addEventListener("click", () => {
+    const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+    const containers = document.querySelectorAll(".searchable");
+    const searchResults = document.getElementById("searchResults");
+
+    searchResults.innerHTML = "";
+
+    let hasResults = false;
+
+    containers.forEach((container) => {
+        const titleText = container.querySelector("h3").textContent.toLowerCase();
+        if (titleText.includes(searchQuery)) {
+            hasResults = true;
+            const clonedContainer = container.cloneNode(true);
+            searchResults.appendChild(clonedContainer);
+        }
+    });
+
+    if (!hasResults) {
+        searchResults.innerHTML = `<p>لا توجد نتائج مطابقة.</p>`;
+    }
+});
+
+document.getElementById("searchForm").addEventListener("submit", (event) => {
+    event.preventDefault();
+});
+
 updateDisplay();
