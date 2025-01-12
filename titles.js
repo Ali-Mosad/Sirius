@@ -3,11 +3,17 @@ function updateDisplay() {
     const sheetURL =
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
 
+    // Fetch and process the data from Google Sheets
     fetch(sheetURL)
         .then((response) => response.text())
         .then((csv) => {
+            console.log("Fetched Google Sheets Data:");
+            console.log(csv); // Debugging: Log the CSV data
+
+            // Split CSV into rows and parse
             const rows = csv.split("\n").slice(1); // Skip the header row
 
+            // Clear any existing content in the sections
             const sections = {
                 "الإدارة العليا": document.getElementById("الإدارة العليا"),
                 "فرسان": document.getElementById("فرسان"),
@@ -18,12 +24,12 @@ function updateDisplay() {
             Object.values(sections).forEach((section) => (section.innerHTML = ""));
 
             rows.forEach((row, index) => {
-                if (row.trim() === "") return;
+                if (row.trim() === "") return; // Skip empty rows
 
                 const columns = row.split(","); // Split row into columns
                 if (columns.length < 7) {
                     console.warn(`Skipping invalid row ${index + 1}: ${row}`);
-                    return;
+                    return; // Skip rows that don't have enough columns
                 }
 
                 // Extract data for each row
@@ -33,10 +39,15 @@ function updateDisplay() {
                 const warning = columns[3] || "لا يوجد";
                 const phoneNumber = columns[4] || "";
                 const imageUrl = columns[5] || "";
-                const details = columns[6] || "لا توجد تفاصيل"; // New details column
+                const details = columns[6] || "لا توجد تفاصيل";
 
-                const normalizedRank = rank.replace(/[\s\u200C-\u200F]/g, "").toLowerCase();
+                // Normalize rank for comparison: remove spaces, invisible characters, and emojis
+                const normalizedRank = rank
+                    .replace(/[\s\u200C-\u200F]/g, "") // Remove spaces and invisible characters
+                    .replace(/[\uD800-\uDFFF]/g, "") // Remove emojis
+                    .toLowerCase();
 
+                // Determine the target section
                 let targetSection;
 
                 const adminRanks = [
@@ -59,6 +70,7 @@ function updateDisplay() {
                     targetSection = sections["أعضاء"];
                 }
 
+                // Create a div for each title
                 const titleDiv = document.createElement("div");
                 titleDiv.className = "container searchable card";
                 if (imageUrl) {
@@ -80,6 +92,7 @@ function updateDisplay() {
                     </div>
                 `;
 
+                // Append the title card to the correct section
                 targetSection.appendChild(titleDiv);
             });
         })
@@ -97,12 +110,27 @@ function showDetails(details) {
     modal.style.display = "block";
 }
 
-// Search functionality
+// Function to close the modal
+function closeModal() {
+    const modal = document.getElementById("popupModal");
+    modal.style.display = "none";
+}
+
+// Close modal when clicking outside of it
+window.onclick = function (event) {
+    const modal = document.getElementById("popupModal");
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+
+// Search Functionality for Both Sections
 document.getElementById("searchButton").addEventListener("click", () => {
     const searchQuery = document.getElementById("searchInput").value.toLowerCase();
     const containers = document.querySelectorAll(".searchable");
     const searchResults = document.getElementById("searchResults");
 
+    // Clear previous search results
     searchResults.innerHTML = "";
 
     let hasResults = false;
@@ -116,13 +144,16 @@ document.getElementById("searchButton").addEventListener("click", () => {
         }
     });
 
+    // Display a message if no results are found
     if (!hasResults) {
         searchResults.innerHTML = `<p>لا توجد نتائج مطابقة.</p>`;
     }
 });
 
+// Prevent Form Default Submission
 document.getElementById("searchForm").addEventListener("submit", (event) => {
     event.preventDefault();
 });
 
-updateDisplay();
+// Initial Data Display
+updateDisplay(); // Show data from Google Sheets
