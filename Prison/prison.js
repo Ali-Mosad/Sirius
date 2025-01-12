@@ -1,7 +1,7 @@
 // Function to fetch and display data from Google Sheets
 function updateDisplay() {
     const sheetURL =
-        "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbAPklpmgpd4GyXOoyQfavDI50cYMYxNGGmrXyvLe1j4bIej0vcuZuIxzs4EWtB4LbQL6FgJI_fWj5/pub?output=csv";
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBbprQnuRkPL4W1ToCWKYOt8UObw1sk7p9i-GN2x85teRpIiLgDFZPW1w3gqEuJFVBdqX0PnbtXFl_/pub?output=csv";
 
     // Fetch and process the data from Google Sheets
     fetch(sheetURL)
